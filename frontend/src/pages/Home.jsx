@@ -1,13 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import { Container, Row, Col } from "react-bootstrap";
+import styled from "styled-components";
 
-const Login = () => {
+const Home = () => {
     return (
         <Wrapper>
             <Container>
                 <Row>
-                    <Col></Col>
+                    <Col>Home Page</Col>
                 </Row>
             </Container>
         </Wrapper>
@@ -15,6 +15,7 @@ const Login = () => {
 };
 
 const Wrapper = styled.div`
-    display: block;
+    padding: 50px;
 `;
-export default Login;
+
+export default Home;
