@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": {
+                "first": "Neer",
+                "middle": "Bahadur",
+                "last": "Shrestha"
+            }
+        }
+    ]
+}

@@ -1,10 +1,10 @@
 const primaryMenu = [
     {
         name: "Home",
-        link: "/"
+        link: "/",
     },
     {
-        name: "Home",
-        link: "/"
+        name: "About",
+        link: "/about",
     },
-]
+];
