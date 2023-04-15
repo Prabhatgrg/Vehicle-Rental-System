@@ -1,6 +1,7 @@
 import express from "express";
 // import User from "./database/User";
 
+
 const app = express();
 const PORT = 8000;
 

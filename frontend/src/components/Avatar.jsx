@@ -2,7 +2,7 @@ import React from "react";
 import { useFetch } from "../hooks";
 
 const Avatar = () => {
-    const { data, loading, error } = useFetch(`http://localhost:3000/users`);
+    const { data, loading, error } = useFetch(`http://localhost:8080/users`);
 
     return (
         <div>

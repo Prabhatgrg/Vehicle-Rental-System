@@ -12,6 +12,8 @@ const useFetch = (url) => {
             .get(url)
             .then((response) => {
                 setData(response.data);
+                console.log(url);
+                console.log(response);
             })
             .catch((error) => {
                 setError(error.message);
