@@ -1,0 +1,99 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    // font family
+    --primary-font: #{$primary-font};
+
+    --transition: all 0.3s ease-in-out;
+
+    // font size
+    @each $key, $value in $font-size {
+        --fs-#{$key}: #{$value};
+    }
+
+    // colors
+    @each $key, $value in $colors {
+        --color-#{$key}: #{$value};
+    }
+}
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: var(--fs-text);
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--color-dark);
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+h1,
+.h1 {
+    font-size: var(--fs-h1);
+}
+h2,
+.h2 {
+    font-size: var(--fs-h2);
+}
+h3,
+.h3 {
+    font-size: var(--fs-h3);
+}
+h4,
+.h4 {
+    font-size: var(--fs-h4);
+}
+h5,
+.h5 {
+    font-size: var(--fs-h5);
+}
+h6,
+.h6 {
+    font-size: var(--fs-h6);
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+    background-image: linear-gradient(to right, #000 100%, #000 100%);
+    background-size: 0% 1px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+
+    &:hover {
+        background-size: 100% 1px;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
