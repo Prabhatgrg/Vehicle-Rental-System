@@ -1,8 +1,8 @@
 <?php
+    //Connect to the database
+    require_once './database/db_config.php';
 
     //User Signup Code
-    require_once './database/db_config.php';
-    
     if($_SERVER['REQUEST_METHOD']==='POST'){
         $email = $_POST['email'];
         $username = $_POST['username'];
@@ -18,13 +18,18 @@
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
             $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password = password_hash($password, PASSWORD_DEFAULT); //Hash the password
+
+            //Insert the user data into the database
+            $stmt=$conn->prepare("INSERT INTO customers(username, password, email, phone)VALUES(?, ?, ?, ?)");
+            $stmt->bind_param("sssi", $username, $password, $email, $phone);
+            if($stmt->execute()){
+                echo "User Registered Successfully";
+            }else{
+                echo "Error occured during the registration";
+            }
+
+            $stmt->close();
+            $conn->close();
         }
-        //Insert the user data into the database
     }
-
-    //Connect to the database
-    require_once '../database/db_config.php';
-
-    //Prepare and execute the SQl query to insert new user into 'customers' table
-    $stmt=$conn->prepare("INSERT INTO customers(first_name,last_name,email,phone) VALUES(?, ?, ?, ?)");
 ?>
