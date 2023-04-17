@@ -2,7 +2,7 @@
     //Connect to the database
     require_once './database/db_config.php';
 
-    //User Signup Code
+    //Check if the form is submitted
     if($_SERVER['REQUEST_METHOD']==='POST'){
         $email = $_POST['email'];
         $username = $_POST['username'];
