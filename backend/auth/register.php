@@ -12,7 +12,7 @@
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        
+
         //Sanitize the user input
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
         $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);

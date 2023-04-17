@@ -19,7 +19,7 @@
             $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password = password_hash($password, PASSWORD_DEFAULT); //Hash the password
 
-            //Insert the user data into the database
+            //Insert the new user data into the database
             $stmt=$conn->prepare("INSERT INTO customers(username, password, email, phone)VALUES(?, ?, ?, ?)");
             $stmt->bind_param("sssi", $username, $password, $email, $phone);
             if($stmt->execute()){
