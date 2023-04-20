@@ -1,6 +1,6 @@
 <?php
     require_once './database/db_config.php';
-    require_once './backend/auth/auth.php';
+    require_once './backend/function/user_function.php';
 
     function login(){
         if($_SERVER['REQUEST_METHOD']==='POST'){
