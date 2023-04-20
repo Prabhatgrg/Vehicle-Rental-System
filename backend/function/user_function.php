@@ -21,6 +21,20 @@
             return false;
         }
     }
+    function login(){
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            if(authenticate_user($username, $password)){
+                //Redirect to dashboard or show success message
+                header('Location: dashboard.php');
+                exit;
+            }else{
+                //Show Error message
+                echo "Invalid username or password. Please try again.";            }
+        }
+    }
     function logout_user(){
         //Unset user ID from session to indicate logout
         unset($_SESSION['username']);
