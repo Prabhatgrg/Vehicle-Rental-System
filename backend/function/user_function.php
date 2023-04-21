@@ -7,7 +7,6 @@
         $stmt = $db->prepare("SELECT * FROM customers WHERE username = $username");
         $stmt->execute();
         $user = $stmt->fetch();
-        return $user;
 
         //Check if the user exists and password is correct
         if($user && password_verify($password, $user['password'])){
