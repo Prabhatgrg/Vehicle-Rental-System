@@ -5,7 +5,8 @@ include './functions.php';
 
 $routes = [
     get_root_directory_uri() . '/' => 'frontend/index.php',
-    get_root_directory_uri() . '/about' => 'frontend/about.php',
+    get_root_directory_uri() . '/about' => 'frontend/page-about.php',
+    get_root_directory_uri() . '/login' => 'frontend/page-login.php',
 ];
 
 // Get the URL path from the request

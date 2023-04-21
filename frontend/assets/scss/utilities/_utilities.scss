@@ -1,43 +1,6 @@
-@each $key, $value in $breakpoints {
-    @media (min-width: #{$value}) {
-        .container {
-            max-width: #{$value};
-            margin: 0 auto;
-            padding: 0 1.2rem;
-        }
-    }
-}
-
-.grid {
-    display: grid;
-    grid-gap: var(--gap);
-}
-@for $i from 1 to 6 {
-    .gap-#{$i} {
-        --gap: #{$i * 1}rem;
-    }
-    .p-#{$i} {
-        padding: #{$i * 1}rem;
-    }
-    .py-#{$i} {
-        padding: #{$i * 1}rem 0;
-    }
-    .px-#{$i} {
-        padding: 0 #{$i * 1}rem;
-    }
-    .ps-#{$i} {
-        padding-left: #{$i * 1}rem;
-    }
-    .pe-#{$i} {
-        padding-right: #{$i * 1}rem;
-    }
-    .pb-#{$i} {
-        padding-bottom: #{$i * 1}rem;
-    }
-    .pt-#{$i} {
-        padding-top: #{$i * 1}rem;
-    }
-}
+@import "./grid";
+@import "./container";
+@import "./spacing";
 
 .flex {
     display: flex;
@@ -51,4 +14,7 @@
 }
 .justify-content-between {
     justify-content: space-between;
+}
+.text-center {
+    text-align: center;
 }

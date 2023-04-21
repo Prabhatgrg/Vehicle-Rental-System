@@ -97,3 +97,16 @@ img {
     max-width: 100%;
     height: auto;
 }
+p {
+    margin-bottom: 15px;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+label {
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}

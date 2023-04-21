@@ -1,0 +1,10 @@
+.grid {
+    display: grid;
+    grid-gap: var(--gap);
+}
+
+@for $i from 1 to 12 {
+    .col-#{$i} {
+        width: #{($i * 100) / 12}#{"%"};
+    }
+}
