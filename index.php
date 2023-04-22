@@ -7,6 +7,7 @@ $routes = [
     get_root_directory_uri() . '/' => 'frontend/index.php',
     get_root_directory_uri() . '/about' => 'frontend/page-about.php',
     get_root_directory_uri() . '/login' => 'frontend/page-login.php',
+    get_root_directory_uri() . '/signup' => 'frontend/page-signup.php',
 ];
 
 // Get the URL path from the request

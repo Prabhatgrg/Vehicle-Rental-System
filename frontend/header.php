@@ -14,15 +14,22 @@
     <header class="site-header">
         <div class="container">
             <div class="flex align-items-center justify-content-between">
-                <a href="<?php echo get_root_directory_uri(); ?>">
-                    Vehicle Rental System
+                <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand">
+                    Rent<span class="fw-bold">Ease</span>
                 </a>
 
                 <nav class="main-navigation">
                     <ul class="menu">
                         <li><a href="<?php echo get_root_directory_uri(); ?>/">Home</a></li>
                         <li><a href="<?php echo get_root_directory_uri(); ?>/about">About</a></li>
+                        <li><a href="<?php echo get_root_directory_uri(); ?>/login">Login</a></li>
+                        <li><a href="<?php echo get_root_directory_uri(); ?>/signup">Signup</a></li>
                     </ul>
+                    <div class="user-avatar">
+
+                        <img src="" alt="">
+                        <span class="name"></span>
+                    </div>
                 </nav>
             </div>
         </div>

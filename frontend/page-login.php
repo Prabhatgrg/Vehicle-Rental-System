@@ -17,6 +17,9 @@
 
                     <button type="submit" class="btn btn-dark">Submit</button>
                 </form>
+                <p class="text-center mt-3">
+                    Don't have account yet? then <a href="<?php echo get_root_directory_uri(); ?>/signup">click here</a>.
+                </p>
             </div>
         </div>
     </div>

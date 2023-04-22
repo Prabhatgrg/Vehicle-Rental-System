@@ -1,9 +1,12 @@
 .site-header {
-    padding: 10px 0;
+    padding: 20px 0;
 }
 .main-navigation {
     .menu {
         display: flex;
         gap: 30px;
     }
+}
+.site-brand {
+    font-size: var(--fs-h2);
 }
