@@ -1,4 +1,6 @@
 <?php
+    require_once './database/db_config.php';
+
     //Function to authenticate user
     function authenticate_user($username, $password){
         $db = connect_to_db();
