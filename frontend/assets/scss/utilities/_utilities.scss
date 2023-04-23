@@ -21,3 +21,12 @@
 .fw-bold {
     font-weight: 900;
 }
+
+@each $key, $value in $colors {
+    .bg-#{$key} {
+        background-color: #{$value};
+    }
+    .text-#{$key} {
+        color: #{$value};
+    }
+}

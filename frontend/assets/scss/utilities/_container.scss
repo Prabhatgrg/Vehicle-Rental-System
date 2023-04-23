@@ -1,9 +1,12 @@
+.container {
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
 @each $key, $value in $breakpoints {
     @media (min-width: #{$value}) {
         .container {
             max-width: #{$value};
-            margin: 0 auto;
-            padding: 0 1.2rem;
         }
     }
 }

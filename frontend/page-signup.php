@@ -4,8 +4,8 @@
 <section id="signup" class="signup py-5">
     <div class="container">
         <div class="flex justify-content-center">
-            <div class="col-4">
-                <form action="#" method="POST" class="grid gap-2 signup-form" autocomplete="off">
+            <div class="col-md-6 col-xl-4">
+                <form action="<?php echo get_root_directory_uri(); ?>/backend/auth/register.php" method="POST" class="grid gap-2 signup-form" autocomplete="off">
                     <div class="form-field">
                         <label for="signupfullName">Full Name</label>
                         <input type="text" name="signupfullName" id="signupfullName" class="form-control">
