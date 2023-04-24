@@ -17,10 +17,12 @@ CREATE TABLE IF NOT EXISTS customers(
     date DATE NOT NULL
 );
 
-CREATE TABLE IF NOT EXITS posts(
+CREATE TABLE IF NOT EXISTS posts(
     id INT AUTO_INCREMENT PRIMARY KEY,
     image longblog NOT NULL,
-    crated datetime NOT NULL DEFAULT current_timestamp()
+    image_title VARCHAR(100) NOT NULL,
+    image_description VARCHAR(255),
+    created datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()
 );
 
 CREATE TABLE IF NOT EXISTS bookings(
