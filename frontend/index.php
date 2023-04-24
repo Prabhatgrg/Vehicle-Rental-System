@@ -22,15 +22,15 @@ endif;
         <div class="categories">
             <h2 class="category-title h5">Our categories</h2>
             <ul class="categories-list">
-                <li><a href="#">Trading</a></li>
+                <li><a href="#">Trending</a></li>
                 <li><a href="#">Latest Upload</a></li>
             </ul>
         </div>
     </div>
 </section>
-<section class="tranding pb-3">
+<section class="trending pb-3">
     <div class="container">
-        <h2 class="h5 mb-2">Tranding</h2>
+        <h2 class="h5 mb-2">Trending</h2>
         <div class="grid gap-1 column-5">
             <div class="card">
                 <figure class="card-img">
