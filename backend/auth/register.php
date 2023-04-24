@@ -2,7 +2,7 @@
 require_once '../../database/db_config.php';
 require_once '../../functions.php';
 
-global $conn;
+// global $conn;
 //Check Authentication
 // if(!is_authenticated()){
 //     header('/index.php');

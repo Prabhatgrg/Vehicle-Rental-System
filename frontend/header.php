@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vehicle Rental System</title>
-    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.min.css">
+    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/utilities.css">
+    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.css">
 </head>
 
 <body>
@@ -22,13 +23,18 @@
                     <ul class="menu">
                         <li><a href="<?php echo get_root_directory_uri(); ?>/">Home</a></li>
                         <li><a href="<?php echo get_root_directory_uri(); ?>/about">About</a></li>
-                        <li><a href="<?php echo get_root_directory_uri(); ?>/login">Login</a></li>
-                        <li><a href="<?php echo get_root_directory_uri(); ?>/signup">Signup</a></li>
                     </ul>
                     <div class="user-avatar">
+                        <div class="user-info">
+                            <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                            <span class="user-name">User</span>
+                        </div>
 
-                        <img src="" alt="">
-                        <span class="name"></span>
+                        <ul class="user-dropdown">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
                     </div>
                 </nav>
             </div>
