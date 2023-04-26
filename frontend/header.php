@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle Rental System</title>
+    <link rel="shortcut icon" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/img/svg/rentease_favicon.svg" type="image/x-icon">
+    <title><?php
+            if (isset($page_title)) :
+                echo $page_title . ' - Vehicle Rental System';
+            else :
+                echo "RentEase - Vehicle Rental System";
+            endif;
+            ?></title>
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/utilities.css">
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.css">
 </head>

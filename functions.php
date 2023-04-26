@@ -9,8 +9,9 @@ function get_theme_directory_uri(): string
 {
     return THEME_DIRECTORY_URI;
 }
-function get_header(): void
+function get_header(string $title = 'RentEase'): void
 {
+    $page_title = $title;
     include_once('frontend/header.php');
 }
 function get_footer(): void

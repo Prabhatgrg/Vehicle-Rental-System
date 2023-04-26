@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php
+get_header("About");
+?>
 
 <section class="py-5">
     <div class="container">
