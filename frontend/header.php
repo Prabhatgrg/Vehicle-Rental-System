@@ -61,8 +61,8 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         <li><a href="<?php echo get_root_directory_uri(); ?>/about">About</a></li>
                     </ul>
 
-                    <div class="chat-container">
-                        <button class="chat-toggler">
+                    <div class="chat-container dropdown-container">
+                        <button class="btn-dropdown chat-toggler">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -94,10 +94,11 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                 Chat
                             </span>
                         </button>
+                        <div class="dropdown-content"></div>
                     </div>
 
-                    <div class="has-dropdown notifications">
-                        <div class="notification-icon">
+                    <div class="dropdown-container notifications">
+                        <button class="btn-dropdown notification-icon">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -123,8 +124,8 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                             </svg>
 
                             <span class="screen-reader-text">Notifications</span>
-                        </div>
-                        <ul class="dropdown-menu notifications-menu">
+                        </button>
+                        <ul class="dropdown-content dropdown-menu notifications-menu">
                             <li>
                                 <a href="#">
                                     Lorem ipsum dolor sit amet.
