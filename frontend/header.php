@@ -12,6 +12,7 @@
             else :
                 echo "RentEase - Vehicle Rental System";
             endif;
+
             ?></title>
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/utilities.css">
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.css">

@@ -6,7 +6,6 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 require_once './database/db_config.php';
-// connect_to_db();
 
 
 // checking routing
