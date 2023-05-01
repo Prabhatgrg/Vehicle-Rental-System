@@ -29,7 +29,7 @@ endif;
     </div>
 </section>
 
-<section class="trending pb-3">
+<section class="trending pb-3 mb-3">
     <div class="container">
         <h2 class="h5 mb-2">Trending</h2>
         <div class="grid gap-1 column-5">
@@ -141,6 +141,94 @@ endif;
     <div class="container">
         <h2 class="h5 mb-2">Latest Post</h2>
         <div class="grid gap-2">
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="#">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    </a>
+                </figure>
+                <div class="card-body flex-1 p-2">
+                    <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
+                    <div class="product-description mb-3">
+                        <p>Vehicle Description Here</p>
+                    </div>
+
+                    <div class="price-and-availability flex-1 gap-2 mb-3">
+                        <span class="price">Rs. 3000/day</span>
+                        <span class="available">| Available: </span>
+                    </div>
+                    <div class="location-and-time flex justify-content-between">
+                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="time">Just Now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="#">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    </a>
+                </figure>
+                <div class="card-body flex-1 p-2">
+                    <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
+                    <div class="product-description mb-3">
+                        <p>Vehicle Description Here</p>
+                    </div>
+
+                    <div class="price-and-availability flex-1 gap-2 mb-3">
+                        <span class="price">Rs. 3000/day</span>
+                        <span class="available">| Available: </span>
+                    </div>
+                    <div class="location-and-time flex justify-content-between">
+                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="time">Just Now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="#">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    </a>
+                </figure>
+                <div class="card-body flex-1 p-2">
+                    <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
+                    <div class="product-description mb-3">
+                        <p>Vehicle Description Here</p>
+                    </div>
+
+                    <div class="price-and-availability flex-1 gap-2 mb-3">
+                        <span class="price">Rs. 3000/day</span>
+                        <span class="available">| Available: </span>
+                    </div>
+                    <div class="location-and-time flex justify-content-between">
+                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="time">Just Now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="#">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    </a>
+                </figure>
+                <div class="card-body flex-1 p-2">
+                    <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
+                    <div class="product-description mb-3">
+                        <p>Vehicle Description Here</p>
+                    </div>
+
+                    <div class="price-and-availability flex-1 gap-2 mb-3">
+                        <span class="price">Rs. 3000/day</span>
+                        <span class="available">| Available: </span>
+                    </div>
+                    <div class="location-and-time flex justify-content-between">
+                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="time">Just Now</span>
+                    </div>
+                </div>
+            </div>
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#">
