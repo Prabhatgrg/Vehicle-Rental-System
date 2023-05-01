@@ -1,12 +1,12 @@
+<?php session_start(); ?>
+
 <?php get_header(); ?>
 
 <?php
-
-session_start();
-if (isset($_SESSION['success'])) :
+if (isset($_SESSION['success'])):
     $message = $_SESSION['success'];
     unset($_SESSION['success']);
-?>
+    ?>
     <div class="alert">
         <div class="container">
             <p class="bg-success p-2">
@@ -14,7 +14,7 @@ if (isset($_SESSION['success'])) :
             </p>
         </div>
     </div>
-<?php
+    <?php
 endif;
 ?>
 
@@ -37,13 +37,15 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
                         <a href="#">
-                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
                         </a>
@@ -57,13 +59,15 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
                         <a href="#">
-                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
                         </a>
@@ -77,13 +81,15 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
                         <a href="#">
-                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
                         </a>
@@ -97,13 +103,15 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
                         <a href="#">
-                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
                         </a>
@@ -117,13 +125,15 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
                         <a href="#">
-                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
                         </a>
@@ -145,7 +155,8 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg"
+                            alt="Default Image">
                     </a>
                 </figure>
                 <div class="card-body flex-1 p-2">
