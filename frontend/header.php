@@ -145,14 +145,26 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         </ul>
                     </div>
 
-                    <div class="post-create-container">
-                        <button class="btn btn-dark btn-post-create">
+                    <div class="modal-container">
+                        <button class="btn btn-dark btn-modal">
                             Create Post
                         </button>
-                        <div class="modal-container">
-                            <form action="#">
+                        <div class="modal-content">
+                            <div class="flex justify-content-center align-items-center h-100">
+                                <div class="modal-content-inner col-md-7 col-lg-6 bg-light">
+                                    <div class="flex justify-content-between align-items-center">
+                                        <h3>Create New Post</h3>
 
-                            </form>
+                                        <button class="btn-close">
+                                            <span class="line"></span>
+                                            <span class="screen-reader-text">Close</span>
+                                        </button>
+                                    </div>
+                                    <form action="#">
+
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
