@@ -4,10 +4,10 @@ get_header("About");
 
 <section class="py-5">
     <div class="container">
-        <h1 class="text-center">About Us</h1>
+        <h1 class="text-center mb-4">About Us</h1>
         <div class="grid gap-1 column-2">
             <div class="card align-items-center">
-                <figure class="card-img col-7">
+                <figure class="card-img col-7 mb-3">
                     <a href="#">
                         <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/prabhat.jpg" alt="prabhat">
                     </a>
@@ -19,7 +19,7 @@ get_header("About");
                 </div>
             </div>
             <div class="card align-items-center">
-                <figure class="card-img col-7">
+                <figure class="card-img col-7 mb-3">
                     <a href="#">
                         <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/neer.png" alt="neer">
                     </a>
