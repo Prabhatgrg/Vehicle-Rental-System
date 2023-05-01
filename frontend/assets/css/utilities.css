@@ -2,6 +2,10 @@
  * Utility Classes
  * to use repeatedly
  */
+.h-100 {
+    height: 100%;
+}
+/* grid */
 .grid {
     display: grid;
     grid-gap: var(--gap);
@@ -698,6 +702,51 @@
     visibility: visible;
     opacity: 1;
     right: 0;
+}
+
+/* 
+ * Modal
+ */
+.btn-close {
+    padding: 1rem;
+}
+.btn-close .line {
+    display: inline-block;
+    position: relative;
+}
+.btn-close .line::after,
+.btn-close .line::before {
+    content: "";
+    width: 2rem;
+    height: 0.2rem;
+    border-radius: var(--default-border-radius);
+    display: block;
+    background-color: var(--color-dark);
+}
+.btn-close .line::after {
+    transform: rotate(45deg) translateY(-2px) translateX(-1px);
+}
+.btn-close .line::before {
+    transform: rotate(-45deg) translateY(1px);
+}
+.modal-container .modal-content {
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0 0 0 / 50%);
+    z-index: 999;
+    transition: var(--transition);
+}
+.modal-container .modal-content-inner {
+    padding: 2rem;
+    border-radius: var(--default-border-radius);
+}
+.modal-container .modal-content.show {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
 }
 /* 
  * End of Utilities classes
