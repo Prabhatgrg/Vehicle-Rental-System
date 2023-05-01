@@ -1,7 +1,8 @@
 <?php get_header(); ?>
 
 <?php
-// session_start();
+
+session_start();
 if (isset($_SESSION['success'])) :
     $message = $_SESSION['success'];
     unset($_SESSION['success']);
@@ -17,7 +18,7 @@ if (isset($_SESSION['success'])) :
 endif;
 ?>
 
-<section class="py-4">
+<section class="categories py-4">
     <div class="container">
         <div class="categories">
             <h2 class="category-title h5">Our categories</h2>
@@ -28,6 +29,7 @@ endif;
         </div>
     </div>
 </section>
+
 <section class="trending pb-3">
     <div class="container">
         <h2 class="h5 mb-2">Trending</h2>
@@ -49,7 +51,7 @@ endif;
                 </ul>
                 <div class="card-body pt-1">
                     <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                    <span>Rs. 5,000/day</span>
+                    <span class="price">Rs. 5,000/day</span>
                 </div>
             </div>
             <div class="card">
@@ -69,7 +71,7 @@ endif;
                 </ul>
                 <div class="card-body pt-1">
                     <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                    <span>Rs. 5,000/day</span>
+                    <span class="price">Rs. 5,000/day</span>
                 </div>
             </div>
             <div class="card">
@@ -89,7 +91,7 @@ endif;
                 </ul>
                 <div class="card-body pt-1">
                     <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                    <span>Rs. 5,000/day</span>
+                    <span class="price">Rs. 5,000/day</span>
                 </div>
             </div>
             <div class="card">
@@ -109,7 +111,7 @@ endif;
                 </ul>
                 <div class="card-body pt-1">
                     <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                    <span>Rs. 5,000/day</span>
+                    <span class="price">Rs. 5,000/day</span>
                 </div>
             </div>
             <div class="card">
@@ -129,13 +131,42 @@ endif;
                 </ul>
                 <div class="card-body pt-1">
                     <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                    <span>Rs. 5,000/day</span>
+                    <span class="price">Rs. 5,000/day</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<section class="latest pb-3">
+    <div class="container">
+        <h2 class="h5 mb-2">Latest Post</h2>
+        <div class="grid gap-2">
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="#">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    </a>
+                </figure>
+                <div class="card-body flex-1 p-2">
+                    <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
+                    <div class="product-description mb-3">
+                        <p>Vehicle Description Here</p>
+                    </div>
+
+                    <div class="price-and-availability flex-1 gap-2 mb-3">
+                        <span class="price">Rs. 3000/day</span>
+                        <span class="available">| Available: </span>
+                    </div>
+                    <div class="location-and-time flex justify-content-between">
+                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="time">Just Now</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <?php
 get_footer();

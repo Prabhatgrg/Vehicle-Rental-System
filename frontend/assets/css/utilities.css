@@ -574,6 +574,10 @@
     gap: var(--gap);
 }
 
+.flex-1{
+    flex: 1;
+}
+
 .align-items-center {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -596,8 +600,12 @@
     text-align: center;
 }
 
-.fw-bold {
+.fw-black {
     font-weight: 900;
+}
+
+.fw-bold{
+    font-weight: 700;
 }
 
 .bg-dark {
