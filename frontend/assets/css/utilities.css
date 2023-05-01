@@ -6,6 +6,9 @@
     display: grid;
     grid-gap: var(--gap);
 }
+.column-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
 .column-5 {
     grid-template-columns: repeat(5, 1fr);
 }
