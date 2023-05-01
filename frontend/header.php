@@ -163,7 +163,7 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         </div>
 
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="<?php echo get_root_directory_uri();?>/profile">Profile</a></li>
                             <li><a href="#">Setting</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
