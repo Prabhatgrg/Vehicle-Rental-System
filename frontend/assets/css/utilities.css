@@ -577,7 +577,7 @@
     gap: var(--gap);
 }
 
-.flex-1{
+.flex-1 {
     flex: 1;
 }
 
@@ -607,7 +607,7 @@
     font-weight: 900;
 }
 
-.fw-bold{
+.fw-bold {
     font-weight: 700;
 }
 
@@ -659,6 +659,46 @@
     color: var(--color-warnin);
 }
 
+/* Toggling Dropdown
+ * Class Needed:
+ * 1. dropdown-container
+ * 2. btn-dropdown
+ * 3. dropdown-content
+ */
+
+.dropdown-container {
+    position: relative;
+    padding: 0 5px;
+}
+
+.dropdown-container .dropdown-content {
+    min-width: 300px;
+    position: absolute;
+    right: 20px;
+    top: 100%;
+    transition: var(--transition);
+    padding: 10px;
+    box-shadow: 0 0 30px rgba(0 0 0 / 10%);
+    background-color: var(--color-light);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.dropdown-container .dropdown-content a {
+    padding: 10px;
+    display: block;
+    border-radius: var(--default-border-radius);
+}
+.dropdown-container .dropdown-content a:hover {
+    text-decoration: none;
+    background-color: rgba(0 0 0 / 10%);
+}
+.dropdown-container .dropdown-content.show {
+    pointer-events: all;
+    visibility: visible;
+    opacity: 1;
+    right: 0;
+}
 /* 
  * End of Utilities classes
  */
