@@ -249,7 +249,13 @@ label {
 /* 
  * Card styles
  */
-.card {
+.card-linear{
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+}
+ .card {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -295,6 +301,13 @@ label {
 .card:hover .card-features {
     right: 20px;
 }
+.card .card-title a,
+.card .price,
+.card-linear .card-title a,
+.card-linear .price{
+    font-weight: 700;;
+}
+
 
 /* 
  * Site footer
