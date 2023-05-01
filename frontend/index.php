@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-session_start();
+// session_start();
 if (isset($_SESSION['success'])) :
     $message = $_SESSION['success'];
     unset($_SESSION['success']);
