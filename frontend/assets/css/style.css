@@ -258,6 +258,7 @@ svg * {
 
 /* Search Bar Styles */
 .search-bar {
+    flex: 1;
     position: relative;
 }
 .search-bar [type="submit"] {
@@ -299,13 +300,13 @@ svg * {
 /* 
  * Card styles
  */
-.card-linear{
+.card-linear {
     display: flex;
     flex-direction: row;
     position: relative;
     overflow: hidden;
 }
- .card {
+.card {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -354,10 +355,9 @@ svg * {
 .card .card-title a,
 .card .price,
 .card-linear .card-title a,
-.card-linear .price{
-    font-weight: 700;;
+.card-linear .price {
+    font-weight: 700;
 }
-
 
 /* 
  * Site footer

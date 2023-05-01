@@ -22,7 +22,7 @@
 
     <header class="site-header">
         <div class="container">
-            <div class="flex align-items-center justify-content-between">
+            <div class="flex align-items-center justify-content-between gap-5">
                 <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand">
                     Rent<span class="fw-bold">Ease</span>
                 </a>
@@ -144,9 +144,16 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         </ul>
                     </div>
 
-                    <button class="btn btn-dark">
-                        Create Post
-                    </button>
+                    <div class="post-create-container">
+                        <button class="btn btn-dark btn-post-create">
+                            Create Post
+                        </button>
+                        <div class="modal-container">
+                            <form action="#">
+
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="has-dropdown user-avatar">
                         <div class="user-info">
