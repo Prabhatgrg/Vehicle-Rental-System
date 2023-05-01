@@ -6,8 +6,8 @@ get_header("About");
     <div class="container">
         <h1 class="text-center">About Us</h1>
         <div class="grid gap-1 column-2">
-            <div class="card justify-content-center">
-                <figure class="card-img col-7">
+            <div class="card">
+                <figure class="card-img col-7 justify-content-center">
                     <a href="#">
                         <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/prabhat.jpg" alt="prabhat">
                     </a>
@@ -18,8 +18,8 @@ get_header("About");
                     </h3>
                 </div>
             </div>
-            <div class="card justify-content-center">
-                <figure class="card-img col-7">
+            <div class="card">
+                <figure class="card-img col-7 justify-content-center">
                     <a href="#">
                         <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/neer.png" alt="neer">
                     </a>
