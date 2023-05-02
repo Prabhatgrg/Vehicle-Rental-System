@@ -181,6 +181,54 @@ svg * {
     outline: none;
 }
 
+.form-floating {
+    position: relative;
+}
+.form-floating label {
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    transition: var(--transition);
+    pointer-events: none;
+    padding: 0 5px;
+}
+.form-floating .form-control::placeholder {
+    color: transparent;
+}
+.form-floating .form-control:focus ~ label,
+.form-floating .form-control:not(:placeholder-shown) ~ label {
+    top: -1rem;
+    left: 1rem;
+    transform: scale(0.8);
+    background-color: var(--color-light);
+}
+.form-field label {
+    display: block;
+}
+
+.form-file-upload label {
+    cursor: pointer;
+}
+.form-file-upload label {
+    display: inline-flex;
+    padding: 20px;
+    border-radius: var(--default-border-radius);
+    border: 2px dashed var(--color-dark);
+}
+.form-file-upload .form-file::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+.form-file-upload .form-file {
+    cursor: pointer;
+    font-family: var(--primary-font);
+}
+.form-file-upload .form-file:focus {
+    outline: 1px solid transparent;
+}
+.form-file-upload .form-title {
+    display: block;
+}
 /* 
  * Header
  */
