@@ -739,14 +739,19 @@
     z-index: 999;
     transition: var(--transition);
 }
-.modal-container .modal-content-inner {
-    padding: 2rem;
-    border-radius: var(--default-border-radius);
-}
 .modal-container .modal-content.show {
     pointer-events: all;
     visibility: visible;
     opacity: 1;
+}
+.modal-container .modal-dialog {
+    padding: 2rem;
+    border-radius: var(--default-border-radius);
+    transform: translateX(-20px);
+    transition: var(--transition);
+}
+.modal-container .modal-content.show .modal-dialog {
+    transform: translateX(0);
 }
 /* 
  * End of Utilities classes

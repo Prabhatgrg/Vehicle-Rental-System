@@ -151,8 +151,8 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         </button>
                         <div class="modal-content">
                             <div class="flex justify-content-center align-items-center h-100">
-                                <div class="modal-content-inner col-md-7 col-lg-6 bg-light">
-                                    <div class="flex justify-content-between align-items-center">
+                                <div class="modal-dialog col-md-6 col-lg-5 bg-light">
+                                    <div class="flex justify-content-between align-items-center mb-2">
                                         <h3>Create New Post</h3>
 
                                         <button class="btn-close">
@@ -160,7 +160,35 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                             <span class="screen-reader-text">Close</span>
                                         </button>
                                     </div>
-                                    <form action="#">
+                                    <form action="#" class="grid gap-2 post-form">
+                                        <div class="form-floating">
+                                            <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
+                                            <label for="posTitle">Post Title</label>
+                                        </div>
+                                        <div class="form-file-upload">
+                                            <span class="form-title mb-2">Upload Image For Post</span>
+                                            <label for="posTitle">
+                                                <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <style>
+                                                            .cls-1 {
+                                                                fill: none;
+                                                                stroke: #000;
+                                                                stroke-linecap: round;
+                                                                stroke-linejoin: round;
+                                                                stroke-width: 2px;
+                                                            }
+                                                        </style>
+                                                    </defs>
+                                                    <title />
+                                                    <g id="plus">
+                                                        <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
+                                                        <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
+                                                    </g>
+                                                </svg>
+                                            </label>
+                                            <input type="file" name="postImage" id="posTitle" class="form-file">
+                                        </div>
 
                                     </form>
                                 </div>
@@ -175,7 +203,7 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                         </div>
 
                         <ul class="dropdown-menu">
-                            <li><a href="<?php echo get_root_directory_uri();?>/profile">Profile</a></li>
+                            <li><a href="<?php echo get_root_directory_uri(); ?>/profile">Profile</a></li>
                             <li><a href="#">Setting</a></li>
                             <li><a href="#">Logout</a></li>
                         </ul>
