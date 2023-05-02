@@ -133,10 +133,13 @@ label {
 }
 
 button {
+    font-size: var(--fs-text);
+    font-family: var(--primary-font);
     border: none;
     cursor: pointer;
     background-color: transparent;
     border-radius: 0;
+    font-weight: 500;
 }
 svg,
 svg * {
@@ -258,8 +261,12 @@ textarea.form-control {
  * Header
  */
 .site-header {
+    background-color: var(--color-light);
     padding: 20px 0;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 .site-brand {
     display: inline-block;

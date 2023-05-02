@@ -58,4 +58,48 @@ window.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     }
+
+    /*
+     * Tab Listing
+     * selecting the element that contains the class tabs-container
+     */
+    const tabsContainer = document.querySelectorAll(".tabs-container");
+    if (tabsContainer[0]) {
+        // Looping through each tabs container element
+        tabsContainer.forEach((tabs) => {
+            // selecting the buttons
+            const tabButtons = tabs.querySelectorAll(".tab-button");
+
+            // selecting all the tab panes
+            const tabPanes = tabs.querySelectorAll(".tab-pane");
+
+            tabButtons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    const currentButton = e.target;
+                    const className = "active";
+
+                    // getting the current button's target
+                    const targetTabID = currentButton.getAttribute("data-target");
+                    const targetedTab = tabs.querySelector(targetTabID);
+
+                    // Removing active class from all the button and tab panes
+                    removeAllClass(tabButtons, className);
+                    removeAllClass(tabPanes, className);
+
+                    // Adding active class to current button and targeted tab
+                    currentButton.classList.add(className);
+                    targetedTab.classList.add(className);
+                });
+            });
+        });
+    }
 });
+
+/*
+ * Function to remove class for the given collection of element with given class name
+ */
+function removeAllClass(objects, className) {
+    objects.forEach((current) => {
+        current.classList.remove(className);
+    });
+}
