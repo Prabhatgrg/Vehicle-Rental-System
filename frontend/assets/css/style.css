@@ -377,7 +377,6 @@ svg * {
     right: -50px;
     transition: var(--transition);
 }
-
 .card .card-features svg,
 .card .card-features img,
 .card-linear .card-features svg,
@@ -404,7 +403,8 @@ svg * {
 .card-linear .card-img a:hover img{
     transform: scale(1.2);
 }
-.card:hover .card-features{
+.card:hover .card-features,
+.card-linear:hover .card-features{
     right: 20px;
 }
 .card .card-title a,
@@ -413,11 +413,6 @@ svg * {
 .card-linear .price {
     font-weight: 700;
 }
-
-/* 
- * User Profile
- */
-
 /* 
  * Site footer
  */

@@ -20,7 +20,7 @@ endif;
 <section class="categories py-4">
     <div class="container">
         <div class="categories">
-            <h2 class="category-title h5">Our categories</h2>
+            <h2 class="category-title h3">Our categories</h2>
             <ul class="categories-list">
                 <li><a href="#">Trending</a></li>
                 <li><a href="#">Latest Upload</a></li>
@@ -139,7 +139,7 @@ endif;
 
 <section class="latest pb-3">
     <div class="container">
-        <h2 class="h5 mb-2">Latest Post</h2>
+        <h2 class="h3 mb-2">Latest Post</h2>
         <div class="grid gap-2">
             <div class="card-linear">
                 <figure class="card-img">
