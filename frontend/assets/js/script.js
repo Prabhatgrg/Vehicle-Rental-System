@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
      */
     const postForm = document.querySelector(".post-form");
     if (postForm[0]) {
-        postForm.addEventListener("click", (e) => {
+        postForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const isConfirm = confirm("Are you sure ?");
