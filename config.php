@@ -15,6 +15,7 @@ $routes = [
     get_root_directory_uri() . '/login' => 'frontend/page-login.php',
     get_root_directory_uri() . '/signup' => 'frontend/page-signup.php',
     get_root_directory_uri() . '/profile' => 'frontend/profile.php',
+    get_root_directory_uri() . '/single' => 'frontend/single.php',
 ];
 
 // Get the URL path from the request
