@@ -147,6 +147,15 @@ endif;
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
+                <ul class="card-features">
+                    <li>
+                        <a href="#">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="card-body flex-1 p-2">
                     <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
                     <div class="product-description mb-3">
@@ -169,6 +178,15 @@ endif;
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
+                <ul class="card-features">
+                    <li>
+                        <a href="#">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="card-body flex-1 p-2">
                     <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
                     <div class="product-description mb-3">
@@ -191,6 +209,15 @@ endif;
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
+                <ul class="card-features">
+                    <li>
+                        <a href="#">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="card-body flex-1 p-2">
                     <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
                     <div class="product-description mb-3">
@@ -213,6 +240,15 @@ endif;
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
+                <ul class="card-features">
+                    <li>
+                        <a href="#">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="card-body flex-1 p-2">
                     <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
                     <div class="product-description mb-3">
@@ -235,6 +271,15 @@ endif;
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
+                <ul class="card-features">
+                    <li>
+                        <a href="#">
+                            <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
                 <div class="card-body flex-1 p-2">
                     <h3 class="card-title h5 mb-3"><a href="#"> New Car</a></h3>
                     <div class="product-description mb-3">

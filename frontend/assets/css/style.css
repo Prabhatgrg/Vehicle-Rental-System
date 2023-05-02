@@ -329,28 +329,34 @@ svg * {
     right: -50px;
     transition: var(--transition);
 }
+
 .card .card-features svg,
-.card .card-features img {
+.card .card-features img,
+.card-linear .card-features svg,
+.card-linear .card-features img {
     max-width: 16px;
     height: auto;
 }
-.card .card-features a {
+.card .card-features a,
+.card-linear .card-features a {
     display: flex;
     padding: 10px;
     border-radius: var(--default-border-radius);
     background-color: rgba(0, 0, 0, 0.1);
 }
-.card .card-features a:hover {
+.card .card-features a:hover,
+.card-linear .card-features a:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
 .card .card-img > a {
     display: grid;
 }
 .card .card-img a:hover img,
-.card .card-img a:focus img {
+.card .card-img a:focus img,
+.card-linear .card-img a:hover img{
     transform: scale(1.2);
 }
-.card:hover .card-features {
+.card:hover .card-features{
     right: 20px;
 }
 .card .card-title a,
