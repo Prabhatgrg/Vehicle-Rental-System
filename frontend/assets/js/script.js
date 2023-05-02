@@ -19,8 +19,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     /*
-     * Dropdown menu
-     * selecting the element that contains the class dropdown container
+     * Modal
+     * selecting the element that contains the class modal container
      */
     const modalContainers = document.querySelectorAll(".modal-container");
     if (modalContainers[0]) {
@@ -38,6 +38,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
             btnClose.addEventListener("click", () => {
                 modalContent.classList.remove("show");
             });
+        });
+    }
+
+    /*
+     * Post Form
+     * selecting the element that contains the class post-form
+     */
+    const postForm = document.querySelector(".post-form");
+    if (postForm[0]) {
+        postForm.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const isConfirm = confirm("Are you sure ?");
+            console.log("confirmation", isConfirm);
+
+            if (isConfirm) {
+                postForm.submit();
+            }
         });
     }
 });

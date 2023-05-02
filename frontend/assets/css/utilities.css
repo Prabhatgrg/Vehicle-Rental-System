@@ -749,6 +749,8 @@
     border-radius: var(--default-border-radius);
     transform: translateX(-20px);
     transition: var(--transition);
+    max-height: 90vh;
+    overflow-y: scroll;
 }
 .modal-container .modal-content.show .modal-dialog {
     transform: translateX(0);

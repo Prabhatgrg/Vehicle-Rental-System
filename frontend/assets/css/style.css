@@ -31,6 +31,7 @@
     --color-success: #4bb543;
     --color-error: #ff3333;
     --color-warning: #ffc107;
+    --color-border: rgba(0, 0, 0, 0.2);
     --default-border-radius: 5px;
 }
 
@@ -165,11 +166,14 @@ svg * {
 .btn-dark:focus {
     background-color: var(--color-black);
 }
-
+textarea.form-control {
+    height: 150px;
+    resize: none;
+}
 .form-control {
     display: block;
     width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-border);
     border-radius: var(--default-border-radius);
     padding: 10px 15px;
     font-size: var(--fs-text);
@@ -200,6 +204,7 @@ svg * {
     top: -1rem;
     left: 1rem;
     transform: scale(0.8);
+    transform-origin: left;
     background-color: var(--color-light);
 }
 .form-field label {
@@ -220,6 +225,7 @@ svg * {
     display: none;
 }
 .form-file-upload .form-file {
+    display: block;
     cursor: pointer;
     font-family: var(--primary-font);
 }
@@ -228,6 +234,25 @@ svg * {
 }
 .form-file-upload .form-title {
     display: block;
+}
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: var(--default-border-radius);
+    border: 1px solid var(--color-border);
+    font-family: var(--primary-font);
+    font-weight: 500;
+    transition: var(--transition);
+}
+.form-select:focus {
+    outline: 1px solid transparent;
+    border-color: var(--color-dark);
+}
+.form-select option {
+    padding: 1rem 1.2rem;
+    font-weight: 500;
+    line-height: 20px;
 }
 /* 
  * Header
@@ -400,11 +425,11 @@ svg * {
 }
 .card .card-img a:hover img,
 .card .card-img a:focus img,
-.card-linear .card-img a:hover img{
+.card-linear .card-img a:hover img {
     transform: scale(1.2);
 }
 .card:hover .card-features,
-.card-linear:hover .card-features{
+.card-linear:hover .card-features {
     right: 20px;
 }
 .card .card-title a,

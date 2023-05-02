@@ -160,7 +160,7 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                             <span class="screen-reader-text">Close</span>
                                         </button>
                                     </div>
-                                    <form action="#" class="grid gap-2 post-form">
+                                    <form action="#" method="POST" class="grid gap-2 post-form">
                                         <div class="form-floating">
                                             <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
                                             <label for="posTitle">Post Title</label>
@@ -189,7 +189,71 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                             </label>
                                             <input type="file" name="postImage" id="posTitle" class="form-file">
                                         </div>
-
+                                        <div class="form-field">
+                                            <label for="postCategory">Category</label>
+                                            <select name="postCategory" id="postCategory" class="form-select">
+                                                <option value="Bike">Bike</option>
+                                                <option value="Scooty">Scooty</option>
+                                                <option value="Car">Car</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
+                                            <label for="postLocation">Location</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea type="text" name="postDescription" id="postDescription" class="form-control" placeholder="Description"></textarea>
+                                            <label for="postDescription">Description</label>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="postDelivery">Delivery</label>
+                                            <select name="postDelivery" id="postDelivery" class="form-select">
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" name="postColour" id="postColour" class="form-control" placeholder="Colour">
+                                            <label for="postColour">Colour</label>
+                                        </div>
+                                        <div class="form-field">
+                                            <label for="postFuel">Fuel</label>
+                                            <select name="postFuel" id="postFuel" class="form-select">
+                                                <option value="Electric">Electric</option>
+                                                <option value="Petrol">Petrol</option>
+                                                <option value="Diesel">Diesel</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input type="text" name="postMileage" id="postMileage" class="form-control" placeholder="Mileage">
+                                            <label for="postMileage">Mileage</label>
+                                        </div>
+                                        <div class="form-group grid column-2">
+                                            <div class="form-floating">
+                                                <input type="text" name="postPrice" id="postPrice" class="form-control" placeholder="Price">
+                                                <label for="postPrice">Price</label>
+                                            </div>
+                                            <div class="form-field">
+                                                <select name="postNegotiable" id="postNegotiable" class="form-select">
+                                                    <option value="" selected>Negotiable</option>
+                                                    <option value="true">Yes</option>
+                                                    <option value="false">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group grid column-2">
+                                            <div class="form-floating">
+                                                <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
+                                                <label for="postRentStartDate">Vehicle Rent Start Date</label>
+                                            </div>
+                                            <div class="form-floating">
+                                                <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
+                                                <label for="postRentEndDate">Vehicle Rent End Date</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-submit">
+                                            <button type="submit" class="btn btn-dark">Submit</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
