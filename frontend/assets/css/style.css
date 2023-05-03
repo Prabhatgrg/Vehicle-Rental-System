@@ -521,21 +521,37 @@ textarea.form-control {
 }
 
 /* 
- * reviews
+ * comments
  */
-.review-list li {
+.comment-list {
+    margin-bottom: 2rem;
+}
+.comment-list li {
     display: grid;
     gap: 1rem;
 }
-.review-list .sub-review-list {
+.comment-list .sub-comment-list {
     margin-left: 4rem;
 }
-.review-container {
+.comment-container {
     padding: 2rem;
     border-radius: var(--default-border-radius);
     background-color: rgba(0, 0, 0, 0.03);
 }
-.review-meta {
+.comment-meta {
     display: flex;
     gap: 1.5rem;
+}
+
+/* 
+ * Comment form
+ */
+.comment-form {
+    display: flex;
+    gap: 1rem;
+}
+.comment-form .user-image {
+    max-width: 40px;
+    align-self: flex-start;
+    flex-shrink: 1;
 }

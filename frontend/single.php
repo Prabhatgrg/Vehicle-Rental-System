@@ -38,7 +38,7 @@ get_header();
                 <div class="tabs-container">
                     <ul class="tab-list">
                         <li><button class="tab-button active" data-target="#post-information">Description</button></li>
-                        <li><button class="tab-button" data-target="#post-reviews">Reviews</button></li>
+                        <li><button class="tab-button" data-target="#post-comments">Comments</button></li>
                         <li><button class="tab-button" data-target="#location-info">Location</button></li>
                     </ul>
                     <div class="tab-content">
@@ -87,43 +87,50 @@ get_header();
                                 </ul>
                             </div>
                         </div>
-                        <div class="tab-pane" id="post-reviews">
-                            <div id="reviews">
-                                <ul class="review-list">
+                        <div class="tab-pane" id="post-comments">
+                            <div id="comments">
+                                <ul class="comment-list">
                                     <li>
                                         <div class="user-info">
                                             <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                                            <span class="user-name">User</span>
+                                            <span class="user-name">User One</span>
                                         </div>
-                                        <div class="review-container">
+                                        <div class="comment-container">
                                             <p>
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ab, magnam vitae, saepe corrupti quas voluptatum rem odit labore placeat aliquid repellendus maiores dicta veritatis. Nam unde asperiores doloribus magnam?
                                             </p>
                                         </div>
-                                        <div class="review-meta">
+                                        <div class="comment-meta">
                                             <span class="time">Just Now</span>
-                                            <a href="#">Reply</a>
+                                            <button class="btn-reply">Reply</button>
                                         </div>
 
-                                        <ul class="review-list sub-review-list">
+                                        <ul class="sub-comment-list">
                                             <li>
                                                 <div class="user-info">
                                                     <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                                                    <span class="user-name">User</span>
+                                                    <span class="user-name">User Two</span>
                                                 </div>
-                                                <div class="review-container">
+                                                <div class="comment-container">
                                                     <p>
                                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ab, magnam vitae, saepe corrupti quas voluptatum rem odit labore placeat aliquid repellendus maiores dicta veritatis. Nam unde asperiores doloribus magnam?
                                                     </p>
                                                 </div>
-                                                <div class="review-meta">
+                                                <div class="comment-meta">
                                                     <span class="time">Just Now</span>
-                                                    <a href="#">Reply</a>
+                                                    <button class="btn-reply">Reply</button>
                                                 </div>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
+                                <form action="#" id="comment-form" class="comment-form" autocomplete="off">
+                                    <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                                    <div class="form-field flex-1">
+                                        <input type="hidden" name="reply-to" id="reply-to" value="">
+                                        <input name="comment-field" id="comment-field" class="form-control" placeholder="Comment" />
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="tab-pane" id="location-info">

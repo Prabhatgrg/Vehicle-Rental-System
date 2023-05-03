@@ -51,7 +51,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             e.preventDefault();
 
             const isConfirm = confirm("Are you sure ?");
-            console.log("confirmation", isConfirm);
 
             if (isConfirm) {
                 postForm.submit();
@@ -92,6 +91,35 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 });
             });
         });
+    }
+
+    /*
+     * Comment form
+     * selecting the element that contains the id comments
+     */
+    const commentContainer = document.querySelector("#comments");
+    if (commentContainer) {
+        const replyBtns = commentContainer.querySelectorAll(".btn-reply");
+        const commentForm = commentContainer.querySelector("#comment-form");
+        const replyTo = commentForm.querySelector("#reply-to");
+        const formField = commentForm.querySelector(".form-field");
+        const commentField = formField.querySelector("#comment-field");
+
+        // listening to each button on click event
+        replyBtns.forEach((button) => {
+            button.addEventListener("click", (e) => {
+                const currentButton = e.target;
+                const currentParent = currentButton.parentElement.parentElement;
+                const replyUserName = currentParent.querySelector(".user-name").innerText;
+
+                // setting the value
+                replyTo.value = replyUserName;
+                commentField.setAttribute("placeholder", `Reply to ${replyUserName}`);
+            });
+        });
+
+        // replyTo.addEventListener("change", () => {
+        // });
     }
 });
 
