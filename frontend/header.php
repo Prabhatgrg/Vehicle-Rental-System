@@ -163,11 +163,11 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                     <form action="#" method="POST" class="grid gap-2 post-form">
                                         <div class="form-floating">
                                             <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
-                                            <label for="posTitle">Post Title</label>
+                                            <label for="postTitle">Post Title</label>
                                         </div>
                                         <div class="form-file-upload">
                                             <span class="form-title mb-2">Upload Image For Post</span>
-                                            <label for="posTitle">
+                                            <label for="postTitle">
                                                 <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                     <defs>
                                                         <style>
