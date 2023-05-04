@@ -8,9 +8,14 @@ get_header()
         <div class="flex">
             <div class="col-4">
                 <aside class="user-info">
-                    <div class="user-image col-3">
+                    <div class="user-image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
                     </div>
+                    <div class="user-detail">
+                        <span class="user-name">User</span>
+                        <a href="tel:9850492847" class="user-contact">9850492847</a>
+                    </div>
+                    
                 </aside>
             </div>
             <div class="col-8 ps-2">
