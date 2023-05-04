@@ -710,7 +710,7 @@
  * Modal
  */
 .btn-close {
-    padding: 1rem;
+    color: var(--color-dark);
 }
 .btn-close .line {
     display: inline-block;
@@ -723,13 +723,13 @@
     height: 0.2rem;
     border-radius: var(--default-border-radius);
     display: block;
-    background-color: var(--color-dark);
+    background-color: currentColor;
 }
 .btn-close .line::after {
-    transform: rotate(45deg) translateY(-2px) translateX(-1px);
+    transform: rotate(45deg) translateY(-3px) translateX(-1px);
 }
 .btn-close .line::before {
-    transform: rotate(-45deg) translateY(1px);
+    transform: rotate(-45deg) translateX(1px);
 }
 .modal-container .modal-content {
     pointer-events: none;

@@ -94,16 +94,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     /*
-     * Comment form
+     * Comment
      * selecting the element that contains the id comments
      */
     const commentContainer = document.querySelector("#comments");
     if (commentContainer) {
+        const replyActiveClass = "active";
         const replyBtns = commentContainer.querySelectorAll(".btn-reply");
         const commentForm = commentContainer.querySelector("#comment-form");
-        const replyTo = commentForm.querySelector("#reply-to");
-        const formField = commentForm.querySelector(".form-field");
-        const commentField = formField.querySelector("#comment-field");
+        const replyToInput = commentForm.querySelector("#reply-to");
+        const commentField = commentForm.querySelector("#comment-field");
+        const replyingToElem = commentContainer.querySelector(".replying-to");
+        const replyUserContainer = replyingToElem.querySelector(".replying-user");
+        const cancelReplyBtn = replyingToElem.querySelector(".btn-cancel-reply");
 
         // listening to each button on click event
         replyBtns.forEach((button) => {
@@ -112,14 +115,39 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 const currentParent = currentButton.parentElement.parentElement;
                 const replyUserName = currentParent.querySelector(".user-name").innerText;
 
+                // Adding active class if replying user element has not contains active class
+                if (!replyingToElem.classList.contains(replyActiveClass)) {
+                    replyingToElem.classList.add(replyActiveClass);
+                }
+
                 // setting the value
-                replyTo.value = replyUserName;
+                replyToInput.value = replyUserName;
+                replyUserContainer.innerText = replyUserName;
                 commentField.setAttribute("placeholder", `Reply to ${replyUserName}`);
             });
         });
 
-        // replyTo.addEventListener("change", () => {
-        // });
+        // Listening on click event to cancel the comment
+        cancelReplyBtn.addEventListener("click", () => {
+            // Removing active class if replying user element has not contains active class
+            if (replyingToElem.classList.contains(replyActiveClass)) {
+                replyingToElem.classList.remove(replyActiveClass);
+            }
+
+            // Reseting the values for cancelation
+            replyToInput.value = "";
+            replyUserContainer.innerText = "";
+            commentField.setAttribute("placeholder", `Comment`);
+        });
+
+        // Listening on submit event to submit comment
+        commentForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            alert("Your comment has been submitted");
+
+            commentForm.submit();
+        });
     }
 });
 
