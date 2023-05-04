@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/img/svg/rentease_favicon.svg" type="image/x-icon">
     <title><?php
             if (isset($page_title)) :
-                echo $page_title . ' - Vehicle Rental System';
+                echo $page_title . ' - RentEase';
             else :
                 echo "RentEase - Vehicle Rental System";
             endif;
