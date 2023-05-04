@@ -579,12 +579,16 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: var(--gap);
 }
 
 .flex-1 {
     flex: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .align-items-center {

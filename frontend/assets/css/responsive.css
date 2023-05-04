@@ -1,0 +1,29 @@
+/* For the devices wihich screen size is less then 1400px */
+@media (max-width: 1399.98px) {
+}
+
+/* For the devices wihich screen size is less then 1200px */
+@media (max-width: 1199.98px) {
+    .site-header .user-info .user-name {
+        display: none;
+    }
+    .main-navigation,
+    .main-navigation .menu {
+        gap: 15px;
+    }
+    .site-header .container > * {
+        gap: 20px;
+    }
+}
+/* For the devices wihich screen size is less then 992px */
+@media (max-width: 991.98px) {
+    .main-navigation .menu {
+        display: none;
+    }
+}
+/* For the devices wihich screen size is less then 768px */
+@media (max-width: 767.98px) {
+}
+/* For the devices wihich screen size is less then 576px */
+@media (max-width: 575.98px) {
+}

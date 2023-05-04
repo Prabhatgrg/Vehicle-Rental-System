@@ -16,6 +16,7 @@
             ?></title>
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/utilities.css">
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.css">
+    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/responsive.css">
 </head>
 
 <body>
@@ -27,7 +28,7 @@
                     Rent<span class="fw-bold">Ease</span>
                 </a>
 
-                <form action="#" class="search-bar">
+                <form action="#" class="search-bar" autocomplete="off">
                     <div class="form-field">
                         <input type="text" id="search" name="search" class="form-control">
                         <button type="submit">
