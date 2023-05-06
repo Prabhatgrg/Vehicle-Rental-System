@@ -307,7 +307,7 @@ textarea.form-control {
     aspect-ratio: 1 / 1;
 }
 
-.user-info .user-detail{
+.user-info .user-detail {
     display: flex;
     flex-direction: column;
 }
@@ -459,6 +459,9 @@ textarea.form-control {
     border-radius: var(--default-border-radius);
     background-color: rgba(0, 0, 0, 0.1);
 }
+.card-linear .card-features a {
+    background-color: transparent;
+}
 .card .card-features a:hover,
 .card-linear .card-features a:hover {
     background-color: rgba(0, 0, 0, 0.2);
@@ -488,7 +491,7 @@ textarea.form-control {
 .card-linear .card-img img {
     display: block;
 }
-.card-linear .card-features {
+/* .card-linear .card-features {
     position: absolute;
     top: 20px;
     left: -50px;
@@ -497,7 +500,7 @@ textarea.form-control {
 .card-linear:hover .card-features {
     left: 20px;
     right: unset;
-}
+} */
 /* 
  * Site footer
  */
