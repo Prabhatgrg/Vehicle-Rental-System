@@ -168,7 +168,7 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                         </div>
                                         <div class="form-file-upload">
                                             <span class="form-title mb-2">Upload Image For Post</span>
-                                            <label for="postTitle">
+                                            <label for="postImageUpload">
                                                 <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                                     <defs>
                                                         <style>
@@ -188,7 +188,7 @@ l-636 636 71 93 c218 285 361 629 416 1005 21 144 21 432 0 581 -69 488 -275
                                                     </g>
                                                 </svg>
                                             </label>
-                                            <input type="file" name="postImage" id="posTitle" class="form-file" multiple>
+                                            <input type="file" name="postImageUpload" id="postImageUpload" class="form-file" multiple>
                                         </div>
                                         <div class="form-field">
                                             <label for="postCategory">Category</label>
