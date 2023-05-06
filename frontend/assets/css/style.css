@@ -306,13 +306,22 @@ textarea.form-control {
     border-radius: 50%;
     aspect-ratio: 1 / 1;
 }
-.user-info,
-.user-detail{
+.user-info-section{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+.user-info-section .user-image-section{
+    max-width: 150px;
+    border-radius: 50%;
+}
+.user-info-section .user-detail{
     display: flex;
     flex-direction: column;
     gap: 1em;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: center;    
 }
 /* Dropdown Menu Css */
 .has-dropdown {
@@ -452,7 +461,7 @@ textarea.form-control {
 }
 .card .card-img a:hover img,
 .card .card-img a:focus img,
-.card-linear .card-img a:hover img {
+.card-linear .card-img a:hover img{
     transform: scale(1.2);
 }
 .card:hover .card-features,
