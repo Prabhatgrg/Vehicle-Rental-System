@@ -307,6 +307,11 @@ textarea.form-control {
     aspect-ratio: 1 / 1;
 }
 
+.user-info .user-detail{
+    display: flex;
+    flex-direction: column;
+}
+
 .user-info-section {
     display: flex;
     gap: 10px;
@@ -317,7 +322,7 @@ textarea.form-control {
     max-width: 150px;
     border-radius: 50%;
 }
-.user-info-section .user-detail {
+.user-info-section .user-detail-section {
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -614,6 +619,6 @@ textarea.form-control {
 .location-list .location-icon {
     max-width: 30px;
 }
-.user-detail .location-icon {
+.user-detail-section .location-icon {
     max-width: 20px;
 }
