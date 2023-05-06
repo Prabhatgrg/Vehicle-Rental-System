@@ -14,6 +14,10 @@ get_header("Profile")
                     <div class="user-detail">
                         <span class="user-name">User</span>
                         <a href="tel:9850492847" class="user-contact">9850492847</a>
+                        <span class="user-location">
+                            <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
+                            <span class="user-location-details">N/A</span>
+                        </span>
                     </div>
                     
                 </aside>

@@ -306,11 +306,14 @@ textarea.form-control {
     border-radius: 50%;
     aspect-ratio: 1 / 1;
 }
-.user-info .user-detail {
+.user-info,
+.user-detail{
     display: flex;
     flex-direction: column;
+    gap: 1em;
+    align-items: flex-start;
+    justify-content: center;
 }
-
 /* Dropdown Menu Css */
 .has-dropdown {
     cursor: pointer;
@@ -580,6 +583,9 @@ textarea.form-control {
     gap: 1.5rem;
     align-items: center;
 }
-.location-list .location-icon {
+.location-list .location-icon{
     max-width: 30px;
+}
+.user-detail .location-icon{
+    max-width: 20px;
 }
