@@ -7,8 +7,8 @@ get_header("Profile")
     <div class="container">
         <div class="flex">
             <div class="col-4">
-                <aside class="user-info">
-                    <div class="user-image">
+                <aside class="user-info-section">
+                    <div class="user-image-section">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
                     </div>
                     <div class="user-detail">
