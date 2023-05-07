@@ -575,6 +575,12 @@
     margin-top: 5rem;
 }
 
+@media (min-width: 768px) {
+    .gap-md-2 {
+        --gap: 2rem;
+    }
+}
+
 .flex {
     display: -webkit-box;
     display: -ms-flexbox;

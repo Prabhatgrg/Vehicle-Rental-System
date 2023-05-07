@@ -400,9 +400,11 @@ textarea.form-control {
 }
 .categories-list {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 .categories-list a {
+    display: block;
     padding: 10px 15px;
     border: 1px solid var(--color-dark);
     border-radius: var(--default-border-radius);
@@ -432,9 +434,14 @@ textarea.form-control {
     border-radius: var(--default-border-radius);
     overflow: hidden;
 }
+.card .card-img img {
+    aspect-ratio: 400 / 250;
+    object-fit: cover;
+}
 .card .card-img img,
 .card-linear .card-img img {
     transition: var(--transition);
+    width: 100%;
 }
 .card .card-features {
     display: flex;
@@ -491,16 +498,7 @@ textarea.form-control {
 .card-linear .card-img img {
     display: block;
 }
-/* .card-linear .card-features {
-    position: absolute;
-    top: 20px;
-    left: -50px;
-    transition: var(--transition);
-}
-.card-linear:hover .card-features {
-    left: 20px;
-    right: unset;
-} */
+
 /* 
  * Site footer
  */

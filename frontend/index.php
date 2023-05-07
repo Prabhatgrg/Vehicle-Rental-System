@@ -31,7 +31,7 @@ endif;
 
 <section class="trending pb-3 mb-3">
     <div class="container">
-        <h2 class="h5 mb-2">Trending</h2>
+        <h2 class="h3 mb-2">Trending</h2>
         <div class="grid gap-1 column-5">
             <div class="card">
                 <figure class="card-img">
@@ -140,7 +140,7 @@ endif;
 <section class="latest pb-3">
     <div class="container">
         <h2 class="h3 mb-2">Latest Post</h2>
-        <div class="grid gap-2">
+        <div class="grid gap-3 gap-md-2">
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#">
