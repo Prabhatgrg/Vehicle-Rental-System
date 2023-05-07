@@ -791,9 +791,8 @@
     display: block;
     animation: fade 0.7s ease forwards;
 }
-.user-activities .tab-list,
-.tab-ad-container{
-    /* text-align: center; */
+.user-activities .tab-list{
+    gap: 10em;
     justify-content: center;
 }
 @keyframes fade {
