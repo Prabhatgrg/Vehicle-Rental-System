@@ -456,7 +456,7 @@ textarea.form-control {
 .card .card-img img,
 .card-linear .card-img img {
     transition: var(--transition);
-    /* width: 100%; */
+    width: 100%;
 }
 .card .card-features {
     display: flex;
