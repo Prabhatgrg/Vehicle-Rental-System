@@ -147,7 +147,14 @@ svg,
 svg * {
     line-height: 1;
 }
-
+#page-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+#page-content .main-content {
+    flex: 1;
+}
 .screen-reader-text {
     display: none;
 }
@@ -155,6 +162,7 @@ svg * {
  * Components
  */
 .btn {
+    display: inline-block;
     padding: 10px 20px;
     border: none;
     -webkit-transition: var(--transition);
@@ -162,6 +170,9 @@ svg * {
     font-family: var(--primary-font);
     cursor: pointer;
     border-radius: var(--default-border-radius);
+}
+.btn:hover {
+    text-decoration: none;
 }
 .btn-dark {
     background-color: var(--color-dark);

@@ -17,6 +17,9 @@
            </div>
        </div>
    </footer>
+   </div> <!-- End #page-content -->
+
+
 
    <script src="<?php echo get_root_directory_uri(); ?>/frontend/assets/js/script.js"></script>
 
