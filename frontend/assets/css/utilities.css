@@ -599,6 +599,9 @@
 .flex-wrap {
     flex-wrap: wrap;
 }
+.block{
+    display: block;
+}
 
 .align-items-center {
     -webkit-box-align: center;
@@ -794,6 +797,14 @@
 .user-activities .tab-list{
     gap: 10em;
     justify-content: center;
+}
+
+/*
+* Search Result Section
+*/
+.search-result-section{
+    margin-right: 20px;
+    border-bottom: 2px solid;
 }
 @keyframes fade {
     from {
