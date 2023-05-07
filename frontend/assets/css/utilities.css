@@ -795,8 +795,7 @@
     animation: fade 0.7s ease forwards;
 }
 .user-activities .tab-list{
-    gap: 10em;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /*
