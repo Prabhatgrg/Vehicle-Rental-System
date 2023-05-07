@@ -324,7 +324,7 @@ textarea.form-control {
 }
 
 .user-info-section {
-    display: flex;
+    display: inline-flex;
     gap: 10px;
     align-items: center;
     cursor: pointer;
@@ -339,6 +339,10 @@ textarea.form-control {
     gap: 1em;
     align-items: flex-start;
     justify-content: center;
+}
+.user-info-section .divider{
+    padding-right: 20px;
+    border-right: 1px solid black;
 }
 /* Dropdown Menu Css */
 .has-dropdown {
@@ -452,7 +456,7 @@ textarea.form-control {
 .card .card-img img,
 .card-linear .card-img img {
     transition: var(--transition);
-    width: 100%;
+    /* width: 100%; */
 }
 .card .card-features {
     display: flex;

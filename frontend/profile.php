@@ -11,15 +11,17 @@ get_header("Profile")
                     <div class="user-image-section">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
                     </div>
-                    <div class="user-detail-section">
-                        <span class="user-name">User</span>
-                        <a href="tel:9850492847" class="user-contact">9850492847</a>
-                        <span class="user-location">
-                            <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
-                            <span class="user-location-details">N/A</span>
-                        </span>
+                    <div class="divider">
+                        <div class="user-detail-section">
+                            <span class="user-name">User</span>
+                            <a href="tel:9850492847" class="user-contact">9850492847</a>
+                            <span class="user-location">
+                                <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
+                                <span class="user-location-details">N/A</span>
+                            </span>
+
+                        </div>
                     </div>
-                    
                 </aside>
             </div>
             <div class="col-8 ps-2">
@@ -32,13 +34,92 @@ get_header("Profile")
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="user-ad-posts">
-                                Here Goes the Ad posts that user posted.
+                                <div class="tab-ad-container text-center">
+                                    Here Goes the Ad posts that user posted.
+                                </div>
                             </div>
                             <div class="tab-pane" id="user-save-list">
-                                Here Goes the bookmarked posts.
+                                <div class="container">
+                                    <div class="grid gap-1 column-3">
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <figure class="card-img">
+                                                <a href="#">
+                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                </a>
+                                            </figure>
+                                            
+                                            <div class="card-body pt-1">
+                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                <span class="price">Rs. 5,000/day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane" id="user-post-reviews">
-                                Here Goes All the comments that user's posted post has.
+                                <div class="tab-review-container text-center">
+                                    Here Goes All the comments that user's posted post has.
+                                </div>
                             </div>
                         </div>
                     </div>
