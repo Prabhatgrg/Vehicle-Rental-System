@@ -76,7 +76,8 @@
 }
 /* For the devices wihich screen size is less then 576px */
 @media (max-width: 575.98px) {
-    .trending .grid {
+    .trending .grid,
+    .about-us .grid {
         grid-template-columns: 1fr;
     }
 }

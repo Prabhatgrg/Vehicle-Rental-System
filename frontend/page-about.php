@@ -2,32 +2,32 @@
 get_header("About");
 ?>
 
-<section class="py-5">
+<section class="about-us py-5">
     <div class="container">
-        <h1 class="text-center mb-4">About Us</h1>
-        <div class="grid gap-1 column-2">
-            <div class="card align-items-center">
-                <figure class="card-img col-7 mb-3">
-                    <a href="#">
-                        <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/prabhat.jpg" alt="prabhat">
-                    </a>
-                </figure>
-                <div class="card-body">
-                    <h3 class="card-title h5 text-center">
-                        Prabhat Gurung
-                    </h3>
-                </div>
-            </div>
-            <div class="card align-items-center">
-                <figure class="card-img col-7 mb-3">
-                    <a href="#">
-                        <img src="<?php echo get_theme_directory_uri();?> /assets/img/jpg/neer.png" alt="neer">
-                    </a>
-                </figure>
-                <div class="card-body">
-                    <h3 class="card-title h5 text-center">
-                        Neer Bahadur Shrestha
-                    </h3>
+        <div class="flex flex-wrap justify-content-center">
+            <div class="col-md-7">
+                <h1 class="text-center mb-4">About Us</h1>
+                <div class="grid gap-2 column-2">
+                    <div class="card align-items-center team-card">
+                        <figure class="card-img mb-2">
+                            <img src="<?php echo get_theme_directory_uri(); ?> /assets/img/jpg/prabhat.jpg" alt="prabhat">
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title h5 text-center">
+                                Prabhat Gurung
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card align-items-center team-card">
+                        <figure class="card-img mb-2">
+                            <img src="<?php echo get_theme_directory_uri(); ?> /assets/img/jpg/neer.png" alt="neer">
+                        </figure>
+                        <div class="card-body">
+                            <h3 class="card-title h5 text-center">
+                                Neer Bahadur Shrestha
+                            </h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

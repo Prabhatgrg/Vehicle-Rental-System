@@ -340,7 +340,7 @@ textarea.form-control {
     align-items: flex-start;
     justify-content: center;
 }
-.user-info-section .divider{
+.user-info-section .divider {
     padding-right: 7em;
     border-right: 1px solid black;
 }
@@ -513,7 +513,9 @@ textarea.form-control {
 .card-linear .card-img img {
     display: block;
 }
-
+.team-card .card-img img {
+    aspect-ratio: 750 / 950;
+}
 /* 
  * Site footer
  */
