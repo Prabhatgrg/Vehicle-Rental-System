@@ -807,6 +807,9 @@
 /*
 * Search Result Section
 */
+.result-list .card-linear{
+    margin-top: 30px;
+}
 @keyframes fade {
     from {
         opacity: 0;
