@@ -5,7 +5,7 @@ get_header("About");
 <section class="about-us py-5">
     <div class="container">
         <div class="flex flex-wrap justify-content-center">
-            <div class="col-md-7">
+            <div class="col-md-10 col-lg-7">
                 <h1 class="text-center mb-4">About Us</h1>
                 <div class="grid gap-2 column-2">
                     <div class="card align-items-center team-card">
