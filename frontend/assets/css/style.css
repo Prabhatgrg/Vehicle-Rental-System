@@ -342,7 +342,7 @@ textarea.form-control {
 }
 .user-info-section .divider {
     padding-right: 7em;
-    border-right: 1px solid black;
+    border-right: 1px solid var(--color-border);
 }
 /* Dropdown Menu Css */
 .has-dropdown {
