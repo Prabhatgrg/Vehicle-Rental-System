@@ -281,6 +281,12 @@
 .gap-1 {
     --gap: 1rem;
 }
+.gap-2 {
+    --gap: 2rem;
+}
+.gap-3 {
+    --gap: 3rem;
+}
 
 .p-1 {
     padding: 1rem;
@@ -801,10 +807,6 @@
 /*
 * Search Result Section
 */
-.search-result-section{
-    margin-right: 20px;
-    border-bottom: 2px solid;
-}
 @keyframes fade {
     from {
         opacity: 0;
