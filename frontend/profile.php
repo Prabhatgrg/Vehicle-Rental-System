@@ -47,7 +47,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -59,7 +59,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -71,7 +71,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -83,7 +83,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -95,7 +95,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -107,7 +107,7 @@ get_header("Profile")
                                                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                                                 </a>
                                             </figure>
-                                            
+
                                             <div class="card-body pt-1">
                                                 <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
                                                 <span class="price">Rs. 5,000/day</span>
@@ -119,6 +119,18 @@ get_header("Profile")
                             <div class="tab-pane" id="user-post-reviews">
                                 <div class="tab-review-container text-center">
                                     Here Goes All the comments that user's posted post has.
+                                </div>
+                                <div class="review-card">
+                                    <div class="review-items">
+                                        <div class="user-meta flex align-items-center">
+                                            <a href="#">
+                                                <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Default Image">
+                                            </a>
+                                            <span>
+                                                <a href="#">User</a>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

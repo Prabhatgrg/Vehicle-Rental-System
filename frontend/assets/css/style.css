@@ -652,3 +652,9 @@ textarea.form-control {
 .user-activities .tab-list{
     justify-content: space-around;
 }
+/* 
+ * Review Tab Section
+*/
+.user-meta img{
+    max-width: 40px;
+}
