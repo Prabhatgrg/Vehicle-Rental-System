@@ -658,6 +658,10 @@ textarea.form-control {
 .user-meta img{
     max-width: 40px;
 }
+.star .rating{
+    display: inline-block;
+    overflow: hidden;
+}
 .stars .review-response{
     font-size: 18px;
 }
@@ -667,3 +671,6 @@ textarea.form-control {
 .rating .star-filled{
     position: absolute;
 }
+/* .rating div > *{
+    flex-shrink: 0;
+} */
