@@ -658,3 +658,12 @@ textarea.form-control {
 .user-meta img{
     max-width: 40px;
 }
+.stars .review-response{
+    font-size: 18px;
+}
+.star .rating{
+    position: relative;
+}
+.rating .star-filled{
+    position: absolute;
+}
