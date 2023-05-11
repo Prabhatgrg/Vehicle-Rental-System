@@ -54,6 +54,9 @@
     .menu-toggler {
         display: block;
     }
+    .main-navigation .btn-menu-close {
+        display: flex;
+    }
     .main-navigation {
         position: absolute;
         flex-direction: column;
