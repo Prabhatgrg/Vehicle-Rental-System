@@ -33,7 +33,7 @@ get_header("Profile")
                             <li><button class="tab-button" data-target="#user-post-reviews">Reviews</button></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane" id="user-ad-posts">
+                            <div class="tab-pane active" id="user-ad-posts">
                                 <div class="tab-ad-container text-center">
                                     Here Goes the Ad posts that user posted.
                                 </div>
@@ -116,7 +116,7 @@ get_header("Profile")
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane active" id="user-post-reviews">
+                            <div class="tab-pane" id="user-post-reviews">
                                 <!-- <div class="tab-review-container text-center">
                                     Here Goes All the comments that user's posted post has.
                                 </div> -->
