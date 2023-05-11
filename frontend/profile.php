@@ -11,8 +11,7 @@ get_header("Profile")
                     <div class="user-image-section">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
                     </div>
-                    <div class="divider">
-                        <div class="user-detail-section">
+                    <div class="user-detail-section">
                             <span class="user-name">User</span>
                             <a href="tel:9850492847" class="user-contact">9850492847</a>
                             <span class="user-location">
@@ -21,10 +20,10 @@ get_header("Profile")
                             </span>
 
                         </div>
-                    </div>
+                    
                 </aside>
             </div>
-            <div class="col-8 ps-2">
+            <div class="col-8 ps-2 divider">
                 <aside class="user-activities">
                     <div class="tabs-container">
                         <ul class="tab-list">
