@@ -707,3 +707,10 @@ textarea.form-control {
 /* .rating div > *{
     flex-shrink: 0;
 } */
+
+.review-card{
+    max-width: 80%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
