@@ -706,11 +706,14 @@ textarea.form-control {
 }
 .rating .star-filled {
     position: absolute;
+    overflow: hidden;
 }
-/* .rating div > *{
+.rating > div{
+    display: flex;
+}
+.rating div > *{
     flex-shrink: 0;
-} */
-
+}
 .review-card {
     max-width: 80%;
     margin-bottom: 20px;
