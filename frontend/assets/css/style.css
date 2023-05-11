@@ -150,7 +150,7 @@ svg * {
 #page-content {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 #page-content .main-content {
     flex: 1;
@@ -281,6 +281,20 @@ textarea.form-control {
     font-weight: 500;
     line-height: 20px;
 }
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0 0 0 / 50%);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
+}
+.menu-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
 /* 
  * Header
  */
@@ -296,6 +310,25 @@ textarea.form-control {
     display: inline-block;
     font-size: var(--fs-h2);
 }
+.menu-toggler {
+    display: none;
+    padding: 4px;
+    border-radius: var(--default-border-radius);
+    border: 2px solid var(--color-black);
+    transition: var(--transition);
+}
+.menu-toggler:hover {
+    color: var(--color-light);
+    background-color: var(--color-black);
+}
+.menu-toggler span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: currentColor;
+    margin: 6px;
+}
+
 .main-navigation .menu {
     display: flex;
     gap: 30px;
@@ -346,10 +379,10 @@ textarea.form-control {
 /*
 * Search Result Section
 */
-.search-result .search-title{
+.search-result .search-title {
     border-bottom: 1px solid var(--color-border);
 }
-.result-list .card-linear{
+.result-list .card-linear {
     margin-top: 30px;
 }
 
@@ -649,26 +682,26 @@ textarea.form-control {
 .user-detail-section .location-icon {
     max-width: 20px;
 }
-.user-activities .tab-list{
+.user-activities .tab-list {
     justify-content: space-around;
 }
 /* 
  * Review Tab Section
 */
-.user-meta img{
+.user-meta img {
     max-width: 40px;
 }
-.star .rating{
+.star .rating {
     display: inline-block;
     overflow: hidden;
 }
-.stars .review-response{
+.stars .review-response {
     font-size: 18px;
 }
-.star .rating{
+.star .rating {
     position: relative;
 }
-.rating .star-filled{
+.rating .star-filled {
     position: absolute;
 }
 /* .rating div > *{

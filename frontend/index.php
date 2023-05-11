@@ -173,7 +173,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
@@ -210,7 +210,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
@@ -247,7 +247,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
@@ -284,7 +284,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
@@ -321,7 +321,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
@@ -358,7 +358,7 @@ endif;
                         <span class="available">| Available: </span>
                     </div>
                     <div class="location-and-time flex justify-content-between">
-                        <span clas="location">Naikap, Kathmandu</span>
+                        <span class="location">Naikap, Kathmandu</span>
                         <span class="time">Just Now</span>
                     </div>
                 </div>
