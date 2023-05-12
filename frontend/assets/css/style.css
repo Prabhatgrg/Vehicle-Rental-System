@@ -455,6 +455,9 @@ textarea.form-control {
 .search-bar .form-control {
     padding-right: 3.5rem;
 }
+.search-bar .screen-reader-text {
+    display: none;
+}
 
 /* Home page styling */
 .categories .category-title {
@@ -781,7 +784,51 @@ textarea.form-control {
     display: flex;
     flex-direction: column;
 }
+.chat-container .chat-header {
+    padding: 1.4rem 2rem;
+    box-shadow: 0 10px 15px rgba(0 0 0 / 5%);
+    border-radius: var(--default-border-radius);
+}
 .chat-container .chat-body {
     height: 50rem;
     overflow-y: scroll;
+    padding: 3rem 2rem 0;
+}
+
+.chat-conversation {
+    display: flex;
+    flex-flow: column;
+    gap: 1.4rem;
+}
+.conv-item {
+    display: flex;
+    gap: 1rem;
+}
+.conv-item .user-avatar img {
+    max-width: 40px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+.conv-item .conv-message {
+    padding: 1rem;
+    background-color: rgba(0 0 0 / 5%);
+    border-radius: var(--default-border-radius);
+    max-width: 60%;
+}
+.conv-item.my-side {
+    justify-content: flex-end;
+}
+
+.chat-container .chat-footer {
+    padding: 3rem 2rem 1rem;
+}
+
+.chat-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.chat-form textarea.form-control {
+    height: 80px;
 }

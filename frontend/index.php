@@ -35,13 +35,13 @@ endif;
         <div class="grid gap-1 column-5">
             <div class="card">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
-                        <a href="#">
+                        <a href="#" aria-label="bookmark link">
                             <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
@@ -55,13 +55,13 @@ endif;
             </div>
             <div class="card">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
-                        <a href="#">
+                        <a href="#" aria-label="bookmark link">
                             <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
@@ -75,13 +75,13 @@ endif;
             </div>
             <div class="card">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
-                        <a href="#">
+                        <a href="#" aria-label="bookmark link">
                             <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
@@ -95,13 +95,13 @@ endif;
             </div>
             <div class="card">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
-                        <a href="#">
+                        <a href="#" aria-label="bookmark link">
                             <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
@@ -115,13 +115,13 @@ endif;
             </div>
             <div class="card">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
                 <ul class="card-features">
                     <li>
-                        <a href="#">
+                        <a href="#" aria-label="bookmark link">
                             <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                             </svg>
@@ -143,7 +143,7 @@ endif;
         <div class="grid gap-3 gap-md-2">
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -155,7 +155,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>
@@ -180,7 +180,7 @@ endif;
             </div>
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -192,7 +192,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>
@@ -217,7 +217,7 @@ endif;
             </div>
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -229,7 +229,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>
@@ -254,7 +254,7 @@ endif;
             </div>
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -266,7 +266,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>
@@ -291,7 +291,7 @@ endif;
             </div>
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -303,7 +303,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>
@@ -328,7 +328,7 @@ endif;
             </div>
             <div class="card-linear">
                 <figure class="card-img">
-                    <a href="#">
+                    <a href="#" aria-label="feature image">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
                     </a>
                 </figure>
@@ -340,7 +340,7 @@ endif;
 
                         <ul class="card-features">
                             <li>
-                                <a href="#">
+                                <a href="#" aria-label="bookmark link">
                                     <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
                                     </svg>

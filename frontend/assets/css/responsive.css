@@ -48,6 +48,21 @@
     .card-linear .price-and-availability {
         margin-bottom: 1.5rem;
     }
+    .chat-item .chat-info {
+        display: none;
+    }
+    .chat-container .chat-header .chat-item .chat-info {
+        display: flex;
+    }
+    .chat-item img {
+        max-width: 100%;
+    }
+    .chat-container .chat-header .chat-item img {
+        max-width: 4rem;
+    }
+    .conv-item .conv-message {
+        max-width: 75%;
+    }
 }
 /* For the devices wihich screen size is less then 768px */
 @media (max-width: 767.98px) {
@@ -120,5 +135,11 @@
     .trending .grid,
     .about-us .grid {
         grid-template-columns: 1fr;
+    }
+    .chat-user-list li .chat-link {
+        padding: 0.5rem 0;
+    }
+    .chat-user-list li .chat-link:hover {
+        background-color: transparent;
     }
 }

@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/img/svg/rentease_favicon.svg" type="image/x-icon">
+    <meta name="description" content="A system which allows user to rent the vehicle from rental provider.">
+    <meta name="keywords" content="Rent, Vehicle, RentEase">
+    <meta name="author" content="Neer Bahadur Shrestha and Prabhat Gurung">
     <title><?php
             if (isset($page_title)) :
                 echo $page_title . ' - Vehicle Rental System';
@@ -36,8 +39,9 @@
 
                     <form action="#" class="search-bar" autocomplete="off">
                         <div class="form-field">
-                            <input type="text" id="search" name="search" class="form-control">
-                            <button type="submit">
+                            <label for="search" class="screen-reader-text">Search</label>
+                            <input type="text" id="search" name="search" aria-label="Search" class="form-control">
+                            <button type="submit" aria-label="search">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                     <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -46,7 +50,6 @@
                                     </g>
                                 </svg>
 
-                                <span class="screen-reader-text">Search</span>
                             </button>
                         </div>
                     </form>
@@ -56,22 +59,20 @@
                             <span class="line"></span>
                             <span class="screen-reader-text">Close</span>
                         </button>
-                        <div class="chat-container dropdown-container">
-                            <button class="btn-dropdown chat-toggler">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
-                                        <path d="M2080 5114 c-325 -27 -575 -83 -830 -184 -569 -226 -1003 -656 -1170 -1159 -165 -493 -68 -1017 269 -1451 74 -96 230 -255 308 -314 l52 -39 -56 -81 c-168 -241 -329 -382 -504 -441 -82 -28 -103 -44 -131 -99 -39 -75 -4 -172 75 -210 83 -39 475 -1 802 79 256 62 558 170 767 276 l60 30 96 -15 c242 -39 495 -42 757 -10 959 117 1725 736 1876 1517 99 511 -71 1024 -475 1429 -350 352 -836 581 -1381 653 -118 15 -426 27 -515 19z m495 -338 c380 -55 716 -190 995 -400 567 -425 740 -1069 443 -1646 -220 -429 -703 -764 -1274 -885 -234 -50 -613 -64 -814 -31 -55 9 -134 22 -176 28 l-77 12 -148 -72 c-236 -113 -553 -228 -710 -258 l-38 -7 51 64 c58 74 130 180 202 299 42 68 51 92 51 129 0 67 -24 97 -151 193 -311 235 -507 518 -581 840 -29 126 -31 365 -5 486 73 333 272 630 571 852 322 238 696 373 1156 414 86 8 406 -4 505 -18z" />
-                                        <path d="M4767 2716 c-48 -17 -71 -38 -91 -81 -24 -50 -19 -95 20 -187 141 -328 135 -647 -16 -948 -100 -199 -239 -361 -440 -512 -58 -43 -113 -93 -122 -111 -22 -39 -23 -108 -2 -148 29 -57 140 -224 188 -282 26 -32 46 -61 43 -63 -6 -7 -131 24 -247 61 -139 44 -287 103 -412 166 -100 50 -104 51 -173 46 -38 -3 -117 -13 -175 -23 -141 -23 -451 -23 -605 0 -376 57 -711 199 -968 410 -101 82 -178 88 -248 17 -41 -41 -55 -88 -44 -148 8 -47 72 -110 204 -203 417 -295 986 -449 1522 -410 88 6 195 17 237 25 l77 13 95 -45 c398 -187 850 -293 1250 -293 126 0 166 10 208 51 98 96 51 228 -98 278 -164 54 -318 182 -472 392 l-27 36 87 75 c275 236 461 544 534 881 31 143 31 387 0 537 -43 210 -126 413 -184 448 -46 28 -96 34 -141 18z" />
-                                    </g>
-                                </svg>
+                        <a href="<?php echo get_root_directory_uri(); ?>/chat" class="btn-dropdown chat-toggler">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
-                                <span class="screen-reader-text">
-                                    Chat
-                                </span>
-                            </button>
-                            <div class="dropdown-content"></div>
-                        </div>
+                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                    <path d="M2080 5114 c-325 -27 -575 -83 -830 -184 -569 -226 -1003 -656 -1170 -1159 -165 -493 -68 -1017 269 -1451 74 -96 230 -255 308 -314 l52 -39 -56 -81 c-168 -241 -329 -382 -504 -441 -82 -28 -103 -44 -131 -99 -39 -75 -4 -172 75 -210 83 -39 475 -1 802 79 256 62 558 170 767 276 l60 30 96 -15 c242 -39 495 -42 757 -10 959 117 1725 736 1876 1517 99 511 -71 1024 -475 1429 -350 352 -836 581 -1381 653 -118 15 -426 27 -515 19z m495 -338 c380 -55 716 -190 995 -400 567 -425 740 -1069 443 -1646 -220 -429 -703 -764 -1274 -885 -234 -50 -613 -64 -814 -31 -55 9 -134 22 -176 28 l-77 12 -148 -72 c-236 -113 -553 -228 -710 -258 l-38 -7 51 64 c58 74 130 180 202 299 42 68 51 92 51 129 0 67 -24 97 -151 193 -311 235 -507 518 -581 840 -29 126 -31 365 -5 486 73 333 272 630 571 852 322 238 696 373 1156 414 86 8 406 -4 505 -18z" />
+                                    <path d="M4767 2716 c-48 -17 -71 -38 -91 -81 -24 -50 -19 -95 20 -187 141 -328 135 -647 -16 -948 -100 -199 -239 -361 -440 -512 -58 -43 -113 -93 -122 -111 -22 -39 -23 -108 -2 -148 29 -57 140 -224 188 -282 26 -32 46 -61 43 -63 -6 -7 -131 24 -247 61 -139 44 -287 103 -412 166 -100 50 -104 51 -173 46 -38 -3 -117 -13 -175 -23 -141 -23 -451 -23 -605 0 -376 57 -711 199 -968 410 -101 82 -178 88 -248 17 -41 -41 -55 -88 -44 -148 8 -47 72 -110 204 -203 417 -295 986 -449 1522 -410 88 6 195 17 237 25 l77 13 95 -45 c398 -187 850 -293 1250 -293 126 0 166 10 208 51 98 96 51 228 -98 278 -164 54 -318 182 -472 392 l-27 36 87 75 c275 236 461 544 534 881 31 143 31 387 0 537 -43 210 -126 413 -184 448 -46 28 -96 34 -141 18z" />
+                                </g>
+                            </svg>
+
+                            <span class="screen-reader-text">
+                                Chat
+                            </span>
+                        </a>
 
                         <div class="dropdown-container notifications">
                             <button class="btn-dropdown notification-icon">
