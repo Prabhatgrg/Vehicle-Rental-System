@@ -17,6 +17,7 @@ $routes = [
     get_root_directory_uri() . '/profile' => 'frontend/profile.php',
     get_root_directory_uri() . '/post' => 'frontend/post.php',
     get_root_directory_uri() . '/settings' => 'frontend/settings.php',
+    get_root_directory_uri() . '/chat' => 'frontend/page-chat.php',
     get_root_directory_uri() . '/search' => 'frontend/search-result.php'
 ];
 
