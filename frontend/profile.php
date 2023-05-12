@@ -6,7 +6,7 @@ get_header("Profile")
 <section class="user-profile py-5">
     <div class="container">
         <div class="flex">
-            <div class="col-4">
+            <div class="col-3">
                 <aside class="user-info-section">
                     <div class="user-image-section">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
@@ -23,7 +23,8 @@ get_header("Profile")
                     
                 </aside>
             </div>
-            <div class="col-8 ps-2 divider">
+            
+            <div class="col-9 ps-2 divider">
                 <aside class="user-activities">
                     <div class="tabs-container">
                         <ul class="tab-list">
