@@ -375,9 +375,11 @@ textarea.form-control {
     align-items: flex-start;
     justify-content: center;
 }
-.user-info-section .divider {
+.user-info-section {
     padding-right: 7em;
-    border-right: 1px solid var(--color-border);
+}
+.divider{
+    border-left: 1px solid var(--color-border);
 }
 /*
 * Search Result Section
