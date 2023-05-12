@@ -5,7 +5,7 @@ get_header();
 
 <section class="post-detail py-5">
     <div class="container">
-        <div class="flex">
+        <div class="flex flex-wrap">
             <div class="col-md-5">
                 <figure class="post-gallery">
                     <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">

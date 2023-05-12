@@ -51,6 +51,10 @@
 }
 /* For the devices wihich screen size is less then 768px */
 @media (max-width: 767.98px) {
+    .post-detail .col-md-7.ps-3 {
+        padding-left: 1rem;
+        padding-top: 3rem;
+    }
     .menu-toggler {
         display: block;
     }
