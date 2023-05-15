@@ -4,142 +4,176 @@
 
 /* For the devices wihich screen size is less then 1200px */
 @media (max-width: 1199.98px) {
-    .site-header .user-info .user-name {
-        display: none;
-    }
-    .main-navigation,
-    .main-navigation .menu {
-        gap: 15px;
-    }
-    .site-header .container > * {
-        gap: 20px;
-    }
-    .card .card-features a {
-        padding: 0.5rem;
-    }
-    .card .card-features svg {
-        max-width: 1.4rem;
-    }
+  .site-header .user-info .user-name {
+    display: none;
+  }
+  .main-navigation,
+  .main-navigation .menu {
+    gap: 15px;
+  }
+  .site-header .container > * {
+    gap: 20px;
+  }
+  .card .card-features a {
+    padding: 0.5rem;
+  }
+  .card .card-features svg {
+    max-width: 1.4rem;
+  }
+  /* Profile Responsive */
+  .user-profile-container{
+    flex-direction: column;
+  }
+  .user-profile-container .user-info-section{
+    flex-direction: unset;
+    gap: 50px;
+    margin-bottom: 20px;
+  }
+  .user-profile-container .user-info-container{
+    width: 100%;
+  }
+  .user-info-container .user-image-section > img{
+    transform: translateY(-20px);
+  }
+  .user-profile-container .user-activity-section{
+    border-left: unset;
+  }
+  .user-activity-section{
+    width: auto;
+  }
+
 }
 /* For the devices wihich screen size is less then 992px */
 @media (max-width: 991.98px) {
-    .trending .grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem 2rem;
-    }
-    .main-navigation .menu {
-        display: none;
-    }
-    .card-linear .card-img {
-        align-self: flex-start;
-    }
-    .card-linear .card-img img {
-        max-width: 280px;
-        aspect-ratio: 280 / 180;
-        object-fit: cover;
-    }
-    .card-linear .card-body {
-        padding: 0 0 0 20px;
-    }
-    .card-linear .card-title,
-    .card-linear .product-description {
-        margin-bottom: 1rem;
-    }
-    .card-linear .price-and-availability {
-        margin-bottom: 1.5rem;
-    }
-    .chat-item .chat-info {
-        display: none;
-    }
-    .chat-container .chat-header .chat-item .chat-info {
-        display: flex;
-    }
-    .chat-item img {
-        max-width: 100%;
-    }
-    .chat-container .chat-header .chat-item img {
-        max-width: 4rem;
-    }
-    .conv-item .conv-message {
-        max-width: 75%;
-    }
+  .trending .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 2rem;
+  }
+  .main-navigation .menu {
+    display: none;
+  }
+  .card-linear .card-img {
+    align-self: flex-start;
+  }
+  .card-linear .card-img img {
+    max-width: 280px;
+    aspect-ratio: 280 / 180;
+    object-fit: cover;
+  }
+  .card-linear .card-body {
+    padding: 0 0 0 20px;
+  }
+  .card-linear .card-title,
+  .card-linear .product-description {
+    margin-bottom: 1rem;
+  }
+  .card-linear .price-and-availability {
+    margin-bottom: 1.5rem;
+  }
+  .chat-item .chat-info {
+    display: none;
+  }
+  .chat-container .chat-header .chat-item .chat-info {
+    display: flex;
+  }
+  .chat-item img {
+    max-width: 100%;
+  }
+  .chat-container .chat-header .chat-item img {
+    max-width: 4rem;
+  }
+  .conv-item .conv-message {
+    max-width: 75%;
+  }
 }
 /* For the devices wihich screen size is less then 768px */
 @media (max-width: 767.98px) {
-    .post-detail .col-md-7.ps-3 {
-        padding-left: 1rem;
-        padding-top: 3rem;
-    }
-    .menu-toggler {
-        display: block;
-    }
-    .main-navigation .btn-menu-close {
-        display: flex;
-    }
-    .main-navigation {
-        position: absolute;
-        flex-direction: column;
-        top: 0;
-        right: 20px;
-        padding: 20px;
-        background-color: var(--color-light);
-        width: 100%;
-        min-height: 100vh;
-        max-width: 500px;
-        align-items: flex-start;
-        overflow-y: scroll;
-        z-index: 1001;
-        opacity: 0;
-        visibility: hidden;
-        transition: var(--transition);
-    }
-    .main-navigation.show {
-        opacity: 1;
-        visibility: visible;
-        right: 0;
-    }
-    .main-navigation button,
-    .notifications .notification-icon {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-    }
-    .main-navigation button .screen-reader-text {
-        display: block;
-    }
-    .trending .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .post-detail .col-md-7.ps-3 {
+    padding-left: 1rem;
+    padding-top: 3rem;
+  }
+  .menu-toggler {
+    display: block;
+  }
+  .main-navigation .btn-menu-close {
+    display: flex;
+  }
+  .main-navigation {
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+    right: 20px;
+    padding: 20px;
+    background-color: var(--color-light);
+    width: 100%;
+    min-height: 100vh;
+    max-width: 500px;
+    align-items: flex-start;
+    overflow-y: scroll;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+  }
+  .main-navigation.show {
+    opacity: 1;
+    visibility: visible;
+    right: 0;
+  }
+  .main-navigation button,
+  .notifications .notification-icon {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .main-navigation button .screen-reader-text {
+    display: block;
+  }
+  .trending .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    /* card linear */
-    .card-linear {
-        flex-direction: column;
-    }
-    .card-linear .card-img {
-        width: 100%;
-    }
-    .card-linear .card-img img {
-        max-width: 100%;
-        width: 100%;
-    }
-    .card-linear .card-body {
-        padding: 2rem 0 0;
-    }
+  /* card linear */
+  .card-linear {
+    flex-direction: column;
+  }
+  .card-linear .card-img {
+    width: 100%;
+  }
+  .card-linear .card-img img {
+    max-width: 100%;
+    width: 100%;
+  }
+  .card-linear .card-body {
+    padding: 2rem 0 0;
+  }
 
-    .card-linear .location-and-time {
-        flex-wrap: wrap;
-    }
+  .card-linear .location-and-time {
+    flex-wrap: wrap;
+  }
+  .user-profile .container{
+    margin: 0 auto;
+  }
+  .user-activity-section .user-save-list .grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 /* For the devices wihich screen size is less then 576px */
 @media (max-width: 575.98px) {
-    .trending .grid,
-    .about-us .grid {
-        grid-template-columns: 1fr;
-    }
-    .chat-user-list li .chat-link {
-        padding: 0.5rem 0;
-    }
-    .chat-user-list li .chat-link:hover {
-        background-color: transparent;
-    }
+  .trending .grid,
+  .about-us .grid {
+    grid-template-columns: 1fr;
+  }
+  .chat-user-list li .chat-link {
+    padding: 0.5rem 0;
+  }
+  .chat-user-list li .chat-link:hover {
+    background-color: transparent;
+  }
+  .user-profile .container{
+    margin: 0 auto;
+  }
+  .user-activity-section .user-save-list .grid{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

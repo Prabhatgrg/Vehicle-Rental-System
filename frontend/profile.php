@@ -5,8 +5,8 @@ get_header("Profile")
 
 <section class="user-profile py-5">
     <div class="container">
-        <div class="flex">
-            <div class="col-3">
+        <div class="user-profile-container flex">
+            <div class="user-info-container col-3">
                 <aside class="user-info-section">
                     <div class="user-image-section">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
@@ -24,7 +24,7 @@ get_header("Profile")
                 </aside>
             </div>
             
-            <div class="col-9 ps-2 divider">
+            <div class="user-activity-section col-9 ps-2 divider">
                 <aside class="user-activities">
                     <div class="tabs-container">
                         <ul class="tab-list">
@@ -33,12 +33,12 @@ get_header("Profile")
                             <li><button class="tab-button" data-target="#user-post-reviews">Reviews</button></li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane active" id="user-ad-posts">
+                            <div class="user-ad-posts tab-pane active" id="user-ad-posts">
                                 <div class="tab-ad-container text-center">
                                     Here Goes the Ad posts that user posted.
                                 </div>
                             </div>
-                            <div class="tab-pane" id="user-save-list">
+                            <div class="user-save-list tab-pane" id="user-save-list">
                                 <div class="container">
                                     <div class="grid gap-1 column-3">
                                         <div class="card">
@@ -116,7 +116,7 @@ get_header("Profile")
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" id="user-post-reviews">
+                            <div class="user-post-reviews tab-pane" id="user-post-reviews">
                                 <!-- <div class="tab-review-container text-center">
                                     Here Goes All the comments that user's posted post has.
                                 </div> -->
