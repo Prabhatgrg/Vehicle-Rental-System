@@ -76,12 +76,29 @@ window.addEventListener("DOMContentLoaded", (event) => {
         postForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
+            const isValidate = validatePostForm(postForm);
+
+            if (!isValidate) {
+                return;
+            }
+
             const isConfirm = confirm("Are you sure ?");
 
             if (isConfirm) {
                 postForm.submit();
             }
         });
+    }
+
+    function validatePostForm(postForm) {
+        let isValidate = false;
+        const postTitle = postForm.querySelector("#postTitle").value;
+        if (!(postTitle > 5)) {
+            alert("Post title must be 5 characters");
+            isValidate = false;
+        }
+        
+        return isValidate;
     }
 
     /*
