@@ -27,6 +27,7 @@
   .user-profile-container .user-info-section{
     flex-direction: unset;
     gap: 50px;
+    margin-bottom: 20px;
   }
   .user-profile-container .user-info-container{
     width: 100%;
