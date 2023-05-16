@@ -45,6 +45,13 @@
 }
 /* For the devices wihich screen size is less then 992px */
 @media (max-width: 991.98px) {
+  .site-brand img{
+    display: block;
+    max-width: 50px;
+  }
+  .site-brand .site-title-wrapper{
+    display: none;
+  }
   .trending .grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem 2rem;

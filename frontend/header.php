@@ -34,7 +34,10 @@
                     </button>
 
                     <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand">
+                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/svg/rentease_favicon.svg" alt="">
+                    <div class="site-title-wrapper">
                         Rent<span class="fw-bold">Ease</span>
+                    </div>
                     </a>
 
                     <form action="#" class="search-bar" autocomplete="off">

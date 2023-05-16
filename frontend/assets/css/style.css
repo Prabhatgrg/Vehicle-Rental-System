@@ -310,6 +310,9 @@ textarea.form-control {
     display: inline-block;
     font-size: var(--fs-h2);
 }
+.site-brand img{
+    display: none;
+}
 .menu-toggler {
     display: none;
     padding: 4px;
