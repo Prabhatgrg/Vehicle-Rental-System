@@ -58,10 +58,6 @@
                     </form>
 
                     <nav class="main-navigation">
-                        <button class="btn-close btn-menu-close">
-                            <span class="line"></span>
-                            <span class="screen-reader-text">Close</span>
-                        </button>
 
                         <a href="<?php echo get_root_directory_uri(); ?>/chat" class="btn-dropdown chat-toggler">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">

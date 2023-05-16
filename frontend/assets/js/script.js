@@ -1,31 +1,5 @@
 window.addEventListener("DOMContentLoaded", (event) => {
     /*
-     * Hamburger menu
-     */
-    const menuToggler = document.querySelector(".menu-toggler");
-    if (menuToggler) {
-        const mainNavigation = document.querySelector(".main-navigation");
-        const navClassList = mainNavigation.classList;
-        const menuCloseBtn = document.querySelector(".btn-menu-close");
-        const menuOverlay = document.querySelector(".menu-overlay");
-
-        function openMenu() {
-            navClassList.add("show");
-            menuOverlay.classList.add("show");
-        }
-        function closeMenu() {
-            if (navClassList.contains("show")) {
-                navClassList.remove("show");
-                menuOverlay.classList.remove("show");
-            }
-        }
-
-        // event listener
-        menuToggler.addEventListener("click", openMenu);
-        menuCloseBtn.addEventListener("click", closeMenu);
-        menuOverlay.addEventListener("click", closeMenu);
-    }
-    /*
      * Dropdown menu
      * selecting the element that contains the class dropdown container
      */
@@ -97,7 +71,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             alert("Post title must be 5 characters");
             isValidate = false;
         }
-        
+
         return isValidate;
     }
 
