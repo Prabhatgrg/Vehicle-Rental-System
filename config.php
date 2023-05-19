@@ -1,12 +1,5 @@
 <?php
-// database configs
-define('DB_NAME', 'VRMS');
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-
-require_once './database/db_config.php';
-
+// require_once './database/db_config.php';
 
 // checking routing
 $routes = [
