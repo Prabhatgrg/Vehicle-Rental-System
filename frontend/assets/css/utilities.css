@@ -576,7 +576,6 @@
     margin-right: 5rem;
 }
 
-
 .mb-5 {
     margin-bottom: 5rem;
 }
@@ -776,6 +775,7 @@
     transition: var(--transition);
     max-height: 90vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .modal-container .modal-content.show .modal-dialog {
     transform: translateX(0);

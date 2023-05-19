@@ -111,6 +111,13 @@
         bottom: 100%;
         top: unset;
     }
+    .post-form .form-group.column-2 {
+        grid-template-columns: 1fr;
+    }
+    .site-header .post-form {
+        display: flex;
+        flex-direction: column;
+    }
 
     .trending .grid {
         grid-template-columns: repeat(2, 1fr);
