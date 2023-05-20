@@ -36,7 +36,7 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
                 <ul class="card-features">
@@ -56,7 +56,7 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
                 <ul class="card-features">
@@ -76,7 +76,7 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
                 <ul class="card-features">
@@ -96,7 +96,7 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
                 <ul class="card-features">
@@ -116,7 +116,7 @@ endif;
             <div class="card">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
                 <ul class="card-features">
@@ -144,7 +144,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 
@@ -181,7 +181,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 
@@ -218,7 +218,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 
@@ -255,7 +255,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 
@@ -292,7 +292,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 
@@ -329,7 +329,7 @@ endif;
             <div class="card-linear">
                 <figure class="card-img">
                     <a href="#" aria-label="feature image">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                     </a>
                 </figure>
 

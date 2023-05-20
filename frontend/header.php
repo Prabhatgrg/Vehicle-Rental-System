@@ -27,7 +27,7 @@
         <header class="site-header">
             <div class="container">
                 <div class="flex align-items-center justify-content-between gap-5">
-                    <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand">
+                    <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand" aria-label="RentEase">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/svg/rentease_favicon.svg" alt="">
                         <div class="site-title-wrapper">
                             Rent<span class="fw-bold">Ease</span>
@@ -53,7 +53,7 @@
 
                     <nav class="main-navigation">
 
-                        <a href="<?php echo get_root_directory_uri(); ?>/chat" class="btn-dropdown chat-toggler">
+                        <a href="<?php echo get_root_directory_uri(); ?>/chat" class="btn-dropdown chat-toggler" aria-label="Chat">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
