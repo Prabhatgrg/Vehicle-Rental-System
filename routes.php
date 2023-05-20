@@ -1,7 +1,6 @@
 <?php
-// require_once './database/db_config.php';
 
-// checking routing
+//Check Routes
 $routes = [
     get_root_directory_uri() . '/' => 'frontend/index.php',
     get_root_directory_uri() . '/about' => 'frontend/page-about.php',
