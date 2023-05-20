@@ -11,7 +11,8 @@ $routes = [
     get_root_directory_uri() . '/post' => 'frontend/post.php',
     get_root_directory_uri() . '/settings' => 'frontend/settings.php',
     get_root_directory_uri() . '/chat' => 'frontend/page-chat.php',
-    get_root_directory_uri() . '/search' => 'frontend/search-result.php'
+    get_root_directory_uri() . '/search' => 'frontend/search-result.php',
+    get_root_directory_uri() . '/admin' => 'frontend/admin/admin.php'
 ];
 
 // Get the URL path from the request

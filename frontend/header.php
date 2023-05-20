@@ -17,7 +17,7 @@
             endif;
 
             ?></title>
-    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/utilities.css">
+    <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/global.css">
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/style.css">
     <link rel="stylesheet" href="<?php echo get_root_directory_uri(); ?>/frontend/assets/css/responsive.css">
 </head>
@@ -27,12 +27,6 @@
         <header class="site-header">
             <div class="container">
                 <div class="flex align-items-center justify-content-between gap-5">
-                    <button class="menu-toggler" aria-label="menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-
                     <a href="<?php echo get_root_directory_uri(); ?>" class="site-brand">
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/svg/rentease_favicon.svg" alt="">
                         <div class="site-title-wrapper">

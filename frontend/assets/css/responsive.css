@@ -147,6 +147,18 @@
     .user-activity-section .user-save-list .grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .admin-menu-list a {
+        justify-content: center;
+    }
+    .admin-menu-list .list-text {
+        display: none;
+    }
+    .admin-menu-list .sub-menu {
+        padding-left: 0;
+    }
+    .admin-menu-list .list-icon {
+        width: 2rem;
+    }
 }
 /* For the devices wihich screen size is less then 576px */
 @media (max-width: 575.98px) {

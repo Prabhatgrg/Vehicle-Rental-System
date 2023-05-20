@@ -1,3 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
+/* 
+  Reseting the browser global spacing
+*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* 
+  Setting the global css variables
+*/
+:root {
+    --primary-font: Montserrat, sans-serif;
+    --transition: all 0.3s ease-in-out;
+    --fs-h1: clamp(3rem, 4vw, 5rem);
+    --fs-h2: clamp(2.4rem, 4vw, 3rem);
+    --fs-h3: clamp(2rem, 4vw, 2.4rem);
+    --fs-h4: clamp(1.8rem, 4vw, 2rem);
+    --fs-h5: clamp(1.6rem, 4vw, 1.8rem);
+    --fs-h6: clamp(1.4rem, 4vw, 1.6rem);
+    --fs-text: clamp(1.4rem, 4vw, 1.6rem);
+    --color-dark: #1b2021;
+    --color-black: #000000;
+    --color-light: #ffffff;
+    --color-success: #4bb543;
+    --color-error: #ff3333;
+    --color-warning: #ffc107;
+    --color-border: rgba(0, 0, 0, 0.2);
+    --default-border-radius: 5px;
+
+    scroll-behavior: smooth;
+}
+
+/* 
+  Reseting the font size to 62.5% to make defautl font size base 10px
+  so we can use 1rem = 10px
+*/
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: var(--fs-text);
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--color-dark);
+}
+
+/* 
+  Setting the heading font size and weights
+*/
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+h1,
+.h1 {
+    font-size: var(--fs-h1);
+}
+
+h2,
+.h2 {
+    font-size: var(--fs-h2);
+}
+
+h3,
+.h3 {
+    font-size: var(--fs-h3);
+}
+
+h4,
+.h4 {
+    font-size: var(--fs-h4);
+}
+
+h5,
+.h5 {
+    font-size: var(--fs-h5);
+}
+
+h6,
+.h6 {
+    font-size: var(--fs-h6);
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+p {
+    margin-bottom: 15px;
+}
+p:last-of-type {
+    margin-bottom: 0;
+}
+
+label {
+    display: inline-block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+button {
+    font-size: var(--fs-text);
+    font-family: var(--primary-font);
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 0;
+    font-weight: 500;
+}
+svg,
+svg * {
+    line-height: 1;
+}
+#page-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#page-content .main-content {
+    flex: 1;
+}
+.screen-reader-text {
+    display: none;
+}
+/* 
+ * Components
+ */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+    font-family: var(--primary-font);
+    cursor: pointer;
+    border-radius: var(--default-border-radius);
+}
+.btn:hover {
+    text-decoration: none;
+}
+.btn-dark {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+.btn-dark:hover,
+.btn-dark:focus {
+    background-color: var(--color-black);
+}
+.btn-outline {
+    border: 1px solid var(--color-black);
+}
+.btn-outline:hover,
+.btn-outline:focus {
+    background-color: var(--color-black);
+    color: var(--color-light);
+}
+
+/* Forms */
+textarea.form-control {
+    height: 150px;
+    resize: none;
+}
+.form-control {
+    font-family: var(--primary-font);
+    display: block;
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: var(--default-border-radius);
+    padding: 10px 15px;
+    font-size: var(--fs-text);
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+}
+.form-control:focus {
+    border-color: var(--color-dark);
+    outline: none;
+}
+
+.form-floating {
+    position: relative;
+}
+.form-floating label {
+    position: absolute;
+    left: 1rem;
+    top: 0.8rem;
+    transition: var(--transition);
+    pointer-events: none;
+    padding: 0 5px;
+}
+.form-floating .form-control::placeholder {
+    color: transparent;
+}
+.form-floating .form-control:focus ~ label,
+.form-floating .form-control:not(:placeholder-shown) ~ label {
+    top: -1rem;
+    left: 1rem;
+    transform: scale(0.8);
+    transform-origin: left;
+    background-color: var(--color-light);
+}
+.form-field label {
+    display: block;
+}
+
+.form-file-upload label {
+    cursor: pointer;
+}
+.form-file-upload label {
+    display: inline-flex;
+    padding: 20px;
+    border-radius: var(--default-border-radius);
+    border: 2px dashed var(--color-dark);
+}
+.form-file-upload .form-file::-webkit-file-upload-button {
+    visibility: hidden;
+    display: none;
+}
+.form-file-upload .form-file {
+    display: block;
+    cursor: pointer;
+    font-family: var(--primary-font);
+}
+.form-file-upload .form-file:focus {
+    outline: 1px solid transparent;
+}
+.form-file-upload .form-title {
+    display: block;
+}
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border-radius: var(--default-border-radius);
+    border: 1px solid var(--color-border);
+    font-family: var(--primary-font);
+    font-weight: 500;
+    transition: var(--transition);
+}
+.form-select:focus {
+    outline: 1px solid transparent;
+    border-color: var(--color-dark);
+}
+.form-select option {
+    padding: 1rem 1.2rem;
+    font-weight: 500;
+    line-height: 20px;
+}
+
 /* 
  * Utility Classes
  * to use repeatedly
@@ -686,6 +970,41 @@
 .text-warning {
     color: var(--color-warnin);
 }
+
+/* Dropdown Menu Css */
+.has-dropdown {
+    cursor: pointer;
+    position: relative;
+    padding: 5px 0;
+}
+.has-dropdown .dropdown-menu {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 100%;
+    right: 20px;
+    padding: 10px 10px;
+    box-shadow: 0 0 30px rgba(0 0 0 / 10%);
+    border-radius: var(--default-border-radius);
+    min-width: 150px;
+    transition: var(--transition);
+    background-color: var(--color-light);
+}
+.has-dropdown:hover .dropdown-menu {
+    right: 0;
+    opacity: 1;
+    pointer-events: all;
+}
+.has-dropdown .dropdown-menu a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: var(--default-border-radius);
+}
+.has-dropdown .dropdown-menu a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/* End Dropdown Menu */
 
 /* Toggling Dropdown
  * Class Needed:
