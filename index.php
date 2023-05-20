@@ -11,4 +11,4 @@ require_once './functions.php';
  *  This will include configuration such as:
  *  Routing, Database Connection
  */
-require_once './config.php';
+require_once './routes.php';
