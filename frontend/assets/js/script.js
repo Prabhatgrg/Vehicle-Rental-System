@@ -65,6 +65,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function validatePostForm(postForm) {
+        let errorMessage = "";
         let isValidate = true;
         const currentYear = new Date().getFullYear();
 
@@ -72,57 +73,71 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
         const postLocation = postForm.querySelector("#postLocation").value;
         const postDescription = postForm.querySelector("#postDescription").value;
-        const postColour = postForm.querySelector("#postColour").value;
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
         const postNegotiable = postForm.querySelector("#postNegotiable").value;
-        const postRentStartDate = new Date(postForm.querySelector("#postRentStartDate").value);
-        const postRentEndDate = new Date(postForm.querySelector("#postRentEndDate").value);
+        const postRentStartDateValue = postForm.querySelector("#postRentStartDate").value;
+        const postRentEndDateValue = postForm.querySelector("#postRentEndDate").value;
 
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
-            alert("Post title must be 5 characters");
+            errorMessage += "Post title must be 5 characters\n";
             isValidate = false;
         }
 
         if (postImageUpload[0]) {
             postImageUpload.forEach((file, index) => {
                 if (regex.test(file.name) == false) {
-                    alert(`Please upload valid image at ${index + 1} position`);
+                    errorMessage += `Please upload valid image at ${index + 1} position\n`;
                 }
             });
         } else {
-            alert("Please upload image");
+            errorMessage += "Please upload image\n";
         }
 
         if (postLocation < 5) {
-            alert("Post location must be 5 characters");
+            errorMessage += "Post location must be 5 characters\n";
             isValidate = false;
         }
         if (postDescription < 20) {
-            alert("Post description must be 20 characters long");
+            errorMessage += "Post description must be 20 characters long\n";
             isValidate = false;
         }
         if (isNaN(postMileage)) {
-            alert("Please enter valid mileage");
+            errorMessage += "Please enter valid mileage\n";
             isValidate = false;
         }
         if (postPrice < 1000) {
-            alert("Minimum rent price should start with Rs. 1000");
+            errorMessage += "Minimum rent price should start with Rs. 1000\n";
             isValidate = false;
         }
         if (postNegotiable == "") {
-            alert("Please select the price is negotiable or not");
+            errorMessage += "Please select the price is negotiable or not\n";
             isValidate = false;
         }
-        if (postRentStartDate.getFullYear() < currentYear) {
-            alert("Please enter valid start date");
+        if (postRentStartDateValue == "") {
+            errorMessage += "Please enter start date\n";
             isValidate = false;
+        } else {
+            const postRentStartDate = new Date(postRentStartDateValue);
+            if (postRentStartDate.getFullYear() < currentYear) {
+                errorMessage += "Please enter valid start year\n";
+                isValidate = false;
+            }
         }
-        if (postRentStartDate.getTime() > postRentEndDate.getTime()) {
-            alert("Vehicle rent finish date should be greater then start date");
+
+        if (postRentStartDateValue == "") {
+            errorMessage += "Please enter end date\n";
             isValidate = false;
+        } else {
+            const postRentEndDate = new Date(postRentEndDateValue);
+            if (postRentStartDate.getTime() > postRentEndDate.getTime()) {
+                errorMessage += "Vehicle rent finish date should be greater then start date\n";
+                isValidate = false;
+            }
         }
+
+        alert(errorMessage);
         return isValidate;
     }
 
