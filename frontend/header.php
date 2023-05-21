@@ -136,7 +136,7 @@
                                                 </select>
                                             </div>
                                             <div class="form-floating">
-                                                <input type="text" name="postColour" id="postColour" class="form-control" placeholder="Colour">
+                                                <input type="color" name="postColour" id="postColour" class="form-control form-color" placeholder="Colour">
                                                 <label for="postColour">Colour</label>
                                             </div>
                                             <div class="form-field">
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="form-group grid column-2">
                                                 <div class="form-floating">
-                                                    <input type="text" name="postPrice" id="postPrice" class="form-control" placeholder="Price">
+                                                    <input type="number" name="postPrice" id="postPrice" class="form-control" placeholder="Price">
                                                     <label for="postPrice">Price</label>
                                                 </div>
                                                 <div class="form-field">

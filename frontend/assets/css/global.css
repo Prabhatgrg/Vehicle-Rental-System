@@ -211,6 +211,10 @@ textarea.form-control {
     border-color: var(--color-dark);
     outline: none;
 }
+.form-color {
+    height: 40px;
+    background-color: var(--color-light);
+}
 
 .form-floating {
     position: relative;

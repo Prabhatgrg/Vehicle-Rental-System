@@ -65,13 +65,64 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function validatePostForm(postForm) {
-        let isValidate = false;
+        let isValidate = true;
+        const currentYear = new Date().getFullYear();
+
         const postTitle = postForm.querySelector("#postTitle").value;
-        if (!(postTitle > 5)) {
+        const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
+        const postLocation = postForm.querySelector("#postLocation").value;
+        const postDescription = postForm.querySelector("#postDescription").value;
+        const postColour = postForm.querySelector("#postColour").value;
+        const postMileage = parseInt(postForm.querySelector("#postMileage").value);
+        const postPrice = parseInt(postForm.querySelector("#postPrice").value);
+        const postNegotiable = postForm.querySelector("#postNegotiable").value;
+        const postRentStartDate = new Date(postForm.querySelector("#postRentStartDate").value);
+        const postRentEndDate = new Date(postForm.querySelector("#postRentEndDate").value);
+
+        let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
+        if (postTitle < 5) {
             alert("Post title must be 5 characters");
             isValidate = false;
         }
 
+        if (postImageUpload[0]) {
+            postImageUpload.forEach((file, index) => {
+                if (regex.test(file.name) == false) {
+                    alert(`Please upload valid image at ${index + 1} position`);
+                }
+            });
+        } else {
+            alert("Please upload image");
+        }
+
+        if (postLocation < 5) {
+            alert("Post location must be 5 characters");
+            isValidate = false;
+        }
+        if (postDescription < 20) {
+            alert("Post description must be 20 characters long");
+            isValidate = false;
+        }
+        if (isNaN(postMileage)) {
+            alert("Please enter valid mileage");
+            isValidate = false;
+        }
+        if (postPrice < 1000) {
+            alert("Minimum rent price should start with Rs. 1000");
+            isValidate = false;
+        }
+        if (postNegotiable == "") {
+            alert("Please select the price is negotiable or not");
+            isValidate = false;
+        }
+        if (postRentStartDate.getFullYear() < currentYear) {
+            alert("Please enter valid start date");
+            isValidate = false;
+        }
+        if (postRentStartDate.getTime() > postRentEndDate.getTime()) {
+            alert("Vehicle rent finish date should be greater then start date");
+            isValidate = false;
+        }
         return isValidate;
     }
 
