@@ -131,13 +131,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
             isValidate = false;
         } else {
             const postRentEndDate = new Date(postRentEndDateValue);
-            if (postRentStartDate.getTime() > postRentEndDate.getTime()) {
+            if (postRentEndDate.getTime() > postRentEndDate.getTime()) {
                 errorMessage += "Vehicle rent finish date should be greater then start date\n";
                 isValidate = false;
             }
         }
+        if (!isValidate) alert(errorMessage);
 
-        alert(errorMessage);
         return isValidate;
     }
 
@@ -226,10 +226,65 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // Listening on submit event to submit comment
         commentForm.addEventListener("submit", (e) => {
             e.preventDefault();
+            const commentField = commentForm.querySelector('[name="comment-field"]').value;
+            if (commentField == "") {
+                alert("Comment cannot be posted empty. Please enter a comment.");
+                return false;
+            }
 
             alert("Your comment has been submitted");
 
             commentForm.submit();
+        });
+    }
+
+    /*
+     * User review form
+     */
+    const userReviewForm = document.querySelector(".user-review-form");
+    if (userReviewForm) {
+        const starFilledContainer = userReviewForm.querySelector(".star-filled");
+        const ratingBtns = userReviewForm.querySelectorAll(".star-outline button");
+        const userRating = userReviewForm.querySelector('[name="userRating"]');
+
+        ratingBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const rateValue = parseInt(e.currentTarget.value);
+                starFilledContainer.style.width = rateValue * 20 + "%";
+                userRating.value = rateValue;
+            });
+        });
+
+        userReviewForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let isValidate = true;
+            let errorMessage = "";
+            const userRating = userReviewForm.querySelector('[name="userRating"]').value;
+            const userReview = userReviewForm.querySelector('[name="userReview"]').value;
+            if (userRating == 0 || userRating == "") {
+                errorMessage += "Please rate the user\n";
+                isValidate = false;
+            }
+
+            if (userReview == "") {
+                errorMessage += "Review cannot be empty";
+                isValidate = false;
+            }
+            if (!isValidate) alert(errorMessage);
+
+            if (isValidate) e.currentTarget.submit();
+        });
+    }
+
+    const chatForm = document.querySelector(".chat-form");
+    if (chatForm) {
+        chatForm.addEventListener("submit", (e) => {
+            const chatField = chatForm.querySelector('[name="chatMessageField"]').value;
+            if (chatField == "") {
+                alert("Message field cannot be empty. Please enter a message.");
+                e.preventDefault();
+                return false;
+            }
         });
     }
 });
