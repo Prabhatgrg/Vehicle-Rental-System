@@ -83,9 +83,13 @@
     justify-content: center;
 }
 .user-info-container .user-info-section{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
-
+.user-info-container .rating{
+    display: flex;
+    gap: 1.5em;
+    margin-bottom: 1em;
+}
 .divider {
     border-left: 1px solid var(--color-border);
 }
@@ -366,21 +370,20 @@
 .user-activities .tab-list {
     justify-content: space-around;
 }
+
 /* 
- * Review Tab Section
+ * Review Tab Section Start
 */
 .user-meta img {
     max-width: 40px;
 }
-.star .rating {
+.review-items .star .rating {
     display: inline-block;
     overflow: hidden;
-}
-.stars .review-response {
-    font-size: 18px;
-}
-.star .rating {
     position: relative;
+}
+.review-items .review-response {
+    font-size: 18px;
 }
 .rating .star-filled {
     position: absolute;
@@ -397,6 +400,10 @@
     margin-bottom: 20px;
     border-bottom: 1px solid var(--color-border);
 }
+/* 
+ * Review Tab Section End
+*/
+
 /* 
  * Chat Page
 */

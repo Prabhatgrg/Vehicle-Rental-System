@@ -34,8 +34,10 @@
     .user-info-container .user-image-section > img {
         transform: translateY(-20px);
     }
+    .user-info-container .user-info-section{
+        margin-bottom: unset;
+    }
     .user-info-container .review-user{
-        display: inline-block;
         margin-bottom: 2em;
     }
     .user-profile-container .user-activity-section {
