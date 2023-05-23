@@ -1,5 +1,5 @@
 <?php
-get_header("Profile")
+get_header("User")
 ?>
 
 
@@ -42,6 +42,87 @@ get_header("Profile")
                         1.0
                     </span>
                 </div>
+                <div class="review-user">
+                    <div class="modal-container">
+                        <button class="btn btn-dark btn-modal">Review User</button>
+                        <div class="modal-content px-2">
+                            <div class="flex justify-content-center align-items-center h-100">
+                                <div class="modal-dialog col-md-6 col-lg-5 bg-light">
+                                    <div class="flex justify-content-between align-items-center mb-2">
+                                        <h3>Review User</h3>
+
+                                        <button class="btn-close">
+                                            <span class="line"></span>
+                                            <span class="screen-reader-text">Close</span>
+                                        </button>
+                                    </div>
+                                    <form action="#" method="POST" class="grid gap-2 user-review-form">
+
+                                        <div class="star py-1">
+                                            <div class="rating">
+                                                <div class="star-filled" style="width: 0%">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
+                                                    </svg>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
+                                                    </svg>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
+                                                    </svg>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
+                                                    </svg>
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
+                                                    </svg>
+                                                </div>
+                                                <div class="star-outline">
+                                                    <button type="button" value="1">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" value="2">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" value="3">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" value="4">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                    <button type="button" value="5">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-floating">
+                                            <textarea name="userReview" id="userReview" class="form-control" placeholder="Description"></textarea>
+                                            <label for="userReview">Description</label>
+                                        </div>
+
+                                        <div class="form-submit">
+                                            <input type="hidden" name="userRating" value="0">
+                                            <button type="submit" class="btn btn-dark">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="user-activity-section col-9 ps-2 divider">
@@ -49,97 +130,91 @@ get_header("Profile")
                     <div class="tabs-container">
                         <ul class="tab-list">
                             <li><button class="tab-button active" data-target="#user-ad-posts">Ad Posts</button></li>
-                            <li><button class="tab-button" data-target="#user-save-list">Save List</button></li>
                             <li><button class="tab-button" data-target="#user-post-reviews">Reviews</button></li>
                         </ul>
                         <div class="tab-content">
                             <div class="user-ad-posts tab-pane active" id="user-ad-posts">
-                                <div class="tab-ad-container text-center">
-                                    Here Goes the Ad posts that user posted.
-                                </div>
-                            </div>
-                            <div class="user-save-list tab-pane" id="user-save-list">
-                                <div class="container">
-                                    <div class="grid gap-1 column-3">
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                <div class="tab-ad-container">
+                                    <div class="container">
+                                        <div class="grid gap-1 column-3">
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            <div class="card">
+                                                <figure class="card-img">
+                                                    <a href="#">
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
+                                                    <span class="price">Rs. 5,000/day</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="user-post-reviews tab-pane" id="user-post-reviews">
-                                <!-- <div class="tab-review-container text-center">
-                                    Here Goes All the comments that user's posted post has.
-                                </div> -->
                                 <div class="review-card py-1">
                                     <div class="review-items">
                                         <div class="user-meta flex align-items-center gap-1">
