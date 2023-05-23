@@ -12,7 +12,7 @@ get_header("Profile")
                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
                     </div>
                     <div class="user-detail-section">
-                        <span class="user-name">User</span>
+                        <span class="user-name">Me</span>
                         <a href="tel:9850492847" class="user-contact">9850492847</a>
                         <span class="user-location">
                             <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
