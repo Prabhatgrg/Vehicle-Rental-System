@@ -18,8 +18,9 @@ get_header("Profile")
                             <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
                             <span class="user-location-details">N/A</span>
                         </span>
-
                     </div>
+                </aside>
+                <div class="review-user">
                     <div class="modal-container">
                         <button class="btn btn-dark btn-modal">Review User</button>
                         <div class="modal-content px-2">
@@ -99,7 +100,7 @@ get_header("Profile")
                             </div>
                         </div>
                     </div>
-                </aside>
+                </div>
             </div>
 
             <div class="user-activity-section col-9 ps-2 divider">

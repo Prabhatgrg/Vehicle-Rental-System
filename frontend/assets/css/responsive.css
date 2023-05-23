@@ -27,13 +27,16 @@
     .user-profile-container .user-info-section {
         flex-direction: unset;
         gap: 50px;
-        margin-bottom: 20px;
     }
     .user-profile-container .user-info-container {
         width: 100%;
     }
     .user-info-container .user-image-section > img {
         transform: translateY(-20px);
+    }
+    .user-info-container .review-user{
+        display: inline-block;
+        margin-bottom: 2em;
     }
     .user-profile-container .user-activity-section {
         border-left: unset;
