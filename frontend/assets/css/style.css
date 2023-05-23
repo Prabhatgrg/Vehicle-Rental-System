@@ -85,7 +85,7 @@
 .user-info-container .user-info-section{
     margin-bottom: 1em;
 }
-.user-info-container .rating{
+.user-info-container .rating-wrapper{
     display: flex;
     gap: 1.5em;
     margin-bottom: 1em;
@@ -377,7 +377,7 @@
 .user-meta img {
     max-width: 40px;
 }
-.review-items .star .rating {
+.rating{
     display: inline-block;
     overflow: hidden;
     position: relative;
