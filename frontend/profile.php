@@ -86,13 +86,14 @@ get_header("Profile")
                                                 <div class="card-body pt-1">
                                                     <div class="card-detail">
                                                         <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                        <button onclick="//" class="dropdown-menu">
+                                                        <div class="has-dropdown dot-menu">
                                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" fill="black" />
+                                                                <ul class="dropdown-menu">
+                                                                    
+                                                                </ul>
                                                             </svg>
-                                                        </button>
-
-                                                    </div>
+                                                        </div>iv>
                                                     <div class="price-detail">
                                                         <span class="price">Rs. 5,000/day</span>
                                                     </div>
