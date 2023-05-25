@@ -232,7 +232,13 @@
 .card-linear .price {
     font-weight: 700;
 }
-
+.card-body .card-detail{
+    display: flex;
+    justify-content: space-between;
+}
+.card-detail .dropdown-menu{
+    cursor: pointer;
+}
 .card-linear .card-img {
     overflow: hidden;
 }
@@ -363,6 +369,9 @@
 }
 .location-list .location-icon {
     max-width: 30px;
+}
+.user-profile{
+    height: 100vh;
 }
 .user-detail-section .location-icon {
     max-width: 20px;
