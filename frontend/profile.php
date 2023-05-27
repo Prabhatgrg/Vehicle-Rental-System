@@ -94,7 +94,7 @@ get_header("Profile")
                                                             </button>
                                                             <div class="dropdown-content">
                                                                 <ul class="post-dropdown-list">
-                                                                    <li><a href="<?php get_root_directory_uri()?>/editpost?id=">Mark as Rented</a></li>
+                                                                    <li><a href="#">Mark as Rented</a></li>
                                                                     <li><a href="#">Edit Post</a></li>
                                                                     <li><a href="#">Delete Post</a></li>
                                                                 </ul>
