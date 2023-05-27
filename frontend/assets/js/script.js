@@ -10,6 +10,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             // selecting the neccessary elements
             const btnDropdown = container.querySelector(".btn-dropdown");
             const dropdownContent = container.querySelector(".dropdown-content");
+            const dropdownListContent = container.querySelector(".dropdown-list-content")
 
             // Listening on click event
             btnDropdown.addEventListener("click", () => {

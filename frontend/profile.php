@@ -93,7 +93,7 @@ get_header("Profile")
                                                                 </svg>
                                                             </button>
                                                             <div class="dropdown-content">
-                                                                <ul class="post-dropdown-list">
+                                                                <ul class="dropdown-list-content">
                                                                     <li><a href="#">Mark as Rented</a></li>
                                                                     <li><a href="#">Edit Post</a></li>
                                                                     <li><a href="#">Delete Post</a></li>
