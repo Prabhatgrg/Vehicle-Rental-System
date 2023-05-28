@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS vehicles(
     availability ENUM('available', 'rented') NOT NULL DEFAULT 'available'
 );
 
-CREATE TABLE IF NOT EXISTS customers(
+CREATE TABLE IF NOT EXISTS users(
     id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(80) NOT NULL,
     username VARCHAR(50) NOT NULL,
@@ -28,10 +28,10 @@ CREATE TABLE IF NOT EXISTS posts(
 CREATE TABLE IF NOT EXISTS bookings(
     id INT AUTO_INCREMENT PRIMARY KEY,
     vehicle_id INT NOT NULL,
-    customer_id INT NOT NULL,
+    user_id INT NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     total_cost DECIMAL(8,2) NOT NULL,
     FOREIGN KEY (vehicle_id) REFERENCES vehicles(id),
-    FOREIGN KEY (customer_id) REFERENCES customers(id)
+    FOREIGN KEY (customer_id) REFERENCES users(id)
 );

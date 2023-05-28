@@ -18,7 +18,7 @@
             echo "Invalid Email Format";
         }
         else{
-            //Sanitize the user input
+            //Sanitize user input
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
             $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $password = password_hash($password, PASSWORD_DEFAULT); //Hash the password

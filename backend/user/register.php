@@ -23,7 +23,7 @@ $username = filter_var($username, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 $password = password_hash($password, PASSWORD_DEFAULT); //Hash the password
 
 //Insert the user data into the database
-$stmt = $conn->prepare("INSERT INTO `customers`(`fullname`, `username`, `password`, `email`, `phone`) VALUES(?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO `users`(`fullname`, `username`, `password`, `email`, `phone`) VALUES(?, ?, ?, ?, ?)");
 $stmt->bind_param('ssssi', $signup_full_name, $username, $password, $email, $signup_phone);
 if ($stmt->execute()) {
     // Set a success message
