@@ -5,7 +5,7 @@
     <div class="container">
         <div class="flex justify-content-center">
             <div class="col-md-6 col-xl-4">
-                <form action="<?php echo get_root_directory_uri(); ?>/backend/auth/register.php" method="POST" class="grid gap-2 signup-form" autocomplete="off">
+                <form action="<?php echo get_root_directory_uri(); ?>/action_register" method="POST" class="grid gap-2 signup-form" autocomplete="off">
                     <div class="form-field">
                         <label for="signupfullName">Full Name</label>
                         <input type="text" name="signupfullName" id="signupfullName" class="form-control">
