@@ -13,7 +13,7 @@ $routes = [
     get_root_directory_uri() . '/chat' => 'frontend/page-chat.php',
     get_root_directory_uri() . '/search' => 'frontend/search-result.php',
     get_root_directory_uri() . '/admin' => 'backend/admin/admin.php',
-    get_root_directory_uri() . '/editpost' => 'backend/admin/editpost.php',
+    get_root_directory_uri() . '/edit' => 'frontend/edit.php',
     get_root_directory_uri() . '/action_register' => 'frontend/action/action_register.php',
 ];
 
