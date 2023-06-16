@@ -1,10 +1,10 @@
 <?php
 function is_login()
 {
-    if (!isset($_SESSION['user_id'])) :
-        return false;
+    if (isset($_SESSION['user_id'])) :
+        return true;
     endif;
-    return true;
+    return false;
 }
 
 function user_auth($username, $password)
