@@ -39,13 +39,17 @@ function register_user($fullname, $email, $username, $password, $phone){
     global $conn; 
     $message = [];
 
-    $stmt=$conn->prepare("INSERT INTO users(user_fullname, user_login, user_password, user_email, user_phone)VALUES(?, ?, ?, ?, ?");
-    $stmt->bind_param("ssssis", $fullname, $username, $password, $email, $phone);
+    $stmt=$conn->prepare("INSERT INTO re_users(user_fullname, user_login, user_password, user_email, user_phone)VALUES(?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssi", $fullname, $username, $password, $email, $phone);
 
     if($stmt->execute()){
-        $message['success'] = "User Registered Successfully";
+        echo "<script>alert('User Registered Successfully')</script>";
+        header("Location: ./frontend/index.php");
+        // $message['success'] = "User Registered Successfully";
     }else{
-        $message['error'] = "Error Registering User";
+        echo "<script>alert('Error Registering User')</script>";
+        header("Location: ./frontend/page-signup.php");
+        // $message['error'] = "Error Registering User";
     }
     $stmt->close();
     return $message;
