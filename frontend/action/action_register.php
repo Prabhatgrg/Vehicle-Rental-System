@@ -2,12 +2,21 @@
 
 require_once './backend/database/db_config.php';
 
-if($_SERVER['REQUEST_METHOD'==='POST']){
+if($_SERVER["REQUEST_METHOD"]==="POST"){
     $fullname = $_POST['signupfullName'];
     $phone = $_POST['signupPhone'];
     $email = $_POST['signupEmail'];
     $username = $_POST['signupUsername'];
     $password = $_POST['signupPassword'];
+    $validate = validate_user($fullname, $email, $username, $password);
+
+    if(count($validate)==0){
+        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+        $username = filter_var($username, FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        $msg = register_user($fullname, $email, $username, $password, $phone);
+    }
+
 }
 
 ?>

@@ -1,9 +1,9 @@
 <?php
+
 require_once 'backend/database/db_config.php';
 require_once 'users/index.php';
 
-
-function validate_user(string $name, string $username, string $password){
+function validate_user(string $name, string $email, string $username, string $password){
     global $conn;
 
     $message = [];
@@ -32,5 +32,21 @@ function validate_user(string $name, string $username, string $password){
     if(empty($password)){
         $message['password'] = "Password is empty";
     }
+    return $message;
+}
+
+function register_user($fullname, $email, $username, $password, $phone){
+    global $conn; 
+    $message = [];
+
+    $stmt=$conn->prepare("INSERT INTO users(user_fullname, user_login, user_password, user_email, user_phone)VALUES(?, ?, ?, ?, ?");
+    $stmt->bind_param("ssssis", $fullname, $username, $password, $email, $phone);
+
+    if($stmt->execute()){
+        $message['success'] = "User Registered Successfully";
+    }else{
+        $message['error'] = "Error Registering User";
+    }
+    $stmt->close();
     return $message;
 }
