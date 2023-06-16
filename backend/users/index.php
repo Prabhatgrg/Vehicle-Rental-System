@@ -13,7 +13,7 @@ function user_auth($username, $password)
 
     $message = [];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_login = ?");
     $stmt->bind_param('s', $username);
     $stmt->execute();
 
@@ -24,8 +24,8 @@ function user_auth($username, $password)
     } else {
         $user =  $result->fetch_array(MYSQLI_ASSOC);
 
-        if ($user['username'] == $username && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['id'];
+        if ($user['user_login'] == $username && password_verify($password, $user['user_password'])) {
+            $_SESSION['user_id'] = $user['user_id'];
             header('Location: ' . get_root_directory_uri() . '/');
         } else {
             $message['error'] = "Incorrect username or password";
