@@ -43,13 +43,9 @@ function register_user($fullname, $email, $username, $password, $phone){
     $stmt->bind_param("ssssi", $fullname, $username, $password, $email, $phone);
 
     if($stmt->execute()){
-        echo "<script>alert('User Registered Successfully')</script>";
-        header("Location: ./frontend/index.php");
-        // $message['success'] = "User Registered Successfully";
+        $message['success'] = "User Registered Successfully";
     }else{
-        echo "<script>alert('Error Registering User')</script>";
-        header("Location: ./frontend/page-signup.php");
-        // $message['error'] = "Error Registering User";
+        $message['error'] = "Error Registering User";
     }
     $stmt->close();
     return $message;
