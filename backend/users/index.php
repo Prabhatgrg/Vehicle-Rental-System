@@ -1,4 +1,12 @@
 <?php
+function is_login()
+{
+    if (!isset($_SESSION['user_id'])) :
+        return false;
+    endif;
+    return true;
+}
+
 function user_auth($username, $password)
 {
     global $conn;
