@@ -23,4 +23,3 @@ session_start();
 require_once './routes.php';
 
 close_con($conn);
-session_destroy();

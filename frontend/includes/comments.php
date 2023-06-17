@@ -35,7 +35,7 @@
         </li>
     </ul>
     <?php if (is_login()) : ?>
-        <form action="#" method="POST" id="comment-form" class="comment-form" autocomplete="off">
+        <form method="POST" id="comment-form" class="comment-form" autocomplete="off">
             <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
             <div class="form-field flex-1">
                 <div class="replying-to">
@@ -52,7 +52,8 @@
             </div>
         </form>
     <?php else : ?>
+        .
+        <span class="text-error">Please login to post comment</span>
 
-        <span>Please login to make comment</span>
     <?php endif; ?>
 </div>

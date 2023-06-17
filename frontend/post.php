@@ -4,6 +4,16 @@ if (!isset($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
 endif;
 
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') :
+    $post_id = $_GET['id'];
+    $user_id = get_user_id();
+    $user_name = get_user_name();
+    $comment_content = $_POST['comment-field'];
+
+    post_comment($post_id, $user_id, $user_name, $comment_content);
+endif;
+
 get_header();
 
 ?>

@@ -7,6 +7,19 @@ function is_login()
     return false;
 }
 
+function get_user_id()
+{
+    if (isset($_SESSION['user_id'])) :
+        return $_SESSION['user_id'];
+    endif;
+}
+function get_user_name()
+{
+    if (isset($_SESSION['user_name'])) :
+        return $_SESSION['user_name'];
+    endif;
+}
+
 function user_auth($username, $password)
 {
     global $conn;
@@ -26,6 +39,7 @@ function user_auth($username, $password)
 
         if ($user['user_login'] == $username && password_verify($password, $user['user_password'])) {
             $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_name'] = $user['user_fullname'];
             header('Location: ' . get_root_directory_uri() . '/');
         } else {
             $message['error'] = "Incorrect username or password";

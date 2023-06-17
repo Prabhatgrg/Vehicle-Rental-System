@@ -232,8 +232,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 return false;
             }
 
-            alert("Your comment has been submitted");
-
             commentForm.submit();
         });
     }
