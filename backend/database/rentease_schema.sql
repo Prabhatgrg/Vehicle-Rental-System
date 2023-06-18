@@ -36,3 +36,9 @@ CREATE TABLE IF NOT EXISTS re_comments(
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (comment_post_id) REFERENCES re_posts(post_id)
 );
+
+CREATE TABLE IF NOT EXISTS re_user_roles(
+    user_roles_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES re_users(user_id)
+);
