@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS re_comments(
 );
 
 CREATE TABLE IF NOT EXISTS re_user_roles(
-    user_roles_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    role_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     user_id INT,
+    user_roles VARCHAR(25) DEFAULT 'user',
     FOREIGN KEY (user_id) REFERENCES re_users(user_id)
 );
