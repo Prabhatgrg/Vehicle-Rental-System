@@ -106,3 +106,18 @@ function register_user($fullname, $email, $username, $password, $phone)
     $stmt->close();
     return $message;
 }
+
+function isadmin(){
+    global $conn;
+    $stmt=$conn->prepare("SELECT * FROM re_user_roles WHERE user_id=?");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $data = $result->fetch_array(MYSQLI_ASSOC);
+
+    if($data['user_roles' == 'admin']){
+        return true;
+    }else{
+        return false;
+    }
+}

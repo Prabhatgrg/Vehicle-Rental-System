@@ -14,8 +14,3 @@ function post_comment($post_id, $user_id, $comment_content, $reply_to = null)
 
     endif;
 }
-
-
-function isadmin(){
-
-}
