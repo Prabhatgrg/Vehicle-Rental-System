@@ -1,4 +1,6 @@
 <?php
+
+// Check is user is logged in
 function is_login()
 {
     if (isset($_SESSION['user_id'])) :
@@ -7,12 +9,15 @@ function is_login()
     return false;
 }
 
+// Get User ID
 function get_user_id()
 {
     if (isset($_SESSION['user_id'])) :
         return $_SESSION['user_id'];
     endif;
 }
+
+//Get User Name
 function get_user_name()
 {
     if (isset($_SESSION['user_name'])) :
@@ -20,6 +25,7 @@ function get_user_name()
     endif;
 }
 
+// Authenticate the User
 function user_auth($username, $password)
 {
     global $conn;
@@ -45,7 +51,58 @@ function user_auth($username, $password)
             $message['error'] = "Incorrect username or password";
         }
     }
+    return $message;
+}
 
+// Validate the User Data
+function validate_user(string $name, string $email, string $username, string $password)
+{
+    global $conn;
 
+    $message = [];
+    if (empty($name)) {
+        $message['name'] = 'Name is empty';
+    }
+    if (empty($username)) {
+        $message['username'] = 'Username is empty';
+    } else {
+        $stmt = $conn->prepare('SELECT * FROM re_users WHERE user_login=?');
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $users = $result->fetch_array(MYSQLI_ASSOC);
+
+        if (isset($users)) {
+            $message['username'] = "Username Already Exists";
+        }
+    }
+    if (empty($email)) {
+        $message['email'] = 'Email is empty';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $message['email'] = "Invalid Email Format";
+    }
+    if (empty($password)) {
+        $message['password'] = "Password is empty";
+    }
+    return $message;
+}
+
+// Register the User
+function register_user($fullname, $email, $username, $password, $phone)
+{
+    global $conn;
+    $message = [];
+
+    $stmt = $conn->prepare("INSERT INTO re_users(user_fullname, user_login, user_password, user_email, user_phone)VALUES(?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssi", $fullname, $username, $password, $email, $phone);
+
+    if ($stmt->execute()) {
+        $message['success'] = "User Registered Successfully";
+        header('Location: ' . get_root_directory_uri() . '/');
+    } else {
+        $message['error'] = "Error Registering User";
+    }
+    $stmt->close();
     return $message;
 }
