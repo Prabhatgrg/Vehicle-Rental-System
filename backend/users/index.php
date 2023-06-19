@@ -1,6 +1,6 @@
 <?php
 
-// Check is user is logged in
+// Returns boolean value if user is logged in
 function is_login()
 {
     if (isset($_SESSION['user_id'])) :
