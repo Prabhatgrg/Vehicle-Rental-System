@@ -1,5 +1,5 @@
 <?php
-is_login();
+check_if_login();
 logout();
 exit();
 ?>
