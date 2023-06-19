@@ -1138,3 +1138,7 @@ textarea.form-control {
 /* 
  * End of Utilities classes
  */
+
+.overflow-unset {
+    overflow: unset !important;
+}

@@ -34,10 +34,10 @@
     .user-info-container .user-image-section > img {
         transform: translateY(-20px);
     }
-    .user-info-container .user-info-section{
+    .user-info-container .user-info-section {
         margin-bottom: unset;
     }
-    .user-info-container .review-user{
+    .user-info-container .review-user {
         margin-bottom: 2em;
     }
     .user-profile-container .user-activity-section {
@@ -59,9 +59,6 @@
     .trending .grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem 2rem;
-    }
-    .main-navigation .menu {
-        display: none;
     }
     .card-linear .card-img {
         align-self: flex-start;

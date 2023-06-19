@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
      * selecting the element that contains the class post-form
      */
     const postForm = document.querySelector(".post-form");
-    if (postForm[0]) {
+    if (postForm) {
         postForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
@@ -197,6 +197,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 const currentButton = e.target;
                 const currentParent = currentButton.parentElement.parentElement;
                 const replyUserName = currentParent.querySelector(".user-name").innerText;
+                const replyCommentId = currentParent.getAttribute("data-comment-id");
 
                 // Adding active class if replying user element has not contains active class
                 if (!replyingToElem.classList.contains(replyActiveClass)) {
@@ -204,7 +205,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 }
 
                 // setting the value
-                replyToInput.value = replyUserName;
+                replyToInput.value = replyCommentId;
                 replyUserContainer.innerText = replyUserName;
                 commentField.setAttribute("placeholder", `Reply to ${replyUserName}`);
             });

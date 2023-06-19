@@ -73,126 +73,150 @@
                             <div class="modal-content px-2">
                                 <div class="flex justify-content-center align-items-center h-100">
                                     <div class="modal-dialog col-md-6 col-lg-5 bg-light">
-                                        <div class="flex justify-content-between align-items-center mb-2">
-                                            <h3>Create New Post</h3>
 
-                                            <button class="btn-close">
-                                                <span class="line"></span>
-                                                <span class="screen-reader-text">Close</span>
-                                            </button>
-                                        </div>
-                                        <form action="#" method="POST" class="grid gap-2 post-form">
-                                            <div class="form-floating">
-                                                <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
-                                                <label for="postTitle">Post Title</label>
+                                        <?php if (is_login()) : ?>
+                                            <div class="flex justify-content-between align-items-center mb-2">
+                                                <h3>Create New Post</h3>
+
+                                                <button class="btn-close">
+                                                    <span class="line"></span>
+                                                    <span class="screen-reader-text">Close</span>
+                                                </button>
                                             </div>
-                                            <div class="form-file-upload">
-                                                <span class="form-title mb-2">Upload Image For Post</span>
-                                                <label for="postImageUpload">
-                                                    <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                                        <defs>
-                                                            <style>
-                                                                .cls-1 {
-                                                                    fill: none;
-                                                                    stroke: #000;
-                                                                    stroke-linecap: round;
-                                                                    stroke-linejoin: round;
-                                                                    stroke-width: 2px;
-                                                                }
-                                                            </style>
-                                                        </defs>
-                                                        <title />
-                                                        <g id="plus">
-                                                            <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
-                                                            <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
-                                                        </g>
-                                                    </svg>
-                                                </label>
-                                                <input type="file" name="postImageUpload" id="postImageUpload" class="form-file" multiple>
-                                            </div>
-                                            <div class="form-field">
-                                                <label for="postCategory">Category</label>
-                                                <select name="postCategory" id="postCategory" class="form-select">
-                                                    <option value="Bike">Bike</option>
-                                                    <option value="Scooty">Scooty</option>
-                                                    <option value="Car">Car</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
-                                                <label for="postLocation">Location</label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <textarea name="postDescription" id="postDescription" class="form-control" placeholder="Description"></textarea>
-                                                <label for="postDescription">Description</label>
-                                            </div>
-                                            <div class="form-field">
-                                                <label for="postDelivery">Delivery</label>
-                                                <select name="postDelivery" id="postDelivery" class="form-select">
-                                                    <option value="true">Yes</option>
-                                                    <option value="false">No</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="color" name="postColour" id="postColour" class="form-control form-color" placeholder="Colour">
-                                                <label for="postColour">Colour</label>
-                                            </div>
-                                            <div class="form-field">
-                                                <label for="postFuel">Fuel</label>
-                                                <select name="postFuel" id="postFuel" class="form-select">
-                                                    <option value="Electric">Electric</option>
-                                                    <option value="Petrol">Petrol</option>
-                                                    <option value="Diesel">Diesel</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="text" name="postMileage" id="postMileage" class="form-control" placeholder="Mileage">
-                                                <label for="postMileage">Mileage</label>
-                                            </div>
-                                            <div class="form-group grid column-2">
+                                            <form action="#" method="POST" class="grid gap-2 post-form">
                                                 <div class="form-floating">
-                                                    <input type="number" name="postPrice" id="postPrice" class="form-control" placeholder="Price">
-                                                    <label for="postPrice">Price</label>
+                                                    <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
+                                                    <label for="postTitle">Post Title</label>
+                                                </div>
+                                                <div class="form-file-upload">
+                                                    <span class="form-title mb-2">Upload Image For Post</span>
+                                                    <label for="postImageUpload">
+                                                        <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                            <defs>
+                                                                <style>
+                                                                    .cls-1 {
+                                                                        fill: none;
+                                                                        stroke: #000;
+                                                                        stroke-linecap: round;
+                                                                        stroke-linejoin: round;
+                                                                        stroke-width: 2px;
+                                                                    }
+                                                                </style>
+                                                            </defs>
+                                                            <title />
+                                                            <g id="plus">
+                                                                <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
+                                                                <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
+                                                            </g>
+                                                        </svg>
+                                                    </label>
+                                                    <input type="file" name="postImageUpload" id="postImageUpload" class="form-file" multiple>
                                                 </div>
                                                 <div class="form-field">
-                                                    <select name="postNegotiable" id="postNegotiable" class="form-select">
-                                                        <option value="" selected>Negotiable</option>
+                                                    <label for="postCategory">Category</label>
+                                                    <select name="postCategory" id="postCategory" class="form-select">
+                                                        <option value="Bike">Bike</option>
+                                                        <option value="Scooty">Scooty</option>
+                                                        <option value="Car">Car</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
+                                                    <label for="postLocation">Location</label>
+                                                </div>
+                                                <div class="form-floating">
+                                                    <textarea name="postDescription" id="postDescription" class="form-control" placeholder="Description"></textarea>
+                                                    <label for="postDescription">Description</label>
+                                                </div>
+                                                <div class="form-field">
+                                                    <label for="postDelivery">Delivery</label>
+                                                    <select name="postDelivery" id="postDelivery" class="form-select">
                                                         <option value="true">Yes</option>
                                                         <option value="false">No</option>
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="form-group grid column-2">
                                                 <div class="form-floating">
-                                                    <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
-                                                    <label for="postRentStartDate">Vehicle Rent Start Date</label>
+                                                    <input type="color" name="postColour" id="postColour" class="form-control form-color" placeholder="Colour">
+                                                    <label for="postColour">Colour</label>
+                                                </div>
+                                                <div class="form-field">
+                                                    <label for="postFuel">Fuel</label>
+                                                    <select name="postFuel" id="postFuel" class="form-select">
+                                                        <option value="Electric">Electric</option>
+                                                        <option value="Petrol">Petrol</option>
+                                                        <option value="Diesel">Diesel</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-floating">
-                                                    <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
-                                                    <label for="postRentEndDate">Vehicle Rent End Date</label>
+                                                    <input type="text" name="postMileage" id="postMileage" class="form-control" placeholder="Mileage">
+                                                    <label for="postMileage">Mileage</label>
                                                 </div>
+                                                <div class="form-group grid column-2">
+                                                    <div class="form-floating">
+                                                        <input type="number" name="postPrice" id="postPrice" class="form-control" placeholder="Price">
+                                                        <label for="postPrice">Price</label>
+                                                    </div>
+                                                    <div class="form-field">
+                                                        <select name="postNegotiable" id="postNegotiable" class="form-select">
+                                                            <option value="" selected>Negotiable</option>
+                                                            <option value="true">Yes</option>
+                                                            <option value="false">No</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group grid column-2">
+                                                    <div class="form-floating">
+                                                        <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
+                                                        <label for="postRentStartDate">Vehicle Rent Start Date</label>
+                                                    </div>
+                                                    <div class="form-floating">
+                                                        <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
+                                                        <label for="postRentEndDate">Vehicle Rent End Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-submit">
+                                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                                </div>
+                                            </form>
+                                        <?php else : ?>
+                                            <div class="flex justify-content-between align-items-center mb-2">
+                                                <h3>Notice!</h3>
+
+                                                <button class="btn-close">
+                                                    <span class="line"></span>
+                                                    <span class="screen-reader-text">Close</span>
+                                                </button>
                                             </div>
-                                            <div class="form-submit">
-                                                <button type="submit" class="btn btn-dark">Submit</button>
-                                            </div>
-                                        </form>
+                                            <p>You need to login to post the rental ads.</p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="has-dropdown user-avatar">
-                            <div class="user-info">
-                                <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                                <span class="user-name">User</span>
-                            </div>
-
-                            <ul class="dropdown-menu">
-                                <li><a href="<?php echo get_root_directory_uri(); ?>/profile">Profile</a></li>
-                                <li><a href="<?php echo get_root_directory_uri(); ?>/settings">Setting</a></li>
-                                <li><a href="#">Logout</a></li>
+                        <?php if (!is_login()) : ?>
+                            <ul class="menu">
+                                <li><a href="<?php echo get_root_directory_uri(); ?>/login">Login</a></li>
+                                <li><a href="<?php echo get_root_directory_uri(); ?>/signup">Signup</a></li>
                             </ul>
-                        </div>
+                        <?php endif; ?>
+
+                        <?php if (is_login()) : ?>
+                            <div class="has-dropdown user-avatar">
+                                <div class="user-info">
+                                    <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                                    <span class="user-name"><?php echo get_user_name(); ?></span>
+                                </div>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="<?php echo get_root_directory_uri(); ?>/profile">Profile</a></li>
+                                    <li><a href="<?php echo get_root_directory_uri(); ?>/settings">Setting</a></li>
+
+
+                                    <li><a href="#">Logout</a></li>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </nav>
                     <div class="menu-overlay"></div>
 

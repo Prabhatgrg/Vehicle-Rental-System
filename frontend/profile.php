@@ -76,7 +76,7 @@ get_header("Profile")
                                 <div class="tab-ad-container">
                                     <div class="container">
                                         <div class="grid gap-1 column-3">
-                                            <div class="card">
+                                            <div class="card overflow-unset">
                                                 <figure class="card-img">
                                                     <a href="#">
                                                         <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">

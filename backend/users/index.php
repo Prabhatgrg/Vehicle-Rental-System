@@ -25,6 +25,19 @@ function get_user_name()
     endif;
 }
 
+// get user by id
+function get_username_by_id($id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT user_fullname FROM re_users WHERE user_id = ?");
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    return $result->fetch_array(MYSQLI_ASSOC)['user_fullname'];
+}
+
 // Authenticate the User
 function user_auth($username, $password)
 {
@@ -107,17 +120,18 @@ function register_user($fullname, $email, $username, $password, $phone)
     return $message;
 }
 
-function isadmin(){
+function isadmin()
+{
     global $conn;
-    $stmt=$conn->prepare("SELECT * FROM re_user_roles WHERE user_id=?");
+    $stmt = $conn->prepare("SELECT * FROM re_user_roles WHERE user_id=?");
     $stmt->bind_param("i", $_SESSION['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $data = $result->fetch_array(MYSQLI_ASSOC);
 
-    if($data['user_roles' == 'admin']){
+    if ($data['user_roles' == 'admin']) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }

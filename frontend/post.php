@@ -1,17 +1,17 @@
 <?php
+$post_id = $_GET['id'];
 
-if (!isset($_GET['id'])) :
+if (!isset($_GET['id']) || empty($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
 endif;
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-    $post_id = $_GET['id'];
     $user_id = get_user_id();
-    $user_name = get_user_name();
     $comment_content = $_POST['comment-field'];
+    $reply_to = $_POST['reply-to'];
 
-    post_comment($post_id, $user_id, $user_name, $comment_content);
+    post_comment($post_id, $user_id, $comment_content, $reply_to);
 endif;
 
 get_header();
