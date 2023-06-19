@@ -211,9 +211,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="<?php echo get_root_directory_uri(); ?>/profile">Profile</a></li>
                                     <li><a href="<?php echo get_root_directory_uri(); ?>/settings">Setting</a></li>
-
-
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="<?php echo get_root_directory_uri(); ?>/logout">Logout</a></li>
                                 </ul>
                             </div>
                         <?php endif; ?>

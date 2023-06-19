@@ -5,9 +5,18 @@ function is_login()
 {
     if (isset($_SESSION['user_id'])) :
         return true;
+    else :
+        header('Location: ' . get_root_directory_uri() . '/login');
     endif;
-    return false;
 }
+
+// Check if the user is logged in
+// function check_if_login()
+// {
+//     if (!is_login()) {
+//         header('Location: ' . get_root_directory_uri() . '/login');
+//     }
+// }
 
 // Get User ID
 function get_user_id()
@@ -25,7 +34,7 @@ function get_user_name()
     endif;
 }
 
-// get user by id
+// Get user by id
 function get_username_by_id($id)
 {
     global $conn;
@@ -134,4 +143,11 @@ function isadmin()
     } else {
         return false;
     }
+}
+
+function logout(){
+    session_unset();
+    session_destroy();
+    // Redirect the user to login page
+    header('Location: ' . get_root_directory_uri());
 }
