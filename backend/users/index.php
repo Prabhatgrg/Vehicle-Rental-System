@@ -6,17 +6,17 @@ function is_login()
     if (isset($_SESSION['user_id'])) :
         return true;
     else :
-        header('Location: ' . get_root_directory_uri() . '/login');
+        return false;
     endif;
 }
 
 // Check if the user is logged in
-// function check_if_login()
-// {
-//     if (!is_login()) {
-//         header('Location: ' . get_root_directory_uri() . '/login');
-//     }
-// }
+function check_if_login()
+{
+    if (!is_login()) {
+        header('Location: ' . get_root_directory_uri() . '/login');
+    }
+}
 
 // Get User ID
 function get_user_id()
@@ -129,7 +129,7 @@ function register_user($fullname, $email, $username, $password, $phone)
     return $message;
 }
 
-function isadmin()
+function is_admin()
 {
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM re_user_roles WHERE user_id=?");
@@ -149,5 +149,5 @@ function logout(){
     session_unset();
     session_destroy();
     // Redirect the user to login page
-    header('Location: ' . get_root_directory_uri());
+    header('Location: ' . get_root_directory_uri() . '/');
 }
