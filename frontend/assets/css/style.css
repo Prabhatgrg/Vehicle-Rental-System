@@ -313,6 +313,9 @@
 .comment-list {
     margin-bottom: 2rem;
 }
+.comment-list li:not(:last-child) {
+    margin-bottom: 2rem;
+}
 .comment-list li {
     display: grid;
     gap: 1rem;

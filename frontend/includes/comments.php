@@ -9,12 +9,13 @@ $comments = get_comments_data($post_id);
 <div id="comments">
 
 
-    <?php if (!isset($comments['no_comments'])) :
-        echo '<ul class="comment-list">';
-        show_comments($comments);
-        echo '</ul>';
+    <?php if (!isset($comments['no_comments'])) : ?>
+        <ul class="comment-list">
+            <?php show_comments($comments); ?>
+        </ul>
+    <?php else : ?>
 
-    else : ?>
+        <div class="mb-3"><span> There is no comments of this post.</span></div>
 
     <?php endif; ?>
 

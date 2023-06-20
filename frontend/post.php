@@ -18,6 +18,18 @@ get_header();
 
 ?>
 
+<?php
+$comments = get_no_parent_comments($post_id);
+echo '<pre>';
+var_dump($comments);
+echo '</pre>';
+if (!isset($comments['no_comments'])) :
+    echo '<ul class="comment-list">';
+    show_comments($comments);
+    echo '</ul>';
+
+endif; ?>
+
 <section class="post-detail py-5">
     <div class="container">
         <div class="flex flex-wrap">
