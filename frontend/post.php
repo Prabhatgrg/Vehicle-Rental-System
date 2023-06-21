@@ -5,7 +5,6 @@ if (!isset($_GET['id']) || empty($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
 endif;
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     $user_id = get_user_id();
     $comment_content = $_POST['comment-field'];
@@ -17,18 +16,6 @@ endif;
 get_header();
 
 ?>
-
-<?php
-$comments = get_no_parent_comments($post_id);
-echo '<pre>';
-var_dump($comments);
-echo '</pre>';
-if (!isset($comments['no_comments'])) :
-    echo '<ul class="comment-list">';
-    show_comments($comments);
-    echo '</ul>';
-
-endif; ?>
 
 <section class="post-detail py-5">
     <div class="container">

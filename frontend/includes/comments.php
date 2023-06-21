@@ -1,68 +1,9 @@
-<?php
-
-global $post_id;
-
-$comments = get_comments_data($post_id);
-
-?>
+<?php global $post_id; ?>
 
 <div id="comments">
-
-
-    <?php if (!isset($comments['no_comments'])) : ?>
-        <ul class="comment-list">
-            <?php show_comments($comments); ?>
-        </ul>
-    <?php else : ?>
-
-        <div class="mb-3"><span> There is no comments of this post.</span></div>
-
-    <?php endif; ?>
-
-
-    <?php '
-
     <ul class="comment-list">
-
-
-
-
-
-
-        <li data-comment-id="1">
-            <div class="user-info">
-                <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                <span class="user-name">User One</span>
-            </div>
-            <div class="comment-container">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ab, magnam vitae, saepe corrupti quas voluptatum rem odit labore placeat aliquid repellendus maiores dicta veritatis. Nam unde asperiores doloribus magnam?
-                </p>
-            </div>
-            <div class="comment-meta">
-                <span class="time">Just Now</span>
-                <button class="btn-reply">Reply</button>
-            </div>
-
-            <ul class="sub-comment-list">
-                <li data-comment-id="2">
-                    <div class="user-info">
-                        <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                        <span class="user-name">User Two</span>
-                    </div>
-                    <div class="comment-container">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat ab, magnam vitae, saepe corrupti quas voluptatum rem odit labore placeat aliquid repellendus maiores dicta veritatis. Nam unde asperiores doloribus magnam?
-                        </p>
-                    </div>
-                    <div class="comment-meta">
-                        <span class="time">Just Now</span>
-                        <button class="btn-reply">Reply</button>
-                    </div>
-                </li>
-            </ul>
-        </li>
-    </ul>'; ?>
+        <?php display_comments($post_id); ?>
+    </ul>
     <?php if (is_login()) : ?>
         <form method="POST" id="comment-form" class="comment-form" autocomplete="off">
             <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
@@ -81,8 +22,6 @@ $comments = get_comments_data($post_id);
             </div>
         </form>
     <?php else : ?>
-        .
         <span class="text-error">Please login to post comment</span>
-
     <?php endif; ?>
 </div>
