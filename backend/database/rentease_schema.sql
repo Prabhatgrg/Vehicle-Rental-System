@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS re_comments(
     user_id INT,
     comment_post_id INT,
     comment_content VARCHAR(255) NOT NULL,
-    comment_parent INT,
+    comment_parent VARCHAR(20) DEFAULT false,
     comment_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (comment_post_id) REFERENCES re_posts(post_id)
