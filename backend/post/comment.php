@@ -62,7 +62,7 @@ function get_reply_comments($comment_id)
 }
 
 //  function to check has comment reply
-function has_comment_reply($comment_id)
+function has_reply($comment_id)
 {
     global $conn;
 
@@ -108,12 +108,14 @@ function display_reply($comment_id)
                 <span class="time"><?php echo $comment_date; ?></span>
                 <?php if (is_login()) : ?>
                     <button class="btn-reply">Reply</button>
+                    <button class="btn-delete">Delete</button>
                 <?php endif; ?>
+                
             </div>
 
             <?php
             // check if sub comments
-            if (has_comment_reply($reply['comment_id'])) :
+            if (has_reply($reply['comment_id'])) :
                 display_reply($reply['comment_id']);
             endif;
             ?>
@@ -153,12 +155,13 @@ function display_comments($post_id)
                     <span class="time"><?php echo $comment_date; ?></span>
                     <?php if (is_login()) : ?>
                         <button class="btn-reply">Reply</button>
+                        <button class="btn-delete">Delete</button>
                     <?php endif; ?>
                 </div>
 
 
                 <?php
-                if (has_comment_reply($comment['comment_id'])) :
+                if (has_reply($comment['comment_id'])) :
                     display_reply($comment['comment_id']);
                 endif;
                 ?>
@@ -171,4 +174,12 @@ function display_comments($post_id)
     else :
         echo '<div class="mb-3"><span> There is no comments of this post.</span></div>';
     endif;
+}
+
+function comment_delete($comment_id){
+    global $conn;
+
+    $stmt=$conn->prepare("DELETE FROM re_comments WHERE comment_id=?");
+    $stmt->bind_param("i", $comment_id);
+    $stmt->execute();
 }
