@@ -538,9 +538,13 @@
 .admin-sidebar {
     color: var(--color-light);
 }
+.admin-menu-list li:not(:last-child) {
+    margin-bottom: 1rem;
+}
 .admin-menu-list .sub-menu {
     margin-top: 1rem;
-    padding-left: 1.5rem;
+    padding-left: 3rem;
+    margin-bottom: 1rem;
 }
 .admin-menu-list .sub-menu li:not(:last-child) {
     margin-bottom: 1rem;

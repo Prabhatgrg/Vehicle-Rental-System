@@ -43,3 +43,8 @@ CREATE TABLE IF NOT EXISTS re_user_roles(
     user_roles VARCHAR(25) DEFAULT 'user',
     FOREIGN KEY (user_id) REFERENCES re_users(user_id)
 );
+
+CREATE TABLE IF NOT EXISTS re_category(
+    category_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    category_title VARCHAR(255) NOT NULL
+);
