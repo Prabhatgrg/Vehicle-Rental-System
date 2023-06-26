@@ -138,14 +138,15 @@ function is_admin()
     $result = $stmt->get_result();
     $data = $result->fetch_array(MYSQLI_ASSOC);
 
-    if ($data['user_roles' == 'admin']) {
+    if ($data['user_roles'] == 'admin') {
         return true;
     } else {
         return false;
     }
 }
 
-function logout(){
+function logout()
+{
     session_unset();
     session_destroy();
     // Redirect the user to login page

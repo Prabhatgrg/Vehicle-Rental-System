@@ -3,77 +3,41 @@ if (!isset($_GET['action'])) :
 
     $categories = get_categories();
 
+    if ($categories) :
+        echo '<h2 class="h3 mb-1">Categories</h2>', '<ul class="category-list">';
+
+        foreach ($categories as $category) :
 ?>
 
-
-
-
-<?php elseif ($_GET['action'] == 'add category') : ?>
+            <li>
+                <strong><?php echo $category['category_title']; ?></strong>
+                <div class="list-actions">
+                    <a href="?page=<?php echo urlencode('category'); ?>&action=<?php echo urlencode('edit category'); ?>&category_id=<?php echo urlencode($category['category_id']); ?>" class="edit-category">Edit</a>
+                    <a href="?page=<?php echo urlencode('category'); ?>&action=<?php echo urlencode('delete category'); ?>&category_id=<?php echo urlencode($category['category_id']); ?>" class="delete-category">Delete</a>
+                </div>
+            </li>
 
     <?php
+        endforeach;
+        echo '</ul>';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-
-        $category_title = $_POST['category-title'];
-
-        $message = add_category($category_title);
-
+    else :
+        echo '<span>There is no category found.</span>';
     endif;
 
-    ?>
+elseif ($_GET['action'] == 'add category') :
 
-    <div class="flex flex-wrap">
-        <div class="col-md-12">
-            <h2 class="h3 mb-2">Add category</h2>
-            <?php
-            if (isset($message['success'])) :
-            ?>
-                <div class="alert mb-2">
-                    <p class="bg-success p-1">
-                        <?php echo $message['success']; ?>
-                    </p>
-                </div>
-            <?php
-            endif;
-            ?>
-            <?php
-            if (isset($message['error'])) :
-            ?>
-                <div class="alert mb-2">
-                    <p class="bg-error p-1">
-                        <?php echo $message['error']; ?>
-                    </p>
-                </div>
-            <?php
-            endif;
-            ?>
-            <?php
-            if (isset($message['category_exists'])) :
-            ?>
-                <div class="alert mb-2">
-                    <p class="bg-error p-1">
-                        <?php echo $message['category_exists']; ?>
-                    </p>
-                </div>
-            <?php
-            endif;
-            ?>
-        </div>
-        <div class="col-md-6">
-            <form method="post">
-                <div class="form-field mb-2">
-                    <label for="category-title">Category Title</label>
-                    <input type="text" name="category-title" id="category-title" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-dark">Submit</button>
-            </form>
-        </div>
-    </div>
+    require_once 'action/add_category.php';
 
-<?php elseif ($_GET['action'] == 'edit category') : ?>
+elseif ($_GET['action'] == 'edit category') :
 
+    require_once 'action/edit_category.php';
 
-<?php else : ?>
+elseif ($_GET['action'] == 'delete category') :
+
+    require_once 'action/delete_category.php';
+
+else : ?>
 
 
 <?php endif; ?>

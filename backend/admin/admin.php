@@ -1,4 +1,9 @@
-<?php require_once 'includes/header.php'; ?>
+<?php
+
+if (!is_admin()) :
+    header('Location: ' . get_root_directory_uri() . '/profile');
+endif;
+require_once 'includes/header.php'; ?>
 
 <div class="flex flex-wrap">
     <aside class="col-2 col-md-3 bg-dark">

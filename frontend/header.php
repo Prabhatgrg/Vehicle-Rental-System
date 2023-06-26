@@ -112,15 +112,15 @@
                                                     </label>
                                                     <input type="file" name="postImageUpload" id="postImageUpload" class="form-file" multiple>
                                                 </div>
-                                                <div class="form-field">
-                                                    <label for="postCategory">Category</label>
 
-                                                    <?php
+                                                <?php
 
-                                                    $categories = get_categories();
+                                                $categories = get_categories();
 
-                                                    if ($categories) :
-                                                    ?>
+                                                if ($categories) :
+                                                ?>
+                                                    <div class="form-field">
+                                                        <label for="postCategory">Category</label>
                                                         <select name="postCategory" id="postCategory" class="form-select">
 
                                                             <?php foreach ($categories as $category) : ?>
@@ -129,8 +129,10 @@
 
                                                             <?php endforeach; ?>
                                                         </select>
-                                                    <?php endif; ?>
-                                                </div>
+
+                                                    </div>
+                                                <?php
+                                                endif; ?>
                                                 <div class="form-floating">
                                                     <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
                                                     <label for="postLocation">Location</label>
