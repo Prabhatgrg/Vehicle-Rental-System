@@ -17,6 +17,18 @@ function add_category($category_title)
 
     $message = [];
 
+    $stmt = $conn->prepare("SELECT * FROM re_category WHERE category_title = ?");
+    $stmt->bind_param('s', $category_title);
+
+    $stmt->execute();
+
+    $num_rows = $stmt->get_result()->num_rows;
+
+    if ($num_rows > 0) {
+        $message['category_exists'] = 'The category you are trying to add is already exists.';
+        return $message;
+    }
+
     $stmt = $conn->prepare("INSERT INTO re_category (category_title) VALUES (?)");
     $stmt->bind_param('s', $category_title);
 

@@ -1,7 +1,14 @@
-<?php if (!isset($_GET['action'])) : ?>
+<?php
+if (!isset($_GET['action'])) :
+
+    $categories = get_categories();
+
+?>
 
 
-<?php else : ?>
+
+
+<?php elseif ($_GET['action'] == 'add category') : ?>
 
     <?php
 
@@ -14,9 +21,6 @@
     endif;
 
     ?>
-
-
-
 
     <div class="flex flex-wrap">
         <div class="col-md-12">
@@ -32,13 +36,23 @@
             <?php
             endif;
             ?>
-
             <?php
             if (isset($message['error'])) :
             ?>
                 <div class="alert mb-2">
                     <p class="bg-error p-1">
                         <?php echo $message['error']; ?>
+                    </p>
+                </div>
+            <?php
+            endif;
+            ?>
+            <?php
+            if (isset($message['category_exists'])) :
+            ?>
+                <div class="alert mb-2">
+                    <p class="bg-error p-1">
+                        <?php echo $message['category_exists']; ?>
                     </p>
                 </div>
             <?php
@@ -55,5 +69,11 @@
             </form>
         </div>
     </div>
+
+<?php elseif ($_GET['action'] == 'edit category') : ?>
+
+
+<?php else : ?>
+
 
 <?php endif; ?>
