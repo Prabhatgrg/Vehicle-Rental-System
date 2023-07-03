@@ -16,6 +16,7 @@ $routes = [
     get_root_directory_uri() . '/admin' => 'backend/admin/admin.php',
     get_root_directory_uri() . '/edit' => 'frontend/edit.php',
     get_root_directory_uri() . '/action_register' => 'frontend/action/action_register.php',
+    get_root_directory_uri() . '/change_password' => 'frontend/action/action_changePassword.php'
 ];
 
 // Get the URL path from the request

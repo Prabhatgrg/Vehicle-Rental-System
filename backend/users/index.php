@@ -150,6 +150,41 @@ function is_admin()
     }
 }
 
+function change_password($old_password, $new_password){
+    global $conn;
+
+    $message = [];
+
+    $stmt = $conn->prepare("SELECT * FROM re_users");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    // print_r($stmt);
+    $row = $result->fetch_assoc();
+    if($old_password == $row['user_password']){
+    }else{
+        echo '<script>alert("Old password does not match");</script>';
+    }
+
+    // $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_password = ?");
+    // $stmt->bind_param("s", $old_password);
+    // $stmt->execute();
+    // $old_password = $stmt->get_result();
+    // $old_password->fetch_assoc();
+    // print_r($old_password);
+
+    $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_password = ?");
+    $stmt->bind_param("ss", $new_password, $old_password);
+    $stmt->execute();
+    $new_password = $stmt->get_result();
+    $new_password->fetch_assoc();
+    print_r($new_password);
+
+    return $message;
+
+
+
+}
+
 function logout()
 {
     session_unset();
