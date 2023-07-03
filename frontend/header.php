@@ -222,6 +222,9 @@
                                 </div>
 
                                 <ul class="dropdown-menu">
+                                    <?php if (is_admin()) : ?>
+                                        <li><a href="<?php echo get_root_directory_uri(); ?>/admin">Dashboard</a></li>
+                                    <?php endif; ?>
                                     <li><a href="<?php echo get_root_directory_uri(); ?>/profile">Profile</a></li>
                                     <li><a href="<?php echo get_root_directory_uri(); ?>/settings">Setting</a></li>
                                     <li><a href="<?php echo get_root_directory_uri(); ?>/logout">Logout</a></li>

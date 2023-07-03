@@ -29,11 +29,12 @@
                 <div class="has-dropdown user-avatar">
                     <div class="user-info">
                         <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
-                        <span class="user-name">User</span>
+                        <span class="user-name"><?php echo get_user_name(); ?></span>
+
                     </div>
 
                     <ul class="dropdown-menu">
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="<?php echo get_root_directory_uri(); ?>/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>

@@ -23,6 +23,8 @@ CREATE TABLE IF NOT EXISTS re_posts(
     post_negotiable VARCHAR(10) NOT NULL,
     post_rent_start VARCHAR(50) NOT NULL,
     post_rent_end VARCHAR(50) NOT NULL,
+    post_status VARCHAR(10) NOT NULL,
+    post_views VARCHAR(255) DEFAULT 0,
     post_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()
 );
 

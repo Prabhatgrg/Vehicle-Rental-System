@@ -154,7 +154,7 @@ function display_comments($post_id)
                 <div class="comment-meta">
                     <span class="time"><?php echo $comment_date; ?></span>
                     <?php if (is_login()) : ?>
-                        <button class="btn-reply">Reply</button>
+                        <button class="btn-reply">Reply</button >
                         <button class="btn-delete">Delete</button>
                     <?php endif; ?>
                 </div>
