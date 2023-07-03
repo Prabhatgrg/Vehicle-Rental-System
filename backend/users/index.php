@@ -136,7 +136,12 @@ function is_admin()
     $stmt->bind_param("i", $_SESSION['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
+
+    if ($result->num_rows == 0)
+        return  false;
+
     $data = $result->fetch_array(MYSQLI_ASSOC);
+
 
     if ($data['user_roles'] == 'admin') {
         return true;
