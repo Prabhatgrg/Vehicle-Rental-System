@@ -5,6 +5,11 @@ if (!isset($_GET['id']) || empty($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
 endif;
 
+
+if (!is_admin() && !is_published($post_id)) :
+    header('Location: ' . get_root_directory_uri() . '/404');
+endif;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     $user_id = get_user_id();
     $comment_content = $_POST['comment-field'];
@@ -13,7 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     post_comment($post_id, $user_id, $comment_content, $reply_to);
 endif;
 
+if (is_published($post_id))
+    update_views($post_id);
+
 get_header();
+
+$post_data = get_post_by_id($post_id);
 
 ?>
 
@@ -22,14 +32,27 @@ get_header();
         <div class="flex flex-wrap">
             <div class="col-md-5">
                 <figure class="post-gallery">
-                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+                    <?php
+
+                    $post_image_array = json_decode($post_data['post_image']);
+                    if (count($post_image_array) > 0) :
+
+                        foreach ($post_image_array as $post_image) :
+                            echo '<img src="' . get_root_directory_uri() . '/' . $post_image->path . '" alt="' . $post_image->name . '" />';
+                        endforeach;
+
+                    else :
+                    ?>
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+
+                    <?php
+
+                    endif;
+                    ?>
                 </figure>
             </div>
             <div class="col-md-7 ps-3">
-                <h1 class="post-title h3">Here Goes the Single Page Title</h1>
+                <h1 class="post-title h3"><?php echo $post_data['post_title']; ?></h1>
 
                 <div class="post-author">
                     <div class="user-info">
@@ -58,9 +81,7 @@ get_header();
                     <div class="tab-content">
                         <div class="tab-pane active" id="post-information" class="post-information">
                             <div class="post-description mb-2">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel culpa consequuntur hic quasi nihil facere accusantium enim est, a ipsa in aspernatur nemo minima eius iste ratione aperiam saepe quos.</p>
-                                <p>Repudiandae autem excepturi quis quas, sequi ex eum aperiam, alias molestiae eos animi. Sed, quidem sequi? Repellendus eum dolore cum nulla qui. Veniam corporis unde mollitia explicabo enim, quas ducimus.</p>
-                                <p>Laudantium, quibusdam vitae ipsum maxime incidunt totam rem, pariatur doloribus beatae quia aspernatur voluptate, veniam placeat. Quae est quos, amet aliquam, ab eaque vero error, voluptatem rem rerum dolorum voluptatum.</p>
+                                <?php echo $post_data['post_description']; ?>
                             </div>
 
                             <div class="other-details">
@@ -68,35 +89,37 @@ get_header();
                                 <ul class="detail-list">
                                     <li>
                                         <span class="detail-title">Colour</span>
-                                        <span class="detail-info">Black</span>
+                                        <span class="detail-info">
+                                            <span style="display:inline-block;width: 20px; height:20px; border-radius: 50%; background-color: <?php echo $post_data['post_color']; ?>"></span>
+                                        </span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Location</span>
-                                        <span class="detail-info">Thahity, Kathmandu</span>
+                                        <span class="detail-info"><?php echo $post_data['post_location']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Delivery</span>
-                                        <span class="detail-info">Yes</span>
+                                        <span class="detail-info"><?php echo $post_data['post_delivery'] ? 'Yes' : 'No'; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Fuel Type</span>
-                                        <span class="detail-info">Diesel</span>
+                                        <span class="detail-info"><?php echo $post_data['post_fuel_type']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Mileage</span>
-                                        <span class="detail-info">Here is mileage</span>
+                                        <span class="detail-info"><?php echo $post_data['post_mileage']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Nrs. 5,000 Per Day</span>
+                                        <span class="detail-info">Rs. <?php echo $post_data['post_price']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Rent Start Date</span>
-                                        <span class="detail-info">2023/05/03</span>
+                                        <span class="detail-info"><?php echo $post_data['post_rent_start']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Rent End Date</span>
-                                        <span class="detail-info">2023/07/03</span>
+                                        <span class="detail-info"><?php echo $post_data['post_rent_end']; ?></span>
                                     </li>
                                 </ul>
                             </div>
@@ -108,7 +131,7 @@ get_header();
                             <ul class="location-list">
                                 <li>
                                     <img class="location-icon" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/location.png" alt="Location Icon">
-                                    <span class="location">Thahity, Kathmandu</span>
+                                    <span class="location"><?php echo $post_data['post_location']; ?></span>
                                 </li>
                             </ul>
                         </div>

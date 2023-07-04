@@ -163,3 +163,72 @@ function display_post($post)
 
 <?php
 }
+
+// function to update views
+function update_views($post_id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT post_views FROM re_posts WHERE post_id = ?');
+    $stmt->bind_param('i', $post_id);
+
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $views = (int) $result->fetch_array(MYSQLI_ASSOC)['post_views'];
+    }
+    $views++;
+
+    $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
+    $stmt->bind_param('si', $views, $post_id);
+
+    $stmt->execute();
+}
+
+// function to get post by views descending order
+function get_post_by_views()
+{
+    global $conn;
+
+    $status = 'published';
+
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_status = ? ORDER BY post_views DESC');
+    $stmt->bind_param('s', $status);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    }
+    return $data;
+}
+
+// function to check if post is published or not
+function is_published($post_id)
+{
+    global $conn;
+
+    $status = 'published';
+
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? and post_status = ?');
+    $stmt->bind_param('is', $post_id, $status);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0)
+            return true;
+        return false;
+    }
+    return false;
+}
+
+// function to get post data by id
+function get_post_by_id($post_id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ?");
+    $stmt->bind_param('i', $post_id);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_array(MYSQLI_ASSOC);
+}
