@@ -1,19 +1,7 @@
 <?php
 get_header();
 
-if (isset($_SESSION['success'])) :
-    $message = $_SESSION['success'];
-    unset($_SESSION['success']);
-?>
-    <div class="alert">
-        <div class="container">
-            <p class="bg-success p-2">
-                <?php echo $message; ?>
-            </p>
-        </div>
-    </div>
-<?php
-endif;
+
 ?>
 
 <section class="categories py-4">

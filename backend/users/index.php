@@ -153,10 +153,7 @@ function is_admin()
 function change_password($old_password, $new_password){
     global $conn;
 
-    $message = [];
-    // $old_password_hash = password_hash($old_password, PASSWORD_DEFAULT);
     $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-
     $current_user = get_user_name();
 
     $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_login = ?");
@@ -164,25 +161,21 @@ function change_password($old_password, $new_password){
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows==0){
-        $message['error'] = "No data exists";
+        $_SESSION['error'] = "No data exists";
     }else{
-        // $row = $result->fetch_assoc();
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $password_verify = password_verify($old_password, $row['user_password']);
         if($password_verify){
             $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_login = ?");
             $stmt->bind_param("ss", $new_password_hash, $current_user);
             $stmt->execute();
-            $message['sucess'] = "Password Updated";
+            $_SESSION['success'] = "Password Updated";
             header('Location: ' . get_root_directory_uri() . '/settings');
         }else{
-            $message['error'] = "Old password doesn not match";
+            $_SESSION['error'] = "Old password doesn not match";
             header('Location: ' . get_root_directory_uri() . '/settings');
         }
     }
-
-    return $message;
-
 }
 
 function logout()

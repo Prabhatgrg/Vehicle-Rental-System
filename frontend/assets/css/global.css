@@ -956,7 +956,7 @@ textarea.form-control {
 }
 
 .text-success {
-    color: var(--color-succes);
+    color: var(--color-success);
 }
 
 .bg-error {
