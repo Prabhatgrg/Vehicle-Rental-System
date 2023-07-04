@@ -21,7 +21,7 @@ function create_post($post_title, $post_image_upload, $post_category, $post_loca
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully requested.';
     } else {
-        $message['success'] = 'There is some error to post ads posts request.';
+        $message['error'] = 'There is some error to post ads posts request.';
     }
     return $message;
 }
@@ -66,4 +66,100 @@ function move_uploaded_post_images($file_array)
 
     // Encode file data array as JSON
     return $json_file_data = json_encode($file_data_array);
+}
+
+function get_pending_posts()
+{
+    global $conn;
+
+    $data = [];
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = 'pending'");
+    if ($stmt->execute()) :
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    else :
+        $data['error'] = 'Something went wrong while fetching posts.';
+    endif;
+
+    return $data;
+}
+
+function get_published_posts()
+{
+    global $conn;
+
+    $data = [];
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = 'published'");
+    if ($stmt->execute()) :
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    else :
+        $data['error'] = 'Something went wrong while fetching posts.';
+    endif;
+
+    return $data;
+}
+
+function get_posts()
+{
+    global $conn;
+
+    $data = [];
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts");
+    if ($stmt->execute()) :
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    else :
+        $data['error'] = 'Something went wrong while fetching posts.';
+    endif;
+
+    return $data;
+}
+
+// function to update post status
+function update_post_status($post_id, $post_status)
+{
+    global $conn;
+
+    $message = [];
+
+    $stmt = $conn->prepare('UPDATE re_posts SET post_status = ? WHERE post_id = ?');
+    $stmt->bind_param('si', $post_status, $post_id);
+
+    if ($stmt->execute()) {
+        $message['success'] = 'The post status was successfully updated.';
+    } else {
+        $message['error'] = 'There is some error to update post status.';
+    }
+    return $message;
+}
+
+// function to display post inside the loop
+function display_post($post)
+{
+?>
+
+    <li>
+        <form method="post">
+            <h2 class="h6 mb-1">
+                <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($post['post_id']); ?>" target="_blank">
+                    <?php echo $post['post_title']; ?>
+                </a>
+            </h2>
+            <div class="post-status mb-1">
+                <label for="postStatus">Status : </label>
+                <input type="hidden" name="_post_id" value="<?php echo $post['post_id']; ?>">
+                <select name="postStatus" id="postStatus" class="form-select">
+                    <option value="pending" <?php echo $post['post_status'] == 'pending' ? 'selected' : null; ?>>Pending</option>
+                    <option value="published" <?php echo $post['post_status'] == 'published' ? 'selected' : null; ?>>Published</option>
+                </select>
+            </div>
+            <button type="submit" name="change_status" class="btn btn-dark btn-submit">Save</button>
+        </form>
+    </li>
+
+<?php
 }
