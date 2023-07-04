@@ -48,7 +48,7 @@ function get_username_by_id($id)
 }
 
 // Authenticate the User
-function user_auth($username, $password)
+function user_auth($username, $password)//
 {
     global $conn;
 
@@ -154,34 +154,34 @@ function change_password($old_password, $new_password){
     global $conn;
 
     $message = [];
+    // $old_password_hash = password_hash($old_password, PASSWORD_DEFAULT);
+    $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("SELECT * FROM re_users");
+    $current_user = get_user_name();
+
+    $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_login = ?");
+    $stmt->bind_param("s", $current_user);
     $stmt->execute();
     $result = $stmt->get_result();
-    // print_r($stmt);
-    $row = $result->fetch_assoc();
-    if($old_password == $row['user_password']){
+    if($result->num_rows==0){
+        $message['error'] = "No data exists";
     }else{
-        echo '<script>alert("Old password does not match");</script>';
+        // $row = $result->fetch_assoc();
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $password_verify = password_verify($old_password, $row['user_password']);
+        if($password_verify){
+            $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_login = ?");
+            $stmt->bind_param("ss", $new_password_hash, $current_user);
+            $stmt->execute();
+            $message['sucess'] = "Password Updated";
+            header('Location: ' . get_root_directory_uri() . '/settings');
+        }else{
+            $message['error'] = "Old password doesn not match";
+            header('Location: ' . get_root_directory_uri() . '/settings');
+        }
     }
 
-    // $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_password = ?");
-    // $stmt->bind_param("s", $old_password);
-    // $stmt->execute();
-    // $old_password = $stmt->get_result();
-    // $old_password->fetch_assoc();
-    // print_r($old_password);
-
-    $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_password = ?");
-    $stmt->bind_param("ss", $new_password, $old_password);
-    $stmt->execute();
-    $new_password = $stmt->get_result();
-    $new_password->fetch_assoc();
-    print_r($new_password);
-
     return $message;
-
-
 
 }
 
