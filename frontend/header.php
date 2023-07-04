@@ -1,3 +1,30 @@
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if (isset($_POST['post_submit'])) {
+        $post_title = $_POST['postTitle'];
+        $post_image_upload = $_FILES['postImageUpload'];
+        $post_category = $_POST['postCategory'];
+        $post_location = $_POST['postLocation'];
+        $post_description = $_POST['postDescription'];
+        $post_delivery = $_POST['postDelivery'];
+        $post_colour = $_POST['postColour'];
+        $post_fuel = $_POST['postFuel'];
+        $post_mileage = $_POST['postMileage'];
+        $post_price = $_POST['postPrice'];
+        $post_negotiable = $_POST['postNegotiable'];
+        $post_rent_start_date = $_POST['postRentStartDate'];
+        $post_rent_end_date = $_POST['postRentEndDate'];
+
+        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date);
+    }
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,11 +61,11 @@
                         </div>
                     </a>
 
-                    <form action="#" class="search-bar" autocomplete="off">
+                    <form method="post" class="search-bar" autocomplete="off">
                         <div class="form-field">
                             <label for="search" class="screen-reader-text">Search</label>
                             <input type="text" id="search" name="search" aria-label="Search" class="form-control">
-                            <button type="submit" aria-label="search">
+                            <button type="submit" name="serch_submit" aria-label="search">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                     <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
@@ -83,7 +110,7 @@
                                                     <span class="screen-reader-text">Close</span>
                                                 </button>
                                             </div>
-                                            <form action="#" method="POST" class="grid gap-2 post-form">
+                                            <form method="post" class="grid gap-2 post-form" enctype="multipart/form-data">
                                                 <div class="form-floating">
                                                     <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Post Title">
                                                     <label for="postTitle">Post Title</label>
@@ -110,7 +137,7 @@
                                                             </g>
                                                         </svg>
                                                     </label>
-                                                    <input type="file" name="postImageUpload" id="postImageUpload" class="form-file" multiple>
+                                                    <input type="file" name="postImageUpload[]" id="postImageUpload" class="form-file" multiple>
                                                 </div>
 
                                                 <?php
@@ -188,7 +215,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-submit">
-                                                    <button type="submit" class="btn btn-dark">Submit</button>
+                                                    <input type="hidden" name="post_submit" value="submit">
+                                                    <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>
                                                 </div>
                                             </form>
                                         <?php else : ?>
@@ -239,3 +267,17 @@
         </header>
 
         <main class="main-content">
+            <?php
+            if (isset($post_message['success'])) :
+                $message = $post_message['success'];
+            ?>
+                <div class="alert">
+                    <div class="container">
+                        <p class="bg-success p-2">
+                            <?php echo $message; ?>
+                        </p>
+                    </div>
+                </div>
+            <?php
+            endif;
+            ?>
