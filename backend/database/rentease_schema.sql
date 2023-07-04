@@ -52,3 +52,11 @@ CREATE TABLE IF NOT EXISTS re_category(
     category_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     category_title VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS re_bookings(
+    booking_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES re_users(user_id),
+    FOREIGN KEY (post_id) REFERENCES re_posts(post_id)
+);
