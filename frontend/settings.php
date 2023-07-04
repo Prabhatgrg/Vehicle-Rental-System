@@ -6,7 +6,7 @@ get_header("Settings");
     <div class="container">
         <div class="flex justify-content-center align-items-center">
             <div class="col-md-5 col-lg-4">
-                <form action="#" method="POST" class="grid gap-1">
+                <form action="<?php echo get_root_directory_uri();?>/change_password" method="POST" class="grid gap-1">
                     <h2 class="h3">Update Password</h2>
                     <div class="form-floating">
                         <input type="text" name="oldPassword" id="oldPassword" class="form-control" placeholder="Old Password">
