@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS re_users(
     user_password VARCHAR(255) NOT NULL,
     user_email VARCHAR(100) NOT NULL,
     user_phone VARCHAR(10) NOT NULL,
-    user_date DATE NOT NULL
+    user_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()
 );
 
 CREATE TABLE IF NOT EXISTS re_posts(
