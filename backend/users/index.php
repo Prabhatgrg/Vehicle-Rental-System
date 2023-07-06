@@ -48,7 +48,7 @@ function get_username_by_id($id)
 }
 
 // Authenticate the User
-function user_auth($username, $password)//
+function user_auth($username, $password) //
 {
     global $conn;
 
@@ -150,7 +150,8 @@ function is_admin()
     }
 }
 
-function change_password($old_password, $new_password){
+function change_password($old_password, $new_password)
+{
     global $conn;
 
     $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
@@ -160,28 +161,55 @@ function change_password($old_password, $new_password){
     $stmt->bind_param("s", $current_user);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows==0){
+    if ($result->num_rows == 0) {
         $_SESSION['error'] = "No data exists";
-    }else{
+    } else {
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $password_verify = password_verify($old_password, $row['user_password']);
-        if($password_verify){
+        if ($password_verify) {
             $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_login = ?");
             $stmt->bind_param("ss", $new_password_hash, $current_user);
             $stmt->execute();
             $_SESSION['success'] = "Password Updated";
             header('Location: ' . get_root_directory_uri() . '/settings');
-        }else{
+        } else {
             $_SESSION['error'] = "Old password doesn not match";
             header('Location: ' . get_root_directory_uri() . '/settings');
         }
     }
 }
 
+// function to logout
 function logout()
 {
     session_unset();
     session_destroy();
     // Redirect the user to login page
     header('Location: ' . get_root_directory_uri() . '/');
+}
+
+// function to get user details by id
+function get_user_info_by_id($user_id)
+{
+    global $conn;
+
+    $data = [];
+
+    $stmt = $conn->prepare('SELECT * FROM re_users WHERE user_id = ?');
+    $stmt->bind_param('i', $user_id);
+
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+            $data['error'] = 'There is no such user';
+            return $data;
+        }
+
+        $data = $result->fetch_all(MYSQLI_ASSOC)[0];
+    } else {
+        $data['error'] = 'Error while fetching user data';
+    }
+
+    return $data;
 }

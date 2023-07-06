@@ -55,20 +55,24 @@ $post_data = get_post_by_id($post_id);
                 <h1 class="post-title h3"><?php echo $post_data['post_title']; ?></h1>
 
                 <div class="post-author">
+                    <?php
+                    $user_info = get_user_info_by_id($post_data['post_user']);
+                    ?>
+
                     <div class="user-info">
                         <a href="#">
                             <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
                         </a>
                         <div class="user-detail">
-                            <a href="#">
-                                <span class="user-name">User</span>
+                            <a href="<?php echo get_root_directory_uri() . '/user?id=' . urldecode($user_info['user_id']);  ?>" target="_blank">
+                                <span class="user-name"><?php echo $user_info['user_fullname']; ?></span>
                             </a>
-                            <a href="tel:9876543210" class="user-contact">9876543210</a>
+                            <a href="tel:<?php echo $user_info['user_phone']; ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
                         </div>
                     </div>
                     <div class="flex gap-2 my-2">
-                        <button class="btn btn-outline">Chat Now</button>
-                        <button class="btn btn-outline">Save Post</button>
+                        <a href="#" class="btn btn-outline">Book Now</a>
+                        <a href="#" class="btn btn-outline">Save Post</a>
                     </div>
                 </div>
 
