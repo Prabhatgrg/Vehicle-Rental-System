@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS re_posts(
     post_id INT AUTO_INCREMENT PRIMARY KEY,
     post_user INT,
     post_title VARCHAR(255) NOT NULL,
-    post_image VARCHAR(255) NOT NULL,
+    post_image LONGTEXT NOT NULL,
     post_category VARCHAR(50) NOT NULL,
     post_location VARCHAR(100) NOT NULL,
     post_description VARCHAR(255) NOT NULL,
