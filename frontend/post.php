@@ -35,6 +35,13 @@ if (isset($_GET['booking'])) :
 
 endif;
 
+if(isset($_GET['action'])) :
+    if($_GET['action']=='delete'):
+        $comment_id = $_GET['commentid'];
+        delete_comment($comment_id);
+    endif;
+endif;
+
 get_header();
 
 $post_data = get_post_by_id($post_id);
@@ -101,7 +108,7 @@ $post_data = get_post_by_id($post_id);
                             <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
                         </a>
                         <div class="user-detail">
-                            <a href="<?php echo get_root_directory_uri() . '/user?id=' . urldecode($user_info['user_id']);  ?>" target="_blank">
+                            <a href="<?php echo get_root_directory_uri() . '/user?id=' . urlencode($user_info['user_id']);  ?>" target="_blank">
                                 <span class="user-name"><?php echo $user_info['user_fullname']; ?></span>
                             </a>
                             <a href="tel:<?php echo $user_info['user_phone']; ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
@@ -109,10 +116,10 @@ $post_data = get_post_by_id($post_id);
                     </div>
                     <div class="flex gap-2 my-2">
                         <?php if (!is_booked($post_id, $user_id)) : ?>
-                            <a href="post?id=<?php echo urldecode($post_id); ?>&booking=<?php echo urldecode('true'); ?>" class="btn btn-outline">Book Now</a>
+                            <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('true'); ?>" class="btn btn-outline">Book Now</a>
                         <?php endif; ?>
                         <?php if (is_booked($post_id, $user_id)) : ?>
-                            <a href="post?id=<?php echo urldecode($post_id); ?>&booking=<?php echo urldecode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
+                            <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
                         <?php endif; ?>
                         <a href="#" class="btn btn-outline">Save Post</a>
                     </div>

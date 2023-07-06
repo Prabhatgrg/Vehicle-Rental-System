@@ -110,7 +110,7 @@ function display_comments($post_id)
                     <?php if (is_login()) : ?>
                         <button class="btn-reply">Reply</button >
                         <?php if($_SESSION['user_id']===$comment['user_id']) :?>
-                            <button class="btn-delete">Delete</button>
+                            <a href="post?id=<?php echo urlencode($post_id);?>&commentid=<?php echo urlencode($comment['comment_id']);?>&action=<?php echo urlencode('delete');?>">Delete</a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -136,6 +136,7 @@ function display_comments($post_id)
 // function to display comment reply
 function display_reply($comment_id)
 {
+    global $post_id;
     $replies = get_reply_comments($comment_id);
 
     echo  '<ul class="sub-comment-list">';
@@ -163,8 +164,7 @@ function display_reply($comment_id)
                 <?php if (is_login()) : ?>
                     <button class="btn-reply">Reply</button>
                     <?php if($_SESSION['user_id']===$reply['user_id']) :?>
-                        <button class="btn-delete">Delete</button>
-                        <!-- <a href="#" class="btn-delete">Delete</a> -->
+                        <a href="post?id=<?php echo urlencode($post_id);?>&commentid=<?php echo urlencode($reply['comment_id']);?>&action=<?php echo urlencode('delete');?>">Delete</a>
                     <?php endif; ?>
                 <?php endif; ?>
                 
@@ -181,12 +181,4 @@ function display_reply($comment_id)
 
     endforeach;
     echo '</ul>';
-}
-
-function delete_comment($comment_id){
-    global $conn;
-
-    $stmt=$conn->prepare("DELETE FROM re_comments WHERE comment_id=?");
-    $stmt->bind_param("i", $comment_id);
-    $stmt->execute();
 }

@@ -175,12 +175,12 @@ function update_views($post_id)
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $views = (int) $result->fetch_array(MYSQLI_ASSOC)['post_views'];
-        
+
         $views++;
-    
+
         $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
         $stmt->bind_param('si', $views, $post_id);
-    
+
         $stmt->execute();
     }
 }
@@ -232,4 +232,21 @@ function get_post_by_id($post_id)
     $result = $stmt->get_result();
 
     return $result->fetch_array(MYSQLI_ASSOC);
+}
+
+function delete_comment($comment_id)
+{
+    if (is_login()) {
+        global $conn;
+        $query = $conn->prepare("SELECT * FROM re_comments WHERE comment_id = ?");
+        $query->bind_param("i", $comment_id);
+        if($query->execute()){
+            $result = $query->get_result();
+            if($result->num_rows>0){
+                $query = $conn->prepare("DELETE FROM re_comments WHERE comment_id = ?");
+                $query->bind_param("i", $comment_id);
+                $query->execute();
+            }
+        }
+    }
 }
