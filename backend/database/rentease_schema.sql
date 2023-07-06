@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS re_bookings(
     booking_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     post_id INT NOT NULL,
     user_id INT NOT NULL,
-    booking_status VARCHAR(20) NOT NULL DEFAULT 'active',
+    booking_status VARCHAR(20) NOT NULL DEFAULT 'booked',
     booking_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (post_id) REFERENCES re_posts(post_id)

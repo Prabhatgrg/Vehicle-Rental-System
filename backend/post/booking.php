@@ -18,7 +18,7 @@ function book_post($post_id, $user_id)
         $data = $result->fetch_array(MYSQLI_ASSOC);
         if ($data['booking_status'] == 'cancelled') :
 
-            $message = update_booking_status($post_id, $user_id, 'active');
+            $message = update_booking_status($post_id, $user_id, 'booked');
 
             return $message;
         endif;
@@ -91,7 +91,7 @@ function is_booked($post_id, $user_id)
 {
     global $conn;
 
-    $status = 'active';
+    $status = 'booked';
 
     $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ? AND booking_status = ?");
     $stmt->bind_param('iis', $post_id, $user_id, $status);

@@ -175,13 +175,14 @@ function update_views($post_id)
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $views = (int) $result->fetch_array(MYSQLI_ASSOC)['post_views'];
+        
+        $views++;
+    
+        $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
+        $stmt->bind_param('si', $views, $post_id);
+    
+        $stmt->execute();
     }
-    $views++;
-
-    $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
-    $stmt->bind_param('si', $views, $post_id);
-
-    $stmt->execute();
 }
 
 // function to get post by views descending order
