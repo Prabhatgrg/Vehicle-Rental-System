@@ -1,5 +1,6 @@
 <?php
 $post_id = $_GET['id'];
+$user_id = get_user_id();
 
 if (!isset($_GET['id']) || empty($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
@@ -11,7 +12,6 @@ if (!is_admin() && !is_published($post_id)) :
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-    $user_id = get_user_id();
     $comment_content = $_POST['comment-field'];
     $reply_to = $_POST['reply-to'];
 
@@ -20,6 +20,20 @@ endif;
 
 if (is_published($post_id))
     update_views($post_id);
+
+if (isset($_GET['booking'])) :
+    switch ($_GET['booking']):
+        case 'true':
+            $booking_message = book_post($post_id, $user_id);
+            break;
+        case 'false':
+            $booking_message = cancel_booked_post($post_id, $user_id);
+            break;
+        default:
+            break;
+    endswitch;
+
+endif;
 
 get_header();
 
@@ -52,6 +66,29 @@ $post_data = get_post_by_id($post_id);
                 </figure>
             </div>
             <div class="col-md-7 ps-3">
+                <?php
+                if (isset($booking_message['success'])) :
+                ?>
+                    <div class="alert mb-2">
+                        <p class="bg-success p-1">
+                            <?php echo $booking_message['success']; ?>
+                        </p>
+                    </div>
+                <?php
+                endif;
+                ?>
+                <?php
+                if (isset($booking_message['error'])) :
+                ?>
+                    <div class="alert mb-2">
+                        <p class="bg-error p-1">
+                            <?php echo $booking_message['error']; ?>
+                        </p>
+                    </div>
+                <?php
+                endif;
+                ?>
+
                 <h1 class="post-title h3"><?php echo $post_data['post_title']; ?></h1>
 
                 <div class="post-author">
@@ -71,7 +108,12 @@ $post_data = get_post_by_id($post_id);
                         </div>
                     </div>
                     <div class="flex gap-2 my-2">
-                        <a href="#" class="btn btn-outline">Book Now</a>
+                        <?php if (!is_booked($post_id, $user_id)) : ?>
+                            <a href="post?id=<?php echo urldecode($post_id); ?>&booking=<?php echo urldecode('true'); ?>" class="btn btn-outline">Book Now</a>
+                        <?php endif; ?>
+                        <?php if (is_booked($post_id, $user_id)) : ?>
+                            <a href="post?id=<?php echo urldecode($post_id); ?>&booking=<?php echo urldecode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
+                        <?php endif; ?>
                         <a href="#" class="btn btn-outline">Save Post</a>
                     </div>
                 </div>
