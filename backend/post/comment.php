@@ -164,6 +164,7 @@ function display_reply($comment_id)
                     <button class="btn-reply">Reply</button>
                     <?php if($_SESSION['user_id']===$reply['user_id']) :?>
                         <button class="btn-delete">Delete</button>
+                        <!-- <a href="#" class="btn-delete">Delete</a> -->
                     <?php endif; ?>
                 <?php endif; ?>
                 
@@ -182,7 +183,7 @@ function display_reply($comment_id)
     echo '</ul>';
 }
 
-function comment_delete($comment_id){
+function delete_comment($comment_id){
     global $conn;
 
     $stmt=$conn->prepare("DELETE FROM re_comments WHERE comment_id=?");
