@@ -86,13 +86,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
 
         if (postImageUpload[0]) {
+            const limit = 4;
+            console.log(postImageUpload);
+            if (postImageUpload.length > limit) {
+                errorMessage += `Please upload image less then ${limit}\n`;
+                isValidate = false;
+            }
             postImageUpload.forEach((file, index) => {
                 if (regex.test(file.name) == false) {
                     errorMessage += `Please upload valid image at ${index + 1} position\n`;
+                    isValidate = false;
                 }
             });
         } else {
             errorMessage += "Please upload image\n";
+            isValidate = false;
         }
 
         if (postLocation < 5) {
