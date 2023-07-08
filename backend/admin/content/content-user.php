@@ -11,15 +11,26 @@ $result = $stmt->get_result();
 $data = $result->fetch_all(MYSQLI_ASSOC);
 
 // print_r($data);
-foreach($data as $user) :
 ?>
 
-<ul>
-    <li><?php echo $user['user_fullname'];?></li>
-    <li><?php echo $user['user_login'];?></li>
-    <li><?php echo $user['user_email'];?></li>
-    <li><?php echo $user['user_phone'];?></li>
-    <li><?php echo $user['user_date'];?></li>
-</ul>
+<table border="1px solid black">
+    <tr>
+        <th>FullName</th>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Date</th>
+    </tr>
+    
+    <?php foreach($data as $user) :?>
+    
+    <tr>
+        <td><?php echo $user['user_fullname'];?></td>
+        <td><?php echo $user['user_login'];?></td>
+        <td><?php echo $user['user_email'];?></td>
+        <td><?php echo $user['user_phone'];?></td>
+        <td><?php echo $user['user_date'];?></td>
+    </tr>
+</table>
 
 <?php endforeach; ?>
