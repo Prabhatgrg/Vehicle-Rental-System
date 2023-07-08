@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         $user_id = $_POST['user_id'];
         $reviewer_id = $_POST['reviewer_id'];
 
-        print_r($_POST);
 
         post_user_review($user_id, $reviewer_id, $user_rating, $user_review);
     endif;
