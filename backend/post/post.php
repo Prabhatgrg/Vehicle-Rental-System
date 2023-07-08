@@ -240,13 +240,30 @@ function delete_comment($comment_id)
         global $conn;
         $query = $conn->prepare("SELECT * FROM re_comments WHERE comment_id = ?");
         $query->bind_param("i", $comment_id);
-        if($query->execute()){
+        if ($query->execute()) {
             $result = $query->get_result();
-            if($result->num_rows>0){
+            if ($result->num_rows > 0) {
                 $query = $conn->prepare("DELETE FROM re_comments WHERE comment_id = ?");
                 $query->bind_param("i", $comment_id);
                 $query->execute();
             }
         }
     }
+}
+
+// funciton to get post by user id
+function get_post_by_user_id($user_id, $status = 'published')
+{
+    global $conn;
+
+
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_user = ? AND post_status = ?");
+    $stmt->bind_param('is', $user_id, $status);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
 }
