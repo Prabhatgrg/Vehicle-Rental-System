@@ -13,7 +13,7 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 // print_r($data);
 ?>
 
-<table border="1px solid black">
+<table border="1px solid black" cellspacing="0" width=100%>
     <tr>
         <th>FullName</th>
         <th>UserName</th>
@@ -31,6 +31,5 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
         <td><?php echo $user['user_phone'];?></td>
         <td><?php echo $user['user_date'];?></td>
     </tr>
+    <?php endforeach; ?>
 </table>
-
-<?php endforeach; ?>
