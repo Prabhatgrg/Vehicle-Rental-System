@@ -263,7 +263,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
 
         userReviewForm.addEventListener("submit", (e) => {
-            e.preventDefault();
             let isValidate = true;
             let errorMessage = "";
             const userRating = userReviewForm.querySelector('[name="userRating"]').value;
@@ -277,9 +276,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 errorMessage += "Review cannot be empty";
                 isValidate = false;
             }
-            if (!isValidate) alert(errorMessage);
-
-            if (isValidate) e.currentTarget.submit();
+            if (!isValidate) {
+                alert(errorMessage);
+                e.preventDefault();
+            }
         });
     }
 

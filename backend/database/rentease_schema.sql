@@ -5,6 +5,9 @@ CREATE TABLE IF NOT EXISTS re_users(
     user_password VARCHAR(255) NOT NULL,
     user_email VARCHAR(100) NOT NULL,
     user_phone VARCHAR(10) NOT NULL,
+    user_rating VARCHAR(10) NOT NULL DEFAULT '0',
+    user_total_rating VARCHAR(10) NOT NULL DEFAULT '0',
+    user_rating_count INT DEFAULT 0,
     user_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP()
 );
 
@@ -62,3 +65,31 @@ CREATE TABLE IF NOT EXISTS re_bookings(
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (post_id) REFERENCES re_posts(post_id)
 );
+
+CREATE TABLE IF NOT EXISTS re_reviews(
+    review_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    user_id INT,
+    reviewer_id INT,
+    user_rating VARCHAR(10) NOT NULL DEFAULT '0',
+    user_review VARCHAR(255) NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES re_users(user_id),
+    FOREIGN KEY (reviewer_id) REFERENCES re_users(user_id)
+);
+
+CREATE TRIGGER IF NOT EXISTS updateTotalRating
+AFTER INSERT
+ON re_reviews
+FOR EACH ROW
+UPDATE re_users SET user_total_rating = user_total_rating + NEW.user_rating WHERE user_id = NEW.user_id;
+
+CREATE TRIGGER IF NOT EXISTS updateRatingCount
+AFTER INSERT
+ON re_reviews
+FOR EACH ROW
+UPDATE re_users SET user_rating_count = user_rating_count + 1 WHERE user_id = NEW.user_id;
+
+CREATE TRIGGER IF NOT EXISTS updateRating
+AFTER INSERT
+ON re_reviews
+FOR EACH ROW
+UPDATE re_users SET user_rating = user_total_rating / (user_rating_count * 5)  WHERE user_id = NEW.user_id;
