@@ -46,6 +46,9 @@
     .user-activity-section {
         width: auto;
     }
+    table, th, td{
+        overflow: hidden;
+    }
 }
 /* For the devices wihich screen size is less then 992px */
 @media (max-width: 991.98px) {

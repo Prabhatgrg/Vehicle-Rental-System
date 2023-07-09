@@ -13,7 +13,7 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 // print_r($data);
 ?>
 
-<table>
+<table class="admin-users-table">
     <tr>
         <th>FullName</th>
         <th>UserName</th>
