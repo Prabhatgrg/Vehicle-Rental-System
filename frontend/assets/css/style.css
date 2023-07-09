@@ -586,3 +586,16 @@
     pointer-events: none;
     transition: var(--transition);
 }
+
+/* 
+Admin Table CSS
+*/
+table{
+    width: 100%;
+}
+table, th , td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 20px;
+    text-align: center;
+}

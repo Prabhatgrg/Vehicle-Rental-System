@@ -13,7 +13,7 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 // print_r($data);
 ?>
 
-<table border="1px solid black" cellspacing="0" width=100%>
+<table>
     <tr>
         <th>FullName</th>
         <th>UserName</th>
