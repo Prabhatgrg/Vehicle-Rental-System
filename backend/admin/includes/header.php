@@ -34,6 +34,7 @@
                     </div>
 
                     <ul class="dropdown-menu">
+                        <li><a href="<?php echo get_root_directory_uri(); ?>/">Home</a></li>
                         <li><a href="<?php echo get_root_directory_uri(); ?>/logout">Logout</a></li>
                     </ul>
                 </div>
