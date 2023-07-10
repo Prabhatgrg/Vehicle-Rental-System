@@ -15,8 +15,8 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
 
 <table class="admin-users-table">
     <tr>
-        <th>FullName</th>
-        <th>UserName</th>
+        <th>Fullname</th>
+        <th>Username</th>
         <th>Email</th>
         <th>Phone</th>
         <th>Date</th>
@@ -25,8 +25,8 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
     <?php foreach($data as $user) :?>
     
     <tr>
-        <td data-label="FullName: "><?php echo $user['user_fullname'];?></td>
-        <td data-label="UserName: "><?php echo $user['user_login'];?></td>
+        <td data-label="Fullname: "><?php echo $user['user_fullname'];?></td>
+        <td data-label="Username: "><?php echo $user['user_login'];?></td>
         <td data-label="Email: "><?php echo $user['user_email'];?></td>
         <td data-label="Phone: "><?php echo $user['user_phone'];?></td>
         <td data-label="Date: "><?php echo $user['user_date'];?></td>

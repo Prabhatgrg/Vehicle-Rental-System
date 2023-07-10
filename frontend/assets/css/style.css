@@ -588,13 +588,12 @@
 }
 
 /* 
-Admin Table CSS
+Admin Table Display User CSS Start
 */
 table{
     width: 100%;
 }
 table, th , td{
-    /* display: table-cell; */
     border: 1px solid black;
     border-collapse: collapse;
     padding: 20px;
@@ -605,3 +604,6 @@ td::before{
     display: none;
     font-weight: bold;
 }
+/* 
+Admin Table Display User CSS End
+*/
