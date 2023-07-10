@@ -25,11 +25,11 @@ $data = $result->fetch_all(MYSQLI_ASSOC);
     <?php foreach($data as $user) :?>
     
     <tr>
-        <td><?php echo $user['user_fullname'];?></td>
-        <td><?php echo $user['user_login'];?></td>
-        <td><?php echo $user['user_email'];?></td>
-        <td><?php echo $user['user_phone'];?></td>
-        <td><?php echo $user['user_date'];?></td>
+        <td data-label="FullName: "><?php echo $user['user_fullname'];?></td>
+        <td data-label="UserName: "><?php echo $user['user_login'];?></td>
+        <td data-label="Email: "><?php echo $user['user_email'];?></td>
+        <td data-label="Phone: "><?php echo $user['user_phone'];?></td>
+        <td data-label="Date: "><?php echo $user['user_date'];?></td>
     </tr>
     <?php endforeach; ?>
 </table>

@@ -46,9 +46,6 @@
     .user-activity-section {
         width: auto;
     }
-    table, th, td{
-        overflow: hidden;
-    }
 }
 /* For the devices wihich screen size is less then 992px */
 @media (max-width: 991.98px) {
@@ -95,6 +92,19 @@
     }
     .conv-item .conv-message {
         max-width: 75%;
+    }
+    th{
+        display: none;
+    }
+    td{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    td::before{
+        display: inline-block;
+        padding: 8px;
+        
     }
 }
 /* For the devices wihich screen size is less then 768px */
@@ -165,6 +175,7 @@
     .admin-menu-list .list-icon {
         width: 2rem;
     }
+    
 }
 /* For the devices wihich screen size is less then 576px */
 @media (max-width: 575.98px) {
@@ -185,4 +196,5 @@
     .user-activity-section .user-ad-posts .grid {
         grid-template-columns: repeat(1, 1fr);
     }
+    
 }

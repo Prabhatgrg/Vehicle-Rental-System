@@ -594,8 +594,14 @@ table{
     width: 100%;
 }
 table, th , td{
+    /* display: table-cell; */
     border: 1px solid black;
     border-collapse: collapse;
     padding: 20px;
     text-align: center;
+}
+td::before{
+    content: attr(data-label);
+    display: none;
+    font-weight: bold;
 }
