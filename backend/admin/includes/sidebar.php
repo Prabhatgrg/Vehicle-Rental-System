@@ -99,7 +99,7 @@
                 </span>
             </a>
 
-            <ul class="sub-menu">
+            <!-- <ul class="sub-menu">
                 <li>
                     <a href="?page=<?php echo urlencode('users'); ?>&action=<?php echo urlencode('add user'); ?>" title="Add users">
                         <span class="list-icon">
@@ -127,7 +127,7 @@
                         </span>
                     </a>
                 </li>
-            </ul>
+            </ul> -->
         </li>
         <li>
             <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('category'); ?>" title="Categories">
