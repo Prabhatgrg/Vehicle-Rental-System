@@ -12,10 +12,11 @@ if (!is_admin() && !is_published($post_id)) :
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-    $comment_content = $_POST['comment-field'];
-    $reply_to = $_POST['reply-to'];
-
-    post_comment($post_id, $user_id, $comment_content, $reply_to);
+    if(isset($_POST['comment-submit'])) :
+        $comment_content = $_POST['comment-field'];
+        $reply_to = $_POST['reply-to'];
+        post_comment($post_id, $user_id, $comment_content, $reply_to);
+    endif;
 endif;
 
 if (is_published($post_id))
