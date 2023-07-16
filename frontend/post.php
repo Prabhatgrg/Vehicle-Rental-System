@@ -165,14 +165,14 @@ $post_data = get_post_by_id($post_id);
                                         <span class="detail-title">Pricing</span>
                                         <span class="detail-info">Rs. <?php echo $post_data['post_price']; ?></span>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <span class="detail-title">Rent Start Date</span>
-                                        <span class="detail-info"><?php echo $post_data['post_rent_start']; ?></span>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_start']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Rent End Date</span>
-                                        <span class="detail-info"><?php echo $post_data['post_rent_end']; ?></span>
-                                    </li>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_end']; ?></span>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>

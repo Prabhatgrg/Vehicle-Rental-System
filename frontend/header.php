@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_mileage = $_POST['postMileage'];
         $post_price = $_POST['postPrice'];
         $post_negotiable = $_POST['postNegotiable'];
-        $post_rent_start_date = $_POST['postRentStartDate'];
-        $post_rent_end_date = $_POST['postRentEndDate'];
+        // $post_rent_start_date = $_POST['postRentStartDate'];
+        // $post_rent_end_date = $_POST['postRentEndDate'];
 
-        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date);
+        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
     }
 }
 
@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group grid column-2">
+                                                <!-- <div class="form-group grid column-2">
                                                     <div class="form-floating">
                                                         <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
                                                         <label for="postRentStartDate">Vehicle Rent Start Date</label>
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
                                                         <label for="postRentEndDate">Vehicle Rent End Date</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-submit">
                                                     <input type="hidden" name="post_submit" value="submit">
                                                     <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>

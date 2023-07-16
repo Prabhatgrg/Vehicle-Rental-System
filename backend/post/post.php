@@ -1,7 +1,7 @@
 <?php
 
 // function to post the post
-function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date)
+function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
 {
     global $conn;
 
@@ -16,8 +16,8 @@ function create_post($post_title, $post_image_upload, $post_category, $post_loca
 
     $user_id = $_SESSION['user_id'];
 
-    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable, post_rent_start, post_rent_end) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-    $stmt->bind_param('iisssssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date);
+    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('iisssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully requested.';
     } else {
