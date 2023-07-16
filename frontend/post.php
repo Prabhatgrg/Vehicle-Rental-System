@@ -35,8 +35,8 @@ if (isset($_GET['booking'])) :
 
 endif;
 
-if(isset($_GET['action'])) :
-    if($_GET['action']=='delete'):
+if (isset($_GET['action'])) :
+    if ($_GET['action'] == 'delete') :
         $comment_id = $_GET['commentid'];
         delete_comment($comment_id);
     endif;
@@ -117,8 +117,7 @@ $post_data = get_post_by_id($post_id);
                     <div class="flex gap-2 my-2">
                         <?php if (!is_booked($post_id, $user_id)) : ?>
                             <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('true'); ?>" class="btn btn-outline">Book Now</a>
-                        <?php endif; ?>
-                        <?php if (is_booked($post_id, $user_id)) : ?>
+                        <?php elseif (is_booked($post_id, $user_id)) : ?>
                             <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
                         <?php endif; ?>
                         <a href="#" class="btn btn-outline">Save Post</a>

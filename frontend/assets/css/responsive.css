@@ -107,7 +107,7 @@
         
     }
 }
-/* For the devices wihich screen size is less then 768px */
+/* For the devices which screen size is less then 768px */
 @media (max-width: 767.98px) {
     .site-header {
         padding: 1rem 0;
