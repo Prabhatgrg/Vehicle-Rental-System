@@ -139,26 +139,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     <input type="file" name="postImageUpload[]" id="postImageUpload" class="form-file" multiple>
                                                 </div>
 
-                                                <?php
+                                                <div class="form-field">
+                                                    <label for="postCategory">Category</label>
+                                                    <select name="postCategory" id="postCategory" class="form-select">
+                                                        <?php
 
-                                                $categories = get_categories();
+                                                        $categories = get_categories();
 
-                                                if ($categories) :
-                                                ?>
-                                                    <div class="form-field">
-                                                        <label for="postCategory">Category</label>
-                                                        <select name="postCategory" id="postCategory" class="form-select">
+                                                        if ($categories) :
+                                                        ?>
 
                                                             <?php foreach ($categories as $category) : ?>
 
                                                                 <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_title']; ?></option>
 
                                                             <?php endforeach; ?>
-                                                        </select>
+                                                        <?php else : ?>
+                                                            <option value="false">No Category</option>
+                                                        <?php endif; ?>
+                                                    </select>
 
-                                                    </div>
-                                                <?php
-                                                endif; ?>
+                                                </div>
                                                 <div class="form-floating">
                                                     <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
                                                     <label for="postLocation">Location</label>

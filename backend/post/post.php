@@ -169,20 +169,10 @@ function update_views($post_id)
 {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT post_views FROM re_posts WHERE post_id = ?');
+    $stmt = $conn->prepare('UPDATE re_posts SET post_views = post_views + 1 WHERE post_id = ?');
     $stmt->bind_param('i', $post_id);
 
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        $views = (int) $result->fetch_array(MYSQLI_ASSOC)['post_views'];
-
-        $views++;
-
-        $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
-        $stmt->bind_param('si', $views, $post_id);
-
-        $stmt->execute();
-    }
+    $stmt->execute();
 }
 
 // function to get post by views descending order
@@ -256,13 +246,25 @@ function get_post_by_user_id($user_id, $status = 'published')
 {
     global $conn;
 
-
-
     $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_user = ? AND post_status = ?");
     $stmt->bind_param('is', $user_id, $status);
 
     $stmt->execute();
 
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+// function to get user bookings
+function get_bookings_by_user($user_id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ?');
+    $stmt->bind_param('i', $user_id);
+
+    $stmt->execute();
     $result = $stmt->get_result();
 
     return $result->fetch_all(MYSQLI_ASSOC);

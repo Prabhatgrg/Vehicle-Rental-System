@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS re_users(
     user_password VARCHAR(255) NOT NULL,
     user_email VARCHAR(100) NOT NULL,
     user_phone VARCHAR(10) NOT NULL,
+    user_profile VARCHAR(255) NOT NULL,
     user_rating VARCHAR(10) NOT NULL DEFAULT '0',
     user_total_rating VARCHAR(10) NOT NULL DEFAULT '0',
     user_rating_count INT DEFAULT 0,
@@ -76,6 +77,14 @@ CREATE TABLE IF NOT EXISTS re_reviews(
     user_review VARCHAR(255) NOT NULL,
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (reviewer_id) REFERENCES re_users(user_id)
+);
+
+CREATE TABLE IF NOT EXISTS re_bookmarks (
+    bookmark_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    user_id INT,
+    post_id INT,
+    FOREIGN KEY (user_id) REFERENCES re_users(user_id),
+    FOREIGN KEY (post_id) REFERENCES re_posts(post_id) 
 );
 
 CREATE TRIGGER IF NOT EXISTS updateTotalRating
