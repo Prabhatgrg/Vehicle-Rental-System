@@ -11,8 +11,7 @@ if (!is_my_post($post_id, $user_id)) :
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    if (isset($_POST['postEdit_submit'])) {
+    if (isset($_POST['postEditTitle'])) {
         $post_title = $_POST['postEditTitle'];
         $post_image_upload = $_FILES['postEditImageUpload'];
         $post_category = $_POST['postEditCategory'];
@@ -24,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_mileage = $_POST['postEditMileage'];
         $post_price = $_POST['postEditPrice'];
         $post_negotiable = $_POST['postEditNegotiable'];
-        // $post_rent_start_date = $_POST['postRentStartDate'];
-        // $post_rent_end_date = $_POST['postRentEndDate'];
 
         $post_message = update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
     }
@@ -70,7 +67,7 @@ get_header();
                         Note: If you want to update the post then you have to reupload your post images.
                     </p>
                 </div>
-                <form method="POST" class="grid gap-2">
+                <form method="POST" class="grid gap-2" enctype="multipart/form-data">
                     <div class="form-floating">
                         <input type="text" name="postEditTitle" id="postEditTitle" class="form-control" placeholder="Post Title" value="<?php echo $title; ?>">
                         <label for="postEditTitle">Post Title</label>
@@ -97,7 +94,7 @@ get_header();
                                 </g>
                             </svg>
                         </label>
-                        <input type="file" name="postEditImageUpload" id="postEditImageUpload" class="form-file" multiple>
+                        <input type="file" name="postEditImageUpload[]" id="postEditImageUpload" class="form-file" multiple>
                     </div>
                     <div class="form-field">
                         <label for="postEditCategory">Category</label>
@@ -126,7 +123,7 @@ get_header();
                         <label for="postEditLocation">Location</label>
                     </div>
                     <div class="form-floating">
-                        <textarea name="postEditDescription" id="postEditDescription" class="form-control" placeholder="Description" value="<?php echo $description; ?>"></textarea>
+                        <textarea name="postEditDescription" id="postEditDescription" class="form-control" placeholder="Description"><?php echo $description; ?></textarea>
                         <label for="postEditDescription">Description</label>
                     </div>
                     <div class="form-field">
@@ -166,6 +163,7 @@ get_header();
                         </div>
                     </div>
                     <div class="form-submit">
+                        <input type="hidden" name="postEdit_submit" value="submit">
                         <button type="submit" class="btn btn-dark">Submit</button>
                     </div>
                 </form>

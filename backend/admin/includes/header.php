@@ -28,7 +28,18 @@
 
                 <div class="has-dropdown user-avatar">
                     <div class="user-info">
-                        <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                        <?php
+                        $user_id = get_user_id();
+                        $user_info = get_user_info_by_id($user_id);
+                        $avatar = $user_info['user_profile'];
+                        ?>
+                        <?php if ($avatar != "") :
+                            $img_url = get_image_url($avatar);
+                        ?>
+                            <img class="user-image" src="<?php echo $img_url; ?>" alt="<?php echo $name; ?>">
+                        <?php else : ?>
+                            <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                        <?php endif; ?>
                         <span class="user-name"><?php echo get_user_name(); ?></span>
 
                     </div>

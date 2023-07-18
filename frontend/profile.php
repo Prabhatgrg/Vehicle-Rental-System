@@ -1,24 +1,34 @@
 <?php
 if (!is_login()) :
-    header('Location: /login');
+    header('Location: login');
 endif;
+
 
 get_header("Profile");
 
 define('MAX_STAR', 5);
-$user_id = $_SESSION['user_id'];
+$user_id = get_user_id();
+
+if (isset($_POST['profile_submit'])) :
+    $name = $_POST['profileName'];
+    $phone = $_POST['profileNumber'];
+    $email = $_POST['profileEmail'];
+    $file = $_FILES['profileUpload'];
+    update_user_info($user_id, $name, $file, $phone, $email);
+endif;
 
 if (isset($_GET['action']) || !empty($_GET['action'])) :
-    $user_id = get_user_id();
     $post_id = $_GET['post_id'];
-    $status = $_GET['status'];
 
     switch ($_GET['action']):
         case 'update_status':
+            $status = $_GET['status'];
             echo '<script>const isConfirm = confirm("Are you sure want to mark as rented?");if (!isConfirm) document.location.href = "profile";</script>';
             $message = update_post_status_by_user($post_id, $user_id, $status);
             break;
-
+        case 'delete':
+            $message = delete_post_by_id($post_id);
+            break;
         default:
             break;
     endswitch;
@@ -38,23 +48,32 @@ endif;
 <?php endif; ?>
 
 
+<?php
+$user_info = get_user_info_by_id($user_id);
+$name = $user_info['user_fullname'];
+$phone = $user_info['user_phone'];
+$email = $user_info['user_email'];
+$avatar = $user_info['user_profile'];
+?>
 <section class="user-profile py-5">
     <div class="container">
         <div class="user-profile-container flex">
             <div class="user-info-container col-3">
                 <aside class="user-info-section">
-                    <?php
-                    $user_info = get_user_info_by_id($user_id);
-                    $name = $user_info['user_fullname'];
-                    $phone = $user_info['user_phone'];
-                    ?>
                     <div class="user-image-section">
-                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                        <?php if ($avatar != "") :
+                            $img_url = get_image_url($avatar);
+                        ?>
+                            <img src="<?php echo $img_url; ?>" alt="<?php echo $name; ?>">
+                        <?php else : ?>
+                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                        <?php endif; ?>
                     </div>
                     <div class="user-detail-section">
                         <span class="user-name"><?php echo $name; ?></span>
                         <a href="tel:<?php echo $phone; ?>" class="user-contact"><?php echo $phone; ?></a>
                     </div>
+
                 </aside>
                 <div class="rating-wrapper">
                     <?php $user_rating = get_user_rating($user_id); ?>
@@ -77,6 +96,70 @@ endif;
                     <span class="rate">
                         <?php echo $user_rating * 5; ?>
                     </span>
+                </div>
+
+                <div class="modal-container">
+                    <button class="btn btn-dark btn-modal">
+                        Update Profile
+                    </button>
+                    <div class="modal-content px-2">
+                        <div class="flex justify-content-center align-items-center h-100">
+                            <div class="modal-dialog col-md-6 col-lg-5 bg-light">
+                                <div class="flex justify-content-between align-items-center mb-2">
+                                    <h3>Update Profile</h3>
+
+                                    <button class="btn-close">
+                                        <span class="line"></span>
+                                        <span class="screen-reader-text">Close</span>
+                                    </button>
+                                </div>
+                                <form method="post" class="grid gap-2 post-form" enctype="multipart/form-data">
+                                    <div class="form-floating">
+                                        <input type="text" name="profileName" id="profileName" class="form-control" placeholder="name" value="<?php echo $name; ?>">
+                                        <label for="profileName">Full Name</label>
+                                    </div>
+                                    <div class="form-file-upload">
+                                        <span class="form-title mb-2">Upload Image For Post</span>
+                                        <label for="profileUpload">
+                                            <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                <defs>
+                                                    <style>
+                                                        .cls-1 {
+                                                            fill: none;
+                                                            stroke: #000;
+                                                            stroke-linecap: round;
+                                                            stroke-linejoin: round;
+                                                            stroke-width: 2px;
+                                                        }
+                                                    </style>
+                                                </defs>
+                                                <title />
+                                                <g id="plus">
+                                                    <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
+                                                    <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
+                                                </g>
+                                            </svg>
+                                        </label>
+                                        <input type="file" name="profileUpload" id="profileUpload" class="form-file">
+                                    </div>
+
+
+                                    <div class="form-floating">
+                                        <input type="text" name="profileNumber" id="profileNumber" class="form-control" placeholder="phone" value="<?php echo $phone; ?>">
+                                        <label for="profileNumber">Phone Number</label>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input name="profileEmail" id="profileEmail" class="form-control" placeholder="email" value="<?php echo $email; ?>" />
+                                        <label for="profileEmail">Email</label>
+                                    </div>
+                                    <div class="form-submit">
+                                        <input type="hidden" name="profile_submit" value="submit">
+                                        <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -144,7 +227,7 @@ endif;
                                                                     <ul class="dropdown-list-content">
                                                                         <li><a href="?action=<?php echo urlencode('update_status'); ?>&post_id=<?php echo urlencode($post_id); ?>&status=<?php echo urlencode('rented'); ?>">Mark as Rented</a></li>
                                                                         <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
-                                                                        <li><a href="#">Delete Post</a></li>
+                                                                        <li><a href="?action=<?php echo urlencode('delete'); ?>&post_id=<?php echo urlencode($post_id); ?>">Delete Post</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -210,20 +293,22 @@ endif;
                                                             <?php echo $title; ?>
                                                         </a>
                                                     </h3>
-                                                    <div class="dropdown-container dot-menu">
-                                                        <button class="btn-dropdown">
-                                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" fill="black" />
-                                                            </svg>
-                                                        </button>
-                                                        <div class="dropdown-content">
-                                                            <ul class="dropdown-list-content">
-                                                                <li><a href="#">Mark as Rented</a></li>
-                                                                <li><a href="#">Edit Post</a></li>
-                                                                <li><a href="#">Delete Post</a></li>
-                                                            </ul>
+                                                    <?php if (is_booked($post_id, $user_id)) : ?>
+                                                        <div class="dropdown-container dot-menu">
+                                                            <button class="btn-dropdown">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" fill="black" />
+                                                                </svg>
+                                                            </button>
+                                                            <div class="dropdown-content">
+                                                                <ul class="dropdown-list-content">
+                                                                    <li>
+                                                                        <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>">Cancel Booking</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    <?php endif; ?>
                                                 </div>
 
                                                 <span class="price">Rs. <?php echo $price; ?></span>

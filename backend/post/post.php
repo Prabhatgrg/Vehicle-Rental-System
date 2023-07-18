@@ -182,7 +182,7 @@ function get_post_by_views()
 
     $status = 'pending';
 
-    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_status != ? ORDER BY post_views DESC');
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status != ? ORDER BY post_views DESC");
     $stmt->bind_param('s', $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -198,7 +198,7 @@ function is_published($post_id)
 
     $status = 'pending';
 
-    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? and post_status != ?');
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ? and post_status != ?");
     $stmt->bind_param('is', $post_id, $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -261,8 +261,10 @@ function get_bookings_by_user($user_id)
 {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ?');
-    $stmt->bind_param('i', $user_id);
+    $status = 'booked';
+
+    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ? AND booking_status = ?');
+    $stmt->bind_param('is', $user_id, $status);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -282,7 +284,7 @@ function update_post_status_by_user($post_id, $user_id, $post_status)
     $stmt->bind_param('sii', $post_status, $post_id, $user_id);
 
     if ($stmt->execute()) :
-        $message['success'] = 'The post is successfully updated.';
+        $message['success'] = 'The post is successfully ' . $post_status;
     else :
         $message['success'] = 'There is an error while updating the post status. Please try again later.';
     endif;
@@ -342,6 +344,21 @@ function update_post($post_id, $post_title, $post_image_upload, $post_category, 
         $message['success'] = 'The ads post was successfully updated.';
     } else {
         $message['error'] = 'There is some error to update post.';
+    }
+    return $message;
+}
+
+// function to delte post
+function delete_post_by_id($post_id)
+{
+    global $conn;
+    $message = [];
+    $stmt = $conn->prepare("DELETE FROM re_posts WHERE post_id = ?");
+    $stmt->bind_param('i', $post_id);
+    if ($stmt->execute()) {
+        $message['success'] = 'The ads post was successfully deleted.';
+    } else {
+        $message['error'] = 'There is some error to delete post.';
     }
     return $message;
 }
