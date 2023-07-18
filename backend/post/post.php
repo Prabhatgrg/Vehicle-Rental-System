@@ -91,7 +91,7 @@ function get_published_posts()
 
     $data = [];
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = 'published'");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status != 'pending'");
     if ($stmt->execute()) :
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
@@ -180,9 +180,9 @@ function get_post_by_views()
 {
     global $conn;
 
-    $status = 'published';
+    $status = 'pending';
 
-    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_status = ? ORDER BY post_views DESC');
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_status != ? ORDER BY post_views DESC');
     $stmt->bind_param('s', $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -196,9 +196,9 @@ function is_published($post_id)
 {
     global $conn;
 
-    $status = 'published';
+    $status = 'pending';
 
-    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? and post_status = ?');
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? and post_status != ?');
     $stmt->bind_param('is', $post_id, $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -242,11 +242,11 @@ function delete_comment($comment_id)
 }
 
 // funciton to get post by user id
-function get_post_by_user_id($user_id, $status = 'published')
+function get_post_by_user_id($user_id, $status = 'pending')
 {
     global $conn;
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_user = ? AND post_status = ?");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_user = ? AND post_status != ?");
     $stmt->bind_param('is', $user_id, $status);
 
     $stmt->execute();
@@ -268,4 +268,80 @@ function get_bookings_by_user($user_id)
     $result = $stmt->get_result();
 
     return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+
+// function nto update the post status
+function update_post_status_by_user($post_id, $user_id, $post_status)
+{
+    global $conn;
+
+    $message = [];
+
+    $stmt = $conn->prepare("UPDATE re_posts SET post_status = ? WHERE post_id = ? AND post_user = ?");
+    $stmt->bind_param('sii', $post_status, $post_id, $user_id);
+
+    if ($stmt->execute()) :
+        $message['success'] = 'The post is successfully updated.';
+    else :
+        $message['success'] = 'There is an error while updating the post status. Please try again later.';
+    endif;
+    return $message;
+}
+
+// function to check if post is rented or not
+function is_rented($post_id)
+{
+    global $conn;
+
+    $status = 'rented';
+
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? and post_status = ?');
+    $stmt->bind_param('is', $post_id, $status);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0)
+            return true;
+        return false;
+    }
+    return false;
+}
+
+// function to check if the post is current user's or not
+function is_my_post($post_id, $user_id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT * FROM re_posts WHERE post_id = ? AND post_user = ?');
+    $stmt->bind_param('is', $post_id, $user_id);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0)
+            return true;
+        return false;
+    }
+    return false;
+}
+
+// function to update post
+function update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
+{
+    global $conn;
+    $message = [];
+
+    // random id for post
+
+    $file_array = reorganize_files_array($post_image_upload);
+
+    $file_data = move_uploaded_post_images($file_array);
+
+
+    $stmt = $conn->prepare('UPDATE re_posts SET post_title = ?, post_image = ?, post_category = ?, post_location = ?, post_description = ?, post_delivery = ?, post_color = ?, post_fuel_type = ?, post_mileage = ?, post_price = ?, post_negotiable = ? WHERE post_id = ?');
+    $stmt->bind_param('sssssssssssi', $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_id);
+    if ($stmt->execute()) {
+        $message['success'] = 'The ads post was successfully updated.';
+    } else {
+        $message['error'] = 'There is some error to update post.';
+    }
+    return $message;
 }

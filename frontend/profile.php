@@ -8,8 +8,34 @@ get_header("Profile");
 define('MAX_STAR', 5);
 $user_id = $_SESSION['user_id'];
 
+if (isset($_GET['action']) || !empty($_GET['action'])) :
+    $user_id = get_user_id();
+    $post_id = $_GET['post_id'];
+    $status = $_GET['status'];
 
+    switch ($_GET['action']):
+        case 'update_status':
+            echo '<script>const isConfirm = confirm("Are you sure want to mark as rented?");if (!isConfirm) document.location.href = "profile";</script>';
+            $message = update_post_status_by_user($post_id, $user_id, $status);
+            break;
+
+        default:
+            break;
+    endswitch;
+endif;
 ?>
+
+<?php if (isset($message)) :
+    $key = key($message);
+?>
+    <div class="alert mb-2">
+        <div class="container">
+            <p class="bg-<?php echo $key; ?> p-1">
+                <?php echo $message[$key]; ?>
+            </p>
+        </div>
+    </div>
+<?php endif; ?>
 
 
 <section class="user-profile py-5">
@@ -76,7 +102,8 @@ $user_id = $_SESSION['user_id'];
 
                                             foreach ($posts as $post) :
 
-                                                $permalink = 'post?id=' . urlencode($post['post_id']);
+                                                $post_id = $post['post_id'];
+                                                $permalink = 'post?id=' . urlencode($post_id);
 
                                                 $title = $post['post_title'];
 
@@ -115,8 +142,8 @@ $user_id = $_SESSION['user_id'];
                                                                 </button>
                                                                 <div class="dropdown-content">
                                                                     <ul class="dropdown-list-content">
-                                                                        <li><a href="#">Mark as Rented</a></li>
-                                                                        <li><a href="#">Edit Post</a></li>
+                                                                        <li><a href="?action=<?php echo urlencode('update_status'); ?>&post_id=<?php echo urlencode($post_id); ?>&status=<?php echo urlencode('rented'); ?>">Mark as Rented</a></li>
+                                                                        <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
                                                                         <li><a href="#">Delete Post</a></li>
                                                                     </ul>
                                                                 </div>
