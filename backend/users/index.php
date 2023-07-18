@@ -215,3 +215,36 @@ function get_user_info_by_id($user_id)
 
     return $data;
 }
+
+
+
+function update_user_info($user_id, $name, $user_avatar, $phone, $email)
+{
+    global $conn;
+
+    $message = [];
+
+    $pname = rand(1000, 10000) . '-' . $user_avatar['name'];
+    $tname = $user_avatar['tmp_name'];
+    $upload_dir =  'frontend/uploads/';
+
+
+    move_uploaded_file($tname, $upload_dir . $pname);
+
+    $stmt = $conn->prepare("UPDATE re_users SET user_fullname = ?, user_profile = ?, user_phone = ?, user_email = ? WHERE user_id = ?");
+    $stmt->bind_param('ssssi', $name, $pname, $phone, $email, $user_id);
+
+    if ($stmt->execute()) {
+        $message['success'] = "User Registered Successfully";
+    } else {
+        $message['error'] = "Error occured during the registration";
+    }
+
+
+    return $message;
+}
+
+function get_image_url(string $img_name)
+{
+    return get_root_directory_uri() . "/frontend/uploads/" . $img_name;
+}

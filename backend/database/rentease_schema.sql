@@ -114,3 +114,9 @@ AFTER INSERT
 ON re_reviews
 FOR EACH ROW
 UPDATE re_users SET user_rating = user_total_rating / (user_rating_count * 5)  WHERE user_id = NEW.user_id;
+
+CREATE TRIGGER IF NOT EXISTS delteBookings
+BEFORE DELETE
+ON re_posts
+FOR EACH ROW
+DELETE FROM re_bookings WHERE post_id = OLD.post_id;

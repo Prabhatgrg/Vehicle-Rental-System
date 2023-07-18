@@ -12,7 +12,7 @@ if (!is_admin() && !is_published($post_id)) :
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-    if(isset($_POST['comment-submit'])) :
+    if (isset($_POST['comment-submit'])) :
         $comment_content = $_POST['comment-field'];
         $reply_to = $_POST['reply-to'];
         post_comment($post_id, $user_id, $comment_content, $reply_to);
@@ -102,14 +102,22 @@ $post_data = get_post_by_id($post_id);
                 <div class="post-author">
                     <?php
                     $user_info = get_user_info_by_id($post_data['post_user']);
+                    $avatar = $user_info['user_profile'];
+                    $user_link =  get_root_directory_uri() . '/user?id=' . urlencode($user_info['user_id']);
                     ?>
 
                     <div class="user-info">
-                        <a href="#">
-                            <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                        <a href="<?php echo $user_link; ?>" target="_blank">
+                            <?php if ($avatar != "") :
+                                $img_url = get_image_url($avatar);
+                            ?>
+                                <img class="user-image" src="<?php echo $img_url; ?>" alt="<?php echo $name; ?>">
+                            <?php else : ?>
+                                <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                            <?php endif; ?>
                         </a>
                         <div class="user-detail">
-                            <a href="<?php echo get_root_directory_uri() . '/user?id=' . urlencode($user_info['user_id']);  ?>" target="_blank">
+                            <a href="<?php echo $user_link; ?>" target="_blank">
                                 <span class="user-name"><?php echo $user_info['user_fullname']; ?></span>
                             </a>
                             <a href="tel:<?php echo $user_info['user_phone']; ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
@@ -168,11 +176,13 @@ $post_data = get_post_by_id($post_id);
                                     </li>
                                     <!-- <li>
                                         <span class="detail-title">Rent Start Date</span>
-                                        <span class="detail-info"><?php //echo $post_data['post_rent_start']; ?></span>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_start']; 
+                                                                    ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Rent End Date</span>
-                                        <span class="detail-info"><?php //echo $post_data['post_rent_end']; ?></span>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_end']; 
+                                                                    ?></span>
                                     </li> -->
                                 </ul>
                             </div>
