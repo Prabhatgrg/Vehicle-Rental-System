@@ -14,6 +14,7 @@
                         <span class="line"></span>
                     </button>
                 </div>
+                <input type="hidden" name="comment-submit" value="">
                 <input type="hidden" name="reply-to" id="reply-to" value="">
                 <textarea name="comment-field" id="comment-field" class="form-control" placeholder="Comment"></textarea>
                 <button type="submit" class="btn btn-dark">

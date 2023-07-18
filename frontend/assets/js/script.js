@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     function validatePostForm(postForm) {
         let errorMessage = "";
         let isValidate = true;
-        const currentYear = new Date().getFullYear();
+        // const currentYear = new Date().getFullYear();
 
         const postTitle = postForm.querySelector("#postTitle").value;
         const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
@@ -76,8 +76,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
         const postNegotiable = postForm.querySelector("#postNegotiable").value;
-        const postRentStartDateValue = postForm.querySelector("#postRentStartDate").value;
-        const postRentEndDateValue = postForm.querySelector("#postRentEndDate").value;
+        // const postRentStartDateValue = postForm.querySelector("#postRentStartDate").value;
+        // const postRentEndDateValue = postForm.querySelector("#postRentEndDate").value;
 
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
@@ -123,27 +123,27 @@ window.addEventListener("DOMContentLoaded", (event) => {
             errorMessage += "Please select the price is negotiable or not\n";
             isValidate = false;
         }
-        if (postRentStartDateValue == "") {
-            errorMessage += "Please enter start date\n";
-            isValidate = false;
-        } else {
-            const postRentStartDate = new Date(postRentStartDateValue);
-            if (postRentStartDate.getFullYear() < currentYear) {
-                errorMessage += "Please enter valid start year\n";
-                isValidate = false;
-            }
-        }
+        // if (postRentStartDateValue == "") {
+        //     errorMessage += "Please enter start date\n";
+        //     isValidate = false;
+        // } else {
+        //     const postRentStartDate = new Date(postRentStartDateValue);
+        //     if (postRentStartDate.getFullYear() < currentYear) {
+        //         errorMessage += "Please enter valid start year\n";
+        //         isValidate = false;
+        //     }
+        // }
 
-        if (postRentStartDateValue == "") {
-            errorMessage += "Please enter end date\n";
-            isValidate = false;
-        } else {
-            const postRentEndDate = new Date(postRentEndDateValue);
-            if (postRentEndDate.getTime() > postRentEndDate.getTime()) {
-                errorMessage += "Vehicle rent finish date should be greater then start date\n";
-                isValidate = false;
-            }
-        }
+        // if (postRentStartDateValue == "") {
+        //     errorMessage += "Please enter end date\n";
+        //     isValidate = false;
+        // } else {
+        //     const postRentEndDate = new Date(postRentEndDateValue);
+        //     if (postRentEndDate.getTime() > postRentEndDate.getTime()) {
+        //         errorMessage += "Vehicle rent finish date should be greater then start date\n";
+        //         isValidate = false;
+        //     }
+        // }
         if (!isValidate) alert(errorMessage);
 
         return isValidate;

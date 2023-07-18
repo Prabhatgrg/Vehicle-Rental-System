@@ -14,10 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_mileage = $_POST['postMileage'];
         $post_price = $_POST['postPrice'];
         $post_negotiable = $_POST['postNegotiable'];
-        $post_rent_start_date = $_POST['postRentStartDate'];
-        $post_rent_end_date = $_POST['postRentEndDate'];
+        // $post_rent_start_date = $_POST['postRentStartDate'];
+        // $post_rent_end_date = $_POST['postRentEndDate'];
 
-        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date);
+        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
     }
 }
 
@@ -79,7 +79,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </form>
 
                     <nav class="main-navigation">
-
+                        <?php if (is_login()) : ?>
+                            <div class="flex">
+                                <a href="<?php echo get_root_directory_uri();?>/notifications" aria-label="notification-icon">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="24.000000pt" height="24.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                            <path d="M2315 4839 c-544 -79 -1001 -463 -1174 -986 -63 -191 -72 -263 -78 -643 -3 -256 -8 -348 -20 -389 -19 -69 -72 -175 -163 -326 -129 -213 -159 -290 -180 -456 -33 -262 64 -527 263 -715 91 -87 185 -144 303 -183 92 -31 358 -69 754 -108 243 -24 756 -24 1010 0 294 28 638 75 720 97 214 60 398 213 505 420 62 122 86 211 92 356 10 211 -26 329 -174 576 -193 324 -185 293 -193 743 -7 323 -10 382 -29 467 -129 590 -592 1037 -1179 1138 -122 21 -343 25 -457 9z m478 -338 c210 -56 369 -146 523 -296 159 -156 253 -316 312 -535 24 -91 25 -111 32 -470 8 -398 8 -406 63 -551 34 -89 55 -129 164 -311 110 -183 133 -243 141 -355 10 -158 -43 -305 -147 -411 -62 -63 -167 -123 -246 -141 -64 -14 -388 -55 -620 -78 -250 -24 -744 -24 -985 0 -282 29 -570 66 -634 82 -160 41 -294 168 -353 336 -21 60 -26 92 -26 174 0 132 22 195 140 390 113 187 145 251 185 368 l32 92 7 365 c7 389 14 454 64 601 132 387 467 677 872 754 115 21 372 14 476 -14z" />
+                                            <path d="M2025 830 c-46 -10 -84 -39 -106 -81 -43 -85 -16 -154 106 -275 66 -66 100 -90 176 -128 123 -61 211 -79 354 -73 190 8 336 70 470 202 87 85 130 164 119 219 -19 105 -126 166 -222 127 -15 -7 -58 -45 -95 -86 -92 -101 -165 -137 -286 -143 -68 -3 -98 0 -143 16 -76 27 -140 73 -189 135 -23 29 -49 57 -59 64 -26 18 -91 30 -125 23z" />
+                                        </g>
+                                    </svg>
+                                </a>
+                            </div>
+                        <?php endif; ?>
                         <div class="modal-container">
                             <button class="btn btn-dark btn-modal">
                                 Create Post
@@ -89,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <div class="modal-dialog col-md-6 col-lg-5 bg-light">
 
                                         <?php if (is_login()) : ?>
+
                                             <div class="flex justify-content-between align-items-center mb-2">
                                                 <h3>Create New Post</h3>
 
@@ -127,26 +139,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     <input type="file" name="postImageUpload[]" id="postImageUpload" class="form-file" multiple>
                                                 </div>
 
-                                                <?php
+                                                <div class="form-field">
+                                                    <label for="postCategory">Category</label>
+                                                    <select name="postCategory" id="postCategory" class="form-select">
+                                                        <?php
 
-                                                $categories = get_categories();
+                                                        $categories = get_categories();
 
-                                                if ($categories) :
-                                                ?>
-                                                    <div class="form-field">
-                                                        <label for="postCategory">Category</label>
-                                                        <select name="postCategory" id="postCategory" class="form-select">
+                                                        if ($categories) :
+                                                        ?>
 
                                                             <?php foreach ($categories as $category) : ?>
 
                                                                 <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_title']; ?></option>
 
                                                             <?php endforeach; ?>
-                                                        </select>
+                                                        <?php else : ?>
+                                                            <option value="false">No Category</option>
+                                                        <?php endif; ?>
+                                                    </select>
 
-                                                    </div>
-                                                <?php
-                                                endif; ?>
+                                                </div>
                                                 <div class="form-floating">
                                                     <input type="text" name="postLocation" id="postLocation" class="form-control" placeholder="Location">
                                                     <label for="postLocation">Location</label>
@@ -191,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group grid column-2">
+                                                <!-- <div class="form-group grid column-2">
                                                     <div class="form-floating">
                                                         <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
                                                         <label for="postRentStartDate">Vehicle Rent Start Date</label>
@@ -200,7 +213,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
                                                         <label for="postRentEndDate">Vehicle Rent End Date</label>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-submit">
                                                     <input type="hidden" name="post_submit" value="submit">
                                                     <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>

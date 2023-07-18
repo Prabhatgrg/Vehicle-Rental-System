@@ -39,10 +39,6 @@ get_header($user_name);
                     <div class="user-detail-section">
                         <span class="user-name"><?php echo $user_name; ?></span>
                         <a href="tel:<?php echo $user_data['user_phone']; ?>" class="user-contact"><?php echo $user_data['user_phone']; ?></a>
-                        <span class="user-location">
-                            <img class="location-icon" src="./frontend/assets/img/png/location.png" alt="Location Icon">
-                            <span class="user-location-details">N/A</span>
-                        </span>
                     </div>
                 </aside>
                 <div class="rating-wrapper">

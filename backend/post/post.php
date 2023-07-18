@@ -1,7 +1,7 @@
 <?php
 
 // function to post the post
-function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date)
+function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
 {
     global $conn;
 
@@ -16,8 +16,8 @@ function create_post($post_title, $post_image_upload, $post_category, $post_loca
 
     $user_id = $_SESSION['user_id'];
 
-    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable, post_rent_start, post_rent_end) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
-    $stmt->bind_param('iisssssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_rent_start_date, $post_rent_end_date);
+    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('iisssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully requested.';
     } else {
@@ -169,20 +169,10 @@ function update_views($post_id)
 {
     global $conn;
 
-    $stmt = $conn->prepare('SELECT post_views FROM re_posts WHERE post_id = ?');
+    $stmt = $conn->prepare('UPDATE re_posts SET post_views = post_views + 1 WHERE post_id = ?');
     $stmt->bind_param('i', $post_id);
 
-    if ($stmt->execute()) {
-        $result = $stmt->get_result();
-        $views = (int) $result->fetch_array(MYSQLI_ASSOC)['post_views'];
-
-        $views++;
-
-        $stmt = $conn->prepare('UPDATE re_posts SET post_views = ? WHERE post_id = ?');
-        $stmt->bind_param('si', $views, $post_id);
-
-        $stmt->execute();
-    }
+    $stmt->execute();
 }
 
 // function to get post by views descending order
@@ -256,13 +246,25 @@ function get_post_by_user_id($user_id, $status = 'published')
 {
     global $conn;
 
-
-
     $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_user = ? AND post_status = ?");
     $stmt->bind_param('is', $user_id, $status);
 
     $stmt->execute();
 
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
+// function to get user bookings
+function get_bookings_by_user($user_id)
+{
+    global $conn;
+
+    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ?');
+    $stmt->bind_param('i', $user_id);
+
+    $stmt->execute();
     $result = $stmt->get_result();
 
     return $result->fetch_all(MYSQLI_ASSOC);

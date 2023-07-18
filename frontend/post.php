@@ -12,10 +12,11 @@ if (!is_admin() && !is_published($post_id)) :
 endif;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') :
-    $comment_content = $_POST['comment-field'];
-    $reply_to = $_POST['reply-to'];
-
-    post_comment($post_id, $user_id, $comment_content, $reply_to);
+    if(isset($_POST['comment-submit'])) :
+        $comment_content = $_POST['comment-field'];
+        $reply_to = $_POST['reply-to'];
+        post_comment($post_id, $user_id, $comment_content, $reply_to);
+    endif;
 endif;
 
 if (is_published($post_id))
@@ -165,14 +166,14 @@ $post_data = get_post_by_id($post_id);
                                         <span class="detail-title">Pricing</span>
                                         <span class="detail-info">Rs. <?php echo $post_data['post_price']; ?></span>
                                     </li>
-                                    <li>
+                                    <!-- <li>
                                         <span class="detail-title">Rent Start Date</span>
-                                        <span class="detail-info"><?php echo $post_data['post_rent_start']; ?></span>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_start']; ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Rent End Date</span>
-                                        <span class="detail-info"><?php echo $post_data['post_rent_end']; ?></span>
-                                    </li>
+                                        <span class="detail-info"><?php //echo $post_data['post_rent_end']; ?></span>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
