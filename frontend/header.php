@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </a>
 
-                    <form method="post" class="search-bar" autocomplete="off">
+                    <form action="<?php echo get_root_directory_uri();?>/search" method="post" class="search-bar" autocomplete="off">
                         <div class="form-field">
                             <label for="search" class="screen-reader-text">Search</label>
                             <input type="text" id="search" name="search" aria-label="Search" class="form-control">
@@ -73,7 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <path d="M1205 3991 c-78 -35 -212 -203 -295 -369 -97 -194 -133 -352 -134 -582 -1 -138 1 -159 20 -194 59 -114 202 -141 298 -57 44 39 56 84 56 218 0 264 73 463 236 650 85 97 102 158 65 238 -45 98 -151 139 -246 96z" />
                                     </g>
                                 </svg>
-
                             </button>
                         </div>
                     </form>
