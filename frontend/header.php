@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="form-field">
                             <label for="search" class="screen-reader-text">Search</label>
                             <input type="text" id="search" name="search" aria-label="Search" class="form-control">
-                            <button type="submit" name="serch_submit" aria-label="search">
+                            <button type="submit" name="submit" aria-label="search">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
 
                                     <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
