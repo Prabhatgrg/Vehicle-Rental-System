@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </a>
 
-                    <form action="<?php echo get_root_directory_uri();?>/search" method="post" class="search-bar" autocomplete="off">
+                    <form action="<?php echo get_root_directory_uri();?>/search" method="get" class="search-bar" autocomplete="off">
                         <div class="form-field">
                             <label for="search" class="screen-reader-text">Search</label>
                             <input type="text" id="search" name="search" aria-label="Search" class="form-control">
