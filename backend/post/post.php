@@ -161,7 +161,7 @@ function display_post($post)
         </form>
     </li>
 
-<?php
+    <?php
 }
 
 // function to update views
@@ -174,6 +174,67 @@ function update_views($post_id)
 
     $stmt->execute();
 }
+
+// function to check latest post
+function get_latest_post()
+{
+    global $conn;
+    $currentDate = date('Y-m-d H:i:s');
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts ORDER BY post_date DESC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $post_image_array = json_decode($row['post_image']);
+        if (count($post_image_array) > 0) {
+            $post_thumbnail_url = $post_image_array[0]->path;
+            $post_thumbnail_name = $post_image_array[0]->name;
+        }
+    ?>
+
+        <div class="card-linear">
+            <figure class="card-img">
+                <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>" aria-label="feature image">
+                    <?php if (isset($post_thumbnail_url)) : ?>
+                        <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                    <?php else : ?>
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
+                    <?php endif; ?>
+                </a>
+            </figure>
+            <div class="card-body flex-1 p-2">
+                <div class="flex">
+                    <h3 class="card-title flex-1 h5 mb-3"><a href="#"><?php echo $row['post_title']; ?></a></h3>
+                    <ul class="card-features">
+                        <li>
+                            <a href="#" aria-label="bookmark link">
+                                <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="product-description mb-3">
+                    <p><?php echo $row['post_description']; ?></p>
+                </div>
+
+                <div class="price-and-availability flex-1 gap-2 mb-3">
+                    <span class="price">Rs <?php echo $row['post_price']; ?> per day</span>
+                    <span class="available">| Available: </span>
+                </div>
+
+                <div class="location-and-time flex justify-content-between">
+                    <span class="location"><?php echo $row['post_location']; ?></span>
+                    <span class="time"><?php echo $row['post_date']; ?></span>
+                </div>
+
+            </div>
+        </div>
+<?php }
+}
+
 
 // function to get post by views descending order
 function get_post_by_views()
