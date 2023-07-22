@@ -221,7 +221,7 @@ function get_latest_post()
                 </div>
 
                 <div class="price-and-availability flex-1 gap-2 mb-3">
-                    <span class="price">Rs <?php echo $row['post_price']; ?> /day</span>
+                    <span class="price">Rs <?php echo $row['post_price']; ?> per day</span>
                     <span class="available">| Available: </span>
                 </div>
 
