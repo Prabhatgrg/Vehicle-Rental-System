@@ -8,7 +8,7 @@
                        Rent<span class="fw-bold">Ease</span>
                    </a>
                    <div class="site-description">
-                       <p>A system that allows user to rent the vehicle form rental provider.</p>
+                       <p>A system designed to allow users to rent vehicles.</p>
                    </div>
                </div>
                <div class="col-md-6 col-lg-4">

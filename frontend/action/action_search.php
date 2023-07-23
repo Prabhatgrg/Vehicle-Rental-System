@@ -40,7 +40,7 @@ endif;
                                 <div class="card-body flex-1 p-2">
 
                                     <div class="flex">
-                                        <h3 class="card-title flex-1 h5 mb-3"><a href="#"><?php echo $row['post_title']; ?></a></h3>
+                                        <h3 class="card-title flex-1 h5 mb-3"><a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>"><?php echo $row['post_title']; ?></a></h3>
 
                                         <ul class="card-features">
                                             <li>
