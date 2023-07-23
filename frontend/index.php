@@ -23,13 +23,13 @@ get_header();
 
         <?php
 
-        $trading_posts = get_post_by_views();
+        $trending_posts = get_post_by_views();
 
-        if ($trading_posts) :
+        if ($trending_posts) :
 
             echo '<div class="grid gap-1 column-5">';
 
-            foreach ($trading_posts as $post) :
+            foreach ($trending_posts as $post) :
                 // echo '<pre>';
                 // print_r($post);
                 // echo '</pre>';
@@ -65,7 +65,7 @@ get_header();
                                 <?php echo $post['post_title']; ?>
                             </a>
                         </h3>
-                        <span class="price">Rs. <?php echo $post['post_price']; ?></span>
+                        <span class="price">Rs. <?php echo $post['post_price']; ?> per day</span>
                     </div>
                 </div>
 

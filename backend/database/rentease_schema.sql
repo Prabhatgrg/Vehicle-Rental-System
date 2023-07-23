@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS re_posts(
     post_rent_start VARCHAR(50) NOT NULL,
     post_rent_end VARCHAR(50) NOT NULL,
     post_status VARCHAR(10) NOT NULL DEFAULT 'pending',
-    post_views VARCHAR(255) DEFAULT 0,
+    post_views INT DEFAULT 0,
     post_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     FOREIGN KEY (post_user) REFERENCES re_users(user_id)
 );
