@@ -324,7 +324,7 @@ function get_bookings_by_user($user_id)
 
     $status = 'booked';
 
-    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ? AND booking_status = ?');
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ? AND booking_status = ?');
     $stmt->bind_param('is', $user_id, $status);
 
     $stmt->execute();

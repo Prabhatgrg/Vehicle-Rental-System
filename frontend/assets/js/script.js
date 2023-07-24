@@ -294,6 +294,44 @@ window.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     }
+
+    const bookForm = document.querySelector(".book-form");
+    if (bookForm) {
+        bookForm.addEventListener("submit", (e) => {
+            const currentYear = new Date().getFullYear();
+            let isValidate = true;
+            let errorMessage = "";
+            const startDateValue = bookForm.querySelector("#bookStartDate").value;
+            const endDateValue = bookForm.querySelector("#bookEndDate").value;
+
+            if (startDateValue == "") {
+                errorMessage += "Please enter start date\n";
+                isValidate = false;
+            } else {
+                const bookRentStartDate = new Date(startDateValue);
+                if (bookRentStartDate.getFullYear() < currentYear) {
+                    errorMessage += "Please enter valid start year\n";
+                    isValidate = false;
+                }
+            }
+
+            if (endDateValue == "") {
+                errorMessage += "Please enter end date\n";
+                isValidate = false;
+            } else {
+                const bookRentEndDate = new Date(endDateValue);
+                if (bookRentEndDate.getTime() > bookRentEndDate.getTime()) {
+                    errorMessage += "Vehicle rent finish date should be greater then start date\n";
+                    isValidate = false;
+                }
+            }
+
+            if (!isValidate) {
+                e.preventDefault();
+                alert(errorMessage);
+            }
+        });
+    }
 });
 
 /*

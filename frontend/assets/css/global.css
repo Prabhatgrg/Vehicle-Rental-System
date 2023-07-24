@@ -170,6 +170,7 @@ svg * {
     font-family: var(--primary-font);
     cursor: pointer;
     border-radius: var(--default-border-radius);
+    line-height: 1.5;
 }
 .btn:hover {
     text-decoration: none;

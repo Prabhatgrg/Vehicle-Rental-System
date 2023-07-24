@@ -1,11 +1,11 @@
 <?php
-$post_id = $_GET['id'];
-$user_id = get_user_id();
 
 if (!isset($_GET['id']) || empty($_GET['id'])) :
     header('Location: ' . get_root_directory_uri() . '/');
 endif;
 
+$post_id = $_GET['id'];
+$user_id = get_user_id();
 
 if (!is_admin() && !is_published($post_id)) :
     header('Location: ' . get_root_directory_uri() . '/404');
@@ -17,6 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
         $reply_to = $_POST['reply-to'];
         post_comment($post_id, $user_id, $comment_content, $reply_to);
     endif;
+
+    if (isset($_POST['book_submit'])) :
+        $book_start = $_POST['bookStartDate'];
+        $book_end = $_POST['bookEndDate'];
+        $book_post_id = $_POST['book_post_id'];
+        $book_user_id = $_POST['book_user_id'];
+
+        $booking_message = book_post($book_start, $book_end, $book_post_id, $book_user_id);
+    endif;
 endif;
 
 if (is_published($post_id))
@@ -24,9 +33,9 @@ if (is_published($post_id))
 
 if (isset($_GET['booking'])) :
     switch ($_GET['booking']):
-        case 'true':
-            $booking_message = book_post($post_id, $user_id);
-            break;
+            // case 'true':
+            //     $booking_message = book_post($post_id, $user_id);
+            //     break;
         case 'false':
             $booking_message = cancel_booked_post($post_id, $user_id);
             break;
@@ -97,7 +106,7 @@ $post_data = get_post_by_id($post_id);
                 endif;
                 ?>
 
-                <h1 class="post-title h3"><?php echo $post_data['post_title']; ?></h1>
+                <h1 class="post-title h3"><?php echo strval($post_data['post_title']); ?></h1>
 
                 <div class="post-author">
                     <?php
@@ -118,16 +127,58 @@ $post_data = get_post_by_id($post_id);
                         </a>
                         <div class="user-detail">
                             <a href="<?php echo $user_link; ?>" target="_blank">
-                                <span class="user-name"><?php echo $user_info['user_fullname']; ?></span>
+                                <span class="user-name"><?php echo strval($user_info['user_fullname']); ?></span>
                             </a>
-                            <a href="tel:<?php echo $user_info['user_phone']; ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
+                            <a href="tel:<?php echo strval($user_info['user_phone']); ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
                         </div>
                     </div>
                     <div class="flex gap-2 my-2">
-                        <?php if (!is_booked($post_id, $user_id)) : ?>
-                            <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('true'); ?>" class="btn btn-outline">Book Now</a>
-                        <?php elseif (is_booked($post_id, $user_id)) : ?>
-                            <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
+                        <?php if (is_login()) : ?>
+                            <?php if (!is_booked($post_id, $user_id)) : ?>
+                                <div class="modal-container">
+                                    <button class="btn btn-outline btn-modal">
+                                        Book Now
+                                    </button>
+                                    <div class="modal-content px-2">
+                                        <div class="flex justify-content-center align-items-center h-100">
+                                            <div class="modal-dialog col-md-6 col-lg-5 bg-light">
+
+
+                                                <div class="flex justify-content-between align-items-center mb-2">
+                                                    <h3>Book Now</h3>
+
+                                                    <button class="btn-close">
+                                                        <span class="line"></span>
+                                                        <span class="screen-reader-text">Close</span>
+                                                    </button>
+                                                </div>
+                                                <form method="post" class="grid gap-2 book-form">
+
+                                                    <div class="form-group grid column-2">
+                                                        <div class="form-floating">
+                                                            <input type="date" name="bookStartDate" id="bookStartDate" class="form-control" placeholder="Price">
+                                                            <label for="bookStartDate">Start Date</label>
+                                                        </div>
+                                                        <div class="form-floating">
+                                                            <input type="date" name="bookEndDate" id="bookEndDate" class="form-control" placeholder="Price">
+                                                            <label for="bookEndDate">End Date</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-submit">
+                                                        <input type="hidden" name="book_post_id" value="<?php echo $post_id; ?>">
+                                                        <input type="hidden" name="book_user_id" value="<?php echo $user_id; ?>">
+                                                        <input type="hidden" name="book_submit" value="submit">
+                                                        <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php /* <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('true'); ?>" class="btn btn-outline">Book Now</a> */ ?>
+                            <?php elseif (is_booked($post_id, $user_id)) : ?>
+                                <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
+                            <?php endif; ?>
                         <?php endif; ?>
                         <a href="#" class="btn btn-outline">Save Post</a>
                     </div>
@@ -156,7 +207,7 @@ $post_data = get_post_by_id($post_id);
                                     </li>
                                     <li>
                                         <span class="detail-title">Location</span>
-                                        <span class="detail-info"><?php echo $post_data['post_location']; ?></span>
+                                        <span class="detail-info"><?php echo strval($post_data['post_location']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Delivery</span>
@@ -164,15 +215,15 @@ $post_data = get_post_by_id($post_id);
                                     </li>
                                     <li>
                                         <span class="detail-title">Fuel Type</span>
-                                        <span class="detail-info"><?php echo $post_data['post_fuel_type']; ?></span>
+                                        <span class="detail-info"><?php echo strval($post_data['post_fuel_type']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Mileage</span>
-                                        <span class="detail-info"><?php echo $post_data['post_mileage']; ?></span>
+                                        <span class="detail-info"><?php echo strval($post_data['post_mileage']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Rs. <?php echo $post_data['post_price']; ?></span>
+                                        <span class="detail-info">Rs. <?php echo strval($post_data['post_price']); ?></span>
                                     </li>
                                     <!-- <li>
                                         <span class="detail-title">Rent Start Date</span>
@@ -194,7 +245,7 @@ $post_data = get_post_by_id($post_id);
                             <ul class="location-list">
                                 <li>
                                     <img class="location-icon" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/location.png" alt="Location Icon">
-                                    <span class="location"><?php echo $post_data['post_location']; ?></span>
+                                    <span class="location"><?php echo strval($post_data['post_location']); ?></span>
                                 </li>
                             </ul>
                         </div>
