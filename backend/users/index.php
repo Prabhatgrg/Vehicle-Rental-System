@@ -1,6 +1,7 @@
 <?php
 
 require_once 'review.php';
+require_once 'notification.php';
 
 // Returns boolean value if user is logged in
 function is_login()

@@ -71,6 +71,8 @@ CREATE TABLE IF NOT EXISTS re_bookings(
 
 CREATE TABLE IF NOT EXISTS re_notifications(
     notification_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    status ENUM('read', 'unread') NOT NULL DEFAULT 'unread',
     user_id INT, 
     post_id INT,
     booking_id INT,
