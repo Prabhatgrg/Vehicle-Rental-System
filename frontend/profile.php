@@ -259,6 +259,18 @@ $avatar = $user_info['user_profile'];
                                     echo '<div class="grid gap-1 column-3">';
 
                                     foreach ($bookings as $data) :
+                                        $book_id = $data['booking_id'];
+                                        echo $book_id;
+
+                                        $post_end_date = new DateTime($data['booking_enddate']);
+                                        $current_date = new DateTime('now');
+
+                                        if ($post_end_date < $current_date) :
+                                            update_booking_status($post_id, $user_id, 'expired');
+                                        endif;
+
+                                        if (is_booking_expired($book_id))
+                                            continue;
 
                                         $post = get_post_by_id($data['post_id']);
 
