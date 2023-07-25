@@ -174,8 +174,13 @@
     position: relative;
     overflow: hidden;
 }
-.card-linear .card-img{
+.card-linear .card-img {
     max-width: 400px;
+}
+.card-linear .card-img img {
+    aspect-ratio: 400 / 266;
+    object-fit: cover;
+    inline-size: 100%;
 }
 .card {
     display: flex;
@@ -217,12 +222,17 @@
     display: flex;
     padding: 10px;
     border-radius: var(--default-border-radius);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0);
+}
+.card .card-features a path {
+    stroke: var(--color-light);
 }
 .card-linear .card-features a {
     background-color: transparent;
 }
-.card .card-features a:hover,
+.card .card-features a:hover {
+    background-color: rgba(0 0 0 / 70%);
+}
 .card-linear .card-features a:hover {
     background-color: rgba(0, 0, 0, 0.2);
 }
@@ -399,6 +409,10 @@
 */
 .user-meta img {
     max-width: 40px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
 }
 .rating {
     display: inline-block;

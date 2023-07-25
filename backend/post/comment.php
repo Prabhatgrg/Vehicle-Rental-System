@@ -93,24 +93,32 @@ function display_comments($post_id)
 
             $comment_username = get_username_by_id($comment['user_id']);
             $comment_date = get_formated_date($comment['comment_date']);
-        ?>
+            $user_info = get_user_info_by_id($comment['user_id']);
+            $avatar = $user_info['user_profile'];
+?>
 
             <li data-comment-id="<?php echo $comment['comment_id']; ?>">
                 <div class="user-info">
-                    <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                    <?php if ($avatar != "") :
+                        $img_url = get_image_url($avatar);
+                    ?>
+                        <img class="user-image" src="<?php echo $img_url; ?>" alt="<?php echo $comment_username; ?>">
+                    <?php else : ?>
+                        <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                    <?php endif; ?>
                     <span class="user-name"><?php echo $comment_username; ?></span>
                 </div>
                 <div class="comment-container">
                     <p>
-                        <?php echo $comment['comment_content']; ?>
+                        <?php echo htmlspecialchars($comment['comment_content']); ?>
                     </p>
                 </div>
                 <div class="comment-meta">
                     <span class="time"><?php echo $comment_date; ?></span>
                     <?php if (is_login()) : ?>
-                        <button class="btn-reply">Reply</button >
-                        <?php if($_SESSION['user_id']===$comment['user_id']) :?>
-                            <a href="post?id=<?php echo urlencode($post_id);?>&commentid=<?php echo urlencode($comment['comment_id']);?>&action=<?php echo urlencode('delete');?>">Delete</a>
+                        <button class="btn-reply">Reply</button>
+                        <?php if ($_SESSION['user_id'] === $comment['user_id']) : ?>
+                            <a href="post?id=<?php echo urlencode($post_id); ?>&commentid=<?php echo urlencode($comment['comment_id']); ?>&action=<?php echo urlencode('delete'); ?>">Delete</a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
@@ -123,7 +131,7 @@ function display_comments($post_id)
                 ?>
 
             </li>
-<?php
+        <?php
         endforeach;
         echo '</ul>';
 
@@ -143,31 +151,38 @@ function display_reply($comment_id)
     foreach ($replies as $reply) :
         $comment_username = get_username_by_id($reply['user_id']);
         $comment_date = get_formated_date($reply['comment_date']);
+        $user_info = get_user_info_by_id($reply['user_id']);
+        $avatar = $user_info['user_profile'];
 
-
-?>
+        ?>
 
 
         <li data-comment-id="<?php echo $reply['comment_id']; ?>">
 
             <div class="user-info">
-                <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="default user avatar">
+                <?php if ($avatar != "") :
+                    $img_url = get_image_url($avatar);
+                ?>
+                    <img class="user-image" src="<?php echo $img_url; ?>" alt="<?php echo $comment_username; ?>">
+                <?php else : ?>
+                    <img class="user-image" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                <?php endif; ?>
                 <span class="user-name"><?php echo $comment_username; ?></span>
             </div>
             <div class="comment-container">
                 <p>
-                    <?php echo $reply['comment_content']; ?>
+                    <?php echo htmlspecialchars($reply['comment_content']); ?>
                 </p>
             </div>
             <div class="comment-meta">
                 <span class="time"><?php echo $comment_date; ?></span>
                 <?php if (is_login()) : ?>
                     <button class="btn-reply">Reply</button>
-                    <?php if($_SESSION['user_id']===$reply['user_id']) :?>
-                        <a href="post?id=<?php echo urlencode($post_id);?>&commentid=<?php echo urlencode($reply['comment_id']);?>&action=<?php echo urlencode('delete');?>">Delete</a>
+                    <?php if ($_SESSION['user_id'] === $reply['user_id']) : ?>
+                        <a href="post?id=<?php echo urlencode($post_id); ?>&commentid=<?php echo urlencode($reply['comment_id']); ?>&action=<?php echo urlencode('delete'); ?>">Delete</a>
                     <?php endif; ?>
                 <?php endif; ?>
-                
+
             </div>
 
             <?php
@@ -177,7 +192,7 @@ function display_reply($comment_id)
             endif;
             ?>
         </li>
-        <?php
+<?php
 
     endforeach;
     echo '</ul>';

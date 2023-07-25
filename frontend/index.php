@@ -30,9 +30,6 @@ get_header();
             echo '<div class="grid gap-1 column-5">';
 
             foreach ($trending_posts as $post) :
-                // echo '<pre>';
-                // print_r($post);
-                // echo '</pre>';
                 $post_image_array = json_decode($post['post_image']);
                 if (count($post_image_array) > 0) {
                     $post_thumbnail_url = $post_image_array[0]->path;
@@ -62,10 +59,10 @@ get_header();
                     <div class="card-body pt-1">
                         <h3 class="card-title h5">
                             <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($post['post_id']); ?>">
-                                <?php echo $post['post_title']; ?>
+                                <?php echo htmlspecialchars($post['post_title']); ?>
                             </a>
                         </h3>
-                        <span class="price">Rs. <?php echo $post['post_price']; ?> per day</span>
+                        <span class="price">Rs. <?php echo htmlspecialchars($post['post_price']); ?> per day</span>
                     </div>
                 </div>
 
@@ -89,7 +86,7 @@ get_header();
     <div class="container">
         <h2 class="h3 mb-2">Latest Post</h2>
         <div class="grid gap-3 gap-md-2">
-            <?php get_latest_post()?>
+            <?php get_latest_post() ?>
         </div>
     </div>
 </section>

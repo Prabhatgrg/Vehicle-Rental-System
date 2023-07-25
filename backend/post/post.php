@@ -146,7 +146,7 @@ function display_post($post)
         <form method="post">
             <h2 class="h6 mb-1">
                 <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($post['post_id']); ?>" target="_blank">
-                    <?php echo $post['post_title']; ?>
+                    <?php echo htmlspecialchars($post['post_title']); ?>
                 </a>
             </h2>
             <div class="post-status mb-1">
