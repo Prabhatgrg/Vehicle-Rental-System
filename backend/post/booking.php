@@ -31,6 +31,8 @@ function book_post($book_start, $book_end, $post_id, $user_id)
     $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully booked.';
+        $notification_msg = "You booked post with id " . $post_id . " successfully";
+        create_notification($user_id, $post_id, $notification_msg);
     else :
         $message['error'] = 'There is an error while booking the post. Please try again later.';
     endif;
@@ -104,7 +106,7 @@ function update_booking_status($post_id, $user_id, $status)
     return $message;
 }
 
-// function to check if post is booked or not
+// function to check if post booking is expired or not
 function is_booking_expired($book_id)
 {
     global $conn;
@@ -140,4 +142,12 @@ function is_booked($post_id, $user_id)
     if ($result->num_rows > 0)
         return true;
     return false;
+}
+
+// function to create notification
+function create_notification($user_id, $post_id, $message){
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO re_notifications(user_id, post_id, message)VALUES(?,?,?)");
+    $stmt->bind_param('iis', $user_id, $post_id, $message);
+    $stmt->execute();
 }
