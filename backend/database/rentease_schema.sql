@@ -71,14 +71,15 @@ CREATE TABLE IF NOT EXISTS re_bookings(
 
 CREATE TABLE IF NOT EXISTS re_notifications(
     notification_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
     message VARCHAR(255) NOT NULL,
     status ENUM('read', 'unread') NOT NULL DEFAULT 'unread',
-    user_id INT, 
-    post_id INT,
-    booking_id INT,
-    FOREIGN KEY (user_id) REFERENCES re_users(user_id),
-    FOREIGN KEY (post_id) REFERENCES re_posts(post_id),
-    FOREIGN KEY (booking_id) REFERENCES re_bookings(booking_id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    -- booking_id INT,
+    -- FOREIGN KEY (user_id) REFERENCES re_users(user_id),
+    -- FOREIGN KEY (post_id) REFERENCES re_posts(post_id)
+    -- FOREIGN KEY (booking_id) REFERENCES re_bookings(booking_id)
 );
 
 CREATE TABLE IF NOT EXISTS re_reviews(
