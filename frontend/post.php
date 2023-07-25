@@ -38,6 +38,7 @@ if (isset($_GET['booking'])) :
             //     break;
         case 'false':
             $booking_message = cancel_booked_post($post_id, $user_id);
+            echo '<script>alert("Your booking is cancelled");document.location.href = "post?id=' . urlencode($post_id) . '"</script>';
             break;
         default:
             break;
@@ -106,7 +107,7 @@ $post_data = get_post_by_id($post_id);
                 endif;
                 ?>
 
-                <h1 class="post-title h3"><?php echo strval($post_data['post_title']); ?></h1>
+                <h1 class="post-title h3"><?php echo htmlspecialchars($post_data['post_title']); ?></h1>
 
                 <div class="post-author">
                     <?php
@@ -127,9 +128,9 @@ $post_data = get_post_by_id($post_id);
                         </a>
                         <div class="user-detail">
                             <a href="<?php echo $user_link; ?>" target="_blank">
-                                <span class="user-name"><?php echo strval($user_info['user_fullname']); ?></span>
+                                <span class="user-name"><?php echo htmlspecialchars($user_info['user_fullname']); ?></span>
                             </a>
-                            <a href="tel:<?php echo strval($user_info['user_phone']); ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
+                            <a href="tel:<?php echo htmlspecialchars($user_info['user_phone']); ?>" class="user-contact"><?php echo $user_info['user_phone']; ?></a>
                         </div>
                     </div>
                     <div class="flex gap-2 my-2">
@@ -207,7 +208,7 @@ $post_data = get_post_by_id($post_id);
                                     </li>
                                     <li>
                                         <span class="detail-title">Location</span>
-                                        <span class="detail-info"><?php echo strval($post_data['post_location']); ?></span>
+                                        <span class="detail-info"><?php echo htmlspecialchars($post_data['post_location']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Delivery</span>
@@ -215,15 +216,15 @@ $post_data = get_post_by_id($post_id);
                                     </li>
                                     <li>
                                         <span class="detail-title">Fuel Type</span>
-                                        <span class="detail-info"><?php echo strval($post_data['post_fuel_type']); ?></span>
+                                        <span class="detail-info"><?php echo htmlspecialchars($post_data['post_fuel_type']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Mileage</span>
-                                        <span class="detail-info"><?php echo strval($post_data['post_mileage']); ?></span>
+                                        <span class="detail-info"><?php echo htmlspecialchars($post_data['post_mileage']); ?></span>
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Rs. <?php echo strval($post_data['post_price']); ?></span>
+                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?></span>
                                     </li>
                                     <!-- <li>
                                         <span class="detail-title">Rent Start Date</span>
@@ -245,7 +246,7 @@ $post_data = get_post_by_id($post_id);
                             <ul class="location-list">
                                 <li>
                                     <img class="location-icon" src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/location.png" alt="Location Icon">
-                                    <span class="location"><?php echo strval($post_data['post_location']); ?></span>
+                                    <span class="location"><?php echo htmlspecialchars($post_data['post_location']); ?></span>
                                 </li>
                             </ul>
                         </div>

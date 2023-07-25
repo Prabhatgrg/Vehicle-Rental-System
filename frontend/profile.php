@@ -50,10 +50,10 @@ endif;
 
 <?php
 $user_info = get_user_info_by_id($user_id);
-$name = $user_info['user_fullname'];
-$phone = $user_info['user_phone'];
-$email = $user_info['user_email'];
-$avatar = $user_info['user_profile'];
+$name = htmlspecialchars($user_info['user_fullname']);
+$phone = htmlspecialchars($user_info['user_phone']);
+$email = htmlspecialchars($user_info['user_email']);
+$avatar = htmlspecialchars($user_info['user_profile']);
 ?>
 <section class="user-profile py-5">
     <div class="container">
@@ -188,9 +188,9 @@ $avatar = $user_info['user_profile'];
                                                 $post_id = $post['post_id'];
                                                 $permalink = 'post?id=' . urlencode($post_id);
 
-                                                $title = $post['post_title'];
+                                                $title = htmlspecialchars($post['post_title']);
 
-                                                $price = $post['post_price'];
+                                                $price = htmlspecialchars($post['post_price']);
 
                                                 $post_image_array = json_decode($post['post_image']);
                                                 if (count($post_image_array) > 0) {
@@ -424,18 +424,27 @@ $avatar = $user_info['user_profile'];
 
                                     foreach ($reviews as $review) :
                                         $reviewer_id = $review['reviewer_id'];
-                                        $reviewer_name = get_username_by_id($reviewer_id);
+                                        $reviewer_name = htmlspecialchars(get_username_by_id($reviewer_id));
                                         $permalink = 'user?id=' . urlencode($reviewer_id);
                                         $rating = (int) $review['user_rating'];
                                         $rating_percent = ($rating * 100) / 5;
-                                        $review_content = $review['user_review'];
+                                        $review_content = htmlspecialchars($review['user_review']);
+
+                                        $user_info = get_user_info_by_id($reviewer_id);
+                                        $avatar = $user_info['user_profile'];
                                 ?>
 
                                         <div class="review-card py-1">
                                             <div class="review-items">
                                                 <div class="user-meta flex align-items-center gap-1">
                                                     <a href="<?php echo $permalink; ?>" target="_blank">
-                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Default Image">
+                                                        <?php if ($avatar != "") :
+                                                            $img_url = get_image_url($avatar);
+                                                        ?>
+                                                            <img src="<?php echo $img_url; ?>" alt="<?php echo $reviewer_name; ?>">
+                                                        <?php else : ?>
+                                                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
+                                                        <?php endif; ?>
                                                     </a>
                                                     <span>
                                                         <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $reviewer_name; ?></a>
