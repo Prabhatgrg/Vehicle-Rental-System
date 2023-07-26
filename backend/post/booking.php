@@ -145,9 +145,68 @@ function is_booked($post_id, $user_id)
 }
 
 // function to create notification
-function create_notification($user_id, $post_id, $message){
+function create_notification($user_id, $post_id, $message)
+{
     global $conn;
     $stmt = $conn->prepare("INSERT INTO re_notifications(user_id, post_id, message)VALUES(?,?,?)");
     $stmt->bind_param('iis', $user_id, $post_id, $message);
     $stmt->execute();
 }
+
+// function to get image by post id
+function get_image_by_postid($post_id){
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ?");
+    $stmt->bind_param('i', $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows>0):
+        while($row=$result->fetch_assoc()){
+            $post_image = $row['post_image'];
+        }
+        return $post_image;
+    endif;
+}
+
+// function to get notification
+function get_notification($user_id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM re_notifications WHERE user_id = ?");
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) :
+        while ($row = $result->fetch_assoc()) {
+?>
+            <div class="card-linear justify-content-center">
+                <div class="card-body">
+                    <div class="flex">
+                        <h3 class="card-title flex-1 h5 mb-3"><a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>"><?php echo $row['message']; ?></a></h3>
+                    </div>
+                </div>
+            </div>
+        <?php
+        }
+    else : ?>
+        <div class="card-linear justify-content-center">
+            <div class="card-body">
+                <div class="flex">
+                    <p class="card-title flex-1 h5 mb-3">No notifications to show</p>
+                </div>
+            </div>
+        </div>
+<?php
+    endif;
+}
+
+
+// function display_notification(){
+//     global $conn;
+//     $user_id = get_user_id();
+//     get_notification($user_id);
+//     if($data->num_rows>0){
+
+//     }
+// }

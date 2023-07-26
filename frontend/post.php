@@ -28,9 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     endif;
 endif;
 
-if (is_published($post_id))
-    update_views($post_id);
-
 if (isset($_GET['booking'])) :
     switch ($_GET['booking']):
             // case 'true':
@@ -53,6 +50,9 @@ if (isset($_GET['action'])) :
     endif;
 endif;
 
+// updating the views after all the action is done
+if (is_published($post_id))
+    update_views($post_id);
 get_header();
 
 $post_data = get_post_by_id($post_id);
