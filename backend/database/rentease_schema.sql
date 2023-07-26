@@ -82,6 +82,19 @@ CREATE TABLE IF NOT EXISTS re_notifications(
     -- FOREIGN KEY (booking_id) REFERENCES re_bookings(booking_id)
 );
 
+-- JOIN operation for re_posts and re_notifications
+-- SELECT
+-- 	re_notifications.notification_id,
+--     re_notifications.user_id,
+--     re_notifications.post_id,
+--     re_notifications.message,
+--     re_notifications.status,
+--     re_notifications.created_at,
+--     re_posts.post_image
+-- FROM re_notifications
+-- INNER JOIN re_posts
+-- ON re_notifications.post_id = re_posts.post_id;
+
 CREATE TABLE IF NOT EXISTS re_reviews(
     review_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     user_id INT,

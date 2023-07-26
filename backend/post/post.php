@@ -179,7 +179,7 @@ function update_views($post_id)
 function get_latest_post()
 {
     global $conn;
-    $currentDate = date('Y-m-d H:i:s');
+    // $currentDate = date('Y-m-d H:i:s');
 
     $stmt = $conn->prepare("SELECT * FROM re_posts ORDER BY post_date DESC");
     $stmt->execute();
