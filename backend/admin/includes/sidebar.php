@@ -99,36 +99,6 @@
                     Users
                 </span>
             </a>
-
-            <!-- <ul class="sub-menu">
-                <li>
-                    <a href="?page=<?php echo urlencode('users'); ?>&action=<?php echo urlencode('add user'); ?>" title="Add users">
-                        <span class="list-icon">
-                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <style>
-                                        .cls-add {
-                                            fill: none;
-                                            stroke: #000;
-                                            stroke-linecap: round;
-                                            stroke-linejoin: round;
-                                            stroke-width: 2px;
-                                        }
-                                    </style>
-                                </defs>
-                                <title />
-                                <g id="plus">
-                                    <line class="cls-add" x1="16" x2="16" y1="7" y2="25" />
-                                    <line class="cls-add" x1="7" x2="25" y1="16" y2="16" />
-                                </g>
-                            </svg>
-                        </span>
-                        <span class="list-text">
-                            Add users
-                        </span>
-                    </a>
-                </li>
-            </ul> -->
         </li>
         <li>
             <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('category'); ?>" title="Categories">
