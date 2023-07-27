@@ -113,7 +113,7 @@ function is_booking_expired($book_id)
 
     $status = 'expired';
 
-    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE booking_id = ? booking_status = ?");
+    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE booking_id = ? AND booking_status = ?");
     $stmt->bind_param('is', $book_id, $status);
 
     $stmt->execute();
@@ -154,14 +154,15 @@ function create_notification($user_id, $post_id, $message)
 }
 
 // function to get image by post id
-function get_image_by_postid($post_id){
+function get_image_by_postid($post_id)
+{
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ?");
     $stmt->bind_param('i', $post_id);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows>0):
-        while($row=$result->fetch_assoc()){
+    if ($result->num_rows > 0) :
+        while ($row = $result->fetch_assoc()) {
             $post_image = $row['post_image'];
         }
         return $post_image;

@@ -43,6 +43,23 @@ if (isset($_GET['booking'])) :
 
 endif;
 
+// to save the post
+if (isset($_GET['bookmark'])) :
+    switch ($_GET['bookmark']):
+        case 'true':
+            $booking_message = save_post($post_id, $user_id);
+            echo '<script>alert("This post is saved.");document.location.href = "post?id=' . urlencode($post_id) . '"</script>';
+            break;
+        case 'false':
+            $booking_message = remove_saved_post($post_id, $user_id);
+            echo '<script>alert("The saved post is removed.");document.location.href = "post?id=' . urlencode($post_id) . '"</script>';
+            break;
+        default:
+            break;
+    endswitch;
+
+endif;
+
 if (isset($_GET['action'])) :
     if ($_GET['action'] == 'delete') :
         $comment_id = $_GET['commentid'];
@@ -180,8 +197,12 @@ $post_data = get_post_by_id($post_id);
                             <?php elseif (is_booked($post_id, $user_id)) : ?>
                                 <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
                             <?php endif; ?>
+                            <?php if (is_saved($post_id, $user_id)) : ?>
+                                <a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode('false'); ?>" class="btn btn-outline">Saved</a>
+                            <?php else : ?>
+                                <a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode('true'); ?>" class="btn btn-outline">Save Post</a>
+                            <?php endif; ?>
                         <?php endif; ?>
-                        <a href="#" class="btn btn-outline">Save Post</a>
                     </div>
                 </div>
 
