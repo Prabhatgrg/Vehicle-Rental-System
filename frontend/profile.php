@@ -214,7 +214,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                         <div class="card-detail">
                                                             <h3 class="card-title h5">
                                                                 <a href="<?php echo  $permalink; ?>">
-                                                                    <?php echo $title; ?>
+                                                                    <?php echo htmlspecialchars($title); ?>
                                                                 </a>
                                                             </h3>
                                                             <div class="dropdown-container dot-menu">
@@ -233,7 +233,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                             </div>
                                                         </div>
 
-                                                        <span class="price">Rs. <?php echo $price; ?></span>
+                                                        <span class="price">Rs. <?php echo htmlspecialchars($price); ?></span>
                                                     </div>
                                                 </div>
                                         <?php
@@ -260,7 +260,6 @@ $avatar = htmlspecialchars($user_info['user_profile']);
 
                                     foreach ($bookings as $data) :
                                         $book_id = $data['booking_id'];
-                                        echo $book_id;
 
                                         $post_end_date = new DateTime($data['booking_enddate']);
                                         $current_date = new DateTime('now');
@@ -302,7 +301,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                 <div class="card-detail">
                                                     <h3 class="card-title h5">
                                                         <a href="<?php echo  $permalink; ?>">
-                                                            <?php echo $title; ?>
+                                                            <?php echo htmlspecialchars($title); ?>
                                                         </a>
                                                     </h3>
                                                     <?php if (is_booked($post_id, $user_id)) : ?>
@@ -323,7 +322,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                     <?php endif; ?>
                                                 </div>
 
-                                                <span class="price">Rs. <?php echo $price; ?></span>
+                                                <span class="price">Rs. <?php echo htmlspecialchars($price); ?></span>
                                             </div>
                                         </div>
                                 <?php
@@ -339,80 +338,70 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                             </div>
                             <div id="user-save-list" class="user-save-list tab-pane">
                                 <div class="container">
-                                    <div class="grid gap-1 column-3">
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                    <?php
+                                    $saved_post = get_saved_post($user_id);
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                    if ($saved_post) :
+                                        echo '<div class="grid gap-1 column-3">';
+                                        foreach ($saved_post as $post) :
+                                            $post_id = $post['post_id'];
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            $post = get_post_by_id($post_id);
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            $permalink = 'post?id=' . urlencode($post_id);
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
+                                            $title = $post['post_title'];
+                                            $price = $post['post_price'];
+                                            $post_image_array = json_decode($post['post_image']);
+                                            if (count($post_image_array) > 0) {
+                                                $post_thumbnail_url = $post_image_array[0]->path;
+                                                $post_thumbnail_name = $post_image_array[0]->name;
+                                            }
+                                    ?>
+                                            <div class="card overflow-unset">
+                                                <figure class="card-img">
+                                                    <a href="<?php echo $permalink; ?>">
+                                                        <?php if (isset($post_thumbnail_url)) : ?>
+                                                            <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                                                        <?php else : ?>
+                                                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
+                                                        <?php endif; ?>
+                                                    </a>
+                                                </figure>
 
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
+                                                <div class="card-body pt-1">
+                                                    <div class="card-detail">
+                                                        <h3 class="card-title h5">
+                                                            <a href="<?php echo  $permalink; ?>">
+                                                                <?php echo htmlspecialchars($title); ?>
+                                                            </a>
+                                                        </h3>
+                                                        <div class="dropdown-container dot-menu">
+                                                            <button class="btn-dropdown">
+                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M12 3C10.9 3 10 3.9 10 5C10 6.1 10.9 7 12 7C13.1 7 14 6.1 14 5C14 3.9 13.1 3 12 3ZM12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z" fill="black" />
+                                                                </svg>
+                                                            </button>
+                                                            <div class="dropdown-content">
+                                                                <ul class="dropdown-list-content">
+                                                                    <li><a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode('false'); ?>">Remove saved</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span class="price">Rs. <?php echo htmlspecialchars($price); ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                    <?php
+                                        endforeach;
+                                        echo '</div>';
+                                    else :
+                                        echo "There is no saved post";
+                                    endif;
+
+
+                                    ?>
                                 </div>
                             </div>
                             <div id="user-post-reviews" class="user-post-reviews tab-pane">
