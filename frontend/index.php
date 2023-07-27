@@ -4,19 +4,19 @@ get_header();
 
 ?>
 
-<section class="categories py-4">
+<section class="categories pt-4">
     <div class="container">
         <div class="categories">
             <h2 class="category-title h3">Our categories</h2>
             <ul class="categories-list">
-                <li><a href="#">Trending</a></li>
-                <li><a href="#">Latest Upload</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#latest_upload">Latest Upload</a></li>
             </ul>
         </div>
     </div>
 </section>
 
-<section class="trending pb-3 mb-3">
+<section id="trending" class="trending pt-5">
     <div class="container">
         <h2 class="h3 mb-2">Trending</h2>
 
@@ -92,7 +92,7 @@ get_header();
 
     </div>
 </section>
-<section class="latest pb-3">
+<section id="latest_upload" class="latest pt-5 pb-3">
     <div class="container">
         <h2 class="h3 mb-2">Latest Post</h2>
         <div class="grid gap-3 gap-md-2">
