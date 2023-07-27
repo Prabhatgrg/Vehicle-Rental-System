@@ -183,7 +183,7 @@ function get_latest_post()
     if (is_login())
         $user_id = get_user_id();
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts ORDER BY post_date DESC");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status IN ('published', 'rented') ORDER BY post_date DESC");
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -231,7 +231,12 @@ function get_latest_post()
 
                 <div class="price-and-availability flex-1 gap-2 mb-3">
                     <span class="price">Rs <?php echo htmlspecialchars($row['post_price']); ?> per day</span>
-                    <span class="available">| Available: </span>
+                    <span class="available">| <b>Available: </b><?php 
+                    if(get_post_availability($post_id)=='false'){
+                        echo 'Rented';
+                    }else{
+                        echo 'Free';
+                    } ?></span>
                 </div>
 
                 <div class="location-and-time flex justify-content-between">
@@ -431,4 +436,23 @@ function delete_post_by_id($post_id)
         $message['error'] = 'There is some error to delete post.';
     }
     return $message;
+}
+
+// function to check if the vehicle is available or not
+function get_post_availability($post_id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id=?");
+    $stmt->bind_param('i', $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $booking_status = '';
+    if ($result->num_rows > 0) :
+        while ($row = $result->fetch_assoc()) {
+            if($row['booking_status']=='booked'):
+                return false;
+            endif;
+        }
+    return true;
+    endif;
 }
