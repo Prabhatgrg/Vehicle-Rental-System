@@ -202,11 +202,11 @@ function get_notification($user_id)
                 $post_thumbnail_name = $post_image_array[0]->name;
             }
 ?>
-            <div class="card-linear">
+            <div class="card-linear align-items-center justify-content-start">
                 <figure class="card-img">
                     <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>" aria-label="feature image">
                         <?php if (isset($post_thumbnail_url)) : ?>
-                            <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                            <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy" class="notification-image">
                         <?php else : ?>
                             <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
                         <?php endif; ?>

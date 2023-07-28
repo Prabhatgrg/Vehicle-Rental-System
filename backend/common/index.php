@@ -12,6 +12,6 @@ function get_formated_date($date_string)
 function format_date($date_string)
 {
     $dateTime = new DateTime($date_string);
-    $formattedDate = $dateTime->format('m D, Y');
+    $formattedDate = $dateTime->format('d M, Y');
     return $formattedDate;
 }
