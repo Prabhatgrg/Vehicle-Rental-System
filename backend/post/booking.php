@@ -9,7 +9,7 @@ function book_post($book_start, $book_end, $post_id, $user_id)
 
     $message = [];
 
-    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ? ORDER BY booking_date DESC LIMIT 1");
     $stmt->bind_param('ii', $post_id, $user_id);
 
     $stmt->execute();
@@ -33,8 +33,8 @@ function book_post($book_start, $book_end, $post_id, $user_id)
     $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully booked.';
-    // $notification_msg = "You booked post with id " . $post_id . " successfully";
-    // create_notification($user_id, $post_id, $notification_msg);
+        $notification_msg = "You booked post with id " . $post_id . " successfully";
+        create_notification($user_id, $post_id, $notification_msg);
     else :
         $message['error'] = 'There is an error while booking the post. Please try again later.';
     endif;
