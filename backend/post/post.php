@@ -331,10 +331,10 @@ function get_bookings_by_user($user_id)
 {
     global $conn;
 
-    $status = 'booked';
+    update_bookings();
 
-    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ? AND booking_status = ?');
-    $stmt->bind_param('is', $user_id, $status);
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ?');
+    $stmt->bind_param('i', $user_id);
 
     $stmt->execute();
     $result = $stmt->get_result();
