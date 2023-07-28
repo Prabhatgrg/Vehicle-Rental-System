@@ -141,7 +141,7 @@ CREATE TRIGGER IF NOT EXISTS insertNotifications
 AFTER INSERT
 ON re_bookings
 FOR EACH ROW
-INSERT INTO re_notifications(user_id, post_id, message)VALUES(NEW.user_id, NEW.post_id, CONCAT("You have successfully booked " , NEW.post_id));
+INSERT INTO re_notifications(user_id, post_id, message)VALUES(NEW.user_id, NEW.post_id, CONCAT("You booked vehicle with post id " , NEW.post_id));
 
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings

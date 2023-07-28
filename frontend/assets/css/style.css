@@ -173,6 +173,7 @@
     flex-direction: row;
     position: relative;
     overflow: hidden;
+    gap: 2rem;
 }
 .card-linear .card-img {
     max-width: 400px;
@@ -640,3 +641,9 @@ td::before {
 /* 
 Admin Table Display User CSS End
 */
+
+/* User Notification */
+.notification-image{
+    aspect-ratio: 1/1;
+    max-width: 150px;
+}

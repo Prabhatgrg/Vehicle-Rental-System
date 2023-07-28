@@ -206,7 +206,7 @@ function get_latest_post()
                     <?php endif; ?>
                 </a>
             </figure>
-            <div class="card-body flex-1 p-2">
+            <div class="card-body flex-1">
                 <div class="flex">
                     <h3 class="card-title flex-1 h5 mb-3"><a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>"><?php echo htmlspecialchars($row['post_title']); ?></a></h3>
                     <?php if (is_login()) :
