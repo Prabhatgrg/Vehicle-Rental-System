@@ -34,7 +34,6 @@ function book_post($book_start, $book_end, $post_id, $user_id)
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully booked.';
         $notification_msg = "You booked post with id " . $post_id . " successfully";
-        create_notification($user_id, $post_id, $notification_msg);
     else :
         $message['error'] = 'There is an error while booking the post. Please try again later.';
     endif;
@@ -160,13 +159,13 @@ function is_booked($post_id, $user_id)
 }
 
 // function to create notification
-function create_notification($user_id, $post_id, $message)
-{
-    global $conn;
-    $stmt = $conn->prepare("INSERT INTO re_notifications(user_id, post_id, message)VALUES(?,?,?)");
-    $stmt->bind_param('iis', $user_id, $post_id, $message);
-    $stmt->execute();
-}
+// function create_notification($user_id, $post_id, $message)
+// {
+//     global $conn;
+//     $stmt = $conn->prepare("INSERT INTO re_notifications(user_id, post_id, message)VALUES(?,?,?)");
+//     $stmt->bind_param('iis', $user_id, $post_id, $message);
+//     $stmt->execute();
+// }
 
 // function to get image by post id
 function get_image_by_postid($post_id)
@@ -195,8 +194,24 @@ function get_notification($user_id)
 
     if ($result->num_rows > 0) :
         while ($row = $result->fetch_assoc()) {
+
+            $post = get_post_by_id($row['post_id']);
+            $post_image_array = json_decode($post['post_image']);
+            if (count($post_image_array) > 0) {
+                $post_thumbnail_url = $post_image_array[0]->path;
+                $post_thumbnail_name = $post_image_array[0]->name;
+            }
 ?>
-            <div class="card-linear justify-content-center">
+            <div class="card-linear">
+                <figure class="card-img">
+                    <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>" aria-label="feature image">
+                        <?php if (isset($post_thumbnail_url)) : ?>
+                            <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                        <?php else : ?>
+                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
+                        <?php endif; ?>
+                    </a>
+                </figure>
                 <div class="card-body">
                     <div class="flex">
                         <h3 class="card-title flex-1 h5 mb-3"><a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>"><?php echo $row['message']; ?></a></h3>

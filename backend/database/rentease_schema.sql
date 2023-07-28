@@ -137,6 +137,12 @@ ON re_posts
 FOR EACH ROW
 DELETE FROM re_bookings WHERE post_id = OLD.post_id;
 
+CREATE TRIGGER IF NOT EXISTS insertNotifications
+AFTER INSERT
+ON re_bookings
+FOR EACH ROW
+INSERT INTO re_notifications(user_id, post_id, message)VALUES(NEW.user_id, NEW.post_id, CONCAT("You have successfully booked " , NEW.post_id));
+
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings
     SET booking_status = 
