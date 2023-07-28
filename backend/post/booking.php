@@ -158,15 +158,6 @@ function is_booked($post_id, $user_id)
     return false;
 }
 
-// function to create notification
-// function create_notification($user_id, $post_id, $message)
-// {
-//     global $conn;
-//     $stmt = $conn->prepare("INSERT INTO re_notifications(user_id, post_id, message)VALUES(?,?,?)");
-//     $stmt->bind_param('iis', $user_id, $post_id, $message);
-//     $stmt->execute();
-// }
-
 // function to get image by post id
 function get_image_by_postid($post_id)
 {
@@ -187,7 +178,7 @@ function get_image_by_postid($post_id)
 function get_notification($user_id)
 {
     global $conn;
-    $stmt = $conn->prepare("SELECT * FROM re_notifications WHERE user_id = ?");
+    $stmt = $conn->prepare("SELECT * FROM re_notifications WHERE user_id = ? ORDER BY created_at DESC ");
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
