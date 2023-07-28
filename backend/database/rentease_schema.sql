@@ -141,7 +141,24 @@ CREATE TRIGGER IF NOT EXISTS insertNotifications
 AFTER INSERT
 ON re_bookings
 FOR EACH ROW
-INSERT INTO re_notifications(user_id, post_id, message)VALUES(NEW.user_id, NEW.post_id, CONCAT("You booked vehicle with post id " , NEW.post_id));
+INSERT INTO re_notifications(user_id, post_id, message)VALUES(NEW.user_id, NEW.post_id, CONCAT("You booked vehicle ID " , NEW.post_id));
+
+DELIMITER //
+
+CREATE TRIGGER cancelledNotifications
+AFTER UPDATE ON re_bookings
+FOR EACH ROW
+BEGIN
+    IF NEW.booking_status = 'cancelled' AND OLD.booking_status != 'cancelled' THEN
+        INSERT INTO re_notifications (user_id, post_id, message)
+        VALUES (NEW.user_id, NEW.post_id, CONCAT('You cancelled booking of vehicle ID ', NEW.post_id));
+    END IF;
+END;
+
+//
+
+DELIMITER ;
+
 
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings
