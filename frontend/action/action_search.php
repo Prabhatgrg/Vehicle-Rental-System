@@ -3,7 +3,9 @@
 if ($_SERVER['REQUEST_METHOD'] == 'GET') :
     if (isset($_GET['search'])) :
         $search = $_GET['search'];
-        $query = $conn->prepare("SELECT * FROM re_posts WHERE (post_title LIKE '%$search%' OR post_location LIKE '%$search%') AND post_status = 'published'");
+        $search = '%' . $search . '%';
+        $query = $conn->prepare("SELECT * FROM re_posts WHERE (post_title LIKE ? OR post_location LIKE ?) AND post_status IN ('published', 'rented')");
+        $query->bind_param('ss', $search, $search);
         $query->execute();
         $result = $query->get_result();
     endif;
