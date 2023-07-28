@@ -7,6 +7,8 @@ endif;
 $post_id = $_GET['id'];
 $user_id = get_user_id();
 
+update_bookings();
+
 if (!is_admin() && !is_published($post_id)) :
     header('Location: ' . get_root_directory_uri() . '/404');
 endif;
@@ -193,7 +195,6 @@ $post_data = get_post_by_id($post_id);
                                         </div>
                                     </div>
                                 </div>
-                                <?php /* <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('true'); ?>" class="btn btn-outline">Book Now</a> */ ?>
                             <?php elseif (is_booked($post_id, $user_id)) : ?>
                                 <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
                             <?php endif; ?>
