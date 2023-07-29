@@ -308,6 +308,9 @@ textarea.form-control {
 .column-5 {
     grid-template-columns: repeat(5, 1fr);
 }
+.column-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
 
 /* 
  * Columns which is used as child of flex
