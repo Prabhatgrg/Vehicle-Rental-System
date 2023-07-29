@@ -300,7 +300,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                     <td><?php echo $booked_date; ?></td>
                                                     <td><?php echo $start_date; ?></td>
                                                     <td><?php echo $end_date; ?></td>
-                                                    <td><?php echo $status; ?></td>
+                                                    <td style="text-transform: capitalize;"><?php echo $status; ?></td>
                                                 </tr>
                                             <?php
                                                 $count++;

@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS re_bookings(
     booking_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     post_id INT NOT NULL,
     user_id INT NOT NULL,
-    booking_status VARCHAR(20) NOT NULL DEFAULT 'booked',
+    booking_status VARCHAR(20) NOT NULL DEFAULT 'pending',
     booking_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     booking_startdate datetime NOT NULL,
     booking_enddate datetime NOT NULL,
@@ -165,5 +165,6 @@ UPDATE re_bookings
     SET booking_status = 
     CASE
         WHEN booking_status = 'cancelled' THEN booking_status 
+        WHEN booking_status = 'booked' AND booking_enddate < CURRENT_TIMESTAMP()  THEN 'Completed'
         WHEN booking_enddate < CURRENT_TIMESTAMP() THEN 'expired'
         ELSE booking_status END;
