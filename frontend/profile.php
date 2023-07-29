@@ -384,75 +384,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                 </div>
                             </div>
                             <div id="user-post-reviews" class="user-post-reviews tab-pane">
-                                <?php
-
-                                $reviews = get_user_reviews($user_id);
-
-                                if ($reviews) :
-
-                                    foreach ($reviews as $review) :
-                                        $reviewer_id = $review['reviewer_id'];
-                                        $reviewer_name = htmlspecialchars(get_username_by_id($reviewer_id));
-                                        $permalink = 'user?id=' . urlencode($reviewer_id);
-                                        $rating = (int) $review['user_rating'];
-                                        $rating_percent = ($rating * 100) / 5;
-                                        $review_content = htmlspecialchars($review['user_review']);
-
-                                        $user_info = get_user_info_by_id($reviewer_id);
-                                        $avatar = $user_info['user_profile'];
-                                ?>
-
-                                        <div class="review-card py-1">
-                                            <div class="review-items">
-                                                <div class="user-meta flex align-items-center gap-1">
-                                                    <a href="<?php echo $permalink; ?>" target="_blank">
-                                                        <?php if ($avatar != "") :
-                                                            $img_url = get_image_url($avatar);
-                                                        ?>
-                                                            <img src="<?php echo $img_url; ?>" alt="<?php echo $reviewer_name; ?>">
-                                                        <?php else : ?>
-                                                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Profile Image">
-                                                        <?php endif; ?>
-                                                    </a>
-                                                    <span>
-                                                        <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $reviewer_name; ?></a>
-                                                    </span>
-                                                </div>
-                                                <div class="star py-1">
-                                                    <div class="rating">
-                                                        <div class="star-filled" style="width: <?php echo $rating_percent; ?>%">
-                                                            <?php for ($i = 0; $i < MAX_STAR; $i++) : ?>
-                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
-                                                                </svg>
-                                                            <?php endfor; ?>
-                                                        </div>
-                                                        <div class="star-outline">
-                                                            <?php for ($i = 0; $i < MAX_STAR; $i++) : ?>
-                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
-                                                                </svg>
-                                                            <?php endfor; ?>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="review-response">
-                                                    <span>
-                                                        <?php echo $review_content; ?>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                <?php
-                                    endforeach;
-
-                                else :
-                                    echo "There is no reviews";
-                                endif;
-
-                                ?>
+                                <?php display_reviews($user_id); ?>
                             </div>
                         </div>
                     </div>

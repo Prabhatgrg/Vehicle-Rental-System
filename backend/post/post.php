@@ -296,6 +296,12 @@ function get_post_by_id($post_id)
 
     $result = $stmt->get_result();
 
+    if ($result->num_rows == 0) {
+        $error['error'] = "No post found";
+
+        return $error;
+    }
+
     return $result->fetch_array(MYSQLI_ASSOC);
 }
 

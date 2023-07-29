@@ -5,6 +5,12 @@ if (!isset($_GET['id']) || empty($_GET['id'])) :
 endif;
 
 $post_id = $_GET['id'];
+
+$post_data = get_post_by_id($post_id);
+
+if (isset($post_data['error']))
+    header('Location: 404');
+
 $user_id = get_user_id();
 
 update_bookings();
@@ -32,9 +38,6 @@ endif;
 
 if (isset($_GET['booking'])) :
     switch ($_GET['booking']):
-            // case 'true':
-            //     $booking_message = book_post($post_id, $user_id);
-            //     break;
         case 'false':
             $booking_message = cancel_booked_post($post_id, $user_id);
             echo '<script>alert("Your booking is cancelled");document.location.href = "post?id=' . urlencode($post_id) . '"</script>';
@@ -74,7 +77,7 @@ if (is_published($post_id))
     update_views($post_id);
 get_header();
 
-$post_data = get_post_by_id($post_id);
+
 
 ?>
 
