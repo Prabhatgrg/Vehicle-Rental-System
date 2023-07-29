@@ -9,31 +9,10 @@ function book_post($book_start, $book_end, $post_id, $user_id)
 
     $message = [];
 
-    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ? ORDER BY booking_date DESC LIMIT 1");
-    $stmt->bind_param('ii', $post_id, $user_id);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) :
-
-        $data = $result->fetch_array(MYSQLI_ASSOC);
-        if ($data['booking_status'] != 'booked' && $data['booking_status'] != 'expired') :
-
-            $message = update_booking($post_id, $user_id, $book_start, $book_end, 'booked');
-
-            return $message;
-        endif;
-
-    // $message['error'] = 'The post you are booking is aleady booked.';
-    // return $message;
-    endif;
-
     $stmt = $conn->prepare("INSERT INTO re_bookings (post_id, user_id, booking_startdate, booking_enddate) VALUES (?,?, ?, ?)");
     $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully booked.';
-        $notification_msg = "You booked post with id " . $post_id . " successfully";
     else :
         $message['error'] = 'There is an error while booking the post. Please try again later.';
     endif;
