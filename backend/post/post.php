@@ -456,3 +456,19 @@ function get_post_availability($post_id)
         return true;
     endif;
 }
+
+// function to get bookings by post id
+function get_bookings_by_post($post_id)
+{
+    global $conn;
+
+    update_bookings();
+
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE post_id = ? ORDER BY booking_date DESC');
+    $stmt->bind_param('i', $post_id);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+}

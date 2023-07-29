@@ -643,7 +643,12 @@ Admin Table Display User CSS End
 */
 
 /* User Notification */
-.notification-image{
+.notification-image {
     aspect-ratio: 1/1;
     max-width: 150px;
+}
+.bookings-table,
+.bookings-table th,
+.bookings-table td {
+    text-align: start;
 }
