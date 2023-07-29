@@ -309,7 +309,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
 
                                 <?php
                                 else :
-                                    echo 'There is no ads posted';
+                                    echo 'There is no booking history.';
                                 endif;
 
                                 ?>
