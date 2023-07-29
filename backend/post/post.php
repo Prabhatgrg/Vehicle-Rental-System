@@ -231,12 +231,12 @@ function get_latest_post()
 
                 <div class="price-and-availability flex-1 gap-2 mb-3">
                     <span class="price">Rs <?php echo htmlspecialchars($row['post_price']); ?> per day</span>
-                    <span class="available">| <b>Available: </b><?php 
-                    if(get_post_availability($post_id)=='false'){
-                        echo 'Rented';
-                    }else{
-                        echo 'Free';
-                    } ?></span>
+                    <span class="available">| <b>Available: </b><?php
+                                                                if (get_post_availability($post_id) == 'false') {
+                                                                    echo 'Rented';
+                                                                } else {
+                                                                    echo 'Free';
+                                                                } ?></span>
                 </div>
 
                 <div class="location-and-time flex justify-content-between">
@@ -338,7 +338,7 @@ function get_bookings_by_user($user_id)
 
     update_bookings();
 
-    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ?');
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ? ORDER BY booking_date DESC');
     $stmt->bind_param('i', $user_id);
 
     $stmt->execute();
@@ -449,10 +449,10 @@ function get_post_availability($post_id)
     $booking_status = '';
     if ($result->num_rows > 0) :
         while ($row = $result->fetch_assoc()) {
-            if($row['booking_status']=='booked'):
+            if ($row['booking_status'] == 'booked') :
                 return false;
             endif;
         }
-    return true;
+        return true;
     endif;
 }

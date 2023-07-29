@@ -9,31 +9,15 @@ function book_post($book_start, $book_end, $post_id, $user_id)
 
     $message = [];
 
-    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ? ORDER BY booking_date DESC LIMIT 1");
-    $stmt->bind_param('ii', $post_id, $user_id);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) :
-
-        $data = $result->fetch_array(MYSQLI_ASSOC);
-        if ($data['booking_status'] != 'booked' && $data['booking_status'] != 'expired') :
-
-            $message = update_booking($post_id, $user_id, $book_start, $book_end, 'booked');
-
-            return $message;
-        endif;
-
-    // $message['error'] = 'The post you are booking is aleady booked.';
-    // return $message;
-    endif;
+    if (!is_booking_available($post_id, $book_start, $book_end)) {
+        $message['error'] = "Booking is not available from " . format_date($book_start) . " to " . format_date($book_end);
+        return $message;
+    }
 
     $stmt = $conn->prepare("INSERT INTO re_bookings (post_id, user_id, booking_startdate, booking_enddate) VALUES (?,?, ?, ?)");
     $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully booked.';
-        $notification_msg = "You booked post with id " . $post_id . " successfully";
     else :
         $message['error'] = 'There is an error while booking the post. Please try again later.';
     endif;
@@ -42,6 +26,36 @@ function book_post($book_start, $book_end, $post_id, $user_id)
 }
 
 // function to check if the booking is available or not
+function is_booking_available($post_id, $booking_startdate, $booking_enddate)
+{
+    global $conn; // Assuming you have the database connection in the global scope
+
+    // Prepare the query with placeholders for the booking dates
+    $query = $conn->prepare("SELECT COUNT(*) FROM re_bookings 
+                            WHERE post_id = ? 
+                            AND booking_status = 'booked' 
+                            AND ((booking_startdate <= ? AND booking_enddate >= ?) -- Overlapping range
+                                OR (booking_startdate BETWEEN ? AND ?) -- Overlapping startdate
+                                OR (booking_enddate BETWEEN ? AND ?)) -- Overlapping enddate");
+
+    // Bind the parameters to the placeholders
+    $query->bind_param('issssss', $post_id, $booking_enddate, $booking_startdate, $booking_startdate, $booking_enddate, $booking_startdate, $booking_enddate);
+
+    // Execute the query
+    $query->execute();
+
+    // Fetch the result
+    $result = $query->get_result();
+    $row = $result->fetch_row();
+
+    // Check if any matching post is available within the date range
+    $is_available = ($row[0] == 0);
+
+    // Close the query
+    $query->close();
+
+    return $is_available;
+}
 
 // function to cancel booked post
 function cancel_booked_post($post_id, $user_id)
