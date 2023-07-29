@@ -225,6 +225,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                                 </button>
                                                                 <div class="dropdown-content">
                                                                     <ul class="dropdown-list-content">
+                                                                        <li><a href="booking?id=<?php echo urlencode($post_id); ?>">Booking Details</a></li>
                                                                         <li><a href="?action=<?php echo urlencode('update_status'); ?>&post_id=<?php echo urlencode($post_id); ?>&status=<?php echo urlencode('rented'); ?>">Mark as Rented</a></li>
                                                                         <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
                                                                         <li><a href="?action=<?php echo urlencode('delete'); ?>&post_id=<?php echo urlencode($post_id); ?>">Delete Post</a></li>

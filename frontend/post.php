@@ -203,6 +203,11 @@ $post_data = get_post_by_id($post_id);
                             <?php else : ?>
                                 <a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode('true'); ?>" class="btn btn-outline">Save Post</a>
                             <?php endif; ?>
+
+                            <?php if ($user_id == $post_data['post_user']) : ?>
+                                <a href="booking?id=<?php echo urlencode($post_id); ?>" class="btn btn-outline">Booking Details</a>
+                            <?php endif; ?>
+
                         <?php endif; ?>
                     </div>
                 </div>
@@ -248,16 +253,6 @@ $post_data = get_post_by_id($post_id);
                                         <span class="detail-title">Pricing</span>
                                         <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?></span>
                                     </li>
-                                    <!-- <li>
-                                        <span class="detail-title">Rent Start Date</span>
-                                        <span class="detail-info"><?php //echo $post_data['post_rent_start']; 
-                                                                    ?></span>
-                                    </li>
-                                    <li>
-                                        <span class="detail-title">Rent End Date</span>
-                                        <span class="detail-info"><?php //echo $post_data['post_rent_end']; 
-                                                                    ?></span>
-                                    </li> -->
                                 </ul>
                             </div>
                         </div>
