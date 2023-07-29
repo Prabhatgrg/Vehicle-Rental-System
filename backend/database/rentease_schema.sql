@@ -163,6 +163,32 @@ END;
 DELIMITER ;
 
 
+DELIMITER //
+
+CREATE TRIGGER IF NOT EXISTS sendNotification
+AFTER INSERT ON re_bookings
+FOR EACH ROW
+BEGIN
+    DECLARE post_user_id INT;
+    DECLARE message VARCHAR(255);
+    DECLARE user_name VARCHAR(255);
+
+    SELECT post_user INTO post_user_id FROM re_posts
+    WHERE post_id = NEW.post_id;
+
+    SELECT user_fullname INTO user_name FROM re_users
+    WHERE user_id = NEW.user_id;
+
+    SET message = CONCAT(user_name, " have requested to book your vehicle ", NEW.post_id);
+
+    INSERT INTO re_notifications(user_id, post_id, message)
+    VALUES(post_user_id, NEW.post_id, message);
+END;
+
+//
+
+DELIMITER ;
+
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings
     SET booking_status = 
