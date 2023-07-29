@@ -21,11 +21,6 @@ if (isset($_GET['action']) || !empty($_GET['action'])) :
     $post_id = $_GET['post_id'];
 
     switch ($_GET['action']):
-        case 'update_status':
-            $status = $_GET['status'];
-            echo '<script>const isConfirm = confirm("Are you sure want to mark as rented?");if (!isConfirm) document.location.href = "profile";</script>';
-            $message = update_post_status_by_user($post_id, $user_id, $status);
-            break;
         case 'delete':
             $message = delete_post_by_id($post_id);
             break;
@@ -226,7 +221,6 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                                 <div class="dropdown-content">
                                                                     <ul class="dropdown-list-content">
                                                                         <li><a href="booking?id=<?php echo urlencode($post_id); ?>">Booking Details</a></li>
-                                                                        <li><a href="?action=<?php echo urlencode('update_status'); ?>&post_id=<?php echo urlencode($post_id); ?>&status=<?php echo urlencode('rented'); ?>">Mark as Rented</a></li>
                                                                         <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
                                                                         <li><a href="?action=<?php echo urlencode('delete'); ?>&post_id=<?php echo urlencode($post_id); ?>">Delete Post</a></li>
                                                                     </ul>

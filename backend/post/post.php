@@ -229,16 +229,6 @@ function get_latest_post()
                     <p><?php echo htmlspecialchars($row['post_description']); ?></p>
                 </div>
 
-                <div class="price-and-availability flex-1 gap-2 mb-3">
-                    <span class="price">Rs <?php echo htmlspecialchars($row['post_price']); ?> per day</span>
-                    <span class="available">| <b>Available: </b><?php
-                                                                if (get_post_availability($post_id) == 'false') {
-                                                                    echo 'Rented';
-                                                                } else {
-                                                                    echo 'Free';
-                                                                } ?></span>
-                </div>
-
                 <div class="location-and-time flex justify-content-between">
                     <span class="location"><?php echo htmlspecialchars($row['post_location']); ?></span>
                     <span class="time"><?php echo htmlspecialchars($row['post_date']); ?></span>
