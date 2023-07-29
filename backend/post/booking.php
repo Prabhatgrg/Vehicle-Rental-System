@@ -17,9 +17,9 @@ function book_post($book_start, $book_end, $post_id, $user_id)
     $stmt = $conn->prepare("INSERT INTO re_bookings (post_id, user_id, booking_startdate, booking_enddate) VALUES (?,?, ?, ?)");
     $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
     if ($stmt->execute()) :
-        $message['success'] = 'The post is successfully booked.';
+        $message['success'] = 'The post is successfully requested for booking.';
     else :
-        $message['error'] = 'There is an error while booking the post. Please try again later.';
+        $message['error'] = 'There is an error while requesting the booking. Please try again later.';
     endif;
 
     return $message;
@@ -84,6 +84,25 @@ function cancel_booked_post($post_id, $user_id)
 
 
     $message = update_booking_status($post_id, $user_id, $status);
+
+    return $message;
+}
+
+// function to update booking request
+function update_booking_request($booking_id, $booking_status)
+{
+    global $conn;
+
+    $message = [];
+
+    $stmt = $conn->prepare("UPDATE re_bookings SET booking_status = ? WHERE booking_id = ?");
+    $stmt->bind_param('si', $booking_status, $booking_id);
+
+    if ($stmt->execute()) :
+        $message['success'] = "You updated the booking status.";
+    else :
+        $message['error'] = 'There is an error while updating the booking. Please try again.';
+    endif;
 
     return $message;
 }
@@ -153,13 +172,13 @@ function update_bookings()
 }
 
 // function to check if post is booked or not
-function is_booked($post_id, $user_id)
+function is_pending($post_id, $user_id)
 {
     global $conn;
 
     update_bookings();
 
-    $status = 'booked';
+    $status = 'pending';
 
     $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id = ? AND user_id = ? AND booking_status = ?");
     $stmt->bind_param('iis', $post_id, $user_id, $status);

@@ -157,7 +157,7 @@ get_header();
                     </div>
                     <div class="flex gap-2 my-2">
                         <?php if (is_login()) : ?>
-                            <?php if (!is_booked($post_id, $user_id)) : ?>
+                            <?php if (!is_pending($post_id, $user_id)) : ?>
                                 <div class="modal-container">
                                     <button class="btn btn-outline btn-modal">
                                         Book Now
@@ -198,7 +198,7 @@ get_header();
                                         </div>
                                     </div>
                                 </div>
-                            <?php elseif (is_booked($post_id, $user_id)) : ?>
+                            <?php elseif (is_pending($post_id, $user_id)) : ?>
                                 <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>" class="btn btn-outline">Cancel Booking</a>
                             <?php endif; ?>
                             <?php if (is_saved($post_id, $user_id)) : ?>
