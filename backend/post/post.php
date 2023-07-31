@@ -231,7 +231,7 @@ function get_latest_post()
 
                 <div class="location-and-time flex justify-content-between">
                     <span class="location"><b>Location: </b><?php echo htmlspecialchars($row['post_location']); ?></span>
-                    <span class="time"><?php echo htmlspecialchars(get_formated_date($row['post_date'])); ?></span>
+                    <span class="time"><b><?php echo htmlspecialchars(get_formated_date($row['post_date'])); ?></b></span>
                 </div>
 
             </div>
