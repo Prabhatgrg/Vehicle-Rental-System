@@ -189,6 +189,38 @@ END;
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE TRIGGER IF NOT EXISTS postApprovalNotification
+AFTER INSERT ON re_posts
+FOR EACH ROW
+BEGIN
+    IF NEW.post_status = 'pending' THEN
+        INSERT INTO re_notifications(user_id, post_id, message)
+        VALUES(NEW.post_user, NEW.post_id, CONCAT("Your approval request for post ID " , NEW.post_id , " has been sent"));
+    END IF;
+END;
+
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER IF NOT EXISTS publishedPostNotification
+AFTER UPDATE ON re_posts
+FOR EACH ROW
+BEGIN
+    IF NEW.post_status = 'published' AND OLD.post_status != 'published' THEN
+        INSERT INTO re_notifications(user_id, post_id, message)
+        VALUES(NEW.post_user, NEW.post_id, CONCAT("Your request for post ID " , NEW.post_id , " has been approved"));
+    END IF;
+END;
+
+//
+
+DELIMITER ;
+
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings
     SET booking_status = 
