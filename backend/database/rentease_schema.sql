@@ -26,8 +26,6 @@ CREATE TABLE IF NOT EXISTS re_posts(
     post_mileage VARCHAR(30) NOT NULL,
     post_price VARCHAR(30) NOT NULL,
     post_negotiable VARCHAR(10) NOT NULL,
-    post_rent_start VARCHAR(50) NOT NULL,
-    post_rent_end VARCHAR(50) NOT NULL,
     post_status VARCHAR(10) NOT NULL DEFAULT 'pending',
     post_views INT DEFAULT 0,
     post_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
@@ -74,7 +72,6 @@ CREATE TABLE IF NOT EXISTS re_notifications(
     user_id INT NOT NULL,
     post_id INT NOT NULL,
     message VARCHAR(255) NOT NULL,
-    status ENUM('read', 'unread') NOT NULL DEFAULT 'unread',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
