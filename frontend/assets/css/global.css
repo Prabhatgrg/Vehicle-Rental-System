@@ -1146,3 +1146,8 @@ textarea.form-control {
 .overflow-unset {
     overflow: unset !important;
 }
+
+/* About Us Image Transition */
+.transition .card-img img:hover{
+    width: 100%;
+}
