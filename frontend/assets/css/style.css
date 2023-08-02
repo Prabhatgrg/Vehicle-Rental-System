@@ -276,6 +276,11 @@
 }
 .team-card .card-img img {
     aspect-ratio: 750 / 950;
+    border-radius: var(--default-border-radius);
+    transition: var(--transition);
+}
+.team-card .card-img img:hover{
+    transform: scale(1.1);
 }
 /* 
  * Site footer

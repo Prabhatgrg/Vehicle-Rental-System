@@ -7,7 +7,7 @@ get_header("About");
         <div class="flex flex-wrap justify-content-center">
             <div class="col-md-10 col-lg-7">
                 <h1 class="text-center mb-4">About Us</h1>
-                <div class="grid gap-2 column-2">
+                <div class="grid gap-5 transition column-2">
                     <div class="card align-items-center team-card">
                         <figure class="card-img mb-2">
                             <img src="<?php echo get_theme_directory_uri(); ?> /assets/img/jpg/prabhat.jpg" alt="prabhat">
