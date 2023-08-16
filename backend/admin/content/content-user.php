@@ -10,7 +10,6 @@ $stmt->execute();
 $result = $stmt->get_result();
 $data = $result->fetch_all(MYSQLI_ASSOC);
 
-// print_r($data);
 ?>
 
 <table class="admin-users-table">
