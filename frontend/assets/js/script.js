@@ -151,8 +151,52 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     /**
-     * Register Form Validation
+     * Signup Form Validation
      */
+
+    const signupForm = document.querySelector(".signup-form");
+    if (signupForm) {
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const isValid = validateSignupForm(signupForm);
+
+            if (!isValid) {
+                return;
+            }
+
+            const isConfirm = confirm("Are you sure ?");
+
+            if (isConfirm) {
+                signupForm.submit();
+            }
+        });
+    }
+
+    function validateSignupForm(signupForm){
+        let errorMessage = "";
+        let isValid = true;
+
+        const fullName = signupForm.querySelector("#signupfullName").value;
+        const phoneNumber = signupForm.querySelector("#signupPhone").value;
+
+        let fullNamePattern = /^[A-Za-z\s-]+$/;
+        let cleanNumber = phoneNumber.replace(/\D/g, '');
+        const numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{7}$/;
+
+        if(!fullNamePattern.test(fullName)){
+            errorMessage += "Name must be in string \n";
+            isValid = false;
+        }
+        if(!numberPattern.test(cleanNumber)){
+            errorMessage += "Invalid Phone Number \n";
+            isValid = false;
+        }
+        if(!isValid){
+            alert(errorMessage);
+        }
+        return isValid;
+    }
 
     /*
      * Tab Listing
@@ -300,6 +344,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
+    /**
+     * Booking Validation
+     */
     const bookForm = document.querySelector(".book-form");
     if (bookForm) {
         bookForm.addEventListener("submit", (e) => {
