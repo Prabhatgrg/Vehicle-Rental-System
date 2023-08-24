@@ -101,6 +101,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
             isValidate = false;
         }
 
+
+
+
         if (postLocation < 5) {
             errorMessage += "Post location must be 5 characters\n";
             isValidate = false;
@@ -114,10 +117,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             isValidate = false;
         }
         if (postPrice < 1000) {
-            errorMessage += "Minimum rent price should start with Rs. 1000\n";
-            isValidate = false;
-        }
-        if (postNegotiable == "") {
+            erroNegotiabl+= "Minimum rent price should start with Rs. 1000\n";
+            isVaNegotiablfalse;baseis negotiable or not
+        }PriceBaNegotiablbaseis negotiable or not
+        if (postNegotiable == "") {baseis negotiable or not
             errorMessage += "Please select the price is negotiable or not\n";
             isValidate = false;
         }
