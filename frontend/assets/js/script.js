@@ -124,27 +124,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             errorMessage += "Please select the price is negotiable or not\n";
             isValidate = false;
         }
-        // if (postRentStartDateValue == "") {
-        //     errorMessage += "Please enter start date\n";
-        //     isValidate = false;
-        // } else {
-        //     const postRentStartDate = new Date(postRentStartDateValue);
-        //     if (postRentStartDate.getFullYear() < currentYear) {
-        //         errorMessage += "Please enter valid start year\n";
-        //         isValidate = false;
-        //     }
-        // }
-
-        // if (postRentStartDateValue == "") {
-        //     errorMessage += "Please enter end date\n";
-        //     isValidate = false;
-        // } else {
-        //     const postRentEndDate = new Date(postRentEndDateValue);
-        //     if (postRentEndDate.getTime() > postRentEndDate.getTime()) {
-        //         errorMessage += "Vehicle rent finish date should be greater then start date\n";
-        //         isValidate = false;
-        //     }
-        // }
         if (!isValidate) alert(errorMessage);
 
         return isValidate;
@@ -153,7 +132,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     /**
      * Signup Form Validation
      */
-
     const signupForm = document.querySelector(".signup-form");
     if (signupForm) {
         signupForm.addEventListener("submit", (e) => {
@@ -164,9 +142,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             if (!isValid) {
                 return;
             }
-
+            
             const isConfirm = confirm("Are you sure ?");
-
             if (isConfirm) {
                 signupForm.submit();
             }
