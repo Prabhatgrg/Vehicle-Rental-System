@@ -158,7 +158,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const phoneNumber = signupForm.querySelector("#signupPhone").value;
 
         let fullNamePattern = /^[A-Za-z\s-]+$/;
-        // let cleanNumber = phoneNumber.replace(/\D/g, '');
         const numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{7}$/;
 
         if(!fullNamePattern.test(fullName)){
