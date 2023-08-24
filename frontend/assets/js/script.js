@@ -155,7 +155,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const phoneNumber = signupForm.querySelector("#signupPhone").value;
 
         let fullNamePattern = /^[A-Za-z\s-]+$/;
-        const numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{7}$/;
+        let numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{8}$/;
 
         if(!fullNamePattern.test(fullName)){
             errorMessage += "Name must be in string \n";
