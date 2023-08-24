@@ -254,7 +254,7 @@ get_header();
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?></span>
+                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?> per day</span>
                                     </li>
                                 </ul>
                             </div>
