@@ -64,6 +64,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
+    // Modal Form Validation
     function validatePostForm(postForm) {
         let errorMessage = "";
         let isValidate = true;
@@ -148,6 +149,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         return isValidate;
     }
+
+    /**
+     * Register Form Validation
+     */
 
     /*
      * Tab Listing
