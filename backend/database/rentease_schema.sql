@@ -61,9 +61,10 @@ CREATE TABLE IF NOT EXISTS re_bookings(
     post_id INT NOT NULL,
     user_id INT NOT NULL,
     booking_status VARCHAR(20) NOT NULL DEFAULT 'pending',
-    booking_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     booking_startdate date NOT NULL,
     booking_enddate date NOT NULL,
+    booking_price VARCHAR(20) NOT NULL DEFAULT '0',
+    booking_date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
     FOREIGN KEY (user_id) REFERENCES re_users(user_id),
     FOREIGN KEY (post_id) REFERENCES re_posts(post_id)
 );
