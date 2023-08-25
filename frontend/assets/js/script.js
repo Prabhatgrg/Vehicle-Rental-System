@@ -71,12 +71,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         const postTitle = postForm.querySelector("#postTitle").value;
         const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
-        const postOwnership = [...postForm.querySelector("#postOwnership").files];
         const postLocation = postForm.querySelector("#postLocation").value;
         const postDescription = postForm.querySelector("#postDescription").value;
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
-        const postPriceBase = postForm.querySelector("#postPriceBase").value;
+        const postNegotiable = postForm.querySelector("#postNegotiable").value;
 
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
@@ -101,23 +100,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
             errorMessage += "Please upload image\n";
             isValidate = false;
         }
-        if (postOwnership[0]) {
-            const limit = 4;
-            console.log(postOwnership);
-            if (postOwnership.length > limit) {
-                errorMessage += `Please upload image less then ${limit}\n`;
-                isValidate = false;
-            }
-            postOwnership.forEach((file, index) => {
-                if (regex.test(file.name) == false) {
-                    errorMessage += `Please upload valid image at ${index + 1} position\n`;
-                    isValidate = false;
-                }
-            });
-        } else {
-            errorMessage += "Please upload image\n";
-            isValidate = false;
-        }
+
+
+
 
         if (postLocation < 5) {
             errorMessage += "Post location must be 5 characters\n";
@@ -132,11 +117,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
             isValidate = false;
         }
         if (postPrice < 1000) {
-            errorMessage += "Minimum rent price should start with Rs. 1000\n";
-            isValidate = false;
-        }
-        if (postPriceBase == "") {
-            errorMessage += "Please select the price base\n";
+            erroNegotiabl+= "Minimum rent price should start with Rs. 1000\n";
+            isVaNegotiablfalse;baseis negotiable or not
+        }PriceBaNegotiablbaseis negotiable or not
+        if (postNegotiable == "") {baseis negotiable or not
+            errorMessage += "Please select the price is negotiable or not\n";
             isValidate = false;
         }
         if (!isValidate) alert(errorMessage);
@@ -338,41 +323,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     /**
      * Booking Validation
      */
-    function updatePrice(startDate, endDate) {
-        if (startDate == "") alert("Please enter a start date");
-        if (endDate == "") alert("Please enter a End date");
-
-        let dateGap = 0;
-        const bookingPrice = Number(document.querySelector('[name="booking_price"]').value);
-        const priceContainer = document.querySelector("#bookingPrice");
-        const result = document.querySelector(".result");
-
-        if (startDate != "" && endDate != "") {
-            const gapTime = endDate.getTime() - startDate.getTime();
-            dateGap = gapTime / (1000 * 3600 * 24);
-        }
-
-        const price = dateGap * bookingPrice + bookingPrice;
-        result.textContent = `Total Price: Rs. ${price}/-`;
-        priceContainer.value = `Rs. ${price}/-`;
-    }
-
     const bookForm = document.querySelector(".book-form");
     if (bookForm) {
-        const bookingStart = bookForm.querySelector("#bookStartDate");
-        const bookingEnd = bookForm.querySelector("#bookEndDate");
-        let startDate = "",
-            endDate = "";
-
-        bookingStart.addEventListener("input", (e) => {
-            startDate = new Date(e.target.value);
-            updatePrice(startDate, endDate);
-        });
-        bookingEnd.addEventListener("input", (e) => {
-            endDate = new Date(e.target.value);
-            updatePrice(startDate, endDate);
-        });
-
         bookForm.addEventListener("submit", (e) => {
             const currentDate = new Date().getTime();
             let isValidate = true;
