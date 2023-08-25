@@ -262,6 +262,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                 <th>Booking Start Date</th>
                                                 <th>Booking End Date</th>
                                                 <th>Status</th>
+                                                <th>Booking Price</th>
                                             <tr>
                                         </thead>
                                         <tbody>
@@ -275,6 +276,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                 $end_date = format_date($data['booking_enddate']);
 
                                                 $status = $data['booking_status'];
+                                                $booking_price = $data['booking_price'];
 
                                                 $post = get_post_by_id($data['post_id']);
 
@@ -295,6 +297,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                     <td><?php echo $start_date; ?></td>
                                                     <td><?php echo $end_date; ?></td>
                                                     <td style="text-transform: capitalize;"><?php echo $status; ?></td>
+                                                    <td><?php echo $booking_price; ?></td>
                                                 </tr>
                                             <?php
                                                 $count++;
