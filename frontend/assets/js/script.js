@@ -76,7 +76,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
         const postNegotiable = postForm.querySelector("#postNegotiable").value;
-        
+
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
             errorMessage += "Post title must be 5 characters\n";
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             if (!isValid) {
                 return;
             }
-            
+
             const isConfirm = confirm("Are you sure ?");
             if (isConfirm) {
                 signupForm.submit();
@@ -147,7 +147,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    function validateSignupForm(signupForm){
+    function validateSignupForm(signupForm) {
         let errorMessage = "";
         let isValid = true;
 
@@ -157,15 +157,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
         let fullNamePattern = /^[A-Za-z\s-]+$/;
         let numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{8}$/;
 
-        if(!fullNamePattern.test(fullName)){
+        if (!fullNamePattern.test(fullName)) {
             errorMessage += "Name must be in string \n";
             isValid = false;
         }
-        if(!numberPattern.test(phoneNumber)){
+        if (!numberPattern.test(phoneNumber)) {
             errorMessage += "Invalid Phone Number \n";
             isValid = false;
         }
-        if(!isValid){
+        if (!isValid) {
             alert(errorMessage);
         }
         return isValid;
@@ -323,7 +323,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const bookForm = document.querySelector(".book-form");
     if (bookForm) {
         bookForm.addEventListener("submit", (e) => {
-            const currentYear = new Date().getFullYear();
+            const currentDate = new Date().getTime();
             let isValidate = true;
             let errorMessage = "";
             const startDateValue = bookForm.querySelector("#bookStartDate").value;
@@ -333,9 +333,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 errorMessage += "Please enter start date\n";
                 isValidate = false;
             } else {
-                const bookRentStartDate = new Date(startDateValue);
-                if (bookRentStartDate.getFullYear() < currentYear) {
-                    errorMessage += "Please enter valid start year\n";
+                const bookRentStartDate = new Date(startDateValue).getTime();
+                if (bookRentStartDate < currentDate) {
+                    errorMessage += "Please enter valid start date\n";
                     isValidate = false;
                 }
             }
@@ -344,8 +344,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 errorMessage += "Please enter end date\n";
                 isValidate = false;
             } else {
-                const bookRentEndDate = new Date(endDateValue);
-                if (bookRentEndDate.getTime() > bookRentEndDate.getTime()) {
+                const bookRentEndDate = new Date(endDateValue).getTime();
+                const bookRentStartDate = new Date(startDateValue).getTime();
+                if (bookRentStartDate > bookRentEndDate) {
                     errorMessage += "Vehicle rent finish date should be greater then start date\n";
                     isValidate = false;
                 }
