@@ -157,6 +157,51 @@ get_header();
                     </div>
                     <div class="flex gap-2 my-2">
                         <?php if (is_login()) : ?>
+
+                            <?php if (is_admin()) : ?>
+                                <div class="modal-container">
+                                    <button class="btn btn-outline btn-modal">
+                                        View ownership info
+                                    </button>
+                                    <div class="modal-content px-2">
+                                        <div class="flex justify-content-center align-items-center h-100">
+                                            <div class="modal-dialog col-md-8 col-lg-8 bg-light">
+
+
+                                                <div class="flex justify-content-between align-items-center mb-2">
+                                                    <h3>Owner ship info</h3>
+
+                                                    <button class="btn-close">
+                                                        <span class="line"></span>
+                                                        <span class="screen-reader-text">Close</span>
+                                                    </button>
+                                                </div>
+                                                <div class="grid gap-1">
+                                                    <?php
+
+                                                    $post_ownership_arrayy = json_decode($post_data['post_ownership_image']);
+                                                    if (count($post_ownership_arrayy) > 0) :
+
+                                                        foreach ($post_ownership_arrayy as $post_image) :
+                                                            echo '<img src="' . get_root_directory_uri() . '/' . $post_image->path . '" alt="' . $post_image->name . '" />';
+                                                        endforeach;
+
+                                                    else :
+                                                    ?>
+                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
+
+                                                    <?php
+
+                                                    endif;
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+
+
                             <?php if (!is_pending($post_id, $user_id)) : ?>
                                 <div class="modal-container">
                                     <button class="btn btn-outline btn-modal">
@@ -254,7 +299,7 @@ get_header();
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?></span>
+                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?> Per <?php echo htmlspecialchars($post_data['post_price_base']); ?></span>
                                     </li>
                                 </ul>
                             </div>

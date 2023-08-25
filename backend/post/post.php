@@ -1,7 +1,7 @@
 <?php
 
 // function to post the post
-function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
+function create_post($post_title, $post_image_upload, $post_ownership_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_price_base)
 {
     global $conn;
 
@@ -14,10 +14,13 @@ function create_post($post_title, $post_image_upload, $post_category, $post_loca
 
     $file_data = move_uploaded_post_images($file_array);
 
+    $ownership_arryay = reorganize_files_array($post_ownership_upload);
+    $ownership_data = move_uploaded_post_images($ownership_arryay);
+
     $user_id = $_SESSION['user_id'];
 
-    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
-    $stmt->bind_param('iisssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
+    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_ownership_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_price_base) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('iissssssssssss', $post_id, $user_id, $post_title, $file_data, $ownership_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_price_base);
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully requested.';
     } else {

@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['post_submit'])) {
         $post_title = $_POST['postTitle'];
         $post_image_upload = $_FILES['postImageUpload'];
+        $post_ownership_upload = $_FILES['postOwnership'];
         $post_category = $_POST['postCategory'];
         $post_location = $_POST['postLocation'];
         $post_description = $_POST['postDescription'];
@@ -13,11 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_fuel = $_POST['postFuel'];
         $post_mileage = $_POST['postMileage'];
         $post_price = $_POST['postPrice'];
-        $post_negotiable = $_POST['postNegotiable'];
-        // $post_rent_start_date = $_POST['postRentStartDate'];
-        // $post_rent_end_date = $_POST['postRentEndDate'];
+        $post_price_base = $_POST['postPriceBase'];
 
-        $post_message = create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
+        $post_message = create_post($post_title, $post_image_upload, $post_ownership_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_price_base);
     }
 }
 
@@ -137,6 +136,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                     </label>
                                                     <input type="file" name="postImageUpload[]" id="postImageUpload" class="form-file" multiple>
                                                 </div>
+                                                <div class="form-file-upload">
+                                                    <span class="form-title mb-2">Upload ownership documents of vehicle</span>
+                                                    <label for="postOwnership">
+                                                        <svg width="60" height="60" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                                            <defs>
+                                                                <style>
+                                                                    .cls-1 {
+                                                                        fill: none;
+                                                                        stroke: #000;
+                                                                        stroke-linecap: round;
+                                                                        stroke-linejoin: round;
+                                                                        stroke-width: 2px;
+                                                                    }
+                                                                </style>
+                                                            </defs>
+                                                            <title />
+                                                            <g id="plus">
+                                                                <line class="cls-1" x1="16" x2="16" y1="7" y2="25" />
+                                                                <line class="cls-1" x1="7" x2="25" y1="16" y2="16" />
+                                                            </g>
+                                                        </svg>
+                                                    </label>
+                                                    <input type="file" name="postOwnership[]" id="postOwnership" class="form-file" multiple>
+                                                </div>
 
                                                 <div class="form-field">
                                                     <label for="postCategory">Category</label>
@@ -196,23 +219,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                         <label for="postPrice">Price</label>
                                                     </div>
                                                     <div class="form-field">
-                                                        <select name="postNegotiable" id="postNegotiable" class="form-select">
-                                                            <option value="" selected>Negotiable</option>
-                                                            <option value="true">Yes</option>
-                                                            <option value="false">No</option>
+                                                        <select name="postPriceBase" id="postPriceBase" class="form-select">
+                                                            <option value="" selected>Price Base</option>
+                                                            <option value="day">Per Day</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="form-group grid column-2">
-                                                    <div class="form-floating">
-                                                        <input type="date" name="postRentStartDate" id="postRentStartDate" class="form-control">
-                                                        <label for="postRentStartDate">Vehicle Rent Start Date</label>
-                                                    </div>
-                                                    <div class="form-floating">
-                                                        <input type="date" name="postRentEndDate" id="postRentEndDate" class="form-control">
-                                                        <label for="postRentEndDate">Vehicle Rent End Date</label>
-                                                    </div>
-                                                </div> -->
                                                 <div class="form-submit">
                                                     <input type="hidden" name="post_submit" value="submit">
                                                     <button type="submit" class="btn btn-dark btn-post-submit" value="submit">Submit</button>

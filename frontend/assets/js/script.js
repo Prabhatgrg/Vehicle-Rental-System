@@ -71,11 +71,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         const postTitle = postForm.querySelector("#postTitle").value;
         const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
+        const postOwnership = [...postForm.querySelector("#postOwnership").files];
         const postLocation = postForm.querySelector("#postLocation").value;
         const postDescription = postForm.querySelector("#postDescription").value;
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
-        const postNegotiable = postForm.querySelector("#postNegotiable").value;
+        const postPriceBase = postForm.querySelector("#postPriceBase").value;
 
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
@@ -91,6 +92,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 isValidate = false;
             }
             postImageUpload.forEach((file, index) => {
+                if (regex.test(file.name) == false) {
+                    errorMessage += `Please upload valid image at ${index + 1} position\n`;
+                    isValidate = false;
+                }
+            });
+        } else {
+            errorMessage += "Please upload image\n";
+            isValidate = false;
+        }
+        if (postOwnership[0]) {
+            const limit = 4;
+            console.log(postOwnership);
+            if (postOwnership.length > limit) {
+                errorMessage += `Please upload image less then ${limit}\n`;
+                isValidate = false;
+            }
+            postOwnership.forEach((file, index) => {
                 if (regex.test(file.name) == false) {
                     errorMessage += `Please upload valid image at ${index + 1} position\n`;
                     isValidate = false;
@@ -117,8 +135,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             errorMessage += "Minimum rent price should start with Rs. 1000\n";
             isValidate = false;
         }
-        if (postNegotiable == "") {
-            errorMessage += "Please select the price is negotiable or not\n";
+        if (postPriceBase == "") {
+            errorMessage += "Please select the price base\n";
             isValidate = false;
         }
         if (!isValidate) alert(errorMessage);
