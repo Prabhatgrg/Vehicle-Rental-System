@@ -1,7 +1,7 @@
 <?php
 
 // function to book post
-function book_post($book_start, $book_end, $post_id, $user_id)
+function book_post($book_start, $book_end, $book_price, $post_id, $user_id)
 {
     global $conn;
 
@@ -14,8 +14,8 @@ function book_post($book_start, $book_end, $post_id, $user_id)
         return $message;
     }
 
-    $stmt = $conn->prepare("INSERT INTO re_bookings (post_id, user_id, booking_startdate, booking_enddate) VALUES (?,?, ?, ?)");
-    $stmt->bind_param('iiss', $post_id, $user_id, $book_start, $book_end);
+    $stmt = $conn->prepare("INSERT INTO re_bookings (post_id, user_id, booking_price, booking_startdate, booking_enddate) VALUES (?,?,?, ?, ?)");
+    $stmt->bind_param('iisss', $post_id, $user_id, $book_price, $book_start, $book_end);
     if ($stmt->execute()) :
         $message['success'] = 'The post is successfully requested for booking.';
     else :

@@ -71,12 +71,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
         const postTitle = postForm.querySelector("#postTitle").value;
         const postImageUpload = [...postForm.querySelector("#postImageUpload").files];
+        const postOwnership = [...postForm.querySelector("#postOwnership").files];
         const postLocation = postForm.querySelector("#postLocation").value;
         const postDescription = postForm.querySelector("#postDescription").value;
         const postMileage = parseInt(postForm.querySelector("#postMileage").value);
         const postPrice = parseInt(postForm.querySelector("#postPrice").value);
-        const postNegotiable = postForm.querySelector("#postNegotiable").value;
-        
+        const postPriceBase = postForm.querySelector("#postPriceBase").value;
+
         let regex = new RegExp(/[^\s]+(.*?).(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$/);
         if (postTitle < 5) {
             errorMessage += "Post title must be 5 characters\n";
@@ -91,6 +92,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 isValidate = false;
             }
             postImageUpload.forEach((file, index) => {
+                if (regex.test(file.name) == false) {
+                    errorMessage += `Please upload valid image at ${index + 1} position\n`;
+                    isValidate = false;
+                }
+            });
+        } else {
+            errorMessage += "Please upload image\n";
+            isValidate = false;
+        }
+        if (postOwnership[0]) {
+            const limit = 4;
+            console.log(postOwnership);
+            if (postOwnership.length > limit) {
+                errorMessage += `Please upload image less then ${limit}\n`;
+                isValidate = false;
+            }
+            postOwnership.forEach((file, index) => {
                 if (regex.test(file.name) == false) {
                     errorMessage += `Please upload valid image at ${index + 1} position\n`;
                     isValidate = false;
@@ -117,8 +135,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
             errorMessage += "Minimum rent price should start with Rs. 1000\n";
             isValidate = false;
         }
-        if (postNegotiable == "") {
-            errorMessage += "Please select the price is negotiable or not\n";
+        if (postPriceBase == "") {
+            errorMessage += "Please select the price base\n";
             isValidate = false;
         }
         if (!isValidate) alert(errorMessage);
@@ -139,7 +157,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             if (!isValid) {
                 return;
             }
-            
+
             const isConfirm = confirm("Are you sure ?");
             if (isConfirm) {
                 signupForm.submit();
@@ -147,7 +165,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    function validateSignupForm(signupForm){
+    function validateSignupForm(signupForm) {
         let errorMessage = "";
         let isValid = true;
 
@@ -155,17 +173,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const phoneNumber = signupForm.querySelector("#signupPhone").value;
 
         let fullNamePattern = /^[A-Za-z\s-]+$/;
-        const numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{7}$/;
+        let numberPattern = /^(98|97|96|95|94|93|92|91|90)[0-9]{8}$/;
 
-        if(!fullNamePattern.test(fullName)){
+        if (!fullNamePattern.test(fullName)) {
             errorMessage += "Name must be in string \n";
             isValid = false;
         }
-        if(!numberPattern.test(phoneNumber)){
+        if (!numberPattern.test(phoneNumber)) {
             errorMessage += "Invalid Phone Number \n";
             isValid = false;
         }
-        if(!isValid){
+        if (!isValid) {
             alert(errorMessage);
         }
         return isValid;
@@ -320,10 +338,43 @@ window.addEventListener("DOMContentLoaded", (event) => {
     /**
      * Booking Validation
      */
+    function updatePrice(startDate, endDate) {
+        if (startDate == "") alert("Please enter a start date");
+        if (endDate == "") alert("Please enter a End date");
+
+        let dateGap = 0;
+        const bookingPrice = Number(document.querySelector('[name="booking_price"]').value);
+        const priceContainer = document.querySelector("#bookingPrice");
+        const result = document.querySelector(".result");
+
+        if (startDate != "" && endDate != "") {
+            const gapTime = endDate.getTime() - startDate.getTime();
+            dateGap = gapTime / (1000 * 3600 * 24);
+        }
+
+        const price = dateGap * bookingPrice + bookingPrice;
+        result.textContent = `Total Price: Rs. ${price}/-`;
+        priceContainer.value = `Rs. ${price}/-`;
+    }
+
     const bookForm = document.querySelector(".book-form");
     if (bookForm) {
+        const bookingStart = bookForm.querySelector("#bookStartDate");
+        const bookingEnd = bookForm.querySelector("#bookEndDate");
+        let startDate = "",
+            endDate = "";
+
+        bookingStart.addEventListener("input", (e) => {
+            startDate = new Date(e.target.value);
+            updatePrice(startDate, endDate);
+        });
+        bookingEnd.addEventListener("input", (e) => {
+            endDate = new Date(e.target.value);
+            updatePrice(startDate, endDate);
+        });
+
         bookForm.addEventListener("submit", (e) => {
-            const currentYear = new Date().getFullYear();
+            const currentDate = new Date().getTime();
             let isValidate = true;
             let errorMessage = "";
             const startDateValue = bookForm.querySelector("#bookStartDate").value;
@@ -333,9 +384,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 errorMessage += "Please enter start date\n";
                 isValidate = false;
             } else {
-                const bookRentStartDate = new Date(startDateValue);
-                if (bookRentStartDate.getFullYear() < currentYear) {
-                    errorMessage += "Please enter valid start year\n";
+                const bookRentStartDate = new Date(startDateValue).getTime();
+                if (bookRentStartDate < currentDate) {
+                    errorMessage += "Please enter valid start date\n";
                     isValidate = false;
                 }
             }
@@ -344,8 +395,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 errorMessage += "Please enter end date\n";
                 isValidate = false;
             } else {
-                const bookRentEndDate = new Date(endDateValue);
-                if (bookRentEndDate.getTime() > bookRentEndDate.getTime()) {
+                const bookRentEndDate = new Date(endDateValue).getTime();
+                const bookRentStartDate = new Date(startDateValue).getTime();
+                if (bookRentStartDate > bookRentEndDate) {
                     errorMessage += "Vehicle rent finish date should be greater then start date\n";
                     isValidate = false;
                 }

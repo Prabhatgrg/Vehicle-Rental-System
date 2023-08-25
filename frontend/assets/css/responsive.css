@@ -62,6 +62,8 @@
     }
     .card-linear .card-img {
         align-self: flex-start;
+        min-width: 280px;
+        max-width: 280px;
     }
     .card-linear .card-img img {
         max-width: 280px;
@@ -143,6 +145,7 @@
     }
     .card-linear .card-img {
         width: 100%;
+        max-width: 100%;
     }
     .card-linear .card-img img {
         max-width: 100%;

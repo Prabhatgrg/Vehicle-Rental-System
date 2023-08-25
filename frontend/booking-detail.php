@@ -72,6 +72,7 @@ get_header("Booking Detail");
                         <th>Booking Start Date</th>
                         <th>Booking End Date</th>
                         <th>Status</th>
+                        <th>Booking Price</th>
                         <th>Edit</th>
                     <tr>
                 </thead>
@@ -87,6 +88,7 @@ get_header("Booking Detail");
                         $end_date = format_date($data['booking_enddate']);
 
                         $status = $data['booking_status'];
+                        $booking_price = $data['booking_price'];
 
                         $username = get_username_by_id($user_id);
 
@@ -106,6 +108,7 @@ get_header("Booking Detail");
                             <td style="text-transform: capitalize;">
                                 <?php echo $status; ?>
                             </td>
+                            <td><?php echo $booking_price; ?></td>
                             <td>
                                 <?php if ($status == 'pending') : ?>
                                     <div class="modal-container">

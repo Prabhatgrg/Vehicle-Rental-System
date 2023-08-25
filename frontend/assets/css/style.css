@@ -177,6 +177,8 @@
 }
 .card-linear .card-img {
     max-width: 400px;
+    min-width: 400px;
+    flex-shrink: 0;
 }
 .card-linear .card-img img {
     aspect-ratio: 400 / 266;
@@ -279,7 +281,7 @@
     border-radius: var(--default-border-radius);
     transition: var(--transition);
 }
-.team-card .card-img img:hover{
+.team-card .card-img img:hover {
     transform: scale(1.1);
 }
 /* 
