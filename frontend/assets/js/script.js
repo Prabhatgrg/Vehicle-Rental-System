@@ -338,8 +338,41 @@ window.addEventListener("DOMContentLoaded", (event) => {
     /**
      * Booking Validation
      */
+    function updatePrice(startDate, endDate) {
+        if (startDate == "") alert("Please enter a start date");
+        if (endDate == "") alert("Please enter a End date");
+
+        let dateGap = 0;
+        const bookingPrice = Number(document.querySelector('[name="booking_price"]').value);
+        const priceContainer = document.querySelector("#bookingPrice");
+        const result = document.querySelector(".result");
+
+        if (startDate != "" && endDate != "") {
+            const gapTime = endDate.getTime() - startDate.getTime();
+            dateGap = gapTime / (1000 * 3600 * 24);
+        }
+
+        const price = dateGap * bookingPrice + bookingPrice;
+        result.textContent = `Total Price: Rs. ${price}/-`;
+        priceContainer.value = `Rs. ${price}/-`;
+    }
+
     const bookForm = document.querySelector(".book-form");
     if (bookForm) {
+        const bookingStart = bookForm.querySelector("#bookStartDate");
+        const bookingEnd = bookForm.querySelector("#bookEndDate");
+        let startDate = "",
+            endDate = "";
+
+        bookingStart.addEventListener("input", (e) => {
+            startDate = new Date(e.target.value);
+            updatePrice(startDate, endDate);
+        });
+        bookingEnd.addEventListener("input", (e) => {
+            endDate = new Date(e.target.value);
+            updatePrice(startDate, endDate);
+        });
+
         bookForm.addEventListener("submit", (e) => {
             const currentDate = new Date().getTime();
             let isValidate = true;

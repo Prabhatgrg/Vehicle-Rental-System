@@ -29,10 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') :
     if (isset($_POST['book_submit'])) :
         $book_start = $_POST['bookStartDate'];
         $book_end = $_POST['bookEndDate'];
+        $book_price = $_POST['bookingPrice'];
         $book_post_id = $_POST['book_post_id'];
         $book_user_id = $_POST['book_user_id'];
 
-        $booking_message = book_post($book_start, $book_end, $book_post_id, $book_user_id);
+        $booking_message = book_post($book_start, $book_end, $book_price, $book_post_id, $book_user_id);
     endif;
 endif;
 
@@ -224,15 +225,21 @@ get_header();
 
                                                     <div class="form-group grid column-2">
                                                         <div class="form-floating">
-                                                            <input type="date" name="bookStartDate" id="bookStartDate" class="form-control" placeholder="Price">
+                                                            <input type="date" name="bookStartDate" id="bookStartDate" class="form-control" placeholder="startdate">
                                                             <label for="bookStartDate">Start Date</label>
                                                         </div>
                                                         <div class="form-floating">
-                                                            <input type="date" name="bookEndDate" id="bookEndDate" class="form-control" placeholder="Price">
+                                                            <input type="date" name="bookEndDate" id="bookEndDate" class="form-control" placeholder="enddate">
                                                             <label for="bookEndDate">End Date</label>
                                                         </div>
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <span class="result h3"></span>
                                                     </div>
                                                     <div class="form-submit">
+                                                        <input type="hidden" name="bookingPrice" id="bookingPrice">
+                                                        <input type="hidden" name="booking_price" value="<?php echo htmlspecialchars($post_data['post_price']); ?>">
                                                         <input type="hidden" name="book_post_id" value="<?php echo $post_id; ?>">
                                                         <input type="hidden" name="book_user_id" value="<?php echo $user_id; ?>">
                                                         <input type="hidden" name="book_submit" value="submit">
