@@ -218,7 +218,6 @@ function get_notification($user_id)
 
     if ($result->num_rows > 0) :
         while ($row = $result->fetch_assoc()) {
-
             $post = get_post_by_id($row['post_id']);
             $post_image_array = json_decode($post['post_image']);
             if (count($post_image_array) > 0) {
