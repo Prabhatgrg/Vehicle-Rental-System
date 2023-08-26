@@ -306,7 +306,7 @@ get_header();
                                     </li>
                                     <li>
                                         <span class="detail-title">Pricing</span>
-                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?> per <?php echo htmlspecialchars($post_data['post_price_base']); ?></span>
+                                        <span class="detail-info">Rs. <?php echo htmlspecialchars($post_data['post_price']); ?> Per <?php echo htmlspecialchars($post_data['post_price_base']); ?></span>
                                     </li>
                                 </ul>
                             </div>
