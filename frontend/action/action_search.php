@@ -84,10 +84,10 @@ endif;
                 <?php else :
                     echo "<div class='text-center'>No Data Found</div>";
                 endif;
-                ?>
+                    ?>
+                        </div>
             </div>
         </div>
-    </div>
 </section>
 
 <?php get_footer(); ?>
