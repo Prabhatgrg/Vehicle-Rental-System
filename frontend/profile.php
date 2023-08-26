@@ -21,11 +21,6 @@ if (isset($_GET['action']) || !empty($_GET['action'])) :
     $post_id = $_GET['post_id'];
 
     switch ($_GET['action']):
-        case 'update_status':
-            $status = $_GET['status'];
-            echo '<script>const isConfirm = confirm("Are you sure want to mark as rented?");if (!isConfirm) document.location.href = "profile";</script>';
-            $message = update_post_status_by_user($post_id, $user_id, $status);
-            break;
         case 'delete':
             $message = delete_post_by_id($post_id);
             break;
@@ -50,10 +45,10 @@ endif;
 
 <?php
 $user_info = get_user_info_by_id($user_id);
-$name = $user_info['user_fullname'];
-$phone = $user_info['user_phone'];
-$email = $user_info['user_email'];
-$avatar = $user_info['user_profile'];
+$name = htmlspecialchars($user_info['user_fullname']);
+$phone = htmlspecialchars($user_info['user_phone']);
+$email = htmlspecialchars($user_info['user_email']);
+$avatar = htmlspecialchars($user_info['user_profile']);
 ?>
 <section class="user-profile py-5">
     <div class="container">
@@ -188,9 +183,9 @@ $avatar = $user_info['user_profile'];
                                                 $post_id = $post['post_id'];
                                                 $permalink = 'post?id=' . urlencode($post_id);
 
-                                                $title = $post['post_title'];
+                                                $title = htmlspecialchars($post['post_title']);
 
-                                                $price = $post['post_price'];
+                                                $price = htmlspecialchars($post['post_price']);
 
                                                 $post_image_array = json_decode($post['post_image']);
                                                 if (count($post_image_array) > 0) {
@@ -214,7 +209,7 @@ $avatar = $user_info['user_profile'];
                                                         <div class="card-detail">
                                                             <h3 class="card-title h5">
                                                                 <a href="<?php echo  $permalink; ?>">
-                                                                    <?php echo $title; ?>
+                                                                    <?php echo htmlspecialchars($title); ?>
                                                                 </a>
                                                             </h3>
                                                             <div class="dropdown-container dot-menu">
@@ -225,7 +220,7 @@ $avatar = $user_info['user_profile'];
                                                                 </button>
                                                                 <div class="dropdown-content">
                                                                     <ul class="dropdown-list-content">
-                                                                        <li><a href="?action=<?php echo urlencode('update_status'); ?>&post_id=<?php echo urlencode($post_id); ?>&status=<?php echo urlencode('rented'); ?>">Mark as Rented</a></li>
+                                                                        <li><a href="booking?id=<?php echo urlencode($post_id); ?>">Booking Details</a></li>
                                                                         <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
                                                                         <li><a href="?action=<?php echo urlencode('delete'); ?>&post_id=<?php echo urlencode($post_id); ?>">Delete Post</a></li>
                                                                     </ul>
@@ -233,7 +228,7 @@ $avatar = $user_info['user_profile'];
                                                             </div>
                                                         </div>
 
-                                                        <span class="price">Rs. <?php echo $price; ?></span>
+                                                        <span class="price">Rs. <?php echo htmlspecialchars($price); ?></span>
                                                     </div>
                                                 </div>
                                         <?php
@@ -256,44 +251,108 @@ $avatar = $user_info['user_profile'];
                                 $bookings = get_bookings_by_user($user_id);
 
                                 if ($bookings) :
-                                    echo '<div class="grid gap-1 column-3">';
+                                    $count  = 1;
+                                ?>
+                                    <table class="bookings-table">
+                                        <thead>
+                                            <tr>
+                                                <th>S.N</th>
+                                                <th>Post Name</th>
+                                                <th>Booked Date</th>
+                                                <th>Booking Start Date</th>
+                                                <th>Booking End Date</th>
+                                                <th>Status</th>
+                                                <th>Booking Price</th>
+                                            <tr>
+                                        </thead>
+                                        <tbody>
 
-                                    foreach ($bookings as $data) :
+                                            <?php
 
-                                        $post = get_post_by_id($data['post_id']);
+                                            foreach ($bookings as $data) :
+                                                $book_id = $data['booking_id'];
+                                                $booked_date = format_date($data['booking_date']);
+                                                $start_date = format_date($data['booking_startdate']);
+                                                $end_date = format_date($data['booking_enddate']);
 
-                                        $permalink = 'post?id=' . urlencode($post['post_id']);
+                                                $status = $data['booking_status'];
+                                                $booking_price = $data['booking_price'];
 
-                                        $title = $post['post_title'];
+                                                $post = get_post_by_id($data['post_id']);
 
-                                        $price = $post['post_price'];
+                                                $permalink = 'post?id=' . urlencode($post['post_id']);
 
-                                        $post_image_array = json_decode($post['post_image']);
-                                        if (count($post_image_array) > 0) {
-                                            $post_thumbnail_url = $post_image_array[0]->path;
-                                            $post_thumbnail_name = $post_image_array[0]->name;
-                                        }
+                                                $title = $post['post_title'];
+
+                                            ?>
+
+                                                <tr>
+                                                    <th><?php echo $count; ?></th>
+                                                    <td>
+                                                        <a href="<?php echo  $permalink; ?>" target="_blank">
+                                                            <?php echo htmlspecialchars($title); ?>
+                                                        </a>
+                                                    </td>
+                                                    <td><?php echo $booked_date; ?></td>
+                                                    <td><?php echo $start_date; ?></td>
+                                                    <td><?php echo $end_date; ?></td>
+                                                    <td style="text-transform: capitalize;"><?php echo $status; ?></td>
+                                                    <td><?php echo $booking_price; ?></td>
+                                                </tr>
+                                            <?php
+                                                $count++;
+                                            endforeach; ?>
+                                        </tbody>
+                                    </table>
+
+                                <?php
+                                else :
+                                    echo 'There is no booking history.';
+                                endif;
 
                                 ?>
-                                        <div class="card overflow-unset">
-                                            <figure class="card-img">
-                                                <a href="<?php echo $permalink; ?>">
-                                                    <?php if (isset($post_thumbnail_url)) : ?>
-                                                        <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
-                                                    <?php else : ?>
-                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
-                                                    <?php endif; ?>
-                                                </a>
-                                            </figure>
+                            </div>
+                            <div id="user-save-list" class="user-save-list tab-pane">
+                                <div class="container">
 
-                                            <div class="card-body pt-1">
-                                                <div class="card-detail">
-                                                    <h3 class="card-title h5">
-                                                        <a href="<?php echo  $permalink; ?>">
-                                                            <?php echo $title; ?>
-                                                        </a>
-                                                    </h3>
-                                                    <?php if (is_booked($post_id, $user_id)) : ?>
+                                    <?php
+                                    $saved_post = get_saved_post($user_id);
+
+                                    if ($saved_post) :
+                                        echo '<div class="grid gap-1 column-3">';
+                                        foreach ($saved_post as $post) :
+                                            $post_id = $post['post_id'];
+
+                                            $post = get_post_by_id($post_id);
+
+                                            $permalink = 'post?id=' . urlencode($post_id);
+
+                                            $title = $post['post_title'];
+                                            $price = $post['post_price'];
+                                            $post_image_array = json_decode($post['post_image']);
+                                            if (count($post_image_array) > 0) {
+                                                $post_thumbnail_url = $post_image_array[0]->path;
+                                                $post_thumbnail_name = $post_image_array[0]->name;
+                                            }
+                                    ?>
+                                            <div class="card overflow-unset">
+                                                <figure class="card-img">
+                                                    <a href="<?php echo $permalink; ?>">
+                                                        <?php if (isset($post_thumbnail_url)) : ?>
+                                                            <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                                                        <?php else : ?>
+                                                            <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
+                                                        <?php endif; ?>
+                                                    </a>
+                                                </figure>
+
+                                                <div class="card-body pt-1">
+                                                    <div class="card-detail">
+                                                        <h3 class="card-title h5">
+                                                            <a href="<?php echo  $permalink; ?>">
+                                                                <?php echo htmlspecialchars($title); ?>
+                                                            </a>
+                                                        </h3>
                                                         <div class="dropdown-container dot-menu">
                                                             <button class="btn-dropdown">
                                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -302,168 +361,27 @@ $avatar = $user_info['user_profile'];
                                                             </button>
                                                             <div class="dropdown-content">
                                                                 <ul class="dropdown-list-content">
-                                                                    <li>
-                                                                        <a href="post?id=<?php echo urlencode($post_id); ?>&booking=<?php echo urlencode('false'); ?>">Cancel Booking</a>
-                                                                    </li>
+                                                                    <li><a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode('false'); ?>">Remove saved</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                    <?php endif; ?>
+                                                    </div>
+                                                    <span class="price">Rs. <?php echo htmlspecialchars($price); ?></span>
                                                 </div>
-
-                                                <span class="price">Rs. <?php echo $price; ?></span>
                                             </div>
-                                        </div>
-                                <?php
-                                    endforeach;
+                                    <?php
+                                        endforeach;
+                                        echo '</div>';
+                                    else :
+                                        echo "There is no saved post";
+                                    endif;
 
-                                    echo '</div>';
 
-                                else :
-                                    echo 'There is no ads posted';
-                                endif;
-
-                                ?>
-                            </div>
-                            <div id="user-save-list" class="user-save-list tab-pane">
-                                <div class="container">
-                                    <div class="grid gap-1 column-3">
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                        <div class="card">
-                                            <figure class="card-img">
-                                                <a href="#">
-                                                    <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image">
-                                                </a>
-                                            </figure>
-
-                                            <div class="card-body pt-1">
-                                                <h3 class="card-title h5"><a href="#">Car in rent</a></h3>
-                                                <span class="price">Rs. 5,000/day</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ?>
                                 </div>
                             </div>
                             <div id="user-post-reviews" class="user-post-reviews tab-pane">
-                                <?php
-
-                                $reviews = get_user_reviews($user_id);
-
-                                if ($reviews) :
-
-                                    foreach ($reviews as $review) :
-                                        $reviewer_id = $review['reviewer_id'];
-                                        $reviewer_name = get_username_by_id($reviewer_id);
-                                        $permalink = 'user?id=' . urlencode($reviewer_id);
-                                        $rating = (int) $review['user_rating'];
-                                        $rating_percent = ($rating * 100) / 5;
-                                        $review_content = $review['user_review'];
-                                ?>
-
-                                        <div class="review-card py-1">
-                                            <div class="review-items">
-                                                <div class="user-meta flex align-items-center gap-1">
-                                                    <a href="<?php echo $permalink; ?>" target="_blank">
-                                                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/png/default-user.png" alt="Default Image">
-                                                    </a>
-                                                    <span>
-                                                        <a href="<?php echo $permalink; ?>" target="_blank"><?php echo $reviewer_name; ?></a>
-                                                    </span>
-                                                </div>
-                                                <div class="star py-1">
-                                                    <div class="rating">
-                                                        <div class="star-filled" style="width: <?php echo $rating_percent; ?>%">
-                                                            <?php for ($i = 0; $i < MAX_STAR; $i++) : ?>
-                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26Z" fill="black" />
-                                                                </svg>
-                                                            <?php endfor; ?>
-                                                        </div>
-                                                        <div class="star-outline">
-                                                            <?php for ($i = 0; $i < MAX_STAR; $i++) : ?>
-                                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M12.0006 18.26L4.94715 22.2082L6.52248 14.2799L0.587891 8.7918L8.61493 7.84006L12.0006 0.5L15.3862 7.84006L23.4132 8.7918L17.4787 14.2799L19.054 22.2082L12.0006 18.26ZM12.0006 15.968L16.2473 18.3451L15.2988 13.5717L18.8719 10.2674L14.039 9.69434L12.0006 5.27502L9.96214 9.69434L5.12921 10.2674L8.70231 13.5717L7.75383 18.3451L12.0006 15.968Z" fill="black" />
-                                                                </svg>
-                                                            <?php endfor; ?>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="review-response">
-                                                    <span>
-                                                        <?php echo $review_content; ?>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                <?php
-                                    endforeach;
-
-                                else :
-                                    echo "There is no reviews";
-                                endif;
-
-                                ?>
+                                <?php display_reviews($user_id); ?>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <?php
 
 // function to post the post
-function create_post($post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
+function create_post($post_title, $post_image_upload, $post_ownership_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_price_base)
 {
     global $conn;
 
@@ -14,10 +14,13 @@ function create_post($post_title, $post_image_upload, $post_category, $post_loca
 
     $file_data = move_uploaded_post_images($file_array);
 
+    $ownership_arryay = reorganize_files_array($post_ownership_upload);
+    $ownership_data = move_uploaded_post_images($ownership_arryay);
+
     $user_id = $_SESSION['user_id'];
 
-    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_negotiable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)');
-    $stmt->bind_param('iisssssssssss', $post_id, $user_id, $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
+    $stmt = $conn->prepare('INSERT INTO re_posts(post_id, post_user, post_title, post_image, post_ownership_image, post_category, post_location, post_description, post_delivery, post_color, post_fuel_type, post_mileage, post_price, post_price_base) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+    $stmt->bind_param('iissssssssssss', $post_id, $user_id, $post_title, $file_data, $ownership_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_price_base);
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully requested.';
     } else {
@@ -146,7 +149,7 @@ function display_post($post)
         <form method="post">
             <h2 class="h6 mb-1">
                 <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($post['post_id']); ?>" target="_blank">
-                    <?php echo $post['post_title']; ?>
+                    <?php echo htmlspecialchars($post['post_title']); ?>
                 </a>
             </h2>
             <div class="post-status mb-1">
@@ -161,7 +164,7 @@ function display_post($post)
         </form>
     </li>
 
-<?php
+    <?php
 }
 
 // function to update views
@@ -175,14 +178,79 @@ function update_views($post_id)
     $stmt->execute();
 }
 
+// function to check latest post
+function get_latest_post()
+{
+    global $conn;
+
+    if (is_login())
+        $user_id = get_user_id();
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status IN ('published', 'rented') ORDER BY post_date DESC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        $post_id = $row['post_id'];
+        $post_image_array = json_decode($row['post_image']);
+        if (count($post_image_array) > 0) {
+            $post_thumbnail_url = $post_image_array[0]->path;
+            $post_thumbnail_name = $post_image_array[0]->name;
+        }
+    ?>
+
+        <div class="card-linear">
+            <figure class="card-img">
+                <a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>" aria-label="feature image">
+                    <?php if (isset($post_thumbnail_url)) : ?>
+                        <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
+                    <?php else : ?>
+                        <img src="<?php echo get_theme_directory_uri(); ?>/assets/img/jpg/default-image.jpg" alt="Default Image" loading="lazy">
+                    <?php endif; ?>
+                </a>
+            </figure>
+            <div class="card-body flex-1">
+                <div class="flex">
+                    <h3 class="card-title flex-1 h5 mb-3"><a href="<?php echo get_root_directory_uri() . '/post?id=' . urldecode($row['post_id']); ?>"><?php echo htmlspecialchars($row['post_title']); ?></a></h3>
+                    <?php if (is_login()) :
+
+                        $is_saved = is_saved($post_id, $user_id) ? 'false' : 'true';
+
+                    ?>
+                        <ul class="card-features">
+                            <li>
+                                <a href="post?id=<?php echo urlencode($post_id); ?>&bookmark=<?php echo urlencode($is_saved); ?>" <?php echo is_saved($post_id, $user_id) ? 'class="saved"' : null; ?> aria-label="bookmark link">
+                                    <svg width="125" height="185" viewBox="0 0 125 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 175V5H120V175L61 138L5 175Z" stroke="black" stroke-width="10" />
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+                <div class="product-description mb-3">
+                    <p><?php echo htmlspecialchars($row['post_description']); ?></p>
+                </div>
+
+                <div class="location-and-time flex justify-content-between">
+                    <span class="location"><b>Location: </b><?php echo htmlspecialchars($row['post_location']); ?></span>
+                    <span class="time"><b><?php echo htmlspecialchars(get_formated_date($row['post_date'])); ?></b></span>
+                </div>
+
+            </div>
+        </div>
+<?php }
+}
+
+
 // function to get post by views descending order
 function get_post_by_views()
 {
     global $conn;
 
-    $status = 'pending';
+    $status = 'published';
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status != ? ORDER BY post_views DESC");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = ? ORDER BY post_views DESC");
     $stmt->bind_param('s', $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
@@ -220,6 +288,12 @@ function get_post_by_id($post_id)
     $stmt->execute();
 
     $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        $error['error'] = "No post found";
+
+        return $error;
+    }
 
     return $result->fetch_array(MYSQLI_ASSOC);
 }
@@ -261,10 +335,10 @@ function get_bookings_by_user($user_id)
 {
     global $conn;
 
-    $status = 'booked';
+    update_bookings();
 
-    $stmt = $conn->prepare('SELECT post_id FROM re_bookings WHERE user_id = ? AND booking_status = ?');
-    $stmt->bind_param('is', $user_id, $status);
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE user_id = ? ORDER BY booking_date DESC');
+    $stmt->bind_param('i', $user_id);
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -361,4 +435,39 @@ function delete_post_by_id($post_id)
         $message['error'] = 'There is some error to delete post.';
     }
     return $message;
+}
+
+// function to check if the vehicle is available or not
+function get_post_availability($post_id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM re_bookings WHERE post_id=?");
+    $stmt->bind_param('i', $post_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $booking_status = '';
+    if ($result->num_rows > 0) :
+        while ($row = $result->fetch_assoc()) {
+            if ($row['booking_status'] == 'booked') :
+                return false;
+            endif;
+        }
+        return true;
+    endif;
+}
+
+// function to get bookings by post id
+function get_bookings_by_post($post_id)
+{
+    global $conn;
+
+    update_bookings();
+
+    $stmt = $conn->prepare('SELECT * FROM re_bookings WHERE post_id = ? ORDER BY booking_date DESC');
+    $stmt->bind_param('i', $post_id);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
 }

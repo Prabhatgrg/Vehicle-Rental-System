@@ -1,1 +1,1 @@
-A Vehicle Rental Management System where customers are able to rent vehicles from sellers.
+A Vehicle Rental Management System that empower users in both vehicles and listing their own vehicles for rent

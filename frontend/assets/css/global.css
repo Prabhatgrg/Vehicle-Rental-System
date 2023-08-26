@@ -170,6 +170,7 @@ svg * {
     font-family: var(--primary-font);
     cursor: pointer;
     border-radius: var(--default-border-radius);
+    line-height: 1.5;
 }
 .btn:hover {
     text-decoration: none;
@@ -306,6 +307,9 @@ textarea.form-control {
 }
 .column-5 {
     grid-template-columns: repeat(5, 1fr);
+}
+.column-4 {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 /* 
@@ -1141,4 +1145,9 @@ textarea.form-control {
 
 .overflow-unset {
     overflow: unset !important;
+}
+
+/* About Us Image Transition */
+.transition .card-img img:hover{
+    width: 100%;
 }

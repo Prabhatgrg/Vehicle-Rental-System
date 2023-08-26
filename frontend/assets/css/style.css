@@ -173,6 +173,17 @@
     flex-direction: row;
     position: relative;
     overflow: hidden;
+    gap: 2rem;
+}
+.card-linear .card-img {
+    max-width: 400px;
+    min-width: 400px;
+    flex-shrink: 0;
+}
+.card-linear .card-img img {
+    aspect-ratio: 400 / 266;
+    object-fit: cover;
+    inline-size: 100%;
 }
 .card {
     display: flex;
@@ -214,14 +225,25 @@
     display: flex;
     padding: 10px;
     border-radius: var(--default-border-radius);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0);
+}
+.card .card-features a path {
+    stroke: var(--color-light);
 }
 .card-linear .card-features a {
     background-color: transparent;
 }
-.card .card-features a:hover,
+.card .card-features a:hover {
+    background-color: rgba(0 0 0 / 70%);
+}
 .card-linear .card-features a:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+.saved path {
+    fill: var(--color-light);
+}
+.card-linear .saved path {
+    fill: var(--color-black);
 }
 .card .card-img > a {
     display: grid;
@@ -256,6 +278,11 @@
 }
 .team-card .card-img img {
     aspect-ratio: 750 / 950;
+    border-radius: var(--default-border-radius);
+    transition: var(--transition);
+}
+.team-card .card-img img:hover {
+    transform: scale(1.1);
 }
 /* 
  * Site footer
@@ -396,6 +423,10 @@
 */
 .user-meta img {
     max-width: 40px;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
 }
 .rating {
     display: inline-block;
@@ -617,3 +648,25 @@ td::before {
 /* 
 Admin Table Display User CSS End
 */
+
+/* User Notification */
+.notification-image {
+    aspect-ratio: 1/1;
+    max-width: 150px;
+}
+.bookings-table,
+.bookings-table th,
+.bookings-table td {
+    text-align: start;
+}
+
+/* admin dashboard overview */
+.overview-card {
+    padding: 10px 20px;
+    box-shadow: 0 0 30px rgba(0 0 0 / 10%);
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+.overview-card:hover {
+    transform: translateY(-10px);
+}

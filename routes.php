@@ -13,11 +13,11 @@ $routes = [
     get_root_directory_uri() . '/settings' => 'frontend/settings.php',
     get_root_directory_uri() . '/notifications' => 'frontend/notifications.php',
     get_root_directory_uri() . '/chat' => 'frontend/page-chat.php',
-    get_root_directory_uri() . '/search' => 'frontend/search-result.php',
     get_root_directory_uri() . '/admin' => 'backend/admin/admin.php',
     get_root_directory_uri() . '/edit' => 'frontend/edit.php',
     get_root_directory_uri() . '/action_register' => 'frontend/action/action_register.php',
     get_root_directory_uri() . '/change_password' => 'frontend/action/action_changePassword.php',
+    get_root_directory_uri() . '/booking' => 'frontend/booking-detail.php',
     get_root_directory_uri() . '/search' => 'frontend/action/action_search.php'
 ];
 

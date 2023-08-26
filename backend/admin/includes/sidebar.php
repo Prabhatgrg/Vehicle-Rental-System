@@ -61,56 +61,7 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('bookings'); ?>" title="Bookings">
-                <span class="list-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 1V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7V1H9ZM20 10H4V19H20V10ZM15.0355 11.136L16.4497 12.5503L11.5 17.5L7.96447 13.9645L9.37868 12.5503L11.5 14.6716L15.0355 11.136ZM7 5H4V8H20V5H17V6H15V5H9V6H7V5Z" fill="black" />
-                    </svg>
- 
-                </span>
-                <span class="list-text">
-                    Bookings
-                </span>
-            </a>
-
-            <ul class="sub-menu">
-                <li>
-                    <a href="?page=<?php echo urlencode('bookings'); ?>&status=<?php echo urlencode('pending'); ?>" title="Pending">
-                        <span class="list-icon">
-                            <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-                                <path clip-rule="evenodd" d="M1 7C1 3.68629 3.68629 1 7 1H17C20.3137 1 23 3.68629 23 7V17C23 20.3137 20.3137 23 17 23H7C3.68629 23 1 20.3137 1 17V7ZM11 5V12C11 12.5523 11.4477 13 12 13H19V11H13V5H11Z" fill="black" fill-rule="evenodd" />
-                            </svg>
-                        </span>
-                        <span class="list-text">
-                            Pending
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="?page=<?php echo urlencode('bookings'); ?>&status=<?php echo urlencode('published'); ?>" title="Published">
-                        <span class="list-icon">
-                            <svg height="32" id="icon" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <style>
-                                        .cls-1 {
-                                            fill: none;
-                                        }
-                                    </style>
-                                </defs>
-                                <title />
-                                <path d="M26,4H6A2,2,0,0,0,4,6V26a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V6A2,2,0,0,0,26,4ZM14,21.5,9,16.5427,10.5908,15,14,18.3456,21.4087,11l1.5918,1.5772Z" transform="translate(0 0)" />
-                                <path class="cls-1" d="M14,21.5,9,16.5427,10.5908,15,14,18.3456,21.4087,11l1.5918,1.5772Z" id="inner-path" transform="translate(0 0)" />
-                                <rect class="cls-1" data-name="&lt;Transparent Rectangle&gt;" height="32" id="_Transparent_Rectangle_" width="32" />
-                            </svg>
-                        </span>
-                        <span class="list-text">
-                            Published
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
+        
         <li>
             <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('users'); ?>" title="Users">
                 <span class="list-icon">
@@ -148,36 +99,6 @@
                     Users
                 </span>
             </a>
-
-            <!-- <ul class="sub-menu">
-                <li>
-                    <a href="?page=<?php echo urlencode('users'); ?>&action=<?php echo urlencode('add user'); ?>" title="Add users">
-                        <span class="list-icon">
-                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                <defs>
-                                    <style>
-                                        .cls-add {
-                                            fill: none;
-                                            stroke: #000;
-                                            stroke-linecap: round;
-                                            stroke-linejoin: round;
-                                            stroke-width: 2px;
-                                        }
-                                    </style>
-                                </defs>
-                                <title />
-                                <g id="plus">
-                                    <line class="cls-add" x1="16" x2="16" y1="7" y2="25" />
-                                    <line class="cls-add" x1="7" x2="25" y1="16" y2="16" />
-                                </g>
-                            </svg>
-                        </span>
-                        <span class="list-text">
-                            Add users
-                        </span>
-                    </a>
-                </li>
-            </ul> -->
         </li>
         <li>
             <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('category'); ?>" title="Categories">
