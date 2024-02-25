@@ -418,7 +418,7 @@ function is_my_post($post_id, $user_id)
 }
 
 // function to update post
-function update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable)
+function update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price)
 {
     global $conn;
     $message = [];
@@ -430,8 +430,8 @@ function update_post($post_id, $post_title, $post_image_upload, $post_category, 
     $file_data = move_uploaded_post_images($file_array);
 
 
-    $stmt = $conn->prepare('UPDATE re_posts SET post_title = ?, post_image = ?, post_category = ?, post_location = ?, post_description = ?, post_delivery = ?, post_color = ?, post_fuel_type = ?, post_mileage = ?, post_price = ?, post_negotiable = ? WHERE post_id = ?');
-    $stmt->bind_param('sssssssssssi', $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable, $post_id);
+    $stmt = $conn->prepare('UPDATE re_posts SET post_title = ?, post_image = ?, post_category = ?, post_location = ?, post_description = ?, post_delivery = ?, post_color = ?, post_fuel_type = ?, post_mileage = ?, post_price = ? WHERE post_id = ?');
+    $stmt->bind_param('sssssssssssi', $post_title, $file_data, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_id);
     if ($stmt->execute()) {
         $message['success'] = 'The ads post was successfully updated.';
     } else {

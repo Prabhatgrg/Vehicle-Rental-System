@@ -22,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_fuel = $_POST['postEditFuel'];
         $post_mileage = $_POST['postEditMileage'];
         $post_price = $_POST['postEditPrice'];
-        $post_negotiable = $_POST['postEditNegotiable'];
+        // $post_negotiable = $_POST['postEditNegotiable'];
 
-        $post_message = update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price, $post_negotiable);
+        $post_message = update_post($post_id, $post_title, $post_image_upload, $post_category, $post_location, $post_description, $post_delivery, $post_colour, $post_fuel, $post_mileage, $post_price);
     }
 }
 
@@ -40,7 +40,7 @@ $color = $post['post_color'];
 $fuel = $post['post_fuel_type'];
 $mileage = $post['post_mileage'];
 $price = $post['post_price'];
-$negotiable = $post['post_negotiable'];
+// $negotiable = $post['post_negotiable'];
 
 
 get_header();
@@ -154,13 +154,13 @@ get_header();
                             <input type="number" name="postEditPrice" id="postEditPrice" class="form-control" placeholder="Price" value="<?php echo $price; ?>">
                             <label for="postEditPrice">Price</label>
                         </div>
-                        <div class="form-field">
+                        <!-- <div class="form-field">
                             <select name="postEditNegotiable" id="postEditNegotiable" class="form-select">
                                 <option value="" <?php echo $negotiable == '' ? 'selected' : null; ?>>Negotiable</option>
                                 <option value="true" <?php echo $negotiable == 'true' ? 'selected' : null; ?>>Yes</option>
                                 <option value="false" <?php echo $negotiable == 'false' ? 'selected' : null; ?>>No</option>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="form-submit">
                         <input type="hidden" name="postEdit_submit" value="submit">
