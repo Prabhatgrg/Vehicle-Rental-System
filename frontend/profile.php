@@ -182,6 +182,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
 
                                                 $post_id = $post['post_id'];
                                                 $permalink = 'post?id=' . urlencode($post_id);
+                                                $rejected_class = $post['post_status'] == "rejected" ? "pointer-event-none pointer-disabled" : "";
 
                                                 $title = htmlspecialchars($post['post_title']);
 
@@ -195,7 +196,7 @@ $avatar = htmlspecialchars($user_info['user_profile']);
 
                                         ?>
                                                 <div class="card overflow-unset">
-                                                    <figure class="card-img">
+                                                    <figure class="card-img <?php echo $rejected_class; ?>">
                                                         <a href="<?php echo $permalink; ?>">
                                                             <?php if (isset($post_thumbnail_url)) : ?>
                                                                 <img src="<?php echo get_root_directory_uri() . '/' . $post_thumbnail_url; ?>" alt="<?php echo $post_thumbnail_name; ?>" loading="lazy">
@@ -207,9 +208,9 @@ $avatar = htmlspecialchars($user_info['user_profile']);
 
                                                     <div class="card-body pt-1">
                                                         <div class="card-detail">
-                                                            <h3 class="card-title h5">
+                                                            <h3 class="card-title h5 <?php echo $rejected_class; ?>">
                                                                 <a href="<?php echo  $permalink; ?>">
-                                                                    <?php echo htmlspecialchars($title); ?>
+                                                                    <?php echo htmlspecialchars($title); ?><?php echo $post['post_status'] == "rejected" ? " <span class='text-error'>(Rejected)</span>" : ""; ?>
                                                                 </a>
                                                             </h3>
                                                             <div class="dropdown-container dot-menu">
@@ -220,8 +221,10 @@ $avatar = htmlspecialchars($user_info['user_profile']);
                                                                 </button>
                                                                 <div class="dropdown-content">
                                                                     <ul class="dropdown-list-content">
-                                                                        <li><a href="booking?id=<?php echo urlencode($post_id); ?>">Booking Details</a></li>
-                                                                        <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
+                                                                        <?php if ($post['post_status'] != "rejected") : ?>
+                                                                            <li><a href="booking?id=<?php echo urlencode($post_id); ?>">Booking Details</a></li>
+                                                                            <li><a href="edit?id=<?php echo urlencode($post_id); ?>">Edit Post</a></li>
+                                                                        <?php endif; ?>
                                                                         <li><a href="?action=<?php echo urlencode('delete'); ?>&post_id=<?php echo urlencode($post_id); ?>">Delete Post</a></li>
                                                                     </ul>
                                                                 </div>

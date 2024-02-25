@@ -156,6 +156,10 @@ get_header($user_name);
 
                                             foreach ($posts as $post) :
 
+                                                if ($post['post_status'] == "rejected") {
+                                                    continue;
+                                                }
+
                                                 $permalink = 'post?id=' . urlencode($post['post_id']);
 
                                                 $title = $post['post_title'];
