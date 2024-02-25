@@ -68,7 +68,7 @@ get_header("Booking Detail");
                     <tr>
                         <th>S.N</th>
                         <th>User</th>
-                        <th>Booked Date</th>
+                        <th>Applied Date</th>
                         <th>Booking Start Date</th>
                         <th>Booking End Date</th>
                         <th>Status</th>

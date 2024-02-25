@@ -203,7 +203,7 @@ get_header();
                             <?php endif; ?>
 
 
-                            <?php if (!is_pending($post_id, $user_id)) : ?>
+                            <?php if (!is_pending($post_id, $user_id) && ($post_data['post_user'] != get_user_id()))  : ?>
                                 <div class="modal-container">
                                     <button class="btn btn-outline btn-modal">
                                         Book Now
