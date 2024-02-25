@@ -151,15 +151,14 @@ function is_admin()
     }
 }
 
-function change_password($old_password, $new_password)
+function change_password($user_id, $old_password, $new_password, $confirm_password)
 {
     global $conn;
 
     $new_password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-    $current_user = get_user_name();
 
-    $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_login = ?");
-    $stmt->bind_param("s", $current_user);
+    $stmt = $conn->prepare("SELECT * FROM re_users WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
     if ($result->num_rows == 0) {
@@ -168,13 +167,18 @@ function change_password($old_password, $new_password)
         $row = $result->fetch_array(MYSQLI_ASSOC);
         $password_verify = password_verify($old_password, $row['user_password']);
         if ($password_verify) {
-            $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_login = ?");
-            $stmt->bind_param("ss", $new_password_hash, $current_user);
-            $stmt->execute();
-            $_SESSION['success'] = "Password Updated";
-            header('Location: ' . get_root_directory_uri() . '/settings');
+            if ($new_password == $confirm_password) {
+                $stmt = $conn->prepare("UPDATE re_users SET user_password = ? WHERE user_id = ?");
+                $stmt->bind_param("si", $new_password_hash, $user_id);
+                $stmt->execute();
+                $_SESSION['success'] = "Password Updated";
+                header('Location: ' . get_root_directory_uri() . '/settings');
+            }else{
+                $_SESSION['error'] = "New Password does not match with Confirm Password";
+                header('Location: '. get_root_directory_uri() . '/settings');
+            }
         } else {
-            $_SESSION['error'] = "Old password doesn not match";
+            $_SESSION['error'] = "Old password does not match";
             header('Location: ' . get_root_directory_uri() . '/settings');
         }
     }
