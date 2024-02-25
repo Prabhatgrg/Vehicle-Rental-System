@@ -282,9 +282,9 @@ function is_published($post_id)
 {
     global $conn;
 
-    $status = 'pending';
+    $status = 'published';
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ? and post_status != ?");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_id = ? and post_status = ?");
     $stmt->bind_param('is', $post_id, $status);
     if ($stmt->execute()) {
         $result = $stmt->get_result();
