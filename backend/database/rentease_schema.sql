@@ -220,6 +220,21 @@ END;
 
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER IF NOT EXISTS postRejectionNotification
+AFTER UPDATE ON re_posts
+FOR EACH ROW
+BEGIN
+    IF NEW.post_status = 'rejected' AND OLD.post_status != 'rejected' THEN
+        INSERT INTO re_notifications(user_id, post_id, message)
+        VALUES(NEW.post_user, NEW.post_id, CONCAT("Your request for post ID ", NEW.post_id, " has been rejected"));
+    END IF;
+END;
+
+//
+
+DELIMITER ;
+
 CREATE PROCEDURE update_booking_status()
 UPDATE re_bookings
     SET booking_status = 

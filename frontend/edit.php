@@ -154,13 +154,6 @@ get_header();
                             <input type="number" name="postEditPrice" id="postEditPrice" class="form-control" placeholder="Price" value="<?php echo $price; ?>">
                             <label for="postEditPrice">Price</label>
                         </div>
-                        <!-- <div class="form-field">
-                            <select name="postEditNegotiable" id="postEditNegotiable" class="form-select">
-                                <option value="" <?php echo $negotiable == '' ? 'selected' : null; ?>>Negotiable</option>
-                                <option value="true" <?php echo $negotiable == 'true' ? 'selected' : null; ?>>Yes</option>
-                                <option value="false" <?php echo $negotiable == 'false' ? 'selected' : null; ?>>No</option>
-                            </select>
-                        </div> -->
                     </div>
                     <div class="form-submit">
                         <input type="hidden" name="postEdit_submit" value="submit">
