@@ -192,7 +192,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       errorMessage += "Invalid Phone Number \n";
       isValid = false;
     }
-    if (!fullNamePatter.test(userName)){
+    if (!fullNamePattern.test(userName)){
         errorMessage += "Invalid Username \n";
         isValid = false;
     }
