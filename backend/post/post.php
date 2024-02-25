@@ -88,13 +88,30 @@ function get_pending_posts()
     return $data;
 }
 
+function get_rejected_posts()
+{
+    global $conn;
+
+    $data = [];
+
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = 'rejected'");
+    if ($stmt->execute()) :
+        $result = $stmt->get_result();
+        $data = $result->fetch_all(MYSQLI_ASSOC);
+    else :
+        $data['error'] = 'Something went wrong while fetching posts.';
+    endif;
+
+    return $data;
+}
+
 function get_published_posts()
 {
     global $conn;
 
     $data = [];
 
-    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status != 'pending'");
+    $stmt = $conn->prepare("SELECT * FROM re_posts WHERE post_status = 'published'");
     if ($stmt->execute()) :
         $result = $stmt->get_result();
         $data = $result->fetch_all(MYSQLI_ASSOC);
@@ -158,6 +175,7 @@ function display_post($post)
                 <select name="postStatus" id="postStatus" class="form-select">
                     <option value="pending" <?php echo $post['post_status'] == 'pending' ? 'selected' : null; ?>>Pending</option>
                     <option value="published" <?php echo $post['post_status'] == 'published' ? 'selected' : null; ?>>Published</option>
+                    <option value="rejected" <?php echo $post['post_status'] == 'rejected' ? 'selected' : null; ?>>Rejected</option>
                 </select>
             </div>
             <button type="submit" name="change_status" class="btn btn-dark btn-submit">Save</button>

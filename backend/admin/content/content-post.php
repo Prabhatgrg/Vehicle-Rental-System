@@ -70,6 +70,22 @@ elseif ($_GET['status'] == 'pending') :
         echo 'There is no post available.';
     endif;
 
+elseif ($_GET['status'] == 'rejected') :
+
+    $posts = get_rejected_posts();
+
+    if ($posts) :
+        echo '<ul class="posts-list">';
+        foreach ($posts as $post) :
+
+            display_post($post);
+
+        endforeach;
+        echo '</ul>';
+    else :
+        echo 'There is no post available.';
+    endif;
+
 
 elseif ($_GET['status'] == 'published') :
 

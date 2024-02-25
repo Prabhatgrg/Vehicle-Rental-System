@@ -37,6 +37,7 @@
                         </span>
                     </a>
                 </li>
+
                 <li>
                     <a href="?page=<?php echo urlencode('posts'); ?>&status=<?php echo urlencode('published'); ?>" title="Published">
                         <span class="list-icon">
@@ -59,9 +60,24 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <a href="?page=<?php echo urlencode('posts'); ?>&status=<?php echo urlencode('rejected'); ?>" title="Rejected">
+                        <span class="list-icon">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <title />
+                                <g id="Reject">
+                                    <path fill="#000" d="M16,4A12,12,0,1,0,28,16,12.0134,12.0134,0,0,0,16,4Zm4.707,15.293a1,1,0,1,1-1.414,1.414L16,17.4141,12.707,20.707a1,1,0,0,1-1.414-1.414L14.5859,16,11.293,12.707a1,1,0,0,1,1.414-1.414L16,14.5859l3.293-3.2929a1,1,0,0,1,1.414,1.414L17.4141,16Z" />
+                                </g>
+                            </svg>
+                        </span>
+                        <span class="list-text">
+                            Rejected
+                        </span>
+                    </a>
+                </li>
             </ul>
         </li>
-        
+
         <li>
             <a href="<?php echo get_root_directory_uri(); ?>/admin?page=<?php echo urlencode('users'); ?>" title="Users">
                 <span class="list-icon">
