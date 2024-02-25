@@ -178,6 +178,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     let isValid = true;
 
     const fullName = signupForm.querySelector("#signupfullName").value;
+    const userName = signupForm.querySelector("#signupUsername").value;
     const phoneNumber = signupForm.querySelector("#signupPhone").value;
 
     let fullNamePattern = /^[A-Za-z\s-]+$/;
@@ -190,6 +191,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     if (!numberPattern.test(phoneNumber)) {
       errorMessage += "Invalid Phone Number \n";
       isValid = false;
+    }
+    if (!userNamePatter.test(userName)){
+        errorMessage += "Invalid Username \n";
+        isValid = false;
     }
     if (!isValid) {
       alert(errorMessage);
